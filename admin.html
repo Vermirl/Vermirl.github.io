@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel — EduCourse</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="navbar">
+  <a href="index.html" class="logo">🎓 EduCourse</a>
+  <div class="nav-links">
+    <a href="#" onclick="showTab('stats')" id="tab-stats" class="active">📊 Thống kê</a>
+    <a href="#" onclick="showTab('courses')" id="tab-courses">📚 Khóa học</a>
+    <a href="#" onclick="showTab('users')" id="tab-users">👥 Người dùng</a>
+    <span class="user-badge">⚙️ Admin</span>
+    <button class="btn-logout" onclick="logout()">Đăng xuất</button>
+  </div>
+</nav>
+
+<div class="container page">
+
+  <!-- STATS TAB -->
+  <div id="pane-stats">
+    <h1 class="page-title">📊 Thống kê hệ thống</h1>
+    <div class="stats-grid" id="stats-grid">
+      <div class="stat-card"><div class="value">—</div><div class="label">Tổng người dùng</div></div>
+    </div>
+    <h2 style="font-size:1.1rem;color:var(--primary-dark);margin-bottom:12px;">📚 Khóa học chờ duyệt</h2>
+    <div id="pending-list"></div>
+  </div>
+
+  <!-- COURSES TAB -->
+  <div id="pane-courses" style="display:none;">
+    <h1 class="page-title">📚 Quản lý khóa học</h1>
+    <div id="all-courses-list"></div>
+  </div>
+
+  <!-- USERS TAB -->
+  <div id="pane-users" style="display:none;">
+    <h1 class="page-title">👥 Quản lý người dùng</h1>
+    <div class="search-bar">
+      <input id="user-search" class="form-control" placeholder="🔍 Tìm theo tên hoặc email..." oninput="searchUsers()">
+    </div>
+    <div id="users-list"></div>
+  </div>
+
+</div>
+
+<script src="js/api.js"></script>
+<script>
+requireAuth(['Admin']);
+
+function showTab(name) {
+    ['stats','courses','users'].forEach(t => {
+        document.getElementById('pane-' + t).style.display = t === name ? 'block' : 'none';
+        document.getElementById('tab-' + t).classList.toggle('active', t === name);
+    });
+    if (name === 'courses') loadAllCourses();
+    if (name === 'users') loadUsers();
+}
+
+// ── STATS ──
+async function loadStats() {
+    const res = await apiFetch('/admin/stats');
+    if (!res.ok) return;
+    const s = res.data;
+    document.getElementById('stats-grid').innerHTML = `
+        <div class="stat-card"><div class="value">${s.totalUsers}</div><div class="label">👥 Người dùng</div></div>
+        <div class="stat-card" style="border-color:var(--success);"><div class="value">${s.totalCourses}</div><div class="label">📚 Khóa học xuất bản</div></div>
+        <div class="stat-card" style="border-color:var(--accent);"><div class="value">${s.totalEnrollments}</div><div class="label">🎓 Lượt đăng ký</div></div>
+        <div class="stat-card" style="border-color:var(--danger);"><div class="value">${s.pendingCourses}</div><div class="label">⏳ Chờ duyệt</div></div>
+        <div class="stat-card" style="border-color:#8b5cf6;"><div class="value">${s.totalRevenue.toLocaleString('vi-VN')}₫</div><div class="label">💰 Doanh thu (mock)</div></div>
+    `;
+}
+
+async function loadPending() {
+    const res = await apiFetch('/courses/admin/all');
+    if (!res.ok) return;
+    const pending = res.data.filter(c => c.status === 'Pending');
+    const el = document.getElementById('pending-list');
+    if (!pending.length) { el.innerHTML = '<div style="color:var(--gray);">Không có khóa học chờ duyệt ✅</div>'; return; }
+    el.innerHTML = `<div class="table-wrap"><table>
+        <thead><tr><th>Tiêu đề</th><th>Giảng viên</th><th>Danh mục</th><th>Giá</th><th>Bài học</th><th>Hành động</th></tr></thead>
+        <tbody>${pending.map(c => `
+            <tr>
+                <td><strong>${c.title}</strong><div style="font-size:0.8rem;color:var(--gray);">${c.description.substring(0,60)}...</div></td>
+                <td>${c.instructorName}</td>
+                <td>${c.categoryName}</td>
+                <td>${c.price === 0 ? 'Miễn phí' : c.price.toLocaleString('vi-VN') + '₫'}</td>
+                <td>${c.totalLessons}</td>
+                <td style="display:flex;gap:6px;">
+                    <button class="btn btn-success btn-sm" onclick="approveCourse(${c.id})">✅ Duyệt</button>
+                    <button class="btn btn-danger btn-sm" onclick="rejectCourse(${c.id})">❌ Từ chối</button>
+                </td>
+            </tr>`).join('')}
+        </tbody></table></div>`;
+}
+
+async function approveCourse(id) {
+    if (!confirm('Duyệt và xuất bản khóa học này?')) return;
+    const res = await apiFetch('/courses/' + id + '/approve', { method: 'POST' });
+    if (res.ok) { toast(res.data.message); loadStats(); loadPending(); }
+}
+
+async function rejectCourse(id) {
+    const reason = prompt('Nhập lý do từ chối:');
+    if (!reason) return;
+    const res = await apiFetch('/courses/' + id + '/reject', { method: 'POST', body: JSON.stringify(reason) });
+    if (res.ok) { toast(res.data.message); loadStats(); loadPending(); }
+}
+
+// ── ALL COURSES ──
+async function loadAllCourses() {
+    const res = await apiFetch('/courses/admin/all');
+    if (!res.ok) return;
+    document.getElementById('all-courses-list').innerHTML = `<div class="table-wrap"><table>
+        <thead><tr><th>Tiêu đề</th><th>Giảng viên</th><th>Giá</th><th>Học viên</th><th>Trạng thái</th><th>Hành động</th></tr></thead>
+        <tbody>${res.data.map(c => `
+            <tr>
+                <td><strong>${c.title}</strong></td>
+                <td>${c.instructorName}</td>
+                <td>${c.price === 0 ? 'Miễn phí' : c.price.toLocaleString('vi-VN') + '₫'}</td>
+                <td>${c.totalEnrollments}</td>
+                <td><span class="badge badge-${c.status.toLowerCase()}">${c.status}</span></td>
+                <td>
+                    ${c.status === 'Pending' ? `<button class="btn btn-success btn-sm" onclick="approveCourse(${c.id})">✅ Duyệt</button>` : ''}
+                    ${c.status === 'Published' ? `<button class="btn btn-danger btn-sm" onclick="rejectCourse(${c.id})">🚫 Ẩn</button>` : ''}
+                </td>
+            </tr>`).join('')}
+        </tbody></table></div>`;
+}
+
+// ── USERS ──
+async function loadUsers(search = '') {
+    const res = await apiFetch('/admin/users' + (search ? '?search=' + encodeURIComponent(search) : ''));
+    if (!res.ok) return;
+    document.getElementById('users-list').innerHTML = `<div class="table-wrap"><table>
+        <thead><tr><th>ID</th><th>Họ tên</th><th>Email</th><th>Vai trò</th><th>Ngày tạo</th><th>Trạng thái</th><th>Hành động</th></tr></thead>
+        <tbody>${res.data.map(u => `
+            <tr>
+                <td>#${u.id}</td>
+                <td>${u.fullName}</td>
+                <td>${u.email}</td>
+                <td><span class="badge" style="background:${u.role==='Admin'?'#FCE7F3':u.role==='Instructor'?'#FEF3C7':'#DBEAFE'};color:#333;">${u.role}</span></td>
+                <td>${new Date(u.createdAt).toLocaleDateString('vi-VN')}</td>
+                <td><span style="color:${u.isActive?'var(--success)':'var(--danger)'};">${u.isActive?'✅ Hoạt động':'🚫 Bị khóa'}</span></td>
+                <td style="display:flex;gap:4px;flex-wrap:wrap;">
+                    ${u.role !== 'Admin' ? `
+                        <button class="btn btn-sm ${u.isActive?'btn-danger':'btn-success'}" onclick="toggleUser(${u.id})">
+                            ${u.isActive ? '🔒 Khóa' : '🔓 Mở'}
+                        </button>
+                        <select class="form-control" style="font-size:0.8rem;padding:4px;height:32px;width:auto;" onchange="changeRole(${u.id}, this.value)">
+                            <option value="Student" ${u.role==='Student'?'selected':''}>Student</option>
+                            <option value="Instructor" ${u.role==='Instructor'?'selected':''}>Instructor</option>
+                        </select>` : '<span style="color:var(--gray);font-size:0.8rem;">Admin</span>'}
+                </td>
+            </tr>`).join('')}
+        </tbody></table></div>`;
+}
+
+function searchUsers() { loadUsers(document.getElementById('user-search').value.trim()); }
+
+async function toggleUser(id) {
+    const res = await apiFetch('/admin/users/' + id + '/toggle', { method: 'POST' });
+    if (res.ok) { toast(res.data.message); loadUsers(); }
+}
+
+async function changeRole(id, role) {
+    const res = await apiFetch('/admin/users/' + id + '/role', { method: 'POST', body: JSON.stringify(role) });
+    if (res.ok) toast('Đã đổi vai trò thành ' + role);
+}
+
+loadStats();
+loadPending();
+</script>
+</body></html>

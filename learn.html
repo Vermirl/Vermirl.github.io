@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Học — EduCourse</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+body { overflow: hidden; }
+.learn-layout { height: calc(100vh - 60px); }
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <a href="index.html" class="logo">🎓 EduCourse</a>
+  <div class="nav-links">
+    <a href="my-courses.html">← Khóa học của tôi</a>
+    <span id="course-title-nav" style="color:#ccc;font-size:0.88rem;"></span>
+    <div class="progress-bar" style="width:120px;">
+      <div class="progress-fill" id="nav-progress" style="width:0%"></div>
+    </div>
+    <span id="nav-percent" style="color:#ccc;font-size:0.82rem;">0%</span>
+  </div>
+</nav>
+
+<div class="learn-layout">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-header">📚 Nội dung khóa học</div>
+    <div id="lesson-list"></div>
+  </div>
+
+  <!-- Main -->
+  <div class="main-content" id="main-content">
+    <div class="empty-state"><div class="icon">👈</div>Chọn bài học bên trái để bắt đầu</div>
+  </div>
+</div>
+
+<script src="js/api.js"></script>
+<script>
+requireAuth(['Student']);
+
+const courseId = new URLSearchParams(window.location.search).get('course');
+let lessons = [], currentLesson = null, quizzes = [], quizAnswers = {}, quizSubmitted = false;
+
+async function loadLessons() {
+    const res = await apiFetch('/lessons/course/' + courseId);
+    if (!res.ok) return;
+    lessons = res.data;
+
+    const completed = lessons.filter(l => l.isCompleted).length;
+    const percent = lessons.length ? Math.round(completed / lessons.length * 100) : 0;
+    document.getElementById('nav-progress').style.width = percent + '%';
+    document.getElementById('nav-percent').textContent = percent + '%';
+
+    const list = document.getElementById('lesson-list');
+    list.innerHTML = lessons.map(l => `
+        <div class="lesson-item ${l.isCompleted ? 'done' : ''}" id="li-${l.id}" onclick="selectLesson(${l.id})">
+          <div class="check">${l.isCompleted ? '✓' : ''}</div>
+          <div>
+            <div style="font-weight:600;">${l.title}</div>
+            ${l.hasQuiz ? '<div style="font-size:0.75rem;color:var(--primary);">📝 Có Quiz</div>' : ''}
+          </div>
+        </div>
+    `).join('');
+}
+
+async function selectLesson(id) {
+    currentLesson = lessons.find(l => l.id === id);
+    quizzes = []; quizAnswers = {}; quizSubmitted = false;
+
+    // Highlight sidebar
+    document.querySelectorAll('.lesson-item').forEach(el => el.classList.remove('active'));
+    document.getElementById('li-' + id)?.classList.add('active');
+
+    renderLesson();
+
+    // Load quiz nếu có
+    if (currentLesson.hasQuiz) {
+        const res = await apiFetch('/quizzes/lesson/' + id);
+        if (res.ok) quizzes = res.data;
+        renderLesson();
+    }
+}
+
+function renderLesson() {
+    if (!currentLesson) return;
+    const main = document.getElementById('main-content');
+    main.innerHTML = `
+        <h2 style="font-size:1.3rem;color:var(--primary-dark);margin-bottom:16px;">🎬 ${currentLesson.title}</h2>
+        ${currentLesson.videoUrl
+            ? `<div class="video-wrapper">
+                <video controls id="lesson-video" onended="onVideoEnd()">
+                  <source src="${currentLesson.videoUrl}">
+                  Trình duyệt không hỗ trợ video.
+                </video>
+               </div>`
+            : `<div style="background:#f0f7fa;padding:40px;text-align:center;border-radius:12px;margin-bottom:20px;color:var(--gray);">
+                 <div style="font-size:2rem;">🎥</div>
+                 <div>Video chưa được upload</div>
+               </div>`
+        }
+        <p style="color:var(--gray);line-height:1.7;margin-bottom:20px;">${currentLesson.description || ''}</p>
+
+        ${!currentLesson.isCompleted ? `
+            <button class="btn btn-success" onclick="markComplete()" style="margin-bottom:24px;">
+              ✅ Đánh dấu hoàn thành bài học
+            </button>` : `
+            <div style="color:var(--success);font-weight:700;margin-bottom:24px;">✅ Đã hoàn thành</div>`
+        }
+
+        ${quizzes.length ? renderQuizSection() : ''}
+    `;
+}
+
+function renderQuizSection() {
+    if (!quizzes.length) return '';
+    return `
+        <div style="border-top:2px solid var(--border);padding-top:24px;">
+          <h3 style="font-size:1.1rem;color:var(--primary-dark);margin-bottom:16px;">📝 Quiz bài học (${quizzes.length} câu)</h3>
+          ${quizzes.map((q, i) => `
+            <div style="margin-bottom:24px;padding:16px;border:1px solid var(--border);border-radius:10px;">
+              <div style="font-weight:700;margin-bottom:12px;">${i+1}. ${q.question}</div>
+              ${['A','B','C','D'].map(opt => `
+                <div class="quiz-option ${getOptionClass(q.id, opt)}" onclick="${!quizSubmitted ? `selectAnswer(${q.id}, '${opt}')` : ''}">
+                  <strong>${opt}.</strong> ${q['option' + opt] || q['option' + opt.toLowerCase()]}
+                </div>
+              `).join('')}
+              ${quizSubmitted && quizAnswers[q.id] ? `<div id="result-${q.id}"></div>` : ''}
+            </div>
+          `).join('')}
+          ${!quizSubmitted
+            ? `<button class="btn btn-primary" onclick="submitQuiz()">📤 Nộp bài Quiz</button>`
+            : ''
+          }
+        </div>
+    `;
+}
+
+function getOptionClass(qId, opt) {
+    if (!quizSubmitted || !quizAnswers[qId]) return quizAnswers[qId]?.selected === opt ? 'selected' : '';
+    return '';
+}
+
+function selectAnswer(qId, opt) {
+    if (quizSubmitted) return;
+    quizAnswers[qId] = { selected: opt };
+    renderLesson();
+}
+
+async function submitQuiz() {
+    const unanswered = quizzes.filter(q => !quizAnswers[q.id]);
+    if (unanswered.length) { toast('Vui lòng trả lời đủ ' + quizzes.length + ' câu!', 'error'); return; }
+
+    quizSubmitted = true;
+    let correct = 0;
+
+    for (const q of quizzes) {
+        const res = await apiFetch('/quizzes/submit', {
+            method: 'POST',
+            body: JSON.stringify({ quizId: q.id, selectedAnswer: quizAnswers[q.id].selected })
+        });
+        if (res.ok) {
+            quizAnswers[q.id].result = res.data;
+            if (res.data.isCorrect) correct++;
+        }
+    }
+
+    renderLesson();
+
+    // Hiển thị kết quả sau render
+    setTimeout(() => {
+        quizzes.forEach(q => {
+            const el = document.getElementById('result-' + q.id);
+            if (!el || !quizAnswers[q.id]?.result) return;
+            const r = quizAnswers[q.id].result;
+            const selOpt = document.querySelectorAll(`[onclick*="selectAnswer(${q.id}"]`);
+
+            // Color options
+            selOpt.forEach(opt => {
+                const letter = opt.querySelector('strong').textContent.replace('.','');
+                if (letter === r.correctAnswer) opt.classList.add('correct');
+                else if (letter === quizAnswers[q.id].selected && !r.isCorrect) opt.classList.add('wrong');
+            });
+
+            el.innerHTML = `<div style="margin-top:8px;padding:8px 12px;background:${r.isCorrect?'#DCFCE7':'#FEE2E2'};border-radius:6px;font-size:0.85rem;">
+                ${r.isCorrect ? '✅ Đúng!' : `❌ Sai! Đáp án: <strong>${r.correctAnswer}</strong>`}
+                ${r.explanation ? `<div style="margin-top:4px;color:#555;">${r.explanation}</div>` : ''}
+            </div>`;
+        });
+
+        const score = Math.round(correct / quizzes.length * 100);
+        toast(`Kết quả: ${correct}/${quizzes.length} đúng (${score}%)`, score >= 70 ? 'success' : 'error');
+    }, 100);
+}
+
+async function markComplete() {
+    const res = await apiFetch('/lessons/' + currentLesson.id + '/complete', { method: 'POST' });
+    if (res.ok) {
+        currentLesson.isCompleted = true;
+        toast('✅ Đã hoàn thành bài học!');
+        if (res.data.courseCompleted) {
+            setTimeout(() => {
+                if (confirm('🎉 Chúc mừng! Bạn đã hoàn thành 100% khóa học!\nXem chứng chỉ ngay?'))
+                    window.location.href = 'my-courses.html';
+            }, 500);
+        }
+        await loadLessons();
+        renderLesson();
+    }
+}
+
+function onVideoEnd() { if (!currentLesson.isCompleted) markComplete(); }
+
+loadLessons();
+</script>
+</body></html>
