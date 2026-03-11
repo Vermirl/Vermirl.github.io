@@ -1,234 +1,118 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>My CV - nguyentuan0205.id.vn</title>
-  <link rel="stylesheet" href="./styles.css" />
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduCourse — Trang chủ</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header class="topbar">
-    <div class="brand">WebApplication1</div>
-    <nav class="nav">
-      <a href="#home" class="active">Home</a>
-      <a href="#cv">CV</a>
-      <a href="#privacy">Privacy</a>
-    </nav>
-  </header>
 
-  <main class="container" id="cv">
-    <div class="page-title">
-      <h1>CV CÁ NHÂN</h1>
-      <div class="actions">
-        <button id="btnEdit" class="btn primary">Chỉnh sửa</button>
-        <button id="btnExport" class="btn">Tải CSV (Excel)</button>
-      </div>
-    </div>
+<nav class="navbar">
+  <a href="index.html" class="logo">🎓 EduCourse</a>
+  <div class="nav-links" id="nav-links"></div>
+</nav>
 
-    <section class="grid">
-      <!-- LEFT -->
-      <aside class="card left">
-        <div class="avatar-wrap">
-          <img id="avatarImg" class="avatar" src="./avatar.png" alt="Avatar">
-        </div>
-
-        <div class="profile">
-          <h2 id="fullName">nguyen van tuan</h2>
-
-          <div class="kv">
-            <div><span>MSSV:</span> <b id="studentId">23810320200</b></div>
-            <div><span>Ngày sinh:</span> <b id="birthDate">02/01/2026</b></div>
-            <div><span>Lớp:</span> <b id="className">D18QTNAM</b></div>
-            <div><span>Khoa:</span> <b id="faculty">adadwadw</b></div>
-          </div>
-
-          <hr />
-
-          <h3>Liên hệ</h3>
-          <div class="kv">
-            <div><span>Email:</span> <b id="email">tuancoio984@gmail.com</b></div>
-            <div><span>SĐT:</span> <b id="phone">0984585234</b></div>
-            <div><span>Địa chỉ:</span> <b id="address">diachi: adawdwaasasd</b></div>
-          </div>
-
-          <hr />
-
-          <h3>Giới thiệu</h3>
-          <p id="about" class="muted">adads</p>
-        </div>
-      </aside>
-
-      <!-- RIGHT -->
-      <section class="right">
-        <div class="card section">
-          <div class="section-hd">2) Thông tin học vấn</div>
-          <div class="section-bd two-col">
-            <div class="row"><b>Trường:</b> <span id="school">adwadw</span></div>
-            <div class="row"><b>Ngành:</b> <span id="major">adasd</span></div>
-            <div class="row"><b>GPA:</b> <span id="gpa">awdawd</span></div>
-            <div class="row"><b>Chứng chỉ:</b> <span id="cert">adwadw</span></div>
-          </div>
-        </div>
-
-        <div class="card section">
-          <div class="section-hd">3) Kỹ năng</div>
-          <div class="section-bd">
-            <h4>Technical Skills</h4>
-            <p id="techSkills" class="muted">awsdwadwadw</p>
-            <h4>Soft Skills</h4>
-            <p id="softSkills" class="muted">awdawdadw</p>
-            <h4>Ngoại ngữ</h4>
-            <p id="languages" class="muted">adwadsa</p>
-          </div>
-        </div>
-
-        <div class="card section">
-          <div class="section-hd">4) Kinh nghiệm NCKH / Dự án</div>
-          <div class="section-bd">
-            <h4>Nhiệm vụ NCKH</h4>
-            <div class="table-wrap">
-              <table id="tableResearch">
-                <thead>
-                  <tr>
-                    <th>Tên nhiệm vụ</th>
-                    <th>Mô tả</th>
-                    <th>Thời gian</th>
-                    <th>Công việc sử dụng</th>
-                    <th>Vai trò</th>
-                    <th>Kết quả</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>awd</td><td>awd</td><td>awdsadasw</td><td>adwawsd</td><td>awdawd</td><td>awsdawswd</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <h4 style="margin-top:14px;">Dự án</h4>
-            <div class="table-wrap">
-              <table id="tableProjects">
-                <thead>
-                  <tr>
-                    <th>Tên dự án</th>
-                    <th>Mô tả</th>
-                    <th>Thời gian</th>
-                    <th>Công nghệ</th>
-                    <th>Vai trò</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>awdasdw</td><td>awdawd</td><td>awdawd</td><td>awdawd</td><td>awdawd</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        <div class="card section">
-          <div class="section-hd">5) Sở thích &amp; mục tiêu</div>
-          <div class="section-bd">
-            <h4>Sở thích</h4>
-            <ul id="hobbies" class="muted">
-              <li>adwadws</li>
-            </ul>
-            <h4>Mục tiêu nghề nghiệp</h4>
-            <p id="careerGoal" class="muted">awsdawdawd</p>
-          </div>
-        </div>
-      </section>
-    </section>
-  </main>
-
-  <footer class="footer" id="privacy">
-    <div>© 2026 - WebApplication1 - <a href="#privacy">Privacy</a></div>
-  </footer>
-
-  <!-- Modal Edit -->
-  <div id="modal" class="modal hidden" aria-hidden="true">
-    <div class="modal-backdrop" data-close="1"></div>
-    <div class="modal-card" role="dialog" aria-modal="true">
-      <div class="modal-hd">
-        <div><b>Chỉnh sửa CV</b></div>
-        <button class="icon-btn" data-close="1" aria-label="Đóng">✕</button>
-      </div>
-
-      <div class="modal-bd">
-        <div class="form-grid">
-          <label>Họ tên
-            <input id="iFullName" type="text" />
-          </label>
-          <label>MSSV
-            <input id="iStudentId" type="text" />
-          </label>
-          <label>Ngày sinh
-            <input id="iBirthDate" type="text" placeholder="dd/mm/yyyy" />
-          </label>
-          <label>Lớp
-            <input id="iClassName" type="text" />
-          </label>
-          <label>Khoa
-            <input id="iFaculty" type="text" />
-          </label>
-          <label>Email
-            <input id="iEmail" type="email" />
-          </label>
-          <label>SĐT
-            <input id="iPhone" type="text" />
-          </label>
-          <label>Địa chỉ
-            <input id="iAddress" type="text" />
-          </label>
-
-          <label>Trường
-            <input id="iSchool" type="text" />
-          </label>
-          <label>Ngành
-            <input id="iMajor" type="text" />
-          </label>
-          <label>GPA
-            <input id="iGpa" type="text" />
-          </label>
-          <label>Chứng chỉ
-            <input id="iCert" type="text" />
-          </label>
-
-          <label>Technical Skills
-            <textarea id="iTechSkills" rows="2"></textarea>
-          </label>
-          <label>Soft Skills
-            <textarea id="iSoftSkills" rows="2"></textarea>
-          </label>
-          <label>Ngoại ngữ
-            <textarea id="iLanguages" rows="2"></textarea>
-          </label>
-
-          <label>Giới thiệu
-            <textarea id="iAbout" rows="2"></textarea>
-          </label>
-
-          <label>Mục tiêu nghề nghiệp
-            <textarea id="iCareerGoal" rows="2"></textarea>
-          </label>
-          <label>Sở thích (mỗi dòng 1 cái)
-            <textarea id="iHobbies" rows="2"></textarea>
-          </label>
-        </div>
-      </div>
-
-      <div class="modal-ft">
-        <button class="btn" data-close="1">Hủy</button>
-        <button id="btnSave" class="btn primary">Lưu</button>
-      </div>
-    </div>
+<div class="container page">
+  <!-- Hero -->
+  <div style="background:linear-gradient(135deg,#1E3A5F,#2E86AB);color:white;padding:40px;border-radius:16px;margin-bottom:32px;text-align:center;">
+    <h1 style="font-size:2rem;margin-bottom:8px;">Học Online Mọi Lúc Mọi Nơi 🚀</h1>
+    <p style="opacity:0.85;margin-bottom:20px;">Hàng trăm khóa học chất lượng với video bài giảng và quiz tương tác</p>
+    <a href="register.html" class="btn btn-accent">Bắt đầu học miễn phí</a>
   </div>
 
-  <script src="./app.js"></script>
-</body>
+  <!-- Search -->
+  <div class="search-bar">
+    <input id="search" class="form-control" placeholder="🔍 Tìm khóa học..." oninput="filterCourses()">
+    <select id="cat-filter" class="form-control" style="max-width:200px;" onchange="filterCourses()">
+      <option value="">Tất cả danh mục</option>
+    </select>
+  </div>
 
-</html>
+  <div class="section-header">
+    <h2 class="page-title" style="margin:0;">Khóa học nổi bật</h2>
+    <span id="course-count" style="color:#6B7280;font-size:0.9rem;"></span>
+  </div>
 
+  <div id="course-grid" class="course-grid">
+    <div class="empty-state"><div class="icon">⏳</div>Đang tải...</div>
+  </div>
+</div>
 
+<script src="js/api.js"></script>
+<script>
+let allCourses = [];
+
+// Render navbar
+function renderNav() {
+    const user = getUser();
+    const nav = document.getElementById('nav-links');
+    if (!user) {
+        nav.innerHTML = `<a href="login.html">Đăng nhập</a><a href="register.html" class="btn btn-accent btn-sm">Đăng ký</a>`;
+    } else if (user.role === 'Student') {
+        nav.innerHTML = `<a href="index.html" class="active">Khóa học</a><a href="my-courses.html">Học của tôi</a>
+            <span class="user-badge">${user.name}</span><button class="btn-logout" onclick="logout()">Đăng xuất</button>`;
+    } else if (user.role === 'Instructor') {
+        nav.innerHTML = `<a href="index.html">Khóa học</a><a href="instructor.html">Dashboard</a>
+            <span class="user-badge">👨‍🏫 ${user.name}</span><button class="btn-logout" onclick="logout()">Đăng xuất</button>`;
+    } else {
+        nav.innerHTML = `<a href="admin.html">Admin Panel</a>
+            <span class="user-badge">⚙️ Admin</span><button class="btn-logout" onclick="logout()">Đăng xuất</button>`;
+    }
+}
+
+async function loadCategories() {
+    const res = await apiFetch('/categories');
+    if (res.ok) {
+        const sel = document.getElementById('cat-filter');
+        res.data.forEach(c => sel.innerHTML += `<option value="${c.id}">${c.name}</option>`);
+    }
+}
+
+async function loadCourses() {
+    const res = await apiFetch('/courses');
+    if (res.ok) {
+        allCourses = res.data;
+        renderCourses(allCourses);
+    }
+}
+
+function filterCourses() {
+    const search = document.getElementById('search').value.toLowerCase();
+    const catId = document.getElementById('cat-filter').value;
+    const filtered = allCourses.filter(c => {
+        const matchSearch = c.title.toLowerCase().includes(search) || c.description.toLowerCase().includes(search);
+        const matchCat = !catId || c.categoryId == catId;
+        return matchSearch && matchCat;
+    });
+    renderCourses(filtered);
+}
+
+function renderCourses(courses) {
+    const grid = document.getElementById('course-grid');
+    document.getElementById('course-count').textContent = `${courses.length} khóa học`;
+    if (!courses.length) {
+        grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="icon">🔍</div>Không tìm thấy khóa học nào</div>`;
+        return;
+    }
+    grid.innerHTML = courses.map(c => `
+        <div class="card course-card" onclick="window.location='course-detail.html?id=${c.id}'">
+            <img src="${c.thumbnailUrl || 'https://via.placeholder.com/320x160/2E86AB/white?text=' + encodeURIComponent(c.title)}" alt="${c.title}">
+            <div class="card-body">
+                <div style="font-size:0.78rem;color:var(--primary);font-weight:600;margin-bottom:4px;">${c.categoryName}</div>
+                <div class="card-title">${c.title}</div>
+                <div style="font-size:0.82rem;color:var(--gray);margin-bottom:8px;">👨‍🏫 ${c.instructorName}</div>
+                <div class="price">${c.price === 0 ? 'Miễn phí' : c.price.toLocaleString('vi-VN') + ' ₫'}</div>
+                <div class="meta">
+                    <span>📚 ${c.totalLessons} bài</span>
+                    <span>👥 ${c.totalEnrollments} học viên</span>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+renderNav();
+loadCategories();
+loadCourses();
+</script>
+</body></html>

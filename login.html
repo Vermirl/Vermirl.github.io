@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đăng nhập — EduCourse</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="auth-page">
+  <div class="auth-card">
+    <h1>🎓 EduCourse</h1>
+    <p>Đăng nhập để tiếp tục học</p>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input id="email" type="email" class="form-control" placeholder="email@example.com">
+    </div>
+    <div class="form-group">
+      <label>Mật khẩu</label>
+      <input id="password" type="password" class="form-control" placeholder="••••••••">
+    </div>
+    <div id="error-msg" class="error-msg" style="margin-bottom:12px;display:none;"></div>
+    <button class="btn btn-primary btn-block" onclick="doLogin()">Đăng nhập</button>
+    <div class="auth-divider">— hoặc —</div>
+    <a href="register.html" class="btn btn-outline btn-block">Tạo tài khoản mới</a>
+
+    <div style="margin-top:20px;padding:12px;background:#f0f7fa;border-radius:8px;font-size:0.82rem;color:#555;">
+      <strong>Demo:</strong><br>
+      Admin: admin@course.com / admin123
+    </div>
+  </div>
+</div>
+<script src="js/api.js"></script>
+<script>
+// Redirect nếu đã đăng nhập
+if (getUser()) window.location.href = 'index.html';
+
+async function doLogin() {
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    const errEl = document.getElementById('error-msg');
+    errEl.style.display = 'none';
+
+    if (!email || !password) { errEl.textContent = 'Vui lòng nhập đầy đủ thông tin.'; errEl.style.display = 'block'; return; }
+
+    const res = await apiFetch('/auth/login', {
+        method: 'POST',
+        body: JSON.stringify({ email, password })
+    });
+
+    if (res.ok) {
+        saveAuth(res.data);
+        const role = res.data.role;
+        if (role === 'Admin') window.location.href = 'admin.html';
+        else if (role === 'Instructor') window.location.href = 'instructor.html';
+        else window.location.href = 'index.html';
+    } else {
+        errEl.textContent = res.data?.message || 'Đăng nhập thất bại.';
+        errEl.style.display = 'block';
+    }
+}
+document.addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+</script>
+</body></html>

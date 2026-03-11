@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instructor Dashboard — EduCourse</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="navbar">
+  <a href="index.html" class="logo">🎓 EduCourse</a>
+  <div class="nav-links">
+    <a href="instructor.html" class="active">Dashboard</a>
+    <span class="user-badge" id="user-badge"></span>
+    <button class="btn-logout" onclick="logout()">Đăng xuất</button>
+  </div>
+</nav>
+
+<div class="container page">
+  <div class="section-header">
+    <h1 class="page-title" style="margin:0;">👨‍🏫 Instructor Dashboard</h1>
+    <button class="btn btn-primary" onclick="openCourseModal()">+ Tạo khóa học</button>
+  </div>
+
+  <div id="courses-list"></div>
+</div>
+
+<!-- Modal tạo/sửa khóa học -->
+<div class="modal-overlay" id="course-modal">
+  <div class="modal">
+    <h2 id="modal-title">Tạo khóa học mới</h2>
+    <input type="hidden" id="edit-course-id">
+    <div class="form-group"><label>Tiêu đề *</label><input id="c-title" class="form-control" placeholder="Tên khóa học"></div>
+    <div class="form-group"><label>Mô tả</label><textarea id="c-desc" class="form-control" rows="3" placeholder="Mô tả khóa học..."></textarea></div>
+    <div class="form-group"><label>Giá (VNĐ, 0 = miễn phí)</label><input id="c-price" type="number" class="form-control" value="0"></div>
+    <div class="form-group"><label>Danh mục</label>
+      <select id="c-cat" class="form-control"><option value="">-- Chọn --</option></select></div>
+    <div class="form-group"><label>URL Thumbnail</label><input id="c-thumb" class="form-control" placeholder="https://..."></div>
+    <div style="display:flex;gap:10px;margin-top:16px;">
+      <button class="btn btn-primary" onclick="saveCourse()">💾 Lưu</button>
+      <button class="btn btn-outline" onclick="closeModal('course-modal')">Hủy</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal quản lý bài học -->
+<div class="modal-overlay" id="lesson-modal">
+  <div class="modal" style="max-width:600px;">
+    <h2>📚 Quản lý bài học — <span id="lesson-course-title"></span></h2>
+    <div id="lesson-list-manage" style="margin-bottom:16px;max-height:300px;overflow-y:auto;"></div>
+    <hr style="margin-bottom:16px;">
+    <h3 style="font-size:1rem;margin-bottom:12px;">+ Thêm bài học mới</h3>
+    <input type="hidden" id="lesson-course-id">
+    <div class="form-group"><label>Tiêu đề bài học *</label><input id="l-title" class="form-control"></div>
+    <div class="form-group"><label>Mô tả</label><input id="l-desc" class="form-control"></div>
+    <div class="form-group"><label>Thứ tự</label><input id="l-order" type="number" class="form-control" value="1"></div>
+    <div class="form-group">
+      <label>Video URL (hoặc upload)</label>
+      <div style="display:flex;gap:8px;">
+        <input id="l-video" class="form-control" placeholder="/videos/filename.mp4">
+        <label class="btn btn-outline btn-sm" style="white-space:nowrap;cursor:pointer;">
+          📁 Upload <input type="file" accept="video/*" style="display:none;" onchange="uploadVideo(this)">
+        </label>
+      </div>
+      <div id="upload-progress" style="display:none;margin-top:8px;">
+        <div class="progress-bar"><div class="progress-fill" id="upload-fill" style="width:0%"></div></div>
+        <div id="upload-text" style="font-size:0.8rem;color:var(--gray);margin-top:4px;">Đang upload...</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;">
+      <button class="btn btn-primary" onclick="addLesson()">+ Thêm bài</button>
+      <button class="btn btn-outline" onclick="closeModal('lesson-modal')">Đóng</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal quiz -->
+<div class="modal-overlay" id="quiz-modal">
+  <div class="modal" style="max-width:600px;">
+    <h2>📝 Quản lý Quiz — <span id="quiz-lesson-title"></span></h2>
+    <div id="quiz-list-manage" style="margin-bottom:16px;max-height:260px;overflow-y:auto;"></div>
+    <hr style="margin-bottom:16px;">
+    <h3 style="font-size:1rem;margin-bottom:12px;">+ Thêm câu hỏi</h3>
+    <input type="hidden" id="quiz-lesson-id">
+    <div class="form-group"><label>Câu hỏi *</label><input id="q-question" class="form-control"></div>
+    <div class="form-group"><label>A</label><input id="q-a" class="form-control"></div>
+    <div class="form-group"><label>B</label><input id="q-b" class="form-control"></div>
+    <div class="form-group"><label>C</label><input id="q-c" class="form-control"></div>
+    <div class="form-group"><label>D</label><input id="q-d" class="form-control"></div>
+    <div class="form-group"><label>Đáp án đúng</label>
+      <select id="q-correct" class="form-control">
+        <option value="A">A</option><option value="B">B</option>
+        <option value="C">C</option><option value="D">D</option>
+      </select></div>
+    <div class="form-group"><label>Giải thích</label><input id="q-explain" class="form-control" placeholder="(Không bắt buộc)"></div>
+    <div style="display:flex;gap:10px;">
+      <button class="btn btn-primary" onclick="addQuiz()">+ Thêm câu</button>
+      <button class="btn btn-outline" onclick="closeModal('quiz-modal')">Đóng</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/api.js"></script>
+<script>
+requireAuth(['Instructor']);
+document.getElementById('user-badge').textContent = '👨‍🏫 ' + (getUser()?.name || '');
+
+async function loadCategories() {
+    const res = await apiFetch('/categories');
+    if (res.ok) res.data.forEach(c => document.getElementById('c-cat').innerHTML += `<option value="${c.id}">${c.name}</option>`);
+}
+
+async function loadCourses() {
+    const res = await apiFetch('/courses/my-courses');
+    const el = document.getElementById('courses-list');
+    if (!res.ok || !res.data.length) {
+        el.innerHTML = `<div class="empty-state"><div class="icon">📭</div>Chưa có khóa học. Tạo khóa học đầu tiên!</div>`; return;
+    }
+    el.innerHTML = `<div class="table-wrap"><table>
+        <thead><tr><th>Tiêu đề</th><th>Danh mục</th><th>Giá</th><th>Bài học</th><th>Học viên</th><th>Trạng thái</th><th>Hành động</th></tr></thead>
+        <tbody>${res.data.map(c => `
+            <tr>
+                <td><strong>${c.title}</strong></td>
+                <td>${c.categoryName}</td>
+                <td>${c.price === 0 ? 'Miễn phí' : c.price.toLocaleString('vi-VN') + '₫'}</td>
+                <td>${c.totalLessons}</td>
+                <td>${c.totalEnrollments}</td>
+                <td><span class="badge badge-${c.status.toLowerCase()}">${c.status}</span>
+                    ${c.status === 'Rejected' && c.rejectReason ? `<div style="font-size:0.75rem;color:var(--danger);">${c.rejectReason}</div>` : ''}
+                </td>
+                <td style="display:flex;gap:6px;flex-wrap:wrap;">
+                    <button class="btn btn-outline btn-sm" onclick='editCourse(${JSON.stringify(c)})'>✏️ Sửa</button>
+                    <button class="btn btn-primary btn-sm" onclick="openLessons(${c.id}, '${c.title}')">📚 Bài học</button>
+                    ${c.status === 'Draft' || c.status === 'Rejected'
+                        ? `<button class="btn btn-accent btn-sm" onclick="submitCourse(${c.id})">📤 Gửi duyệt</button>` : ''}
+                </td>
+            </tr>
+        `).join('')}
+        </tbody></table></div>`;
+}
+
+function openCourseModal() {
+    document.getElementById('modal-title').textContent = 'Tạo khóa học mới';
+    document.getElementById('edit-course-id').value = '';
+    ['c-title','c-desc','c-thumb'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('c-price').value = 0;
+    document.getElementById('course-modal').classList.add('open');
+}
+
+function editCourse(c) {
+    document.getElementById('modal-title').textContent = 'Chỉnh sửa khóa học';
+    document.getElementById('edit-course-id').value = c.id;
+    document.getElementById('c-title').value = c.title;
+    document.getElementById('c-desc').value = c.description;
+    document.getElementById('c-price').value = c.price;
+    document.getElementById('c-cat').value = c.categoryId;
+    document.getElementById('c-thumb').value = c.thumbnailUrl;
+    document.getElementById('course-modal').classList.add('open');
+}
+
+async function saveCourse() {
+    const id = document.getElementById('edit-course-id').value;
+    const data = {
+        title: document.getElementById('c-title').value,
+        description: document.getElementById('c-desc').value,
+        price: parseFloat(document.getElementById('c-price').value) || 0,
+        categoryId: parseInt(document.getElementById('c-cat').value),
+        thumbnailUrl: document.getElementById('c-thumb').value
+    };
+    if (!data.title || !data.categoryId) { toast('Vui lòng nhập đủ thông tin!', 'error'); return; }
+    const res = id
+        ? await apiFetch('/courses/' + id, { method: 'PUT', body: JSON.stringify(data) })
+        : await apiFetch('/courses', { method: 'POST', body: JSON.stringify(data) });
+    if (res.ok) { toast(res.data.message); closeModal('course-modal'); loadCourses(); }
+    else toast(res.data?.message || 'Lỗi!', 'error');
+}
+
+async function submitCourse(id) {
+    if (!confirm('Gửi khóa học này cho Admin duyệt?')) return;
+    const res = await apiFetch('/courses/' + id + '/submit', { method: 'POST' });
+    if (res.ok) { toast(res.data.message); loadCourses(); }
+}
+
+async function openLessons(courseId, title) {
+    document.getElementById('lesson-course-title').textContent = title;
+    document.getElementById('lesson-course-id').value = courseId;
+    await loadLessonList(courseId);
+    document.getElementById('lesson-modal').classList.add('open');
+}
+
+async function loadLessonList(courseId) {
+    const res = await apiFetch('/lessons/course/' + courseId);
+    const el = document.getElementById('lesson-list-manage');
+    if (!res.ok || !res.data.length) { el.innerHTML = '<div style="color:var(--gray);font-size:0.88rem;">Chưa có bài học nào.</div>'; return; }
+    el.innerHTML = res.data.map(l => `
+        <div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);">
+            <span style="flex:1;font-size:0.88rem;"><strong>${l.orderIndex}.</strong> ${l.title}</span>
+            ${l.videoUrl ? '🎬' : '⬜'} ${l.hasQuiz ? '📝' : ''}
+            <button class="btn btn-outline btn-sm" onclick="openQuiz(${l.id}, '${l.title}')">📝 Quiz</button>
+        </div>`).join('');
+}
+
+async function addLesson() {
+    const courseId = document.getElementById('lesson-course-id').value;
+    const data = {
+        title: document.getElementById('l-title').value,
+        description: document.getElementById('l-desc').value,
+        videoUrl: document.getElementById('l-video').value,
+        orderIndex: parseInt(document.getElementById('l-order').value) || 1,
+        courseId: parseInt(courseId)
+    };
+    if (!data.title) { toast('Nhập tiêu đề bài học!', 'error'); return; }
+    const res = await apiFetch('/lessons', { method: 'POST', body: JSON.stringify(data) });
+    if (res.ok) { toast(res.data.message); ['l-title','l-desc','l-video'].forEach(id => document.getElementById(id).value=''); loadLessonList(courseId); }
+}
+
+async function uploadVideo(input) {
+    const file = input.files[0];
+    if (!file) return;
+    const formData = new FormData();
+    formData.append('file', file);
+    document.getElementById('upload-progress').style.display = 'block';
+    document.getElementById('upload-text').textContent = 'Đang upload: ' + file.name;
+
+    const token = getToken();
+    const xhr = new XMLHttpRequest();
+    xhr.upload.onprogress = e => {
+        const pct = Math.round(e.loaded / e.total * 100);
+        document.getElementById('upload-fill').style.width = pct + '%';
+        document.getElementById('upload-text').textContent = pct + '%';
+    };
+    xhr.onload = () => {
+        const data = JSON.parse(xhr.responseText);
+        document.getElementById('l-video').value = data.url;
+        document.getElementById('upload-text').textContent = '✅ Upload xong: ' + data.url;
+        toast('Upload video thành công!');
+    };
+    xhr.open('POST', 'http://localhost:5000/api/lessons/upload-video');
+    xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+    xhr.send(formData);
+}
+
+async function openQuiz(lessonId, title) {
+    document.getElementById('quiz-lesson-title').textContent = title;
+    document.getElementById('quiz-lesson-id').value = lessonId;
+    await loadQuizList(lessonId);
+    document.getElementById('quiz-modal').classList.add('open');
+}
+
+async function loadQuizList(lessonId) {
+    const res = await apiFetch('/quizzes/lesson/' + lessonId + '/detail');
+    const el = document.getElementById('quiz-list-manage');
+    if (!res.ok || !res.data.length) { el.innerHTML = '<div style="color:var(--gray);font-size:0.88rem;">Chưa có câu hỏi.</div>'; return; }
+    el.innerHTML = res.data.map((q, i) => `
+        <div style="padding:8px 0;border-bottom:1px solid var(--border);font-size:0.85rem;">
+            <strong>${i+1}. ${q.question}</strong>
+            <div style="color:var(--gray);">A: ${q.optionA} | B: ${q.optionB} | C: ${q.optionC} | D: ${q.optionD}</div>
+            <div style="color:var(--success);">✓ Đáp án: ${q.correctAnswer}</div>
+            <button class="btn btn-danger btn-sm" style="margin-top:4px;" onclick="deleteQuiz(${q.id}, ${lessonId})">🗑️ Xóa</button>
+        </div>`).join('');
+}
+
+async function addQuiz() {
+    const lessonId = document.getElementById('quiz-lesson-id').value;
+    const data = {
+        question: document.getElementById('q-question').value,
+        optionA: document.getElementById('q-a').value,
+        optionB: document.getElementById('q-b').value,
+        optionC: document.getElementById('q-c').value,
+        optionD: document.getElementById('q-d').value,
+        correctAnswer: document.getElementById('q-correct').value,
+        explanation: document.getElementById('q-explain').value,
+        lessonId: parseInt(lessonId)
+    };
+    if (!data.question || !data.optionA || !data.optionB) { toast('Điền đủ câu hỏi và đáp án A, B!', 'error'); return; }
+    const res = await apiFetch('/quizzes', { method: 'POST', body: JSON.stringify(data) });
+    if (res.ok) { toast(res.data.message); ['q-question','q-a','q-b','q-c','q-d','q-explain'].forEach(id => document.getElementById(id).value=''); loadQuizList(lessonId); }
+}
+
+async function deleteQuiz(id, lessonId) {
+    if (!confirm('Xóa câu hỏi này?')) return;
+    const res = await apiFetch('/quizzes/' + id, { method: 'DELETE' });
+    if (res.ok) { toast('Đã xóa.'); loadQuizList(lessonId); }
+}
+
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+loadCategories();
+loadCourses();
+</script>
+</body></html>
