@@ -1,1 +1,0 @@
-import{r as e}from"./index-DY3uan4p.js";var t={create:(t,n)=>e.post(`/orders`,{courseIds:t,note:n}),getAll:()=>e.get(`/orders`),getById:t=>e.get(`/orders/${t}`),cancel:t=>e.post(`/orders/${t}/cancel`)};export{t};
