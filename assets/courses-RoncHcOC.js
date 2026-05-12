@@ -1,0 +1,1 @@
+import{r as e}from"./index-Bb1rOn4t.js";var t={list(t={}){return e.get(`/courses`,{params:t})},featured(){return e.get(`/courses/featured`)},getBySlug(t){return e.get(`/courses/${t}`)},categories(){return e.get(`/categories`)}};export{t};

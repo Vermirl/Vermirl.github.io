@@ -1,0 +1,1 @@
+import{r as e}from"./index-Bb1rOn4t.js";var t={create:(t,n)=>e.post(`/orders`,{courseIds:t,note:n}),getAll:()=>e.get(`/orders`),getById:t=>e.get(`/orders/${t}`),cancel:t=>e.post(`/orders/${t}/cancel`)};export{t};
