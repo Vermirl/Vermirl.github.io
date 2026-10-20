@@ -1,0 +1,4091 @@
+[
+  {
+    "id": 1,
+    "title": "Câu 1 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-1.png"
+    ],
+    "hasText": true,
+    "question": "Which per-hop traffic-control feature does an ISP implement to mitigate the potential negative effect of a customer exceeding its committed bandwidth?",
+    "type": "single",
+    "options": [
+      {
+        "key": "A",
+        "text": "Marking"
+      },
+      {
+        "key": "B",
+        "text": "Shaping"
+      },
+      {
+        "key": "C",
+        "text": "Policing"
+      },
+      {
+        "key": "D",
+        "text": "Queuing"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "Traffic Policing thường được ISP áp dụng tại cổng vào (ingress) để giám sát băng thông cam kết (CIR). Khi khách hàng gửi lưu lượng vượt ngưỡng, Policing sẽ drop (hủy) hoặc re-mark gói tin ngay lập tức. Ngược lại, Shaping thường do khách hàng dùng ở chiều ra (egress) để đệm (buffer) và làm mượt lưu lượng.",
+    "cliOutput": "",
+    "category": "Quality of Service (QoS)"
+  },
+  {
+    "id": 2,
+    "title": "Câu 2 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-2.png"
+    ],
+    "hasText": true,
+    "question": "What are two examples of multifactor authentication? (Choose two.)",
+    "type": "multiple",
+    "options": [
+      {
+        "key": "A",
+        "text": "single sign-on"
+      },
+      {
+        "key": "B",
+        "text": "passwords that expire"
+      },
+      {
+        "key": "C",
+        "text": "shared password repository"
+      },
+      {
+        "key": "D",
+        "text": "soft tokens"
+      },
+      {
+        "key": "E",
+        "text": "unique user knowledge"
+      }
+    ],
+    "answer": [
+      "D",
+      "E"
+    ],
+    "explanation": "Xác thực đa yếu tố (MFA) kết hợp ít nhất 2 trong 3 yếu tố: 1) Something you know (kiến thức độc nhất của người dùng như mật khẩu, mã PIN), 2) Something you have (soft tokens, OTP, thẻ từ), 3) Something you are (sinh trắc học: vân tay, khuôn mặt).",
+    "cliOutput": "",
+    "category": "Security Fundamentals"
+  },
+  {
+    "id": 3,
+    "title": "Câu 3 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-3.png"
+    ],
+    "hasText": true,
+    "question": "What are two functions of a firewall within an enterprise? (Choose two.)",
+    "type": "multiple",
+    "options": [
+      {
+        "key": "A",
+        "text": "It enables wireless devices to connect to the network."
+      },
+      {
+        "key": "B",
+        "text": "It provides support as an endpoint for a remote access VPN in multiple context mode."
+      },
+      {
+        "key": "C",
+        "text": "It enables traffic filtering based on URLs."
+      },
+      {
+        "key": "D",
+        "text": "It serves as an endpoint for a site-to-site VPN in standalone mode."
+      },
+      {
+        "key": "E",
+        "text": "It offers Layer 2 services between hosts."
+      }
+    ],
+    "answer": [
+      "C",
+      "D"
+    ],
+    "explanation": "Firewall doanh nghiệp thế hệ mới (NGFW) thực hiện lọc lưu lượng truy cập web dựa trên URL/Domain (URL filtering) và đóng vai trò điểm kết cuối VPN bảo mật (Site-to-Site VPN endpoint hoặc Remote Access VPN).",
+    "cliOutput": "",
+    "category": "Security Fundamentals"
+  },
+  {
+    "id": 4,
+    "title": "Câu 4 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-4.png"
+    ],
+    "hasText": true,
+    "question": "In which way does a spine-and-leaf architecture allow for scalability in a network when additional access ports are required?",
+    "type": "single",
+    "options": [
+      {
+        "key": "A",
+        "text": "A leaf switch is added with connections to every spine switch."
+      },
+      {
+        "key": "B",
+        "text": "A leaf switch is added with a single connection to a core spine switch."
+      },
+      {
+        "key": "C",
+        "text": "A spine switch and a leaf switch are added with redundant connections between them."
+      },
+      {
+        "key": "D",
+        "text": "A spine switch is added with at least 40 GB uplinks."
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "Trong kiến trúc Spine-and-Leaf chuẩn Trung tâm dữ liệu (Data Center): Khi cần mở rộng thêm các cổng truy cập (access ports) cho máy chủ, ta bổ sung một Leaf Switch mới và kết nối Leaf đó tới TẤT CẢ các Spine Switch hiện có.",
+    "cliOutput": "",
+    "category": "Network Architecture"
+  },
+  {
+    "id": 5,
+    "title": "Câu 5 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-5.png"
+    ],
+    "hasText": true,
+    "question": "What is the role of nonoverlapping channels in a wireless environment?",
+    "type": "single",
+    "options": [
+      {
+        "key": "A",
+        "text": "to stabilize the RF environment"
+      },
+      {
+        "key": "B",
+        "text": "to allow for channel bonding"
+      },
+      {
+        "key": "C",
+        "text": "to reduce interference"
+      },
+      {
+        "key": "D",
+        "text": "to increase bandwidth"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "Các kênh không chồng lấn (non-overlapping channels, ví dụ kênh 1, 6, 11 trên băng tần 2.4 GHz) giúp loại bỏ hiện tượng can nhiễu đồng kênh (Co-Channel Interference - CCI) giữa các Access Point lân cận.",
+    "cliOutput": "",
+    "category": "Wireless Fundamentals"
+  },
+  {
+    "id": 6,
+    "title": "Câu 6 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-6.png"
+    ],
+    "hasText": true,
+    "question": "In what way does a network supervisor reduce maintenance costs while maintaining network integrity on a traditionally managed network?",
+    "type": "single",
+    "options": [
+      {
+        "key": "A",
+        "text": "They install an automated network-monitoring system to provide early warning of network issues."
+      },
+      {
+        "key": "B",
+        "text": "They automate change-management processes that verify issue resolution."
+      },
+      {
+        "key": "C",
+        "text": "They employ additional network administrators to proactively manage the network."
+      },
+      {
+        "key": "D",
+        "text": "They use automation to centralize network-management tasks."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "Tự động hóa (Automation) giúp tập trung hóa các tác vụ quản trị cấu hình, giảm thời gian thao tác thủ công lặp lại và loại bỏ sai sót do con người, từ đó giảm chi phí vận hành (OPEX).",
+    "cliOutput": "",
+    "category": "Network Automation"
+  },
+  {
+    "id": 7,
+    "title": "Câu 7 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-7.png"
+    ],
+    "hasText": true,
+    "question": "What are two benefits of controller-based networking compared to traditional networking? (Choose two.)",
+    "type": "multiple",
+    "options": [
+      {
+        "key": "A",
+        "text": "controller-based provides centralization of key IT functions, while traditional requires distributed management functions"
+      },
+      {
+        "key": "B",
+        "text": "controller-based allows for fewer network failures, while traditional increases failure rates"
+      },
+      {
+        "key": "C",
+        "text": "controller-based increases network bandwidth usage, while traditional lightens the load on the network"
+      },
+      {
+        "key": "D",
+        "text": "controller-based inflates software costs, while traditional decreases individual licensing costs"
+      },
+      {
+        "key": "E",
+        "text": "controller-based reduces network configuration complexity, while traditional increases the potential for errors"
+      }
+    ],
+    "answer": [
+      "A",
+      "E"
+    ],
+    "explanation": "Mạng dựa trên Controller (SDN) tập trung hóa các chức năng quản trị và điều khiển (centralization), đồng thời đơn giản hóa độ phức tạp cấu hình trên từng thiết bị, giảm thiểu lỗi thao tác thủ công.",
+    "cliOutput": "",
+    "category": "Network Automation (SDN)"
+  },
+  {
+    "id": 8,
+    "title": "Câu 8 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-8.png"
+    ],
+    "hasText": true,
+    "question": "What is the definition of backdoor malware?",
+    "type": "single",
+    "options": [
+      {
+        "key": "A",
+        "text": "malicious program that is used to launch other malicious programs"
+      },
+      {
+        "key": "B",
+        "text": "malicious code with the main purpose of downloading other malicious code"
+      },
+      {
+        "key": "C",
+        "text": "malicious code that infects a user machine and then uses that machine to send spam"
+      },
+      {
+        "key": "D",
+        "text": "malicious code that is installed onto a computer to allow access by an unauthorized user"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "Backdoor (Cửa sau) là mã độc được cài đặt lên hệ thống nhằm tạo ra một lối vào bí mật bỏ qua các cơ chế xác thực thông thường, cho phép kẻ tấn công truy cập trái phép từ xa.",
+    "cliOutput": "",
+    "category": "Security Fundamentals"
+  },
+  {
+    "id": 9,
+    "title": "Câu 9 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-9.png"
+    ],
+    "hasText": true,
+    "question": "How is AI used to identify issues within network traffic?",
+    "type": "single",
+    "options": [
+      {
+        "key": "A",
+        "text": "It enhances data packet delivery speeds"
+      },
+      {
+        "key": "B",
+        "text": "It analyzes patterns for anomaly detection"
+      },
+      {
+        "key": "C",
+        "text": "It exclusively predicts device malfunctions"
+      },
+      {
+        "key": "D",
+        "text": "It simplifies traffic route mapping."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "Trí tuệ nhân tạo (AI/Machine Learning) trong quản trị mạng (như Cisco DNA Spaces / Catalyst Center AIOps) phân tích các mẫu hình lưu lượng (traffic patterns) theo đường cơ sở (baseline) để phát hiện các hành vi bất thường (anomaly detection).",
+    "cliOutput": "",
+    "category": "Network Automation & AI"
+  },
+  {
+    "id": 10,
+    "title": "Câu 10 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-10.png"
+    ],
+    "hasText": true,
+    "question": "Refer to the exhibit. Users will be using a preconfigured secret key and SSID and must have a secured key hashing algorithm configured. The AAA server must not be used for the user authentication method. Which action completes the task?",
+    "type": "single",
+    "options": [
+      {
+        "key": "A",
+        "text": "Enable AutoConfig iPSK"
+      },
+      {
+        "key": "B",
+        "text": "Set CCMP128(AES)"
+      },
+      {
+        "key": "C",
+        "text": "Configure PSK Format HEX with key string"
+      },
+      {
+        "key": "D",
+        "text": "Configure PSK-SHA2"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "Yêu cầu: Sử dụng khóa chia sẻ trước (PSK/Secret Key), không dùng máy chủ AAA (tức chế độ Personal), và phải dùng thuật toán băm khóa bảo mật cao (secured key hashing). Trong Cisco WLC, việc cấu hình PSK-SHA2 (SHA-256) đáp ứng chuẩn bảo mật mã hóa băm vượt trội so với SHA-1.",
+    "cliOutput": "",
+    "category": "Wireless Security"
+  },
+  {
+    "id": 11,
+    "title": "Câu 11 / 225",
+    "isMultiPart": true,
+    "images": [
+      "images/cau-11-a.png",
+      "images/cau-11-b.png"
+    ],
+    "hasText": true,
+    "question": "Refer to the exhibit. PC Y is communicating with another device at IP address 10.227.150.193. Which router does router Y use to route traffic?",
+    "type": "single",
+    "options": [
+      {
+        "key": "A",
+        "text": "router C"
+      },
+      {
+        "key": "B",
+        "text": "router D"
+      },
+      {
+        "key": "C",
+        "text": "router B"
+      },
+      {
+        "key": "D",
+        "text": "router A"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "Áp dụng nguyên tắc so khớp tiền tố dài nhất (Longest Prefix Match):\n- Đích đến: 10.227.150.193\n- Tuyến 10.227.150.160/27 có dải IP từ 10.227.150.160 đến 10.227.150.191 (KHÔNG chứa .193).\n- Tuyến OSPF 10.226.0.0/15 bao phủ từ 10.226.0.0 đến 10.227.255.255 (CHỨA địa chỉ .193).\n- Tuyến này trỏ qua next-hop 10.224.1.5, tương ứng với Router D!",
+    "cliOutput": "Router-Y# show ip route\nCodes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP\n       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area\nGateway of last resort is not set\n\n10.0.0.0/8 is variably subnetted\nS    10.0.0.0/8 [1/0] via 10.224.1.2\nS    10.128.0.0/9 [1/0] via 10.224.1.3\nO    10.224.0.0/11 [110/0] via 10.224.1.5, 5d18h\nO    10.224.0.0/16 [110/0] via 10.224.1.4, 5d18h\nC    10.224.6.0/24 is directly connected, GigabitEthernet0/1\nC    10.224.1.0/24 is directly connected, GigabitEthernet0/0\nO    10.226.0.0/15 [110/0] via 10.224.1.5, 5d18h\nS    10.227.150.160/27 [1/0] via 10.224.1.3, 1w6d",
+    "category": "IP Routing & Subnetting"
+  },
+  {
+    "id": 12,
+    "title": "Câu 12 / 225",
+    "isMultiPart": true,
+    "images": [
+      "images/cau-12-a.png",
+      "images/cau-12-b.png"
+    ],
+    "hasText": true,
+    "question": "Refer to the exhibit. Which functionalities will this SSID have while being used by wireless clients?",
+    "type": "single",
+    "options": [
+      {
+        "key": "A",
+        "text": "decreases network security against offline dictionary attacks and encourages easy access to the network"
+      },
+      {
+        "key": "B",
+        "text": "increases network security against offline dictionary attacks and discourages time-consuming brute force attacks"
+      },
+      {
+        "key": "C",
+        "text": "increases network security against man in the middle attacks and discourages denial of service attacks"
+      },
+      {
+        "key": "D",
+        "text": "decreases network security against air sniffing attacks and discourages the use of complex passwords"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "Giao thức WPA3 sử dụng cơ chế SAE (Simultaneous Authentication of Equals) thay thế cho WPA2 Pre-Shared Key, giúp chống lại các cuộc tấn công giải mã ngoại tuyến (offline dictionary attacks) và làm nản lòng các cuộc tấn công brute force.",
+    "cliOutput": "",
+    "category": "Wireless Security"
+  },
+  {
+    "id": 13,
+    "title": "Câu 13 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-13.png"
+    ],
+    "hasText": true,
+    "question": "What is a characteristic of a Layer 2 switch?",
+    "type": "single",
+    "options": [
+      {
+        "key": "A",
+        "text": "provides a single broadcast domain for all connected devices"
+      },
+      {
+        "key": "B",
+        "text": "tracks the number of active TCP connections"
+      },
+      {
+        "key": "C",
+        "text": "uses the data link layer for communications"
+      },
+      {
+        "key": "D",
+        "text": "filters based on a transport layer protocol"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "Switch Layer 2 hoạt động tại tầng Liên kết dữ liệu (Data Link Layer - Tầng 2 mô hình OSI), sử dụng địa chỉ MAC để chuyển tiếp khung (frames).",
+    "cliOutput": "",
+    "category": "Network Fundamentals"
+  },
+  {
+    "id": 14,
+    "title": "Câu 14 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-14.png"
+    ],
+    "hasText": true,
+    "question": "Which type of VPN connection is used when an employee accesses a secure server from a public Wi-Fi?",
+    "type": "single",
+    "options": [
+      {
+        "key": "A",
+        "text": "open"
+      },
+      {
+        "key": "B",
+        "text": "router-to-router"
+      },
+      {
+        "key": "C",
+        "text": "remote"
+      },
+      {
+        "key": "D",
+        "text": "site-to-site"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "Remote Access VPN (như Cisco AnyConnect / Cisco Secure Client) được sử dụng để người dùng từ xa (kết nối qua Internet/Public Wi-Fi) tạo đường hầm mã hóa bảo mật truy cập về mạng nội bộ doanh nghiệp.",
+    "cliOutput": "",
+    "category": "Security Fundamentals"
+  },
+  {
+    "id": 15,
+    "title": "Câu 15 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-15.png"
+    ],
+    "hasText": true,
+    "question": "What is the primary purpose of the first hop redundancy protocols?",
+    "type": "single",
+    "options": [
+      {
+        "key": "A",
+        "text": "to ensure high availability of the network by providing a redundant path via ARP in case of a failure of path failure"
+      },
+      {
+        "key": "B",
+        "text": "to ensure high availability of the network by providing a backup route on the CEF in case of a gateway failure"
+      },
+      {
+        "key": "C",
+        "text": "to ensure high availability of the network by providing a transparent fail-over at the active gateway"
+      },
+      {
+        "key": "D",
+        "text": "to ensure high availability of the network by providing a secondary route on the RIB at the active gateway"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "Mục tiêu chính của các giao thức FHRP (First Hop Redundancy Protocols như HSRP, VRRP, GLBP) là đảm bảo tính sẵn sàng cao (High Availability) bằng cách tự động chuyển đổi trong suốt (transparent fail-over) khi Default Gateway chính bị lỗi mà người dùng không bị mất mạng.",
+    "cliOutput": "",
+    "category": "IP Services (FHRP)"
+  },
+  {
+    "id": 16,
+    "title": "Câu 16 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-16.png"
+    ],
+    "hasText": true,
+    "question": "How does MAC learning function?",
+    "type": "single",
+    "options": [
+      {
+        "key": "A",
+        "text": "sends frames with unknown destinations to a multicast group"
+      },
+      {
+        "key": "B",
+        "text": "inspects and drops frames from unknown destinations"
+      },
+      {
+        "key": "C",
+        "text": "enabled by default on all VLANs and interfaces"
+      },
+      {
+        "key": "D",
+        "text": "increases security on the management VLAN"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "Trên switch Cisco, tính năng học địa chỉ MAC nguồn (MAC learning) được kích hoạt mặc định (enabled by default) trên tất cả các VLAN và cổng mạng.",
+    "cliOutput": "",
+    "category": "Network Fundamentals"
+  },
+  {
+    "id": 17,
+    "title": "Câu 17 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-17.png"
+    ],
+    "hasText": true,
+    "question": "When a WPA2-PSK WLAN is configured in the Wireless LAN Controller, what is the minimum number of characters that is required in ASCII format?",
+    "type": "single",
+    "options": [
+      {
+        "key": "A",
+        "text": "18"
+      },
+      {
+        "key": "B",
+        "text": "12"
+      },
+      {
+        "key": "C",
+        "text": "8"
+      },
+      {
+        "key": "D",
+        "text": "6"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "Theo chuẩn IEEE 802.11i / WPA2-PSK, chuỗi mật khẩu chia sẻ trước dạng ký tự ASCII phải có độ dài tối thiểu là 8 ký tự và tối đa là 63 ký tự (hoặc 64 ký tự nếu ở định dạng Hex).",
+    "cliOutput": "",
+    "category": "Wireless Fundamentals"
+  },
+  {
+    "id": 18,
+    "title": "Câu 18 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-18.png"
+    ],
+    "hasText": true,
+    "question": "What are two characteristics of a controller-based network? (Choose two.)",
+    "type": "multiple",
+    "options": [
+      {
+        "key": "A",
+        "text": "It uses northbound and southbound APIs to communicate between architectural layers."
+      },
+      {
+        "key": "B",
+        "text": "It moves the control plane to a central point."
+      },
+      {
+        "key": "C",
+        "text": "It uses Telnet to report system issues."
+      },
+      {
+        "key": "D",
+        "text": "It decentralizes the control plane, which allows each device to make its own forwarding decisions."
+      },
+      {
+        "key": "E",
+        "text": "The administrator can make configuration updates from the CLI."
+      }
+    ],
+    "answer": [
+      "A",
+      "B"
+    ],
+    "explanation": "Đặc trưng cơ bản của mạng SDN / Controller-based: 1) Tách phần điều khiển (Control Plane) khỏi thiết bị và tập trung về Controller. 2) Sử dụng Northbound API (REST/JSON kết nối ứng dụng) và Southbound API (OpenFlow, NETCONF/RESTCONF kết nối thiết bị hạ tầng).",
+    "cliOutput": "",
+    "category": "Network Automation (SDN)"
+  },
+  {
+    "id": 19,
+    "title": "Câu 19 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-19.png"
+    ],
+    "hasText": true,
+    "question": "What are two recommendations for protecting network ports from being exploited when located in an office space outside of an IT closet? (Choose two.)",
+    "type": "multiple",
+    "options": [
+      {
+        "key": "A",
+        "text": "implement port-based authentication"
+      },
+      {
+        "key": "B",
+        "text": "shut down unused ports"
+      },
+      {
+        "key": "C",
+        "text": "enable the PortFast feature on ports"
+      },
+      {
+        "key": "D",
+        "text": "configure static ARP entries"
+      },
+      {
+        "key": "E",
+        "text": "configure ports to a fixed speed"
+      }
+    ],
+    "answer": [
+      "A",
+      "B"
+    ],
+    "explanation": "Biện pháp bảo vệ cổng mạng vật lý đặt ngoài phòng IT: 1) Tắt toàn bộ các cổng không sử dụng (shutdown unused ports). 2) Triển khai xác thực cổng 802.1X (port-based authentication) để chỉ thiết bị được ủy quyền mới được vào mạng.",
+    "cliOutput": "",
+    "category": "Security Fundamentals"
+  },
+  {
+    "id": 20,
+    "title": "Câu 20 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-20.png"
+    ],
+    "hasText": true,
+    "question": "Which cloud provided service allows an organization to install its own operating system on a virtual machine?",
+    "type": "single",
+    "options": [
+      {
+        "key": "A",
+        "text": "platforms-a service"
+      },
+      {
+        "key": "B",
+        "text": "infrastructure-as a service"
+      },
+      {
+        "key": "C",
+        "text": "software-as-a-service"
+      },
+      {
+        "key": "D",
+        "text": "network-as-a-service"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "Dịch vụ Hạ tầng dưới dạng Dịch vụ (IaaS - Infrastructure as a Service) cung cấp tài nguyên phần cứng ảo hóa (CPU, RAM, ổ đĩa, mạng), cho phép người dùng tự do cài đặt hệ điều hành và toàn quyền quản trị máy ảo.",
+    "cliOutput": "",
+    "category": "Cloud Computing"
+  },
+  {
+    "id": 21,
+    "title": "Câu 21 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-21.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 22,
+    "title": "Câu 22 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-22.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 23,
+    "title": "Câu 23 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-23.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 24,
+    "title": "Câu 24 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-24.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 25,
+    "title": "Câu 25 / 225",
+    "isMultiPart": true,
+    "images": [
+      "images/cau-25-a.png",
+      "images/cau-25-b.png"
+    ],
+    "hasText": true,
+    "question": "Refer to the exhibit. An engineer is creating a secure preshared key based SSID using WPA2 for a wireless network running on 2.4 GHz and 5 GHz. Which two tasks must the engineer perform to complete the process? (Choose two.)",
+    "type": "multiple",
+    "options": [
+      {
+        "key": "A",
+        "text": "Select the PSK option for Auth Key Management."
+      },
+      {
+        "key": "B",
+        "text": "Select the WPA Policy option."
+      },
+      {
+        "key": "C",
+        "text": "Select the AES (CCMP128) option for WPA2/WPA3 Encryption."
+      },
+      {
+        "key": "D",
+        "text": "Select the 802.1X option for Auth Key Management."
+      },
+      {
+        "key": "E",
+        "text": "Select the AES option for Auth Key Management."
+      }
+    ],
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "Để cấu hình WPA2-PSK trên Cisco WLC: 1) Tích chọn mã hóa AES (CCMP128) trong phần Encryption. 2) Tích chọn PSK trong phần Auth Key Management.",
+    "cliOutput": "",
+    "category": "Wireless Security"
+  },
+  {
+    "id": 26,
+    "title": "Câu 26 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-26.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 27,
+    "title": "Câu 27 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-27.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 28,
+    "title": "Câu 28 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-28.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 29,
+    "title": "Câu 29 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-29.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 30,
+    "title": "Câu 30 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-30.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 31,
+    "title": "Câu 31 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-31.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 32,
+    "title": "Câu 32 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-32.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 33,
+    "title": "Câu 33 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-33.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 34,
+    "title": "Câu 34 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-34.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 35,
+    "title": "Câu 35 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-35.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 36,
+    "title": "Câu 36 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-36.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 37,
+    "title": "Câu 37 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-37.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 38,
+    "title": "Câu 38 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-38.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 39,
+    "title": "Câu 39 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-39.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 40,
+    "title": "Câu 40 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-40.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 41,
+    "title": "Câu 41 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-41.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 42,
+    "title": "Câu 42 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-42.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 43,
+    "title": "Câu 43 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-43.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 44,
+    "title": "Câu 44 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-44.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 45,
+    "title": "Câu 45 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-45.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 46,
+    "title": "Câu 46 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-46.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 47,
+    "title": "Câu 47 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-47.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 48,
+    "title": "Câu 48 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-48.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 49,
+    "title": "Câu 49 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-49.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 50,
+    "title": "Câu 50 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-50.png"
+    ],
+    "hasText": true,
+    "question": "What is the main difference between traditional networks and controller-based networking?",
+    "type": "single",
+    "options": [
+      {
+        "key": "A",
+        "text": "Controller-based networks provide a framework for innovation, and traditional networks create efficiency."
+      },
+      {
+        "key": "B",
+        "text": "Controller-based networks increase TCO for the company, and traditional networks require less investment."
+      },
+      {
+        "key": "C",
+        "text": "Controller-based networks are open for application requests, and traditional networks operate manually."
+      },
+      {
+        "key": "D",
+        "text": "Controller-based networks are a closed ecosystem, and traditional networks take advantage of programmability."
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "Mạng truyền thống (traditional) yêu cầu cấu hình thủ công từng thiết bị qua CLI, trong khi mạng controller-based mở giao diện lập trình ứng dụng (Northbound API) để các chương trình phần mềm tự động gửi yêu cầu điều khiển mạng.",
+    "cliOutput": "",
+    "category": "Network Automation"
+  },
+  {
+    "id": 51,
+    "title": "Câu 51 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-51.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 52,
+    "title": "Câu 52 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-52.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 53,
+    "title": "Câu 53 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-53.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 54,
+    "title": "Câu 54 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-54.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 55,
+    "title": "Câu 55 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-55.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 56,
+    "title": "Câu 56 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-56.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 57,
+    "title": "Câu 57 / 225",
+    "isMultiPart": true,
+    "images": [
+      "images/cau-57-a.png",
+      "images/cau-57-b.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 58,
+    "title": "Câu 58 / 225",
+    "isMultiPart": true,
+    "images": [
+      "images/cau-58-a.png",
+      "images/cau-58-b.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 59,
+    "title": "Câu 59 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-59.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 60,
+    "title": "Câu 60 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-60.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 61,
+    "title": "Câu 61 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-61.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 62,
+    "title": "Câu 62 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-62.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 63,
+    "title": "Câu 63 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-63.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 64,
+    "title": "Câu 64 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-64.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 65,
+    "title": "Câu 65 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-65.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 66,
+    "title": "Câu 66 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-66.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 67,
+    "title": "Câu 67 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-67.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 68,
+    "title": "Câu 68 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-68.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 69,
+    "title": "Câu 69 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-69.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 70,
+    "title": "Câu 70 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-70.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 71,
+    "title": "Câu 71 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-71.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 72,
+    "title": "Câu 72 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-72.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 73,
+    "title": "Câu 73 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-73.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 74,
+    "title": "Câu 74 / 225",
+    "isMultiPart": true,
+    "images": [
+      "images/cau-74-a.png",
+      "images/cau-74-b.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 75,
+    "title": "Câu 75 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-75.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 76,
+    "title": "Câu 76 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-76.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 77,
+    "title": "Câu 77 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-77.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 78,
+    "title": "Câu 78 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-78.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 79,
+    "title": "Câu 79 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-79.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 80,
+    "title": "Câu 80 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-80.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 81,
+    "title": "Câu 81 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-81.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 82,
+    "title": "Câu 82 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-82.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 83,
+    "title": "Câu 83 / 225",
+    "isMultiPart": true,
+    "images": [
+      "images/cau-83-a.png",
+      "images/cau-83-b.png"
+    ],
+    "hasText": true,
+    "question": "Refer to the exhibit. An engineer is using the Cisco WLC GUI to configure a WLAN for WPA2 encryption with AES and preshared key Cisc0123456. After the engineer selects the WPA WPA2 option from the Layer 2 Security drop-down list, which two tasks must they perform to complete the process? (Choose two.)",
+    "type": "multiple",
+    "options": [
+      {
+        "key": "A",
+        "text": "Select the WPA2 Policy and AES check boxes."
+      },
+      {
+        "key": "B",
+        "text": "Select CCKM from the Auth Key Mgmt drop-down list, set the PSK Format to Hex, and enter the key."
+      },
+      {
+        "key": "C",
+        "text": "Select the WPA2 Policy, AES, and TKIP check boxes."
+      },
+      {
+        "key": "D",
+        "text": "Select ASCII from the PSK Format drop-down list, enter the key, and leave the Auth Key Mgmt setting blank."
+      },
+      {
+        "key": "E",
+        "text": "Select PSK from the Auth Key Mgmt drop-down list, set the PSK Format to ASCII, and enter the key."
+      }
+    ],
+    "answer": [
+      "A",
+      "E"
+    ],
+    "explanation": "Trên giao diện GUI Cisco WLC: Cần tích chọn WPA2 Policy + mã hóa AES, đồng thời chọn PSK trong phần Auth Key Mgmt và chọn định dạng ASCII để nhập mật khẩu Cisc0123456.",
+    "cliOutput": "",
+    "category": "Wireless Security"
+  },
+  {
+    "id": 84,
+    "title": "Câu 84 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-84.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 85,
+    "title": "Câu 85 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-85.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 86,
+    "title": "Câu 86 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-86.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 87,
+    "title": "Câu 87 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-87.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 88,
+    "title": "Câu 88 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-88.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 89,
+    "title": "Câu 89 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-89.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 90,
+    "title": "Câu 90 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-90.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 91,
+    "title": "Câu 91 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-91.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 92,
+    "title": "Câu 92 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-92.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 93,
+    "title": "Câu 93 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-93.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 94,
+    "title": "Câu 94 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-94.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 95,
+    "title": "Câu 95 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-95.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 96,
+    "title": "Câu 96 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-96.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 97,
+    "title": "Câu 97 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-97.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 98,
+    "title": "Câu 98 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-98.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 99,
+    "title": "Câu 99 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-99.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 100,
+    "title": "Câu 100 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-100.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 101,
+    "title": "Câu 101 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-101.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 102,
+    "title": "Câu 102 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-102.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 103,
+    "title": "Câu 103 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-103.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 104,
+    "title": "Câu 104 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-104.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 105,
+    "title": "Câu 105 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-105.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 106,
+    "title": "Câu 106 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-106.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 107,
+    "title": "Câu 107 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-107.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 108,
+    "title": "Câu 108 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-108.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 109,
+    "title": "Câu 109 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-109.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 110,
+    "title": "Câu 110 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-110.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 111,
+    "title": "Câu 111 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-111.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 112,
+    "title": "Câu 112 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-112.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 113,
+    "title": "Câu 113 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-113.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 114,
+    "title": "Câu 114 / 225",
+    "isMultiPart": true,
+    "images": [
+      "images/cau-114-a.png",
+      "images/cau-114-b.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 115,
+    "title": "Câu 115 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-115.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 116,
+    "title": "Câu 116 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-116.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 117,
+    "title": "Câu 117 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-117.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 118,
+    "title": "Câu 118 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-118.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 119,
+    "title": "Câu 119 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-119.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 120,
+    "title": "Câu 120 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-120.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 121,
+    "title": "Câu 121 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-121.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 122,
+    "title": "Câu 122 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-122.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 123,
+    "title": "Câu 123 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-123.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 124,
+    "title": "Câu 124 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-124.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 125,
+    "title": "Câu 125 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-125.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 126,
+    "title": "Câu 126 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-126.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 127,
+    "title": "Câu 127 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-127.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 128,
+    "title": "Câu 128 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-128.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 129,
+    "title": "Câu 129 / 225",
+    "isMultiPart": true,
+    "images": [
+      "images/cau-129-a.png",
+      "images/cau-129-b.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 130,
+    "title": "Câu 130 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-130.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 131,
+    "title": "Câu 131 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-131.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 132,
+    "title": "Câu 132 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-132.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 133,
+    "title": "Câu 133 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-133.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 134,
+    "title": "Câu 134 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-134.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 135,
+    "title": "Câu 135 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-135.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 136,
+    "title": "Câu 136 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-136.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 137,
+    "title": "Câu 137 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-137.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 138,
+    "title": "Câu 138 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-138.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 139,
+    "title": "Câu 139 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-139.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 140,
+    "title": "Câu 140 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-140.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 141,
+    "title": "Câu 141 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-141.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 142,
+    "title": "Câu 142 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-142.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 143,
+    "title": "Câu 143 / 225",
+    "isMultiPart": true,
+    "images": [
+      "images/cau-143-a.png",
+      "images/cau-143-b.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 144,
+    "title": "Câu 144 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-144.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 145,
+    "title": "Câu 145 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-145.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 146,
+    "title": "Câu 146 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-146.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 147,
+    "title": "Câu 147 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-147.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 148,
+    "title": "Câu 148 / 225",
+    "isMultiPart": true,
+    "images": [
+      "images/cau-148-a.png",
+      "images/cau-148-b.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 149,
+    "title": "Câu 149 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-149.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 150,
+    "title": "Câu 150 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-150.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 151,
+    "title": "Câu 151 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-151.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 152,
+    "title": "Câu 152 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-152.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 153,
+    "title": "Câu 153 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-153.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 154,
+    "title": "Câu 154 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-154.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 155,
+    "title": "Câu 155 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-155.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 156,
+    "title": "Câu 156 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-156.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 157,
+    "title": "Câu 157 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-157.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 158,
+    "title": "Câu 158 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-158.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 159,
+    "title": "Câu 159 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-159.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 160,
+    "title": "Câu 160 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-160.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 161,
+    "title": "Câu 161 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-161.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 162,
+    "title": "Câu 162 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-162.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 163,
+    "title": "Câu 163 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-163.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 164,
+    "title": "Câu 164 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-164.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 165,
+    "title": "Câu 165 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-165.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 166,
+    "title": "Câu 166 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-166.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 167,
+    "title": "Câu 167 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-167.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 168,
+    "title": "Câu 168 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-168.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 169,
+    "title": "Câu 169 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-169.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 170,
+    "title": "Câu 170 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-170.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 171,
+    "title": "Câu 171 / 225",
+    "isMultiPart": true,
+    "images": [
+      "images/cau-171-a.png",
+      "images/cau-171-b.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 172,
+    "title": "Câu 172 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-172.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 173,
+    "title": "Câu 173 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-173.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 174,
+    "title": "Câu 174 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-174.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 175,
+    "title": "Câu 175 / 225",
+    "isMultiPart": true,
+    "images": [
+      "images/cau-175-a.png",
+      "images/cau-175-b.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 176,
+    "title": "Câu 176 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-176.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 177,
+    "title": "Câu 177 / 225",
+    "isMultiPart": true,
+    "images": [
+      "images/cau-177-a.png",
+      "images/cau-177-b.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 178,
+    "title": "Câu 178 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-178.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 179,
+    "title": "Câu 179 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-179.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 180,
+    "title": "Câu 180 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-180.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 181,
+    "title": "Câu 181 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-181.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 182,
+    "title": "Câu 182 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-182.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 183,
+    "title": "Câu 183 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-183.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 184,
+    "title": "Câu 184 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-184.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 185,
+    "title": "Câu 185 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-185.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 186,
+    "title": "Câu 186 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-186.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 187,
+    "title": "Câu 187 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-187.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 188,
+    "title": "Câu 188 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-188.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 189,
+    "title": "Câu 189 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-189.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 190,
+    "title": "Câu 190 / 225",
+    "isMultiPart": true,
+    "images": [
+      "images/cau-190-a.png",
+      "images/cau-190-b.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 191,
+    "title": "Câu 191 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-191.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 192,
+    "title": "Câu 192 / 225",
+    "isMultiPart": true,
+    "images": [
+      "images/cau-192-a.png",
+      "images/cau-192-b.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 193,
+    "title": "Câu 193 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-193.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 194,
+    "title": "Câu 194 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-194.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 195,
+    "title": "Câu 195 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-195.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 196,
+    "title": "Câu 196 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-196.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 197,
+    "title": "Câu 197 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-197.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 198,
+    "title": "Câu 198 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-198.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 199,
+    "title": "Câu 199 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-199.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 200,
+    "title": "Câu 200 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-200.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 201,
+    "title": "Câu 201 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-201.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 202,
+    "title": "Câu 202 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-202.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 203,
+    "title": "Câu 203 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-203.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 204,
+    "title": "Câu 204 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-204.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 205,
+    "title": "Câu 205 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-205.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 206,
+    "title": "Câu 206 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-206.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 207,
+    "title": "Câu 207 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-207.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 208,
+    "title": "Câu 208 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-208.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 209,
+    "title": "Câu 209 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-209.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 210,
+    "title": "Câu 210 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-210.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 211,
+    "title": "Câu 211 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-211.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 212,
+    "title": "Câu 212 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-212.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 213,
+    "title": "Câu 213 / 225",
+    "isMultiPart": true,
+    "images": [
+      "images/cau-213-a.png",
+      "images/cau-213-b.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 214,
+    "title": "Câu 214 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-214.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 215,
+    "title": "Câu 215 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-215.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 216,
+    "title": "Câu 216 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-216.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 217,
+    "title": "Câu 217 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-217.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 218,
+    "title": "Câu 218 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-218.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 219,
+    "title": "Câu 219 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-219.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 220,
+    "title": "Câu 220 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-220.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 221,
+    "title": "Câu 221 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-221.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 222,
+    "title": "Câu 222 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-222.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 223,
+    "title": "Câu 223 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-223.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 224,
+    "title": "Câu 224 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-224.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  },
+  {
+    "id": 225,
+    "title": "Câu 225 / 225",
+    "isMultiPart": false,
+    "images": [
+      "images/cau-225.png"
+    ],
+    "hasText": false,
+    "question": "",
+    "type": "single",
+    "options": [],
+    "answer": [],
+    "explanation": "",
+    "cliOutput": "",
+    "category": "CCNA 200-301"
+  }
+]

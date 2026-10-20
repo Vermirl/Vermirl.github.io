@@ -1,710 +1,318 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Google Antigravity — Next-Gen Autonomous Agentic Platform</title>
-  <meta name="description" content="Orchestrate autonomous subagent swarms, execute deep reasoning in isolated dev workspaces, and build production-grade software with verifiable artifacts.">
-  <meta name="keywords" content="AI, Antigravity, Agentic AI, Autonomous Coding, Google DeepMind, Subagents, Developer Tools">
-  
-  <!-- OpenGraph / Social Meta -->
-  <meta property="og:title" content="Google Antigravity — Autonomous Agentic Coding Platform">
-  <meta property="og:description" content="Next-generation multi-agent coding platform and autonomous intelligence environment.">
-  <meta property="og:type" content="website">
-  
-  <!-- Google Fonts -->
+  <title>Cisco CCNA 200-301 — Luyện thi & Vấn đáp Chuẩn (225 Câu)</title>
+  <meta name="description" content="Trang web ôn thi, hỏi đáp và vấn đáp chuẩn CCNA 200-301 với 225 câu hỏi trắc nghiệm, sơ đồ mạng nét căng, chế độ flashcard và giải thích chi tiết.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>">
 </head>
 <body>
-  <!-- Background Canvas for Swarm Physics -->
-  <canvas id="swarm-canvas"></canvas>
 
-  <!-- Ambient Light Effects -->
-  <div class="glow-orb glow-top-center"></div>
-  <div class="glow-orb glow-middle-right"></div>
-  <div class="glow-orb glow-bottom-left"></div>
-
-  <!-- Navigation Bar -->
-  <header class="navbar-wrapper">
-    <nav class="navbar">
-      <a href="#" class="nav-brand">
-        <div class="brand-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-            <polyline points="2 17 12 22 22 17"></polyline>
-            <polyline points="2 12 12 17 22 12"></polyline>
-          </svg>
+  <!-- Top App Navigation -->
+  <header class="app-header">
+    <div class="header-left">
+      <div class="brand">
+        <span class="brand-icon">🌐</span>
+        <div class="brand-text">
+          <h1>CCNA Mastery</h1>
+          <span class="badge-sub">200-301 Exam Hub</span>
         </div>
-        <span class="brand-title">Google <span class="brand-accent">Antigravity</span></span>
-        <span class="version-tag">v2.4</span>
-      </a>
-
-      <ul class="nav-links">
-        <li><a href="#capabilities">Capabilities</a></li>
-        <li><a href="#architecture">Architecture</a></li>
-        <li><a href="#playground">Live Demo</a></li>
-        <li><a href="#benchmarks">Benchmarks</a></li>
-        <li><a href="#workflow">Workflow</a></li>
-      </ul>
-
-      <div class="nav-actions">
-        <button class="btn-cmd-palette" id="open-cmd-btn" title="Quick Command Palette (Ctrl+K)">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-          <span>Search & Commands</span>
-          <kbd id="cmd-key-hint">Ctrl K</kbd>
-        </button>
-        <a href="#playground" class="btn btn-primary btn-sm">
-          <span>Launch Studio</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </a>
       </div>
 
-      <!-- Mobile Hamburger -->
-      <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
+      <!-- Mode Switcher -->
+      <div class="mode-tabs" role="tablist">
+        <button id="modeQuizBtn" class="mode-btn active" title="Chế độ Trắc nghiệm (chọn đáp án & chấm điểm)">
+          <span>🎯</span> Luyện Thi
+        </button>
+        <button id="modeFlashcardBtn" class="mode-btn" title="Chế độ Vấn đáp Flashcard (nhẩm đáp án & lật mở)">
+          <span>⚡</span> Vấn Đáp
+        </button>
+      </div>
+    </div>
+
+    <!-- Center Progress Stats -->
+    <div class="header-center">
+      <div class="progress-pill">
+        <div class="stat-item mastered" title="Số câu đã nắm vững">
+          <span class="stat-dot"></span>
+          <span class="stat-label">Thuộc:</span>
+          <strong id="statMastered">0</strong>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item review" title="Số câu cần ôn lại">
+          <span class="stat-dot"></span>
+          <span class="stat-label">Ôn lại:</span>
+          <strong id="statReview">0</strong>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item total" title="Tổng số câu">
+          <span class="stat-label">Tiến độ:</span>
+          <strong id="statPercent">0%</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header Right Controls -->
+    <div class="header-right">
+      <button id="themeToggleBtn" class="icon-btn" title="Chuyển chế độ Sáng / Tối" aria-label="Toggle Theme">
+        <span id="themeIcon">🌙</span>
       </button>
-    </nav>
+      <button id="shortcutsBtn" class="icon-btn" title="Phím tắt bàn phím" aria-label="Keyboard Shortcuts">
+        ⌨️
+      </button>
+      <button id="sidebarToggleBtn" class="icon-btn toggle-sidebar" title="Đóng / Mở danh sách câu hỏi">
+        📋
+      </button>
+    </div>
   </header>
 
-  <!-- Mobile Drawer Menu -->
-  <div class="mobile-drawer" id="mobile-drawer">
-    <div class="mobile-drawer-links">
-      <a href="#capabilities" class="mobile-nav-link">Capabilities</a>
-      <a href="#architecture" class="mobile-nav-link">Architecture</a>
-      <a href="#playground" class="mobile-nav-link">Live Demo</a>
-      <a href="#benchmarks" class="mobile-nav-link">Benchmarks</a>
-      <a href="#workflow" class="mobile-nav-link">Workflow</a>
-    </div>
-    <div class="mobile-drawer-footer">
-      <a href="#playground" class="btn btn-primary btn-full mobile-nav-link">Launch Studio</a>
-    </div>
-  </div>
-
-  <main>
-    <!-- Hero Section -->
-    <section class="hero-section">
-      <div class="container hero-container">
+  <!-- Main Workspace -->
+  <main class="app-main">
+    
+    <!-- Question Card Area -->
+    <section class="question-workspace">
+      
+      <!-- Question Card Container -->
+      <div class="question-card">
         
-        <!-- Status Pill -->
-        <div class="hero-badge">
-          <span class="badge-status-dot"></span>
-          <span class="badge-text">Next-Gen Agentic Engine Active</span>
-          <span class="badge-arrow">→</span>
-        </div>
-
-        <!-- Headline -->
-        <h1 class="hero-title">
-          Autonomous Intelligence for <br>
-          <span class="text-gradient">Mission-Critical Software</span>
-        </h1>
-
-        <!-- Subtitle -->
-        <p class="hero-subtitle">
-          Orchestrate autonomous subagent swarms, execute deep reasoning in isolated git workspaces, and build production-grade web systems with verifiable artifacts.
-        </p>
-
-        <!-- CTA Group -->
-        <div class="hero-cta-group">
-          <a href="#playground" class="btn btn-primary btn-lg">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="5 3 19 12 5 21 5 3"></polygon>
-            </svg>
-            <span>Try Interactive Sandbox</span>
-          </a>
-          <button class="btn btn-secondary btn-lg" id="copy-quickstart-btn" data-clipboard="npx @google/antigravity@latest init">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="4 17 10 11 4 5"></polyline>
-              <line x1="12" y1="19" x2="20" y2="19"></line>
-            </svg>
-            <span class="cmd-text">npx @google/antigravity init</span>
-            <span class="copy-badge" id="copy-status">Copy</span>
-          </button>
-        </div>
-
-        <!-- Interactive Live IDE Hero Window -->
-        <div class="hero-ide-wrapper">
-          <div class="hero-ide-window">
-            
-            <!-- Window Topbar -->
-            <div class="ide-topbar">
-              <div class="window-controls">
-                <span class="win-dot dot-close"></span>
-                <span class="win-dot dot-min"></span>
-                <span class="win-dot dot-max"></span>
-              </div>
-              
-              <div class="ide-tab-selector" role="tablist">
-                <button class="ide-tab-btn active" data-tab="tab-swarm" role="tab">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
-                  <span>1. Subagent Swarm</span>
-                  <span class="tab-indicator"></span>
-                </button>
-                <button class="ide-tab-btn" data-tab="tab-debug" role="tab">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m8 2 1.88 1.88M14.12 3.88 16 2M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"></path><path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6Z"></path></svg>
-                  <span>2. Self-Healing Debugger</span>
-                  <span class="tab-indicator"></span>
-                </button>
-                <button class="ide-tab-btn" data-tab="tab-plan" role="tab">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                  <span>3. Verifiable Artifacts</span>
-                  <span class="tab-indicator"></span>
-                </button>
-              </div>
-
-              <div class="ide-status-pill">
-                <span class="pulse-emerald"></span>
-                <span class="status-label">Swarm Online (4 Nodes)</span>
-              </div>
-            </div>
-
-            <!-- Terminal / Code Body Split Pane -->
-            <div class="ide-body">
-              <!-- Left: Autonomous Agent Graph & Activity -->
-              <div class="ide-sidebar">
-                <div class="sidebar-header">
-                  <span class="sidebar-title">COGNITIVE THREADS</span>
-                  <span class="badge-mini">LIVE</span>
-                </div>
-                <div class="agent-nodes-list" id="agent-nodes-container">
-                  <div class="agent-node active">
-                    <div class="agent-node-status"></div>
-                    <div class="agent-node-info">
-                      <div class="agent-name">Orchestrator</div>
-                      <div class="agent-role">Goal Decomposition & Routing</div>
-                    </div>
-                  </div>
-                  <div class="agent-node working">
-                    <div class="agent-node-status"></div>
-                    <div class="agent-node-info">
-                      <div class="agent-name">Backend Engineer</div>
-                      <div class="agent-role">Vite & Hono API Server</div>
-                    </div>
-                  </div>
-                  <div class="agent-node working">
-                    <div class="agent-node-status"></div>
-                    <div class="agent-node-info">
-                      <div class="agent-name">Design Specialist</div>
-                      <div class="agent-role">UI/UX Pro Max Tokens</div>
-                    </div>
-                  </div>
-                  <div class="agent-node idle">
-                    <div class="agent-node-status"></div>
-                    <div class="agent-node-info">
-                      <div class="agent-name">QA Verifier</div>
-                      <div class="agent-role">E2E Playwright Suite</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="sidebar-footer">
-                  <div class="latency-stat">
-                    <span>Inference:</span>
-                    <span class="stat-value">12ms / token</span>
-                  </div>
-                  <div class="latency-stat">
-                    <span>Memory:</span>
-                    <span class="stat-value">14.2 MB Sandbox</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Right: Realtime Log / Code Canvas -->
-              <div class="ide-canvas">
-                
-                <!-- TAB 1: SWARM CONTENT -->
-                <div class="tab-content active" id="tab-swarm">
-                  <div class="code-editor-header">
-                    <span class="file-tag">workspace://services/orchestrator.ts</span>
-                    <span class="diff-tag">+48 lines added</span>
-                  </div>
-                  <pre class="code-block"><code class="language-typescript"><span class="c-keyword">import</span> { <span class="c-func">spawnSubagent</span>, <span class="c-type">TaskPipeline</span> } <span class="c-keyword">from</span> <span class="c-str">'@google/antigravity'</span>;
-
-<span class="c-comment">// ✦ Orchestrating 3 parallel autonomous subagents</span>
-<span class="c-keyword">export async function</span> <span class="c-func">executeAutonomousBuild</span>(spec: <span class="c-type">ProductSpec</span>) {
-  <span class="c-keyword">const</span> swarm = <span class="c-keyword">await</span> <span class="c-func">spawnSubagent</span>({
-    roles: [<span class="c-str">'FrontendArchitect'</span>, <span class="c-str">'DatabaseOptimizer'</span>, <span class="c-str">'SecurityAuditor'</span>],
-    workspaceMode: <span class="c-str">'git-share'</span>,
-    reactiveWakeup: <span class="c-atom">true</span>
-  });
-
-  <span class="c-keyword">const</span> artifacts = <span class="c-keyword">await</span> swarm.<span class="c-func">executeParallelPlan</span>(spec);
-  <span class="c-keyword">return</span> artifacts.<span class="c-func">verifyAndCommit</span>();
-}</code></pre>
-                  
-                  <div class="terminal-log-feed" id="terminal-feed-swarm">
-                    <div class="log-line log-info"><span class="log-time">21:14:02</span> <span class="log-prefix">[SWARM]</span> Launched 3 subagents in isolated git branches...</div>
-                    <div class="log-line log-success"><span class="log-time">21:14:03</span> <span class="log-prefix">[DESIGN]</span> Applied UI/UX Pro Max tokens (WCAG AA 5.8:1 contrast).</div>
-                    <div class="log-line log-stream"><span class="log-time">21:14:04</span> <span class="log-prefix">[BUILD]</span> Compiling zero-bundle static assets for GitHub Pages <span class="cursor-blink">▋</span></div>
-                  </div>
-                </div>
-
-                <!-- TAB 2: DEBUGGER CONTENT -->
-                <div class="tab-content" id="tab-debug">
-                  <div class="code-editor-header">
-                    <span class="file-tag">self-healing://runtime-diagnostics.log</span>
-                    <span class="diff-tag tag-healing">Auto-Healing Applied</span>
-                  </div>
-                  <pre class="code-block"><code class="language-bash"><span class="c-keyword">▲ CRITICAL ISSUE DETECTED</span> in <span class="c-str">auth-service.ts:42</span>
-  <span class="c-keyword">Error:</span> Token expiration mismatch across cluster replication.
-
-<span class="c-comment">✦ Autonomous Diagnostics Agent Initiated:</span>
-  1. Isolated branch created: <span class="c-str">workspace/fix-auth-replica</span>
-  2. Synthesizing deterministic lease renewal mutex...
-  3. Running Playwright test suite (14/14 passed)
-  4. Merging validated patch into main branch with verifiable hash.</code></pre>
-
-                  <div class="terminal-log-feed">
-                    <div class="log-line log-success"><span class="log-time">21:14:08</span> <span class="log-prefix">[HEALED]</span> Test suite green. Regression risk: 0.00%.</div>
-                  </div>
-                </div>
-
-                <!-- TAB 3: PLAN CONTENT -->
-                <div class="tab-content" id="tab-plan">
-                  <div class="code-editor-header">
-                    <span class="file-tag">artifacts://implementation_plan.md</span>
-                    <span class="diff-tag tag-verified">Verifiable Spec</span>
-                  </div>
-                  <pre class="code-block"><code class="language-markdown"># Product Architecture Spec
-> [!IMPORTANT]
-> Zero external runtime dependencies. 100% Static Web Ready.
-
-- **Design System**: Neo-Precision Dark Titanium (#06080d)
-- **Subagents**: 4 Autonomous Units (Orchestrator, Designer, Coder, QA)
-- **Deployment**: Instant GitHub Pages via zero-config static hosting
-- **Safety Assurance**: Sandboxed Cwd execution with strict lint checks</code></pre>
-                  
-                  <div class="terminal-log-feed">
-                    <div class="log-line log-info"><span class="log-time">21:14:10</span> <span class="log-prefix">[PLAN]</span> Artifact validated and persisted to system memory.</div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Telemetry Metrics Bar -->
-    <section class="telemetry-section">
-      <div class="container">
-        <div class="metrics-grid">
-          <div class="metric-card">
-            <div class="metric-value"><span class="counter" data-target="99.4">0</span>%</div>
-            <div class="metric-label">Multi-File Task Success</div>
-            <div class="metric-sub">Across complex fullstack builds</div>
-          </div>
-          <div class="metric-card">
-            <div class="metric-value"><span class="counter" data-target="10">0</span>x</div>
-            <div class="metric-label">Autonomous Velocity</div>
-            <div class="metric-sub">Parallel subagent distribution</div>
-          </div>
-          <div class="metric-card">
-            <div class="metric-value"><span class="counter" data-target="100">0</span>%</div>
-            <div class="metric-label">Sandboxed Isolation</div>
-            <div class="metric-sub">Git worktree filesystem control</div>
-          </div>
-          <div class="metric-card">
-            <div class="metric-value">0%</div>
-            <div class="metric-label">Generic AI Slop</div>
-            <div class="metric-sub">Enforced UI/UX Pro Max standards</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Core Pillars / Bento Grid -->
-    <section class="section-padding" id="capabilities">
-      <div class="container">
-        
-        <div class="section-header">
-          <div class="badge-tag">ENGINEERING PILLARS</div>
-          <h2 class="section-title">Built for Production, <br><span class="text-gradient">Engineered for Precision</span></h2>
-          <p class="section-subtitle">A paradigm shift from simple chatbot auto-complete to autonomous agentic intelligence.</p>
-        </div>
-
-        <div class="bento-grid">
-          
-          <!-- Bento 1: Swarms (Large) -->
-          <div class="bento-card bento-span-2">
-            <div class="card-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
-            </div>
-            <h3 class="card-title">Parallel Subagent Swarms</h3>
-            <p class="card-desc">
-              Spawn specialized autonomous agents in separate workspaces with inherited, branched, or shared git worktrees. Each agent reasons, runs tests, and reports back asynchronously.
-            </p>
-            <div class="bento-visual">
-              <div class="swarm-node-cluster">
-                <div class="swarm-node-item pulse-border">
-                  <span class="dot-live"></span> Planner Agent
-                </div>
-                <div class="swarm-connector"></div>
-                <div class="swarm-node-item pulse-border">
-                  <span class="dot-live"></span> Coder Subagent
-                </div>
-                <div class="swarm-connector"></div>
-                <div class="swarm-node-item pulse-border">
-                  <span class="dot-live"></span> Reviewer Agent
-                </div>
-              </div>
-            </div>
+        <!-- Question Header Meta -->
+        <div class="q-header">
+          <div class="q-meta-left">
+            <span id="qNumberBadge" class="q-badge primary">Câu 1 / 225</span>
+            <span id="qCategoryBadge" class="q-badge secondary">Chung</span>
+            <span id="qTypeBadge" class="q-badge outline">Single Choice</span>
           </div>
 
-          <!-- Bento 2: Self Healing -->
-          <div class="bento-card">
-            <div class="card-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-            </div>
-            <h3 class="card-title">Self-Healing Execution</h3>
-            <p class="card-desc">
-              Executes commands, captures terminal stack traces, detects build failures, and automatically patches code until all tests pass.
-            </p>
-            <div class="badge-stat">100% Automated TDD</div>
-          </div>
-
-          <!-- Bento 3: Reactive Wakeup -->
-          <div class="bento-card">
-            <div class="card-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
-            </div>
-            <h3 class="card-title">Zero-Polling Reactive Wakeup</h3>
-            <p class="card-desc">
-              No wasted API tokens. Antigravity sleeps during long-running tasks and wakes up reactively when subagents or daemons finish.
-            </p>
-            <div class="badge-stat">Zero Wasted Tokens</div>
-          </div>
-
-          <!-- Bento 4: UI/UX Intelligence (Large) -->
-          <div class="bento-card bento-span-2">
-            <div class="card-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
-            </div>
-            <h3 class="card-title">Built-in UI/UX Pro Max Intelligence</h3>
-            <p class="card-desc">
-              Embeds 192 industry design rules, 79 UI styles, and 74 typography pairings. Eliminates AI clichés, ensures WCAG AA accessibility, and creates fluid micro-interactions.
-            </p>
-            <div class="tags-cluster">
-              <span class="tech-tag">WCAG 2.1 AA</span>
-              <span class="tech-tag">Fluid Micro-Animations</span>
-              <span class="tech-tag">Dynamic Color Tokens</span>
-              <span class="tech-tag">SVG-Only Vector Icons</span>
-              <span class="tech-tag">Zero Layout Shift</span>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Cognition Pipeline / Workflow -->
-    <section class="section-padding section-alt" id="workflow">
-      <div class="container">
-        
-        <div class="section-header">
-          <div class="badge-tag">AUTONOMOUS LIFECYCLE</div>
-          <h2 class="section-title">From User Intent to <br><span class="text-gradient">Verifiable Production Code</span></h2>
-          <p class="section-subtitle">Every task goes through a formal lifecycle designed to minimize regressions and ensure clarity.</p>
-        </div>
-
-        <div class="pipeline-flow">
-          
-          <div class="pipeline-step">
-            <div class="step-number">01</div>
-            <div class="step-content">
-              <h4 class="step-title">Grounded Deep Research</h4>
-              <p class="step-desc">Explores local repo files, performs symbol regex searches, and consults official web documentation without hallucination.</p>
-            </div>
-          </div>
-
-          <div class="pipeline-connector">
-            <div class="connector-line"></div>
-          </div>
-
-          <div class="pipeline-step">
-            <div class="step-number">02</div>
-            <div class="step-content">
-              <h4 class="step-title">Verifiable Planning Mode</h4>
-              <p class="step-desc">Generates a detailed implementation plan artifact with architectural trade-offs, open questions, and atomic diff steps.</p>
-            </div>
-          </div>
-
-          <div class="pipeline-connector">
-            <div class="connector-line"></div>
-          </div>
-
-          <div class="pipeline-step">
-            <div class="step-number">03</div>
-            <div class="step-content">
-              <h4 class="step-title">Swarm Execution & Lint</h4>
-              <p class="step-desc">Dispatches tasks to subagents, executes edits using precise targeted ranges, and validates against active IDE lint errors.</p>
-            </div>
-          </div>
-
-          <div class="pipeline-connector">
-            <div class="connector-line"></div>
-          </div>
-
-          <div class="pipeline-step">
-            <div class="step-number">04</div>
-            <div class="step-content">
-              <h4 class="step-title">Walkthrough & Test Verification</h4>
-              <p class="step-desc">Runs test suites, captures verification output, and produces a complete user walkthrough artifact.</p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Live Interactive Playground -->
-    <section class="section-padding" id="playground">
-      <div class="container">
-        
-        <div class="section-header">
-          <div class="badge-tag">INTERACTIVE TESTBED</div>
-          <h2 class="section-title">Test Agentic Reasoning <br><span class="text-gradient">In Real-Time</span></h2>
-          <p class="section-subtitle">Select a scenario to witness how Antigravity handles high-complexity developer challenges.</p>
-        </div>
-
-        <div class="playground-wrapper">
-          
-          <!-- Playground Controls -->
-          <div class="playground-nav">
-            <button class="playground-btn active" data-scenario="scenario-refactor">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
-              <div>
-                <div class="btn-title">Large-Scale Monorepo Refactor</div>
-                <div class="btn-desc">120+ file symbol migration with zero downtime</div>
-              </div>
-            </button>
-
-            <button class="playground-btn" data-scenario="scenario-security">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-              <div>
-                <div class="btn-title">Zero-Day Vulnerability Patch</div>
-                <div class="btn-desc">CVE detection, regression sandbox, verified fix</div>
-              </div>
-            </button>
-
-            <button class="playground-btn" data-scenario="scenario-fullstack">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-              <div>
-                <div class="btn-title">Instant Fullstack App Generation</div>
-                <div class="btn-desc">Static web + UI/UX Pro Max tokens + E2E suite</div>
-              </div>
-            </button>
-          </div>
-
-          <!-- Playground Display Box -->
-          <div class="playground-display">
-            <div class="display-topbar">
-              <div class="display-file-title" id="scenario-title">scenario-refactor.agy</div>
-              <button class="btn btn-sm btn-primary" id="run-simulation-btn">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                <span>Run Agent Simulation</span>
+          <div class="q-meta-right">
+            <!-- View Mode Switcher: Text vs Image -->
+            <div class="view-switch-group">
+              <button id="viewTextBtn" class="view-switch-btn active" title="Hiển thị chữ nét căng (Text Mode)">
+                🔤 Chữ Nét Căng
+              </button>
+              <button id="viewImgBtn" class="view-switch-btn" title="Hiển thị ảnh gốc chụp màn hình">
+                🖼️ Ảnh Gốc
               </button>
             </div>
-            
-            <div class="display-console" id="scenario-console">
-              <div class="console-line"><span class="c-cyan">● [Antigravity Core]</span> Initialized cognitive kernel with 1M context token window.</div>
-              <div class="console-line"><span class="c-green">✓ [Grounded Indexer]</span> Indexed 1,420 AST symbols across monorepo in 140ms.</div>
-              <div class="console-line"><span class="c-amber">⚡ [Swarm Dispatcher]</span> Spawning 4 subagents: `SchemaMigrator`, `APIBoundary`, `TypeValidator`, `E2ETester`.</div>
-              <div class="console-line"><span class="c-purple">► [Execution]</span> Applying non-destructive atomic chunk edits...</div>
-              <div class="console-line"><span class="c-green">✓ [Test Suite]</span> 384/384 unit & integration tests PASSED (0 errors, 0 lints).</div>
-              <div class="console-line"><span class="c-cyan">★ [Complete]</span> Verifiable diff ready for PR review.</div>
+
+            <!-- Action Tag Buttons -->
+            <button id="markReviewBtn" class="btn-tag review" title="Đánh dấu câu này cần ôn lại (Phím B)">
+              🔖 Cần Ôn
+            </button>
+            <button id="markMasteredBtn" class="btn-tag mastered" title="Đánh dấu đã hiểu câu này (Phím M)">
+              ✅ Đã Thuộc
+            </button>
+          </div>
+        </div>
+
+        <!-- Question Body Content -->
+        <div class="q-body">
+          
+          <!-- TEXT MODE DISPLAY -->
+          <div id="textModeContainer" class="mode-display-container">
+            <div id="qPromptText" class="q-prompt">
+              <!-- Question text injected here -->
+            </div>
+
+            <!-- CLI Output Terminal (if applicable) -->
+            <div id="cliOutputContainer" class="cli-container hidden">
+              <div class="cli-header">
+                <span class="cli-dot red"></span>
+                <span class="cli-dot yellow"></span>
+                <span class="cli-dot green"></span>
+                <span class="cli-title">Cisco IOS CLI Output — Router-Y</span>
+                <button id="copyCliBtn" class="cli-copy-btn">📋 Copy</button>
+              </div>
+              <pre class="cli-pre"><code id="cliCodeBlock"></code></pre>
+            </div>
+
+            <!-- Vector Topology Diagram (if applicable) -->
+            <div id="topologyContainer" class="topology-container hidden">
+              <div class="topology-header">
+                <span>📐 Sơ đồ mạng Vector sắc nét (Nhấp vào ảnh để phóng to)</span>
+              </div>
+              <div class="topology-frame" id="topologyFrame">
+                <!-- SVG diagram injected here -->
+              </div>
+            </div>
+
+            <!-- Options Selection List -->
+            <div id="optionsList" class="options-list">
+              <!-- Options buttons injected here -->
             </div>
           </div>
 
+          <!-- IMAGE MODE DISPLAY -->
+          <div id="imageModeContainer" class="mode-display-container hidden">
+            <!-- Multi-part tabs (if question has exhibit and question images) -->
+            <div id="imgPartTabs" class="img-part-tabs hidden">
+              <button class="part-tab-btn active" data-part="0">Phần 1: Sơ đồ / Exhibit</button>
+              <button class="part-tab-btn" data-part="1">Phần 2: Câu hỏi & Đáp án</button>
+            </div>
+
+            <!-- Image Viewer with Smart Answer Mask -->
+            <div class="img-viewer-wrapper">
+              <div class="img-box" id="imgBox">
+                <img id="qOriginalImage" src="" alt="CCNA Question Image" class="question-img">
+                
+                <!-- Answer Conceal Mask (Prevents answer spoiling) -->
+                <div id="answerMask" class="answer-mask">
+                  <div class="mask-content">
+                    <span class="mask-icon">🔒</span>
+                    <span class="mask-text">Hộp đáp án đã được che để bạn tự suy nghĩ</span>
+                    <button id="revealMaskBtn" class="mask-btn">👁️ Bấm để mở đáp án (Phím Space)</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="img-toolbar">
+                <span class="img-hint">💡 Nhấp trực tiếp vào ảnh để mở kính lúp phóng to</span>
+                <button id="toggleMaskBtn" class="btn-subtle">Ẩn/Hiện che đáp án</button>
+              </div>
+            </div>
+
+            <!-- Options buttons for Image Mode -->
+            <div id="imgOptionsList" class="options-list img-options-grid">
+              <!-- Injected option buttons -->
+            </div>
+          </div>
+
+          <!-- Answer & Explanation Panel -->
+          <div id="explanationPanel" class="explanation-panel hidden">
+            <div class="exp-header">
+              <div class="exp-badge" id="expResultBadge">
+                <span class="exp-icon">🎯</span>
+                <span id="expResultText">Đáp án Đúng: C</span>
+              </div>
+            </div>
+            <div class="exp-content" id="expContentText">
+              <!-- Explanation text -->
+            </div>
+          </div>
+
+          <!-- Personal Notes Notepad -->
+          <div class="notes-section">
+            <div class="notes-header">
+              <span class="notes-title">📝 Ghi chú riêng cho câu này (Tự động lưu):</span>
+              <span id="notesStatus" class="notes-status">Đã lưu</span>
+            </div>
+            <textarea id="questionNotes" class="notes-input" placeholder="Ghi nhớ công thức, lý do chọn, mẹo subnet hoặc lệnh cần chú ý..."></textarea>
+          </div>
+
         </div>
 
-      </div>
-    </section>
-
-    <!-- Comparison Table -->
-    <section class="section-padding section-alt" id="benchmarks">
-      <div class="container">
-        
-        <div class="section-header">
-          <div class="badge-tag">COMPETITIVE MATRIX</div>
-          <h2 class="section-title">Antigravity vs <br><span class="text-gradient">Legacy Coding Assistants</span></h2>
-          <p class="section-subtitle">Compare architectural capabilities between single-turn copilots and autonomous swarms.</p>
-        </div>
-
-        <div class="table-container">
-          <table class="comparison-table">
-            <thead>
-              <tr>
-                <th>Capability / Architectural Trait</th>
-                <th class="col-highlight">Google Antigravity 2.0</th>
-                <th>Legacy AI Copilots</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Subagent Swarm Orchestration</strong></td>
-                <td class="col-highlight"><span class="icon-check">✓</span> Native parallel subagents with git worktrees</td>
-                <td><span class="icon-cross">✕</span> Single thread only</td>
-              </tr>
-              <tr>
-                <td><strong>Reactive Sleep / Wakeup</strong></td>
-                <td class="col-highlight"><span class="icon-check">✓</span> Zero polling, wakes on event triggers</td>
-                <td><span class="icon-cross">✕</span> Constant busy looping</td>
-              </tr>
-              <tr>
-                <td><strong>UI/UX Design Intelligence</strong></td>
-                <td class="col-highlight"><span class="icon-check">✓</span> 192 industry rules + anti-pattern guardrails</td>
-                <td><span class="icon-cross">✕</span> Generic AI slop with purple gradients</td>
-              </tr>
-              <tr>
-                <td><strong>Verifiable Artifact Workflow</strong></td>
-                <td class="col-highlight"><span class="icon-check">✓</span> Plan & Walkthrough markdown with diff specs</td>
-                <td><span class="icon-cross">✕</span> Raw chat output</td>
-              </tr>
-              <tr>
-                <td><strong>Model Hierarchy Routing</strong></td>
-                <td class="col-highlight"><span class="icon-check">✓</span> Auto routes between Flash-Lite, Flash & Pro</td>
-                <td><span class="icon-cross">✕</span> One-size-fits-all model</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Final Call to Action -->
-    <section class="section-padding cta-section">
-      <div class="container cta-container">
-        <div class="cta-card">
-          <div class="cta-glow"></div>
-          <h2 class="cta-title">Ready to Experience <br><span class="text-gradient">True Autonomous Coding?</span></h2>
-          <p class="cta-desc">Deploy static applications, orchestrate subagents, and eliminate AI slop with Antigravity.</p>
-          
-          <div class="cta-action-row">
-            <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-              <span>View on GitHub</span>
-            </a>
-            <button class="btn btn-secondary btn-lg" onclick="document.getElementById('open-cmd-btn').click()">
-              <span>Explore Commands (Ctrl+K)</span>
+        <!-- Question Footer Navigation -->
+        <div class="q-footer">
+          <div class="footer-left">
+            <button id="prevBtn" class="nav-btn" title="Câu trước (Phím mũi tên Trái)">
+              ◀ Câu trước
             </button>
           </div>
 
-          <div class="cta-badges">
-            <span>✓ 100% Static Web Ready</span>
-            <span>✓ Zero Server Dependencies</span>
-            <span>✓ GitHub Pages Compatible</span>
+          <div class="footer-center">
+            <button id="submitCheckBtn" class="btn-action primary">
+              Kiểm tra Đáp án
+            </button>
+            <button id="randomBtn" class="nav-btn subtle" title="Bốc ngẫu nhiên một câu (Phím R)">
+              🎲 Ngẫu nhiên
+            </button>
+          </div>
+
+          <div class="footer-right">
+            <button id="nextBtn" class="nav-btn" title="Câu tiếp theo (Phím mũi tên Phải)">
+              Câu sau ▶
+            </button>
           </div>
         </div>
+
       </div>
+
     </section>
+
+    <!-- Sidebar / Question Grid Drawer -->
+    <aside id="sidebar" class="app-sidebar">
+      <div class="sidebar-header">
+        <h2>Danh sách 225 Câu hỏi</h2>
+        <button id="closeSidebarBtn" class="icon-btn close-sidebar" title="Đóng">✕</button>
+      </div>
+
+      <!-- Search & Filters -->
+      <div class="sidebar-controls">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" placeholder="Tìm câu hỏi, số câu, OSPF...">
+          <button id="clearSearchBtn" class="clear-btn hidden">✕</button>
+        </div>
+
+        <div class="filter-pills">
+          <button class="filter-pill active" data-filter="all">Tất cả (225)</button>
+          <button class="filter-pill" data-filter="mastered">🟢 Đã thuộc</button>
+          <button class="filter-pill" data-filter="review">🟡 Cần ôn</button>
+          <button class="filter-pill" data-filter="unanswered">⚪ Chưa làm</button>
+        </div>
+      </div>
+
+      <!-- Question Number Matrix Grid -->
+      <div class="matrix-container">
+        <div id="questionGrid" class="question-grid">
+          <!-- 225 grid items injected here -->
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <button id="resetAllDataBtn" class="btn-reset-data">Xóa toàn bộ lịch sử học</button>
+      </div>
+    </aside>
 
   </main>
 
-  <!-- High-Precision Footer -->
-  <footer class="footer">
-    <div class="container footer-container">
-      
-      <div class="footer-top">
-        <div class="footer-brand">
-          <div class="brand-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-              <polyline points="2 17 12 22 22 17"></polyline>
-              <polyline points="2 12 12 17 22 12"></polyline>
-            </svg>
-          </div>
-          <span class="brand-title">Google <span class="brand-accent">Antigravity</span></span>
-        </div>
-
-        <div class="system-status-indicator">
-          <span class="dot-emerald-pulse"></span>
-          <span>Core Agentic Engine Operational</span>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p class="copyright">© 2026 Google Antigravity & Agentic Intelligence Systems. Built with UI/UX Pro Max.</p>
-        <div class="footer-links">
-          <a href="#">Privacy</a>
-          <a href="#">Security</a>
-          <a href="#">Documentation</a>
-          <a href="#">Status</a>
-        </div>
-      </div>
-
+  <!-- Image Lightbox Modal -->
+  <div id="lightboxModal" class="lightbox-modal hidden">
+    <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+    <div class="lightbox-dialog">
+      <button id="closeLightboxBtn" class="lightbox-close">✕</button>
+      <img id="lightboxImg" src="" alt="Enlarged Diagram">
+      <div class="lightbox-caption" id="lightboxCaption">Sơ đồ mạng phóng to</div>
     </div>
-  </footer>
+  </div>
 
-  <!-- Command Palette Modal (Ctrl+K) -->
-  <div class="cmd-modal-backdrop" id="cmd-modal" aria-hidden="true">
-    <div class="cmd-modal-dialog">
-      <div class="cmd-modal-header">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-        <input type="text" id="cmd-search-input" placeholder="Type a command or search documentation..." autocomplete="off">
-        <button class="cmd-close-btn" id="cmd-close-btn" aria-label="Close modal">✕</button>
+  <!-- Keyboard Shortcuts Modal -->
+  <div id="shortcutsModal" class="shortcuts-modal hidden">
+    <div class="modal-backdrop" id="shortcutsBackdrop"></div>
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3>⌨️ Phím tắt bàn phím</h3>
+        <button id="closeShortcutsBtn" class="modal-close">✕</button>
       </div>
-
-      <div class="cmd-results-list" id="cmd-results">
-        <div class="cmd-group-label">SUGGESTED AGENT COMMANDS</div>
-        
-        <div class="cmd-item" data-action="action-swarm">
-          <div class="cmd-item-icon">⚡</div>
-          <div class="cmd-item-content">
-            <div class="cmd-item-title">/swarm — Launch Subagent Swarm</div>
-            <div class="cmd-item-desc">Spawns multi-agent execution in parallel git branches</div>
-          </div>
-          <kbd class="cmd-item-shortcut">Enter</kbd>
+      <div class="modal-body">
+        <div class="shortcut-row">
+          <kbd>←</kbd> / <kbd>→</kbd>
+          <span>Chuyển câu trước / câu sau</span>
         </div>
-
-        <div class="cmd-item" data-action="action-plan">
-          <div class="cmd-item-icon">📝</div>
-          <div class="cmd-item-content">
-            <div class="cmd-item-title">/plan — Enter Verifiable Planning Mode</div>
-            <div class="cmd-item-desc">Drafts an implementation_plan.md before any code changes</div>
-          </div>
+        <div class="shortcut-row">
+          <kbd>1</kbd> - <kbd>5</kbd>
+          <span>Chọn đáp án tương ứng (A, B, C, D, E)</span>
         </div>
-
-        <div class="cmd-item" data-action="action-heal">
-          <div class="cmd-item-icon">🛡️</div>
-          <div class="cmd-item-content">
-            <div class="cmd-item-title">/heal — Run Self-Healing Test Suite</div>
-            <div class="cmd-item-desc">Automatically diagnoses and repairs broken tests</div>
-          </div>
+        <div class="shortcut-row">
+          <kbd>Space</kbd>
+          <span>Kiểm tra đáp án / Mở che đáp án</span>
         </div>
-
-        <div class="cmd-item" data-action="action-theme">
-          <div class="cmd-item-icon">🎨</div>
-          <div class="cmd-item-content">
-            <div class="cmd-item-title">Toggle High Contrast Mode</div>
-            <div class="cmd-item-desc">Switch between Neo-Precision Obsidian and High Contrast</div>
-          </div>
+        <div class="shortcut-row">
+          <kbd>M</kbd>
+          <span>Đánh dấu "Đã thuộc"</span>
         </div>
-      </div>
-
-      <div class="cmd-modal-footer">
-        <span>Navigation: <kbd>↑</kbd> <kbd>↓</kbd></span>
-        <span>Select: <kbd>Enter</kbd></span>
-        <span>Dismiss: <kbd>ESC</kbd></span>
+        <div class="shortcut-row">
+          <kbd>B</kbd>
+          <span>Đánh dấu "Cần ôn lại"</span>
+        </div>
+        <div class="shortcut-row">
+          <kbd>R</kbd>
+          <span>Nhảy ngẫu nhiên câu hỏi</span>
+        </div>
       </div>
     </div>
   </div>
