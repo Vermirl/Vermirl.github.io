@@ -88,6 +88,9 @@
     filterPills: document.querySelectorAll('.filter-pill'),
     questionGrid: document.getElementById('questionGrid'),
     resetAllDataBtn: document.getElementById('resetAllDataBtn'),
+    exportProgressBtn: document.getElementById('exportProgressBtn'),
+    importProgressBtn: document.getElementById('importProgressBtn'),
+    importFileInput: document.getElementById('importFileInput'),
 
     // Modals
     lightboxModal: document.getElementById('lightboxModal'),
@@ -647,6 +650,52 @@
         activeFilter = pill.dataset.filter;
         applyFilterAndSearch();
       });
+    });
+
+    // Export & Import Progress
+    el.exportProgressBtn.addEventListener('click', () => {
+      const data = {
+        mastered: Array.from(userProgress.mastered),
+        review: Array.from(userProgress.review),
+        answers: userProgress.answers,
+        notes: userProgress.notes,
+        exportedAt: new Date().toISOString()
+      };
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `ccna_progress_${new Date().toISOString().slice(0, 10)}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    el.importProgressBtn.addEventListener('click', () => {
+      el.importFileInput.click();
+    });
+
+    el.importFileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (evt) => {
+        try {
+          const parsed = JSON.parse(evt.target.result);
+          userProgress.mastered = new Set(parsed.mastered || []);
+          userProgress.review = new Set(parsed.review || []);
+          userProgress.answers = parsed.answers || {};
+          userProgress.notes = parsed.notes || {};
+          saveProgress();
+          renderQuestion(currentIndex);
+          renderMatrix();
+          updateStats();
+          alert('✅ Đã nhập tiến độ học tập thành công!');
+        } catch (err) {
+          alert('❌ File sao lưu không hợp lệ!');
+        }
+      };
+      reader.readAsText(file);
+      el.importFileInput.value = '';
     });
 
     // Reset All Data

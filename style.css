@@ -982,6 +982,38 @@ body {
 .sidebar-footer {
   padding: 12px 20px;
   border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sync-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-sync {
+  flex: 1;
+  background-color: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.btn-sync:hover {
+  background-color: var(--bg-surface-hover);
+  border-color: var(--accent-cisco);
+  color: var(--accent-cisco);
 }
 
 .btn-reset-data {
@@ -989,9 +1021,9 @@ body {
   background: none;
   border: 1px dashed var(--border-color);
   color: var(--text-muted);
-  padding: 8px;
+  padding: 6px;
   border-radius: var(--radius-sm);
-  font-size: 12px;
+  font-size: 11px;
   cursor: pointer;
 }
 .btn-reset-data:hover {
