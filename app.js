@@ -521,6 +521,14 @@
 
   // --- Event Listeners ---
   function setupEventListeners() {
+    // Brand Logo Click: Return to question 1 and reload/refresh
+    const brandLogo = document.getElementById('brandLogo');
+    if (brandLogo) {
+      brandLogo.addEventListener('click', () => {
+        localStorage.setItem('ccna_last_index', 0);
+      });
+    }
+
     // Mode Switching
     el.modeQuizBtn.addEventListener('click', () => {
       studyMode = 'quiz';

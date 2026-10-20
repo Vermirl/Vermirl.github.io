@@ -114,6 +114,18 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.1s ease;
+  user-select: none;
+}
+
+.brand:hover {
+  opacity: 0.85;
+}
+
+.brand:active {
+  transform: scale(0.97);
 }
 
 .brand-icon {
