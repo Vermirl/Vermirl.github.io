@@ -337,24 +337,28 @@
       el.answerMask.classList.remove('revealed');
     }
 
-    // Generate option buttons (A, B, C, D, E) for quick marking
+    // Render option buttons for Image Mode
     el.imgOptionsList.innerHTML = '';
-    ['A', 'B', 'C', 'D', 'E'].forEach(key => {
+    const availableOptions = (q.options && q.options.length) 
+      ? q.options 
+      : [{key: 'A', text: ''}, {key: 'B', text: ''}, {key: 'C', text: ''}, {key: 'D', text: ''}];
+
+    availableOptions.forEach(opt => {
       const card = document.createElement('div');
       card.className = 'option-card';
-      card.dataset.key = key;
+      card.dataset.key = opt.key;
 
-      if (selectedOptions.has(key)) card.classList.add('selected');
+      if (selectedOptions.has(opt.key)) card.classList.add('selected');
       if (isAnswerRevealed && q.answer && q.answer.length) {
-        if (q.answer.includes(key)) card.classList.add('correct');
-        else if (selectedOptions.has(key)) card.classList.add('wrong');
+        if (q.answer.includes(opt.key)) card.classList.add('correct');
+        else if (selectedOptions.has(opt.key)) card.classList.add('wrong');
       }
 
       card.innerHTML = `
-        <span class="option-badge">${key}</span>
-        <span class="option-text">Lựa chọn ${key}</span>
+        <span class="option-badge">${opt.key}</span>
+        <span class="option-text">${opt.text ? opt.text : 'Phương án ' + opt.key}</span>
       `;
-      card.addEventListener('click', () => handleOptionClick(key, q));
+      card.addEventListener('click', () => handleOptionClick(opt.key, q));
       el.imgOptionsList.appendChild(card);
     });
   }

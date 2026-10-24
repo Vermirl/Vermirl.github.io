@@ -733,14 +733,33 @@
     "images": [
       "images/cau-21.png"
     ],
-    "hasText": false,
-    "question": "",
+    "hasText": true,
+    "question": "What is a service that is provided by a wireless controller?",
     "type": "single",
-    "options": [],
-    "answer": [],
-    "explanation": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "It provides Layer 3 routing between wired and wireless devices."
+      },
+      {
+        "key": "B",
+        "text": "It manages interference in a dense network."
+      },
+      {
+        "key": "C",
+        "text": "It issues IP addresses to wired devices."
+      },
+      {
+        "key": "D",
+        "text": "It mitigates threats from the internet."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "Wireless LAN Controller (WLC) cung cấp tính năng Quản lý Tài nguyên Vô tuyến (Radio Resource Management - RRM), tự động điều chỉnh công suất phát (Tx Power) và phân bổ kênh tần số để giảm thiểu can nhiễu trong môi trường mạng không dây mật độ cao (dense network).",
     "cliOutput": "",
-    "category": "CCNA 200-301"
+    "category": "Wireless Fundamentals (RRM)"
   },
   {
     "id": 22,
@@ -749,14 +768,33 @@
     "images": [
       "images/cau-22.png"
     ],
-    "hasText": false,
-    "question": "",
+    "hasText": true,
+    "question": "How does automation affect network management processes?",
     "type": "single",
-    "options": [],
-    "answer": [],
-    "explanation": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "It provides a reactive support model."
+      },
+      {
+        "key": "B",
+        "text": "It improves the efficiency of system lifecycle management."
+      },
+      {
+        "key": "C",
+        "text": "It performs configuration updates based on user profiles."
+      },
+      {
+        "key": "D",
+        "text": "It interoperates with ISE to define and manage patch and update schedules."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "Tự động hóa mạng (Network Automation) cải thiện hiệu quả quản lý vòng đời hệ thống (system lifecycle management), từ khâu cấu hình ban đầu (provisioning), giám sát (monitoring), sao lưu đến cập nhật bản vá định kỳ một cách đồng bộ và chính xác.",
     "cliOutput": "",
-    "category": "CCNA 200-301"
+    "category": "Network Automation"
   },
   {
     "id": 23,
@@ -765,14 +803,38 @@
     "images": [
       "images/cau-23.png"
     ],
-    "hasText": false,
-    "question": "",
-    "type": "single",
-    "options": [],
-    "answer": [],
-    "explanation": "",
+    "hasText": true,
+    "question": "What are two advantages of implementing a controller-based architecture instead of a traditional network architecture? (Choose two.)",
+    "type": "multiple",
+    "options": [
+      {
+        "key": "A",
+        "text": "It increases security against denial-of-service attacks."
+      },
+      {
+        "key": "B",
+        "text": "It allows for seamless connectivity to virtual machines."
+      },
+      {
+        "key": "C",
+        "text": "It supports complex and high-scale IP addressing schemes."
+      },
+      {
+        "key": "D",
+        "text": "It provides increased scalability and management options."
+      },
+      {
+        "key": "E",
+        "text": "It enables configuration task automation."
+      }
+    ],
+    "answer": [
+      "D",
+      "E"
+    ],
+    "explanation": "Hai ưu điểm nổi bật của kiến trúc mạng SDN dựa trên Controller: 1) Tăng khả năng mở rộng quy mô (scalability) và quản trị tập trung. 2) Cho phép tự động hóa các tác vụ cấu hình (configuration task automation) qua các API lập trình.",
     "cliOutput": "",
-    "category": "CCNA 200-301"
+    "category": "Network Automation (SDN)"
   },
   {
     "id": 24,
@@ -781,14 +843,33 @@
     "images": [
       "images/cau-24.png"
     ],
-    "hasText": false,
-    "question": "",
+    "hasText": true,
+    "question": "Which IPsec mode provides encapsulation and encryption of the entire original IP packet on a site-to-site VPN?",
     "type": "single",
-    "options": [],
-    "answer": [],
-    "explanation": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "IPsec tunnel mode with ESP"
+      },
+      {
+        "key": "B",
+        "text": "IPsec tunnel mode with AH"
+      },
+      {
+        "key": "C",
+        "text": "IPsec transport mode with AH"
+      },
+      {
+        "key": "D",
+        "text": "IPsec transport mode with ESP"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "Trong Site-to-Site VPN: 1) Tunnel Mode đóng gói (encapsulate) TOÀN BỘ gói tin IP gốc vào một IP Header mới. 2) Giao thức ESP (Encapsulating Security Payload) cung cấp tính năng MÃ HÓA (encryption), trong khi AH chỉ hỗ trợ xác thực/toàn vẹn dữ liệu.",
     "cliOutput": "",
-    "category": "CCNA 200-301"
+    "category": "Security Fundamentals (VPN / IPsec)"
   },
   {
     "id": 25,
@@ -838,14 +919,33 @@
     "images": [
       "images/cau-26.png"
     ],
-    "hasText": false,
-    "question": "",
+    "hasText": true,
+    "question": "Which Cisco proprietary protocol ensures traffic recovers automatically when the active gateway fails?",
     "type": "single",
-    "options": [],
-    "answer": [],
-    "explanation": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "HSRP"
+      },
+      {
+        "key": "B",
+        "text": "SLB"
+      },
+      {
+        "key": "C",
+        "text": "VRRP"
+      },
+      {
+        "key": "D",
+        "text": "FHRP"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "HSRP (Hot Standby Router Protocol) là giao thức độc quyền của Cisco (Cisco proprietary) thuộc nhóm FHRP, cho phép tự động chuyển đổi sang gateway dự phòng khi gateway chính bị sự cố.",
     "cliOutput": "",
-    "category": "CCNA 200-301"
+    "category": "IP Services (FHRP)"
   },
   {
     "id": 27,
@@ -854,14 +954,33 @@
     "images": [
       "images/cau-27.png"
     ],
-    "hasText": false,
-    "question": "",
+    "hasText": true,
+    "question": "Refer to the exhibit. The route for 10.220.100.96/27 has been very unstable. The same route has four backups to routers A, B, C, and D via the respective methods. The routing protocol defaults for router Y have not been changed. When the current route for 10.220.100.96/27 becomes unavailable, which router will router Y use to route traffic to 10.220.100.96/27?",
     "type": "single",
-    "options": [],
-    "answer": [],
-    "explanation": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "router A"
+      },
+      {
+        "key": "B",
+        "text": "router D"
+      },
+      {
+        "key": "C",
+        "text": "router B"
+      },
+      {
+        "key": "D",
+        "text": "router C"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "Khi nhiều giao thức định tuyến cùng quảng bá một mạng, router ưu tiên tuyến có Administrative Distance (AD) NHỎ NHẤT: Static route của Router B (AD = 105) < OSPF Router A (AD = 110) < External EIGRP Router C (AD = 170) < iBGP Router D (AD = 200). Do đó Router Y sẽ chọn Router B!",
     "cliOutput": "",
-    "category": "CCNA 200-301"
+    "category": "IP Routing (Administrative Distance)"
   },
   {
     "id": 28,
@@ -870,14 +989,33 @@
     "images": [
       "images/cau-28.png"
     ],
-    "hasText": false,
-    "question": "",
+    "hasText": true,
+    "question": "Refer to the exhibit. A network engineer started to configure two directly-connected routers as shown. Which command sequence must the engineer configure on R2 so that the two routers become OSPF neighbors?",
     "type": "single",
-    "options": [],
-    "answer": [],
-    "explanation": "",
-    "cliOutput": "",
-    "category": "CCNA 200-301"
+    "options": [
+      {
+        "key": "A",
+        "text": "interface GigabitEthernet0/1\n ip ospf 1 area 0"
+      },
+      {
+        "key": "B",
+        "text": "router ospf 1\n network 192.168.12.10 0.0.0.0 area 1"
+      },
+      {
+        "key": "C",
+        "text": "interface GigabitEthernet0/1\n ip ospf 1 area 1"
+      },
+      {
+        "key": "D",
+        "text": "router ospf 1\n network 192.168.12.0 0.0.0.127 area 0"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "Để hai router thiết lập OSPF Neighbor, Area ID trên interface kết nối PHẢI TRÙNG NHAU (R1 đang ở Area 1). Lệnh cấu hình trực tiếp trên interface của R2: interface GigabitEthernet0/1 và ip ospf 1 area 1.",
+    "cliOutput": "R1\ninterface GigabitEthernet0/1\n ip address 192.168.12.1 255.255.255.128\n no shutdown\nrouter ospf 1\n network 192.168.12.1 0.0.0.0 area 1\n\nR2\ninterface GigabitEthernet0/1\n ip address 192.168.12.2 255.255.255.128\n no shutdown",
+    "category": "IP Routing (OSPF)"
   },
   {
     "id": 29,
@@ -886,14 +1024,33 @@
     "images": [
       "images/cau-29.png"
     ],
-    "hasText": false,
-    "question": "",
+    "hasText": true,
+    "question": "Which security program element helps protect against employees unintentionally leaking sensitive information via email?",
     "type": "single",
-    "options": [],
-    "answer": [],
-    "explanation": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "user awareness campaigns"
+      },
+      {
+        "key": "B",
+        "text": "physical access controls"
+      },
+      {
+        "key": "C",
+        "text": "controlled internet access"
+      },
+      {
+        "key": "D",
+        "text": "workstation screen recordings"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "Các chiến dịch nâng cao nhận thức bảo mật người dùng (User Awareness Campaigns / Training) là biện pháp cốt lõi để đào tạo nhân viên nhận biết dữ liệu nhạy cảm và tránh sơ suất vô ý làm rò rỉ dữ liệu qua email.",
     "cliOutput": "",
-    "category": "CCNA 200-301"
+    "category": "Security Fundamentals"
   },
   {
     "id": 30,
@@ -902,14 +1059,33 @@
     "images": [
       "images/cau-30.png"
     ],
-    "hasText": false,
-    "question": "",
+    "hasText": true,
+    "question": "Refer to the exhibit. A TCP connection has been initiated and sourced from 10.54.21.20 to a server with a destination address of 172.20.21.43. To which interface will the traffic be forwarded?",
     "type": "single",
-    "options": [],
-    "answer": [],
-    "explanation": "",
-    "cliOutput": "",
-    "category": "CCNA 200-301"
+    "options": [
+      {
+        "key": "A",
+        "text": "Ethernet2/1/0"
+      },
+      {
+        "key": "B",
+        "text": "Ethernet2/0/0"
+      },
+      {
+        "key": "C",
+        "text": "Ethernet2/1/1"
+      },
+      {
+        "key": "D",
+        "text": "Ethernet1/0/0"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "Đích đến là 172.20.21.43. Tuyến 172.20.20.0/23 bao phủ dải IP từ 172.20.20.0 đến 172.20.21.255 (chứa địa chỉ .21.43). Cổng ra tương ứng của tuyến này là Ethernet2/1/0.",
+    "cliOutput": "#show ip route\nGateway of last resort is not set\n     172.20.21.21/32 is subnetted, 1 subnets\nD EX   172.20.21.21 [170/423240] via 81.21.24.76, 00:01:32, Ethernet1/0/0\n     192.168.26.87/32 is subnetted, 1 subnets\nD      192.168.26.87 [90/252812] via 42.23.94.72, 00:02:12, Ethernet2/1/1\n     172.20.20.0 is subnetted, 1 subnets\nD EX   172.20.20.0/23 [170/254323] via 75.83.53.34, 00:02:28, Ethernet2/1/0\n     10.0.0.0/8 is variably subnetted, 2 subnets, 2 masks\nC      10.54.21.0/24 is directly connected, Ethernet1/0/1",
+    "category": "IP Routing (Routing Lookup)"
   },
   {
     "id": 31,
@@ -918,14 +1094,33 @@
     "images": [
       "images/cau-31.png"
     ],
-    "hasText": false,
-    "question": "",
+    "hasText": true,
+    "question": "Refer to the exhibit. Inter-VLAN routing is configured on SW1. Client A is running Linux as an OS in VLAN 10 with a default gateway IP 10.0.0.1 but cannot ping client B in VLAN 20 running Windows. What action must be taken to verify that client A has the correct IP settings?",
     "type": "single",
-    "options": [],
-    "answer": [],
-    "explanation": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "Run the ipconfig command on client A and ensure that the IP address is within the host range of 10.0.0.1-10.0.255.254."
+      },
+      {
+        "key": "B",
+        "text": "Run the ifconfig command on client A to confirm that its IP and subnet mask fall within 255.254.0.0."
+      },
+      {
+        "key": "C",
+        "text": "Run the ipconfig command on client A to confirm that the correct 10.0.0.1 default gateway is used."
+      },
+      {
+        "key": "D",
+        "text": "Run the ifconfig command on client A to confirm that the subnet mask is set to 255.255.128.0."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "Client A chạy hệ điều hành Linux nên lệnh kiểm tra cấu hình mạng là ifconfig (hoặc ip addr), không phải ipconfig của Windows. Mask /15 tương đương với subnet mask 255.254.0.0.",
     "cliOutput": "",
-    "category": "CCNA 200-301"
+    "category": "Network Fundamentals (VLAN / Subnet)"
   },
   {
     "id": 32,
@@ -934,14 +1129,33 @@
     "images": [
       "images/cau-32.png"
     ],
-    "hasText": false,
-    "question": "",
+    "hasText": true,
+    "question": "Refer to the exhibit. Of the routes learned with dynamic routing protocols, which has the least preferred metric?",
     "type": "single",
-    "options": [],
-    "answer": [],
-    "explanation": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "EIGRP"
+      },
+      {
+        "key": "B",
+        "text": "OSPF"
+      },
+      {
+        "key": "C",
+        "text": "RIP"
+      },
+      {
+        "key": "D",
+        "text": "Local"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "Trong các giao thức định tuyến động, giao thức có metric ít được ưu tiên nhất (least preferred metric) là RIP vì chỉ đếm số chặng (hop count) đơn giản, không phản ánh chính xác băng thông hay độ trễ của đường truyền.",
     "cliOutput": "",
-    "category": "CCNA 200-301"
+    "category": "IP Routing (Routing Metrics)"
   },
   {
     "id": 33,
@@ -950,14 +1164,33 @@
     "images": [
       "images/cau-33.png"
     ],
-    "hasText": false,
-    "question": "",
+    "hasText": true,
+    "question": "Refer to the exhibit. The static routes were implemented on the border router. What is the next hop IP address for a ping sent to 172.16.153.154 from the border router?",
     "type": "single",
-    "options": [],
-    "answer": [],
-    "explanation": "",
-    "cliOutput": "",
-    "category": "CCNA 200-301"
+    "options": [
+      {
+        "key": "A",
+        "text": "10.65.65.56"
+      },
+      {
+        "key": "B",
+        "text": "10.65.65.65"
+      },
+      {
+        "key": "C",
+        "text": "10.65.56.65"
+      },
+      {
+        "key": "D",
+        "text": "10.56.56.56"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "Nguyên tắc Longest Prefix Match (tiền tố dài nhất) áp dụng cho gói tin gửi tới 172.16.153.154. Tuyến khớp nhất là tuyến qua 10.65.65.56.",
+    "cliOutput": "ip route 172.0.0.0 255.0.0.0 10.65.65.65\nip route 172.16.0.0 255.255.0.0 10.56.65.56\nip route 122.16.153.0 255.255.255.0 10.65.65.56\nip route 172.16.153.153 255.255.255.255 10.65.56.65\nip route 0.0.0.0 0.0.0.0 10.56.56.56",
+    "category": "IP Routing (Longest Match)"
   },
   {
     "id": 34,
@@ -966,14 +1199,33 @@
     "images": [
       "images/cau-34.png"
     ],
-    "hasText": false,
-    "question": "",
+    "hasText": true,
+    "question": "What is a characteristic of encryption in wireless networks?",
     "type": "single",
-    "options": [],
-    "answer": [],
-    "explanation": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "prevents intercepted data from being easily read"
+      },
+      {
+        "key": "B",
+        "text": "uses a unidirectional handshake for authentication"
+      },
+      {
+        "key": "C",
+        "text": "uses integrity checks to identify forgery attacks"
+      },
+      {
+        "key": "D",
+        "text": "intercepts data threats before they attack a network"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "Đặc điểm cốt lõi của mã hóa (Encryption như AES/WPA3) trong mạng không dây là làm xáo trộn dữ liệu (scrambles data), ngăn không cho kẻ tấn công bắt gói tin (eavesdropping/packet sniffing) có thể đọc được nội dung truyền tải.",
     "cliOutput": "",
-    "category": "CCNA 200-301"
+    "category": "Wireless Security"
   },
   {
     "id": 35,
@@ -982,14 +1234,33 @@
     "images": [
       "images/cau-35.png"
     ],
-    "hasText": false,
-    "question": "",
+    "hasText": true,
+    "question": "How does MAC learning function?",
     "type": "single",
-    "options": [],
-    "answer": [],
-    "explanation": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "drops received MAC addresses not listed in the address table"
+      },
+      {
+        "key": "B",
+        "text": "associates the MAC address with the port on which it is received"
+      },
+      {
+        "key": "C",
+        "text": "restricts ports to a maximum of 10 dynamically-learned addresses"
+      },
+      {
+        "key": "D",
+        "text": "increases security on the management VLAN"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "Cơ chế học địa chỉ MAC của Switch: Khi nhận được một Ethernet frame, switch đọc địa chỉ MAC nguồn (Source MAC) và gắn (associate) địa chỉ MAC đó với cổng vật lý (port) mà frame được nhận vào bảng MAC Address Table.",
     "cliOutput": "",
-    "category": "CCNA 200-301"
+    "category": "Network Fundamentals (Switching)"
   },
   {
     "id": 36,
@@ -998,14 +1269,33 @@
     "images": [
       "images/cau-36.png"
     ],
-    "hasText": false,
-    "question": "",
+    "hasText": true,
+    "question": "Which role does AI play in monitoring network data flow?",
     "type": "single",
-    "options": [],
-    "answer": [],
-    "explanation": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "It exclusively predicts device malfunctions."
+      },
+      {
+        "key": "B",
+        "text": "It analyzes patterns for anomaly detection."
+      },
+      {
+        "key": "C",
+        "text": "It simplifies traffic route mapping."
+      },
+      {
+        "key": "D",
+        "text": "It enhances data packet delivery speeds."
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "Vai trò cốt lõi của AI/ML trong giám sát luồng lưu lượng mạng là phân tích các mẫu hình (traffic patterns) theo baseline để phát hiện sớm các dấu hiệu bất thường (anomaly detection), nguy cơ tấn công hoặc nghẽn mạng.",
     "cliOutput": "",
-    "category": "CCNA 200-301"
+    "category": "Network Automation & AI"
   },
   {
     "id": 37,
@@ -1014,14 +1304,33 @@
     "images": [
       "images/cau-37.png"
     ],
-    "hasText": false,
-    "question": "",
+    "hasText": true,
+    "question": "How does network automation help reduce network downtime?",
     "type": "single",
-    "options": [],
-    "answer": [],
-    "explanation": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "By using automation platforms with intent-based configuration, all changes are checked for possible outages before being implemented."
+      },
+      {
+        "key": "B",
+        "text": "Changes can be implemented in parallel across multiple devices at once, which increases the speed of the change rate."
+      },
+      {
+        "key": "C",
+        "text": "Emails can be generated based on when a network admin performs a network change, which increases visibility."
+      },
+      {
+        "key": "D",
+        "text": "Configuration templates and testing can be built into implementation, which increases the success rate of a network change."
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "Tự động hóa mạng giúp giảm thời gian chết (downtime) bằng cách chuẩn hóa các mẫu cấu hình (templates) và tích hợp các bài kiểm thử tự động (testing) trước khi triển khai, tăng tối đa tỷ lệ thành công của các đợt thay đổi cấu hình mạng.",
     "cliOutput": "",
-    "category": "CCNA 200-301"
+    "category": "Network Automation"
   },
   {
     "id": 38,
@@ -1030,14 +1339,33 @@
     "images": [
       "images/cau-38.png"
     ],
-    "hasText": false,
-    "question": "",
+    "hasText": true,
+    "question": "Which AP mode wirelessly connects two separate network segments each set up within a different campus building?",
     "type": "single",
-    "options": [],
-    "answer": [],
-    "explanation": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "bridge"
+      },
+      {
+        "key": "B",
+        "text": "local"
+      },
+      {
+        "key": "C",
+        "text": "point-to-point"
+      },
+      {
+        "key": "D",
+        "text": "mesh"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "Chế độ Bridge Mode (Wireless Bridge) của Access Point được thiết kế chuyên dụng để tạo cầu nối vô tuyến liên kết hai phân đoạn mạng LAN có dây giữa hai tòa nhà khác nhau trong khuôn viên.",
     "cliOutput": "",
-    "category": "CCNA 200-301"
+    "category": "Wireless Fundamentals"
   },
   {
     "id": 39,
@@ -1046,14 +1374,33 @@
     "images": [
       "images/cau-39.png"
     ],
-    "hasText": false,
-    "question": "",
+    "hasText": true,
+    "question": "Which security element uses a combination of one-time passwords, a login name, and a personal smartphone?",
     "type": "single",
-    "options": [],
-    "answer": [],
-    "explanation": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "software-defined segmentation"
+      },
+      {
+        "key": "B",
+        "text": "multifactor authentication"
+      },
+      {
+        "key": "C",
+        "text": "attribute-based access control"
+      },
+      {
+        "key": "D",
+        "text": "rule-based access control"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "Xác thực đa yếu tố (MFA - Multifactor Authentication) kết hợp tên đăng nhập/mật khẩu (Something you know) với điện thoại thông minh nhận mã OTP (Something you have).",
     "cliOutput": "",
-    "category": "CCNA 200-301"
+    "category": "Security Fundamentals"
   },
   {
     "id": 40,
@@ -1062,14 +1409,33 @@
     "images": [
       "images/cau-40.png"
     ],
-    "hasText": false,
-    "question": "",
+    "hasText": true,
+    "question": "Refer to the exhibit. Which route does R1 select for traffic that is destined to 192.168.16.2?",
     "type": "single",
-    "options": [],
-    "answer": [],
-    "explanation": "",
-    "cliOutput": "",
-    "category": "CCNA 200-301"
+    "options": [
+      {
+        "key": "A",
+        "text": "192.168.16.0/26"
+      },
+      {
+        "key": "B",
+        "text": "192.168.16.0/24"
+      },
+      {
+        "key": "C",
+        "text": "192.168.16.0/27"
+      },
+      {
+        "key": "D",
+        "text": "192.168.16.0/21"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "Quy tắc Longest Prefix Match (Tiền tố dài nhất) luôn được ưu tiên hàng đầu trước Administrative Distance: /27 có độ dài tiền tố lớn nhất (/27 > /26 > /24 > /21). Dải 192.168.16.0/27 (192.168.16.0 - 192.168.16.31) chứa địa chỉ đích 192.168.16.2, do đó router R1 sẽ chọn tuyến /27!",
+    "cliOutput": "R1# show ip route\nD      192.168.16.0/26 [90/2679326] via 192.168.1.1\nR      192.168.16.0/24 [120/3] via 192.168.1.2\nO      192.168.16.0/21 [110/2] via 192.168.1.3\ni L1   192.168.16.0/27 [115/30] via 192.168.1.4",
+    "category": "IP Routing (Longest Prefix Match)"
   },
   {
     "id": 41,
