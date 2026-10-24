@@ -223,20 +223,20 @@
     el.markMasteredBtn.classList.toggle('active', userProgress.mastered.has(q.id));
     el.markReviewBtn.classList.toggle('active', userProgress.review.has(q.id));
 
-    // Auto-detect mode if question has transcribed text
-    if (q.hasText) {
+    // View Mode Handling
+    if (currentView === 'image') {
+      el.viewTextBtn.classList.remove('active');
+      el.viewImgBtn.classList.add('active');
+      el.textModeContainer.classList.add('hidden');
+      el.imageModeContainer.classList.remove('hidden');
+      renderImageMode(q);
+    } else {
       currentView = 'text';
       el.viewTextBtn.classList.add('active');
       el.viewImgBtn.classList.remove('active');
       el.textModeContainer.classList.remove('hidden');
       el.imageModeContainer.classList.add('hidden');
       renderTextMode(q);
-    } else {
-      currentView = 'image';
-      el.viewTextBtn.classList.remove('active');
-      el.viewImgBtn.classList.add('active');
-      el.textModeContainer.classList.add('hidden');
-      el.imageModeContainer.classList.remove('hidden');
       renderImageMode(q);
     }
 
@@ -251,6 +251,20 @@
     highlightCurrentGridCell();
   }
 
+  // --- Check if Question Requires Exhibit / Diagram ---
+  function hasExhibit(q) {
+    if (q.hasExhibit !== undefined) return q.hasExhibit;
+    if (q.isMultiPart && q.id !== 143) return true;
+    if (!q.images || !q.images.length) return false;
+    const t = (q.question || '').toLowerCase();
+    const phrases = [
+      'refer to the exhibit', 'in this output', 'shown in the exhibit',
+      'json schema', 'drag and drop', 'in this table', 'following topology',
+      'in the graphic', 'following graphic', 'following exhibit'
+    ];
+    return phrases.some(p => t.includes(p));
+  }
+
   // --- Render Text Mode ---
   function renderTextMode(q) {
     el.qPromptText.innerHTML = q.question || 'Xem đề bài trong ảnh gốc.';
@@ -263,11 +277,39 @@
       el.cliOutputContainer.classList.add('hidden');
     }
 
-    // Vector Topology (e.g., Q11)
+    // Exhibit / Vector Topology
+    const headerTitle = el.topologyContainer.querySelector('.topology-header span');
     if (q.id === 11) {
       el.topologyContainer.classList.remove('hidden');
-      el.topologyFrame.innerHTML = `<img src="images/topology_q11.svg" alt="Topology Q11" style="width:100%; height:auto;">`;
+      if (headerTitle) headerTitle.textContent = '📐 Sơ đồ mạng Vector Q11 — Longest Prefix Match (Nhấp để phóng to)';
+      el.topologyFrame.innerHTML = `<img src="images/topology_q11.svg" alt="Topology Q11" class="topology-exhibit-img">`;
       el.topologyFrame.onclick = () => openLightbox('images/topology_q11.svg', 'Sơ đồ mạng Vector Q11 — Longest Prefix Match');
+    } else if (hasExhibit(q)) {
+      el.topologyContainer.classList.remove('hidden');
+      if (headerTitle) headerTitle.textContent = '📷 Sơ đồ / Exhibit đính kèm đề bài (Nhấp vào ảnh để phóng to)';
+
+      const imgSrc = (q.images && q.images.length) ? q.images[0] : '';
+      const isMulti = q.isMultiPart && q.images.length > 1;
+
+      el.topologyFrame.innerHTML = `
+        <div class="topology-box ${isAnswerRevealed ? 'revealed' : ''}">
+          <img src="${imgSrc}" alt="Exhibit ${q.id}" class="topology-exhibit-img">
+          ${!isMulti && !isAnswerRevealed ? `
+            <div class="topology-answer-mask">
+              <span>🔒 Hộp đáp án ảnh gốc đã được che mờ (Bấm Kiểm tra đáp án để mở)</span>
+            </div>
+          ` : ''}
+        </div>
+      `;
+
+      el.topologyFrame.onclick = (e) => {
+        if (e.target.closest('.topology-answer-mask')) {
+          const mask = el.topologyFrame.querySelector('.topology-answer-mask');
+          if (mask) mask.classList.add('hidden');
+          return;
+        }
+        openLightbox(imgSrc, `Câu ${q.id} — Sơ đồ / Exhibit đính kèm`);
+      };
     } else {
       el.topologyContainer.classList.add('hidden');
     }
@@ -555,6 +597,7 @@
       el.viewImgBtn.classList.remove('active');
       el.textModeContainer.classList.remove('hidden');
       el.imageModeContainer.classList.add('hidden');
+      renderTextMode(questions[currentIndex]);
     });
 
     el.viewImgBtn.addEventListener('click', () => {
@@ -563,6 +606,7 @@
       el.viewTextBtn.classList.remove('active');
       el.imageModeContainer.classList.remove('hidden');
       el.textModeContainer.classList.add('hidden');
+      renderImageMode(questions[currentIndex]);
     });
 
     // Mask Controls

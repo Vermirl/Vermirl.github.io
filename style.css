@@ -456,23 +456,79 @@ body {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   overflow: hidden;
-  cursor: pointer;
   background-color: #0b1120;
 }
 
 .topology-header {
-  padding: 6px 12px;
+  padding: 8px 14px;
   background-color: var(--bg-surface-elevated);
-  font-size: 12px;
+  font-size: 13px;
   color: var(--accent-cisco);
   font-weight: 600;
   border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.topology-frame {
+  position: relative;
+  overflow: hidden;
+  background: #0f172a;
+  cursor: pointer;
 }
 
 .topology-frame svg {
   display: block;
   width: 100%;
   height: auto;
+}
+
+.topology-box {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.topology-exhibit-img {
+  display: block;
+  max-width: 100%;
+  max-height: 520px;
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.topology-answer-mask {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 65px;
+  background: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  font-size: 12px;
+  font-weight: 500;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.topology-answer-mask:hover {
+  background: rgba(15, 23, 42, 0.98);
+  color: #38bdf8;
+}
+
+.topology-answer-mask.hidden {
+  display: none !important;
 }
 
 /* Options Selection List */
