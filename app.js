@@ -641,6 +641,12 @@
         userProgress.mastered.delete(q.id);
       }
       saveProgress();
+
+      // Immediately sync tag buttons and counters
+      el.markMasteredBtn.classList.toggle('active', userProgress.mastered.has(q.id));
+      el.markReviewBtn.classList.toggle('active', userProgress.review.has(q.id));
+      updateStats();
+      updateModeBanners();
     }
 
     // Reveal UI
@@ -668,7 +674,16 @@
 
     el.explanationPanel.classList.remove('hidden');
     const ans = (q.answer && q.answer.length) ? q.answer.join(', ') : 'Xem trong ảnh gốc';
-    el.expResultText.textContent = `Đáp án Đúng: ${ans}`;
+
+    let statusPill = '';
+    if (userProgress.answers[q.id]) {
+      if (userProgress.answers[q.id].isCorrect) {
+        statusPill = `<span class="badge-status-pill correct">✅ Chính xác — Đã xóa khỏi mục Cần Ôn & chuyển sang Đã Thuộc</span>`;
+      } else {
+        statusPill = `<span class="badge-status-pill wrong">❌ Chưa đúng — Đã thêm vào mục Cần Ôn</span>`;
+      }
+    }
+    el.expResultText.innerHTML = `<span>Đáp án Đúng: ${ans}</span>${statusPill}`;
 
     let expHtml = '';
     if (q.explanation) {
@@ -743,7 +758,10 @@
     if (studyMode === 'review') {
       const pool = getActiveQuestionPool();
       const pos = pool.indexOf(currentIndex) + 1;
-      el.reviewProgressText.textContent = `Đang ôn câu ${pos} / ${pool.length} câu cần ôn`;
+      const displayPos = pos > 0 ? pos : 1;
+      el.reviewProgressText.textContent = pool.length > 0 
+        ? `Đang ôn câu ${displayPos} / ${pool.length} câu cần ôn` 
+        : `Đã ôn xong toàn bộ câu cần ôn!`;
     } else if (studyMode === 'mock') {
       const pool = mockState.pool;
       const pos = pool.indexOf(currentIndex) + 1;
@@ -973,23 +991,40 @@
   // --- Navigation Helpers (Within Active Pool) ---
   function navigateNext() {
     const pool = getActiveQuestionPool();
-    if (!pool.length) return;
+    if (!pool.length) {
+      if (studyMode === 'review') showEmptyReviewState(true);
+      return;
+    }
     const poolIdx = pool.indexOf(currentIndex);
-    if (poolIdx < pool.length - 1) {
-      renderQuestion(pool[poolIdx + 1]);
+    if (poolIdx >= 0) {
+      if (poolIdx < pool.length - 1) {
+        renderQuestion(pool[poolIdx + 1]);
+      } else {
+        renderQuestion(pool[0]); // Wrap around
+      }
     } else {
-      renderQuestion(pool[0]); // Wrap around
+      const nextIdx = pool.find(idx => idx > currentIndex);
+      renderQuestion(nextIdx !== undefined ? nextIdx : pool[0]);
     }
   }
 
   function navigatePrev() {
     const pool = getActiveQuestionPool();
-    if (!pool.length) return;
+    if (!pool.length) {
+      if (studyMode === 'review') showEmptyReviewState(true);
+      return;
+    }
     const poolIdx = pool.indexOf(currentIndex);
-    if (poolIdx > 0) {
-      renderQuestion(pool[poolIdx - 1]);
+    if (poolIdx >= 0) {
+      if (poolIdx > 0) {
+        renderQuestion(pool[poolIdx - 1]);
+      } else {
+        renderQuestion(pool[pool.length - 1]);
+      }
     } else {
-      renderQuestion(pool[pool.length - 1]);
+      const prevPool = pool.filter(idx => idx < currentIndex);
+      const prevIdx = prevPool.length > 0 ? prevPool[prevPool.length - 1] : pool[pool.length - 1];
+      renderQuestion(prevIdx);
     }
   }
 
