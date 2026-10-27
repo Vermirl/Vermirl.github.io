@@ -456,22 +456,12 @@
       const isMulti = q.isMultiPart && q.images.length > 1;
 
       el.topologyFrame.innerHTML = `
-        <div class="topology-box ${isAnswerRevealed ? 'revealed' : ''}">
+        <div class="topology-box">
           <img src="${imgSrc}" alt="Exhibit ${q.id}" class="topology-exhibit-img">
-          ${!isMulti && !isAnswerRevealed ? `
-            <div class="topology-answer-mask">
-              <span>🔒 Hộp đáp án ảnh gốc đã được che mờ (Kiểm tra đáp án để mở)</span>
-            </div>
-          ` : ''}
         </div>
       `;
 
-      el.topologyFrame.onclick = (e) => {
-        if (e.target.closest('.topology-answer-mask')) {
-          const mask = el.topologyFrame.querySelector('.topology-answer-mask');
-          if (mask) mask.classList.add('hidden');
-          return;
-        }
+      el.topologyFrame.onclick = () => {
         openLightbox(imgSrc, `Câu ${q.id} — Sơ đồ / Exhibit đính kèm`);
       };
     } else {
