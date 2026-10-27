@@ -265,7 +265,8 @@ body {
   flex: 1;
   padding: 24px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   overflow-y: auto;
 }
 
@@ -1247,91 +1248,27 @@ kbd {
    Dedicated Study Modes & Pagination Extensions
    ========================================================================== */
 
-/* Sub-navigation: Part Pagination Bar */
-.part-pagination-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  background-color: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: 10px 16px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  flex-wrap: wrap;
-}
 
-.part-nav-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
 
-.part-bar-label {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
 
-.part-pills {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-
-.part-pill {
-  background-color: var(--bg-surface-elevated);
-  border: 1px solid var(--border-color);
-  color: var(--text-secondary);
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 600;
-  padding: 5px 12px;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: all 0.2s ease;
-  user-select: none;
-}
-
-.part-pill:hover {
-  background-color: var(--bg-surface-hover);
-  color: var(--text-primary);
-  border-color: var(--accent-cisco);
-}
-
-.part-pill.active {
-  background-color: var(--accent-cisco);
-  color: #ffffff;
-  border-color: var(--accent-cisco);
-  box-shadow: 0 2px 8px var(--accent-cisco-glow);
-}
-
-.part-nav-right {
-  display: flex;
-  align-items: center;
-}
-
-/* Shuffle Options Toggle Button */
+/* Header Shuffle Options Toggle Button */
 .btn-shuffle-toggle {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   background-color: var(--bg-surface-elevated);
   border: 1px solid var(--border-color);
   color: var(--text-secondary);
   font-family: inherit;
   font-size: 13px;
   font-weight: 600;
-  padding: 6px 14px;
+  padding: 6px 12px;
+  height: 38px;
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition: all 0.2s ease;
   user-select: none;
+  white-space: nowrap;
 }
 
 .btn-shuffle-toggle:hover {
@@ -1341,17 +1278,25 @@ kbd {
 }
 
 .btn-shuffle-toggle.active {
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(168, 85, 247, 0.3));
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(168, 85, 247, 0.35));
   border-color: #a855f7;
-  color: #c084fc;
-  box-shadow: 0 0 12px rgba(168, 85, 247, 0.3);
+  color: #d8b4fe;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
 }
 
-.btn-shuffle-toggle.active .shuffle-icon {
-  transform: rotate(180deg);
-  display: inline-block;
-  transition: transform 0.3s ease;
+.btn-shuffle-toggle .shuffle-icon {
+  font-size: 14px;
 }
+
+@media (max-width: 900px) {
+  .btn-shuffle-toggle .shuffle-text {
+    display: none;
+  }
+  .btn-shuffle-toggle {
+    padding: 6px 10px;
+  }
+}
+
 
 /* Review Room Active Banner */
 .review-mode-banner {
@@ -1359,6 +1304,8 @@ kbd {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  width: 100%;
+  max-width: 900px;
   background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(217, 119, 6, 0.08));
   border: 1px solid var(--status-review-border);
   border-radius: var(--radius-md);
@@ -1427,6 +1374,8 @@ kbd {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  width: 100%;
+  max-width: 900px;
   background: linear-gradient(135deg, rgba(14, 165, 233, 0.15), rgba(30, 58, 138, 0.25));
   border: 1px solid rgba(14, 165, 233, 0.4);
   border-radius: var(--radius-md);
@@ -1760,12 +1709,4 @@ kbd {
   flex-wrap: wrap;
 }
 
-@media (max-width: 900px) {
-  .part-pagination-bar {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .part-nav-right {
-    justify-content: flex-end;
-  }
-}
+

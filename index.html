@@ -65,6 +65,10 @@
 
     <!-- Header Right Controls -->
     <div class="header-right">
+      <button id="toggleShuffleBtn" class="btn-shuffle-toggle" title="Đảo ngẫu nhiên thứ tự các đáp án A, B, C, D (Chống học vẹt)">
+        <span class="shuffle-icon">🔀</span>
+        <span id="shuffleStatusText" class="shuffle-text">Đảo đáp án</span>
+      </button>
       <button id="themeToggleBtn" class="icon-btn" title="Chuyển chế độ Sáng / Tối" aria-label="Toggle Theme">
         <span id="themeIcon">🌙</span>
       </button>
@@ -83,26 +87,7 @@
     <!-- Question Card Area -->
     <section class="question-workspace">
       
-      <!-- Sub-navigation: Part Pagination (Practice & Flashcard) -->
-      <nav id="partPaginationNav" class="part-pagination-bar">
-        <div class="part-nav-left">
-          <span class="part-bar-label">Phân trang bộ đề:</span>
-          <div class="part-pills">
-            <button class="part-pill active" data-part="all">Tất cả (225)</button>
-            <button class="part-pill" data-part="1">Phần 1 (1 - 45)</button>
-            <button class="part-pill" data-part="2">Phần 2 (46 - 90)</button>
-            <button class="part-pill" data-part="3">Phần 3 (91 - 135)</button>
-            <button class="part-pill" data-part="4">Phần 4 (136 - 180)</button>
-            <button class="part-pill" data-part="5">Phần 5 (181 - 225)</button>
-          </div>
-        </div>
-        <div class="part-nav-right">
-          <button id="toggleShuffleBtn" class="btn-shuffle-toggle" title="Đảo ngẫu nhiên thứ tự các đáp án A, B, C, D để chống học vẹt">
-            <span class="shuffle-icon">🔀</span>
-            <span id="shuffleStatusText" class="shuffle-text">Đảo đáp án: Tắt</span>
-          </button>
-        </div>
-      </nav>
+      
 
       <!-- Review Room Active Banner -->
       <div id="reviewModeBanner" class="review-mode-banner hidden">

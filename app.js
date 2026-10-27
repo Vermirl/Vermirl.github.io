@@ -1,27 +1,16 @@
 /**
  * Cisco CCNA 200-301 Mastery Hub — Application Core
- * Dedicated Study Modes: Part Practice, Oral Flashcard, Review Room & Mock Exam
+ * Dedicated Study Modes: Practice, Oral Flashcard, Review Room & Mock Exam
  */
 
 (() => {
   'use strict';
-
-  // --- Constants ---
-  const PARTS = {
-    'all': { start: 0, end: 224, label: 'Tất cả (225)' },
-    '1': { start: 0, end: 44, label: 'Phần 1 (1 - 45)' },
-    '2': { start: 45, end: 89, label: 'Phần 2 (46 - 90)' },
-    '3': { start: 90, end: 134, label: 'Phần 3 (91 - 135)' },
-    '4': { start: 135, end: 179, label: 'Phần 4 (136 - 180)' },
-    '5': { start: 180, end: 224, label: 'Phần 5 (181 - 225)' }
-  };
 
   // --- State ---
   let questions = [];
   let currentIndex = 0; // Global index in questions array (0..224)
   let studyMode = 'practice'; // 'practice' | 'flashcard' | 'review' | 'mock'
   let currentView = 'text'; // 'text' | 'image'
-  let activePart = 'all'; // 'all' | '1' | '2' | '3' | '4' | '5'
   let isShuffleEnabled = false;
   let shuffledCache = {}; // { qid: { options, answer, keyMap } }
   let selectedOptions = new Set();
@@ -57,9 +46,7 @@
     modeMockBtn: document.getElementById('modeMockBtn'),
     reviewCountBadge: document.getElementById('reviewCountBadge'),
 
-    // Sub-navigation: Part Pagination & Shuffle
-    partPaginationNav: document.getElementById('partPaginationNav'),
-    partPills: document.querySelectorAll('.part-pill'),
+    // Top Bar Shuffle Toggle Button
     toggleShuffleBtn: document.getElementById('toggleShuffleBtn'),
     shuffleStatusText: document.getElementById('shuffleStatusText'),
 
@@ -178,7 +165,7 @@
     setupEventListeners();
     await loadQuestions();
     
-    // Resume correct mode or default to practice
+    // Default to practice mode
     switchStudyMode(studyMode, false);
     renderQuestion(currentIndex);
     renderMatrix();
@@ -224,11 +211,6 @@
   function loadSettings() {
     isShuffleEnabled = localStorage.getItem('ccna_shuffle_options') === 'true';
     updateShuffleButtonUI();
-    const savedPart = localStorage.getItem('ccna_active_part');
-    if (savedPart && PARTS[savedPart]) {
-      activePart = savedPart;
-      updatePartPillsUI();
-    }
   }
 
   // --- Theme Management ---
@@ -287,14 +269,8 @@
       });
       return pool;
     }
-    // Practice & Flashcard: respect activePart
-    const partConfig = PARTS[activePart] || PARTS['all'];
-    const pool = [];
-    const maxIdx = Math.min(partConfig.end, questions.length - 1);
-    for (let i = partConfig.start; i <= maxIdx; i++) {
-      pool.push(i);
-    }
-    return pool;
+    // Practice & Flashcard: all 225 questions
+    return Array.from({ length: questions.length }, (_, i) => i);
   }
 
   // --- Shuffle Options Algorithm ---
@@ -341,14 +317,8 @@
     if (!el.toggleShuffleBtn) return;
     el.toggleShuffleBtn.classList.toggle('active', isShuffleEnabled);
     if (el.shuffleStatusText) {
-      el.shuffleStatusText.textContent = isShuffleEnabled ? 'Đảo đáp án: Bật' : 'Đảo đáp án: Tắt';
+      el.shuffleStatusText.textContent = isShuffleEnabled ? 'Đảo đáp án: Bật' : 'Đảo đáp án';
     }
-  }
-
-  function updatePartPillsUI() {
-    el.partPills.forEach(pill => {
-      pill.classList.toggle('active', pill.dataset.part === activePart);
-    });
   }
 
   // --- Render Question ---
@@ -389,10 +359,8 @@
       el.qNumberBadge.textContent = `Đề thi: Câu ${poolIndex + 1} / 30 (Gốc #${q.id})`;
     } else if (studyMode === 'review') {
       el.qNumberBadge.textContent = `Phòng Ôn: Câu ${poolIndex + 1} / ${pool.length} (Gốc #${q.id})`;
-    } else if (activePart !== 'all') {
-      el.qNumberBadge.textContent = `Phần ${activePart}: Câu ${poolIndex + 1} / ${pool.length} (Gốc #${q.id})`;
     } else {
-      el.qNumberBadge.textContent = `Câu ${q.id} / 225`;
+      el.qNumberBadge.textContent = `Câu ${q.id} / ${questions.length || 225}`;
     }
 
     el.qCategoryBadge.textContent = q.category || 'CCNA 200-301';
@@ -431,9 +399,7 @@
     el.notesStatus.textContent = 'Đã lưu';
 
     // Submit / Check Button appearance
-    if (studyMode === 'mock') {
-      el.submitCheckBtn.style.display = 'none';
-    } else if (studyMode === 'flashcard') {
+    if (studyMode === 'mock' || studyMode === 'flashcard') {
       el.submitCheckBtn.style.display = 'none';
     } else {
       el.submitCheckBtn.style.display = 'inline-flex';
@@ -620,7 +586,6 @@
 
   // --- Option Click Handler ---
   function handleOptionClick(key, q) {
-    if (studyMode === 'quiz' && isAnswerRevealed) return;
     if (studyMode === 'practice' && isAnswerRevealed) return;
 
     if (studyMode === 'mock') {
@@ -653,7 +618,7 @@
 
   // --- Submit / Reveal Answer ---
   function checkOrRevealAnswer() {
-    if (studyMode === 'mock') return; // Mock answers are submitted at the end
+    if (studyMode === 'mock') return;
 
     const rawQ = questions[currentIndex];
     const q = getEffectiveQuestion(rawQ);
@@ -726,7 +691,6 @@
     el.modeMockBtn.classList.toggle('active', newMode === 'mock');
 
     // UI visibility
-    el.partPaginationNav.classList.toggle('hidden', newMode !== 'practice' && newMode !== 'flashcard');
     el.reviewModeBanner.classList.toggle('hidden', newMode !== 'review');
     el.mockExamBar.classList.toggle('hidden', newMode !== 'mock');
 
@@ -750,14 +714,9 @@
         startMockExam();
         return;
       }
-    } else {
-      if (mockState.isActive && !mockState.isFinished) {
-        // Paused timer while in another mode
-      }
     }
 
     if (shouldRender) {
-      // Ensure currentIndex is in active pool
       const pool = getActiveQuestionPool();
       if (!pool.includes(currentIndex) && pool.length > 0) {
         currentIndex = pool[0];
@@ -860,7 +819,7 @@
 
     // CCNA Scaled Score: 300 - 1000
     const scaledScore = 300 + Math.round((correctCount / 30) * 700);
-    const isPass = scaledScore >= 825; // 825 / 1000 is standard CCNA pass mark
+    const isPass = scaledScore >= 825; // 825 / 1000 standard CCNA pass mark
 
     // Format time taken
     const elapsedSecs = (45 * 60) - mockState.timeRemaining;
@@ -999,21 +958,7 @@
     if (poolIdx < pool.length - 1) {
       renderQuestion(pool[poolIdx + 1]);
     } else {
-      // If at end of a part, optionally offer next part or loop
-      if (activePart !== 'all' && studyMode === 'practice') {
-        const nextPartNum = parseInt(activePart, 10) + 1;
-        if (nextPartNum <= 5) {
-          activePart = String(nextPartNum);
-          localStorage.setItem('ccna_active_part', activePart);
-          updatePartPillsUI();
-          renderMatrix();
-          const newPool = getActiveQuestionPool();
-          renderQuestion(newPool[0]);
-          return;
-        }
-      }
-      // Wrap around
-      renderQuestion(pool[0]);
+      renderQuestion(pool[0]); // Wrap around
     }
   }
 
@@ -1062,23 +1007,7 @@
     el.modeReviewBtn.addEventListener('click', () => switchStudyMode('review'));
     el.modeMockBtn.addEventListener('click', () => switchStudyMode('mock'));
 
-    // Part Pagination Pills
-    el.partPills.forEach(pill => {
-      pill.addEventListener('click', () => {
-        activePart = pill.dataset.part;
-        localStorage.setItem('ccna_active_part', activePart);
-        updatePartPillsUI();
-        renderMatrix();
-        const pool = getActiveQuestionPool();
-        if (!pool.includes(currentIndex) && pool.length > 0) {
-          renderQuestion(pool[0]);
-        } else {
-          renderQuestion(currentIndex);
-        }
-      });
-    });
-
-    // Shuffle Toggle
+    // Top Bar Shuffle Toggle
     el.toggleShuffleBtn.addEventListener('click', () => {
       isShuffleEnabled = !isShuffleEnabled;
       localStorage.setItem('ccna_shuffle_options', isShuffleEnabled);
@@ -1185,7 +1114,6 @@
         if (pool.length === 0) {
           showEmptyReviewState(true);
         } else {
-          // Advance to next available in review pool
           const nextIdx = pool.find(idx => idx > currentIndex) || pool[0];
           renderQuestion(nextIdx);
         }
