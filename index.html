@@ -26,11 +26,17 @@
 
       <!-- Mode Switcher -->
       <div class="mode-tabs" role="tablist">
-        <button id="modeQuizBtn" class="mode-btn active" title="Chế độ Trắc nghiệm (chọn đáp án & chấm điểm)">
+        <button id="modePracticeBtn" class="mode-btn active" title="Chế độ Luyện thi theo phần (chọn đáp án & kiểm tra tức thì)">
           <span>🎯</span> Luyện Thi
         </button>
         <button id="modeFlashcardBtn" class="mode-btn" title="Chế độ Vấn đáp Flashcard (nhẩm đáp án & lật mở)">
           <span>⚡</span> Vấn Đáp
+        </button>
+        <button id="modeReviewBtn" class="mode-btn" title="Chế độ Ôn tập các câu cần ôn lại">
+          <span>🟡</span> Ôn Lại (<span id="reviewCountBadge">0</span>)
+        </button>
+        <button id="modeMockBtn" class="mode-btn" title="Chế độ Thi thử bấm giờ chuẩn CCNA (30 câu)">
+          <span>⏱️</span> Thi Thử
         </button>
       </div>
     </div>
@@ -77,8 +83,65 @@
     <!-- Question Card Area -->
     <section class="question-workspace">
       
+      <!-- Sub-navigation: Part Pagination (Practice & Flashcard) -->
+      <nav id="partPaginationNav" class="part-pagination-bar">
+        <div class="part-nav-left">
+          <span class="part-bar-label">Phân trang bộ đề:</span>
+          <div class="part-pills">
+            <button class="part-pill active" data-part="all">Tất cả (225)</button>
+            <button class="part-pill" data-part="1">Phần 1 (1 - 45)</button>
+            <button class="part-pill" data-part="2">Phần 2 (46 - 90)</button>
+            <button class="part-pill" data-part="3">Phần 3 (91 - 135)</button>
+            <button class="part-pill" data-part="4">Phần 4 (136 - 180)</button>
+            <button class="part-pill" data-part="5">Phần 5 (181 - 225)</button>
+          </div>
+        </div>
+        <div class="part-nav-right">
+          <button id="toggleShuffleBtn" class="btn-shuffle-toggle" title="Đảo ngẫu nhiên thứ tự các đáp án A, B, C, D để chống học vẹt">
+            <span class="shuffle-icon">🔀</span>
+            <span id="shuffleStatusText" class="shuffle-text">Đảo đáp án: Tắt</span>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Review Room Active Banner -->
+      <div id="reviewModeBanner" class="review-mode-banner hidden">
+        <div class="review-banner-left">
+          <span class="review-banner-tag">🟡 PHÒNG ÔN TẬP ĐỘC LẬP</span>
+          <span id="reviewProgressText" class="review-banner-text">Đang ôn: Câu 1 / 0 câu cần ôn</span>
+        </div>
+        <div class="review-banner-right">
+          <span class="review-banner-hint">💡 Bấm "✅ Đã Thuộc" để xóa câu này khỏi danh sách ôn và chuyển câu tiếp</span>
+          <button id="exitReviewBtn" class="btn-exit-review" title="Quay về chế độ Luyện Thi">✕ Thoát phòng ôn</button>
+        </div>
+      </div>
+
+      <!-- Mock Exam Active Top Bar -->
+      <div id="mockExamBar" class="mock-exam-bar hidden">
+        <div class="mock-bar-left">
+          <span class="mock-tag">⏱️ THI THỬ CCNA 200-301</span>
+          <span id="mockQuestionProgress" class="mock-progress-text">Câu 1 / 30</span>
+        </div>
+        <div class="mock-bar-center">
+          <span class="mock-timer-label">Thời gian còn lại:</span>
+          <span id="mockTimerDisplay" class="mock-timer-clock">45:00</span>
+        </div>
+        <div class="mock-bar-right">
+          <button id="submitMockBtn" class="btn-submit-mock">📝 Nộp Bài Chấm Điểm</button>
+          <button id="quitMockBtn" class="btn-quit-mock" title="Hủy bài thi">Hủy thi</button>
+        </div>
+      </div>
+      
       <!-- Question Card Container -->
       <div class="question-card">
+        
+        <!-- Empty State for Review Mode -->
+        <div id="emptyReviewContainer" class="empty-state-card hidden">
+          <div class="empty-state-icon">🎉</div>
+          <h3>Không có câu nào trong danh sách Cần Ôn!</h3>
+          <p>Tất cả các câu đã được đánh dấu là "Đã thuộc" hoặc bạn chưa gắn cờ câu nào cần ôn. Hãy chọn chế độ <strong>Luyện Thi</strong> để bắt đầu làm bài và đánh dấu câu hỏi.</p>
+          <button id="emptyReviewBackBtn" class="btn-action primary">🎯 Quay về Luyện Thi</button>
+        </div>
         
         <!-- Question Header Meta -->
         <div class="q-header">
@@ -138,6 +201,13 @@
               <div class="topology-frame" id="topologyFrame">
                 <!-- SVG diagram injected here -->
               </div>
+            </div>
+
+            <!-- Flashcard Action Reveal Button -->
+            <div id="flashcardActionContainer" class="flashcard-actions hidden">
+              <button id="revealFlashcardBtn" class="btn-reveal-card">
+                <span>👁️</span> Lật Thẻ / Xem Đáp Án (Phím Space)
+              </button>
             </div>
 
             <!-- Options Selection List -->
@@ -286,6 +356,51 @@
       <button id="closeLightboxBtn" class="lightbox-close">✕</button>
       <img id="lightboxImg" src="" alt="Enlarged Diagram">
       <div class="lightbox-caption" id="lightboxCaption">Sơ đồ mạng phóng to</div>
+    </div>
+  </div>
+
+  <!-- Mock Exam Result Modal -->
+  <div id="mockResultModal" class="mock-modal hidden">
+    <div class="modal-backdrop" id="mockResultBackdrop"></div>
+    <div class="modal-dialog mock-dialog">
+      <div class="modal-header">
+        <h3>📊 Kết quả Bài Thi Thử CCNA 200-301</h3>
+        <button id="closeMockResultBtn" class="modal-close">✕</button>
+      </div>
+      <div class="modal-body mock-result-body">
+        <div class="mock-score-hero" id="mockScoreHero">
+          <div class="score-circle">
+            <span id="mockScoreVal" class="score-num">0</span>
+            <span class="score-max">/ 1000</span>
+          </div>
+          <div class="score-verdict" id="mockVerdict">CHƯA ĐẠT (FAIL)</div>
+        </div>
+
+        <div class="mock-stats-grid">
+          <div class="mock-stat-card">
+            <span class="stat-num correct" id="mockCorrectCount">0</span>
+            <span class="stat-text">Số câu đúng</span>
+          </div>
+          <div class="mock-stat-card">
+            <span class="stat-num wrong" id="mockWrongCount">0</span>
+            <span class="stat-text">Số câu sai</span>
+          </div>
+          <div class="mock-stat-card">
+            <span class="stat-num" id="mockTimeTaken">00:00</span>
+            <span class="stat-text">Thời gian làm</span>
+          </div>
+        </div>
+
+        <div class="mock-review-section">
+          <h4>Bảng tổng kết 30 câu hỏi (Nhấp vào câu để xem đáp án & giải thích):</h4>
+          <div id="mockQuestionsBreakdown" class="mock-breakdown-list"></div>
+        </div>
+
+        <div class="mock-modal-footer">
+          <button id="retakeMockBtn" class="btn-action primary">🔄 Thi Lại Đề Mới</button>
+          <button id="reviewMockWrongBtn" class="btn-action secondary">🟡 Đưa các câu sai vào Ôn Tập</button>
+        </div>
+      </div>
     </div>
   </div>
 

@@ -1,16 +1,29 @@
 /**
  * Cisco CCNA 200-301 Mastery Hub — Application Core
- * Interactive Quiz & Oral Exam Platform
+ * Dedicated Study Modes: Part Practice, Oral Flashcard, Review Room & Mock Exam
  */
 
 (() => {
   'use strict';
 
+  // --- Constants ---
+  const PARTS = {
+    'all': { start: 0, end: 224, label: 'Tất cả (225)' },
+    '1': { start: 0, end: 44, label: 'Phần 1 (1 - 45)' },
+    '2': { start: 45, end: 89, label: 'Phần 2 (46 - 90)' },
+    '3': { start: 90, end: 134, label: 'Phần 3 (91 - 135)' },
+    '4': { start: 135, end: 179, label: 'Phần 4 (136 - 180)' },
+    '5': { start: 180, end: 224, label: 'Phần 5 (181 - 225)' }
+  };
+
   // --- State ---
   let questions = [];
-  let currentIndex = 0;
-  let studyMode = 'quiz'; // 'quiz' | 'flashcard'
+  let currentIndex = 0; // Global index in questions array (0..224)
+  let studyMode = 'practice'; // 'practice' | 'flashcard' | 'review' | 'mock'
   let currentView = 'text'; // 'text' | 'image'
+  let activePart = 'all'; // 'all' | '1' | '2' | '3' | '4' | '5'
+  let isShuffleEnabled = false;
+  let shuffledCache = {}; // { qid: { options, answer, keyMap } }
   let selectedOptions = new Set();
   let isAnswerRevealed = false;
   let activeImgPart = 0;
@@ -24,11 +37,47 @@
     notes: {}    // { qid: "note text" }
   };
 
+  // Mock Exam Session State
+  let mockState = {
+    isActive: false,
+    pool: [], // 30 question indices
+    answers: {}, // { qid: ['A'] }
+    timeRemaining: 45 * 60,
+    timerId: null,
+    isFinished: false,
+    startedAt: null
+  };
+
   // --- DOM Elements ---
   const el = {
-    // Top Bar
-    modeQuizBtn: document.getElementById('modeQuizBtn'),
+    // Top Bar Mode Switchers
+    modePracticeBtn: document.getElementById('modePracticeBtn'),
     modeFlashcardBtn: document.getElementById('modeFlashcardBtn'),
+    modeReviewBtn: document.getElementById('modeReviewBtn'),
+    modeMockBtn: document.getElementById('modeMockBtn'),
+    reviewCountBadge: document.getElementById('reviewCountBadge'),
+
+    // Sub-navigation: Part Pagination & Shuffle
+    partPaginationNav: document.getElementById('partPaginationNav'),
+    partPills: document.querySelectorAll('.part-pill'),
+    toggleShuffleBtn: document.getElementById('toggleShuffleBtn'),
+    shuffleStatusText: document.getElementById('shuffleStatusText'),
+
+    // Review Room Banner & Empty State
+    reviewModeBanner: document.getElementById('reviewModeBanner'),
+    reviewProgressText: document.getElementById('reviewProgressText'),
+    exitReviewBtn: document.getElementById('exitReviewBtn'),
+    emptyReviewContainer: document.getElementById('emptyReviewContainer'),
+    emptyReviewBackBtn: document.getElementById('emptyReviewBackBtn'),
+
+    // Mock Exam Top Bar
+    mockExamBar: document.getElementById('mockExamBar'),
+    mockQuestionProgress: document.getElementById('mockQuestionProgress'),
+    mockTimerDisplay: document.getElementById('mockTimerDisplay'),
+    submitMockBtn: document.getElementById('submitMockBtn'),
+    quitMockBtn: document.getElementById('quitMockBtn'),
+
+    // Header Stats & Controls
     statMastered: document.getElementById('statMastered'),
     statReview: document.getElementById('statReview'),
     statPercent: document.getElementById('statPercent'),
@@ -57,6 +106,10 @@
     topologyFrame: document.getElementById('topologyFrame'),
     optionsList: document.getElementById('optionsList'),
 
+    // Flashcard Action
+    flashcardActionContainer: document.getElementById('flashcardActionContainer'),
+    revealFlashcardBtn: document.getElementById('revealFlashcardBtn'),
+
     // Image Mode
     imgPartTabs: document.getElementById('imgPartTabs'),
     imgBox: document.getElementById('imgBox'),
@@ -71,10 +124,11 @@
     expResultBadge: document.getElementById('expResultBadge'),
     expResultText: document.getElementById('expResultText'),
     expContentText: document.getElementById('expContentText'),
+    notesSection: document.querySelector('.notes-section'),
     questionNotes: document.getElementById('questionNotes'),
     notesStatus: document.getElementById('notesStatus'),
 
-    // Navigation
+    // Navigation Buttons
     prevBtn: document.getElementById('prevBtn'),
     nextBtn: document.getElementById('nextBtn'),
     submitCheckBtn: document.getElementById('submitCheckBtn'),
@@ -100,15 +154,32 @@
     lightboxBackdrop: document.getElementById('lightboxBackdrop'),
     shortcutsModal: document.getElementById('shortcutsModal'),
     closeShortcutsBtn: document.getElementById('closeShortcutsBtn'),
-    shortcutsBackdrop: document.getElementById('shortcutsBackdrop')
+    shortcutsBackdrop: document.getElementById('shortcutsBackdrop'),
+
+    // Mock Result Modal
+    mockResultModal: document.getElementById('mockResultModal'),
+    closeMockResultBtn: document.getElementById('closeMockResultBtn'),
+    mockResultBackdrop: document.getElementById('mockResultBackdrop'),
+    mockScoreVal: document.getElementById('mockScoreVal'),
+    mockVerdict: document.getElementById('mockVerdict'),
+    mockCorrectCount: document.getElementById('mockCorrectCount'),
+    mockWrongCount: document.getElementById('mockWrongCount'),
+    mockTimeTaken: document.getElementById('mockTimeTaken'),
+    mockQuestionsBreakdown: document.getElementById('mockQuestionsBreakdown'),
+    retakeMockBtn: document.getElementById('retakeMockBtn'),
+    reviewMockWrongBtn: document.getElementById('reviewMockWrongBtn')
   };
 
   // --- Initialize Application ---
   async function init() {
     loadProgress();
+    loadSettings();
     setupTheme();
     setupEventListeners();
     await loadQuestions();
+    
+    // Resume correct mode or default to practice
+    switchStudyMode(studyMode, false);
     renderQuestion(currentIndex);
     renderMatrix();
     updateStats();
@@ -150,6 +221,16 @@
     updateStats();
   }
 
+  function loadSettings() {
+    isShuffleEnabled = localStorage.getItem('ccna_shuffle_options') === 'true';
+    updateShuffleButtonUI();
+    const savedPart = localStorage.getItem('ccna_active_part');
+    if (savedPart && PARTS[savedPart]) {
+      activePart = savedPart;
+      updatePartPillsUI();
+    }
+  }
+
   // --- Theme Management ---
   function setupTheme() {
     const savedTheme = localStorage.getItem('ccna_theme') || 'dark';
@@ -173,7 +254,6 @@
       questions = await res.json();
     } catch (err) {
       console.error('Failed to fetch data/questions.json, using fallback:', err);
-      // Fallback generator for 225 questions
       questions = [];
       const multi = new Set([11, 12, 25, 57, 58, 74, 83, 114, 129, 143, 148, 171, 175, 177, 190, 192, 213]);
       for (let i = 1; i <= 225; i++) {
@@ -195,33 +275,139 @@
     if (currentIndex >= questions.length) currentIndex = 0;
   }
 
+  // --- Active Question Pool Management ---
+  function getActiveQuestionPool() {
+    if (studyMode === 'mock') {
+      return mockState.pool;
+    }
+    if (studyMode === 'review') {
+      const pool = [];
+      questions.forEach((q, idx) => {
+        if (userProgress.review.has(q.id)) pool.push(idx);
+      });
+      return pool;
+    }
+    // Practice & Flashcard: respect activePart
+    const partConfig = PARTS[activePart] || PARTS['all'];
+    const pool = [];
+    const maxIdx = Math.min(partConfig.end, questions.length - 1);
+    for (let i = partConfig.start; i <= maxIdx; i++) {
+      pool.push(i);
+    }
+    return pool;
+  }
+
+  // --- Shuffle Options Algorithm ---
+  function getEffectiveQuestion(rawQ) {
+    if (!rawQ) return null;
+    if (!isShuffleEnabled || !rawQ.options || rawQ.options.length <= 1) {
+      return rawQ;
+    }
+
+    if (shuffledCache[rawQ.id]) {
+      return shuffledCache[rawQ.id];
+    }
+
+    // Clone and Fisher-Yates shuffle
+    const clonedOpts = rawQ.options.map(opt => ({ ...opt, origKey: opt.key }));
+    for (let i = clonedOpts.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [clonedOpts[i], clonedOpts[j]] = [clonedOpts[j], clonedOpts[i]];
+    }
+
+    const keyLabels = ['A', 'B', 'C', 'D', 'E', 'F'];
+    const keyMap = {}; // origKey -> newKey
+    clonedOpts.forEach((opt, idx) => {
+      const newKey = keyLabels[idx] || String.fromCharCode(65 + idx);
+      keyMap[opt.origKey] = newKey;
+      opt.key = newKey;
+    });
+
+    const newAnswer = (rawQ.answer || []).map(k => keyMap[k] || k).sort();
+
+    const effective = {
+      ...rawQ,
+      options: clonedOpts,
+      answer: newAnswer,
+      isShuffled: true,
+      origAnswer: rawQ.answer
+    };
+
+    shuffledCache[rawQ.id] = effective;
+    return effective;
+  }
+
+  function updateShuffleButtonUI() {
+    if (!el.toggleShuffleBtn) return;
+    el.toggleShuffleBtn.classList.toggle('active', isShuffleEnabled);
+    if (el.shuffleStatusText) {
+      el.shuffleStatusText.textContent = isShuffleEnabled ? 'Đảo đáp án: Bật' : 'Đảo đáp án: Tắt';
+    }
+  }
+
+  function updatePartPillsUI() {
+    el.partPills.forEach(pill => {
+      pill.classList.toggle('active', pill.dataset.part === activePart);
+    });
+  }
+
   // --- Render Question ---
   function renderQuestion(index) {
     if (!questions || !questions.length) return;
-    const q = questions[index];
+
+    const rawQ = questions[index];
+    if (!rawQ) return;
     currentIndex = index;
     localStorage.setItem('ccna_last_index', index);
+
+    const q = getEffectiveQuestion(rawQ);
 
     // Reset selection & reveal states
     selectedOptions.clear();
     isAnswerRevealed = false;
     activeImgPart = 0;
 
-    // Check if user previously answered this question
-    const prevAnswer = userProgress.answers[q.id];
-    if (prevAnswer) {
-      prevAnswer.keys.forEach(k => selectedOptions.add(k));
-      isAnswerRevealed = true;
+    // Check mode specifics
+    if (studyMode === 'mock') {
+      const savedMockAns = mockState.answers[q.id];
+      if (savedMockAns) {
+        savedMockAns.forEach(k => selectedOptions.add(k));
+      }
+      isAnswerRevealed = mockState.isFinished;
+    } else {
+      const prevAnswer = userProgress.answers[q.id];
+      if (prevAnswer) {
+        prevAnswer.keys.forEach(k => selectedOptions.add(k));
+        isAnswerRevealed = true;
+      }
     }
 
     // Meta Badges
-    el.qNumberBadge.textContent = `Câu ${q.id} / 225`;
+    const pool = getActiveQuestionPool();
+    const poolIndex = pool.indexOf(index);
+    if (studyMode === 'mock') {
+      el.qNumberBadge.textContent = `Đề thi: Câu ${poolIndex + 1} / 30 (Gốc #${q.id})`;
+    } else if (studyMode === 'review') {
+      el.qNumberBadge.textContent = `Phòng Ôn: Câu ${poolIndex + 1} / ${pool.length} (Gốc #${q.id})`;
+    } else if (activePart !== 'all') {
+      el.qNumberBadge.textContent = `Phần ${activePart}: Câu ${poolIndex + 1} / ${pool.length} (Gốc #${q.id})`;
+    } else {
+      el.qNumberBadge.textContent = `Câu ${q.id} / 225`;
+    }
+
     el.qCategoryBadge.textContent = q.category || 'CCNA 200-301';
-    el.qTypeBadge.textContent = q.type === 'multiple' ? 'Chọn nhiều (Choose Multiple)' : 'Chọn một (Single Choice)';
+    el.qTypeBadge.textContent = q.type === 'multiple' ? 'Chọn nhiều (Multiple Choice)' : 'Chọn một (Single Choice)';
 
     // Tags
     el.markMasteredBtn.classList.toggle('active', userProgress.mastered.has(q.id));
     el.markReviewBtn.classList.toggle('active', userProgress.review.has(q.id));
+
+    // Flashcard action button visibility
+    if (studyMode === 'flashcard') {
+      el.flashcardActionContainer.classList.toggle('hidden', isAnswerRevealed);
+    } else {
+      el.flashcardActionContainer.classList.add('hidden');
+    }
 
     // View Mode Handling
     if (currentView === 'image') {
@@ -237,21 +423,33 @@
       el.textModeContainer.classList.remove('hidden');
       el.imageModeContainer.classList.add('hidden');
       renderTextMode(q);
-      renderImageMode(q);
+      renderImageMode(q); // Preload image view
     }
 
     // Notes
     el.questionNotes.value = userProgress.notes[q.id] || '';
     el.notesStatus.textContent = 'Đã lưu';
 
+    // Submit / Check Button appearance
+    if (studyMode === 'mock') {
+      el.submitCheckBtn.style.display = 'none';
+    } else if (studyMode === 'flashcard') {
+      el.submitCheckBtn.style.display = 'none';
+    } else {
+      el.submitCheckBtn.style.display = 'inline-flex';
+    }
+
     // Explanation panel
     updateExplanationPanel(q);
+
+    // Update banner text if in Review or Mock mode
+    updateModeBanners();
 
     // Matrix grid highlight
     highlightCurrentGridCell();
   }
 
-  // --- Check if Question Requires Exhibit / Diagram ---
+  // --- Exhibit / Diagram Helper ---
   function hasExhibit(q) {
     if (q.hasExhibit !== undefined) return q.hasExhibit;
     if (q.isMultiPart && q.id !== 143) return true;
@@ -296,7 +494,7 @@
           <img src="${imgSrc}" alt="Exhibit ${q.id}" class="topology-exhibit-img">
           ${!isMulti && !isAnswerRevealed ? `
             <div class="topology-answer-mask">
-              <span>🔒 Hộp đáp án ảnh gốc đã được che mờ (Bấm Kiểm tra đáp án để mở)</span>
+              <span>🔒 Hộp đáp án ảnh gốc đã được che mờ (Kiểm tra đáp án để mở)</span>
             </div>
           ` : ''}
         </div>
@@ -316,6 +514,14 @@
 
     // Options List
     el.optionsList.innerHTML = '';
+
+    // If Flashcard mode and NOT revealed: conceal options to allow pure mental recall
+    if (studyMode === 'flashcard' && !isAnswerRevealed) {
+      el.optionsList.style.display = 'none';
+      return;
+    }
+    el.optionsList.style.display = 'flex';
+
     (q.options || []).forEach(opt => {
       const card = document.createElement('div');
       card.className = 'option-card';
@@ -381,6 +587,13 @@
 
     // Render option buttons for Image Mode
     el.imgOptionsList.innerHTML = '';
+
+    if (studyMode === 'flashcard' && !isAnswerRevealed) {
+      el.imgOptionsList.style.display = 'none';
+      return;
+    }
+    el.imgOptionsList.style.display = 'grid';
+
     const availableOptions = (q.options && q.options.length) 
       ? q.options 
       : [{key: 'A', text: ''}, {key: 'B', text: ''}, {key: 'C', text: ''}, {key: 'D', text: ''}];
@@ -407,7 +620,24 @@
 
   // --- Option Click Handler ---
   function handleOptionClick(key, q) {
-    if (studyMode === 'quiz' && isAnswerRevealed) return; // Locked once answered in quiz mode
+    if (studyMode === 'quiz' && isAnswerRevealed) return;
+    if (studyMode === 'practice' && isAnswerRevealed) return;
+
+    if (studyMode === 'mock') {
+      if (mockState.isFinished) return;
+      if (q.type === 'multiple') {
+        if (selectedOptions.has(key)) selectedOptions.delete(key);
+        else selectedOptions.add(key);
+      } else {
+        selectedOptions.clear();
+        selectedOptions.add(key);
+      }
+      mockState.answers[q.id] = Array.from(selectedOptions);
+      if (currentView === 'text') renderTextMode(q);
+      else renderImageMode(q);
+      highlightCurrentGridCell();
+      return;
+    }
 
     if (q.type === 'multiple') {
       if (selectedOptions.has(key)) selectedOptions.delete(key);
@@ -417,17 +647,19 @@
       selectedOptions.add(key);
     }
 
-    // Rerender options
     if (currentView === 'text') renderTextMode(q);
     else renderImageMode(q);
   }
 
   // --- Submit / Reveal Answer ---
   function checkOrRevealAnswer() {
-    const q = questions[currentIndex];
+    if (studyMode === 'mock') return; // Mock answers are submitted at the end
+
+    const rawQ = questions[currentIndex];
+    const q = getEffectiveQuestion(rawQ);
     isAnswerRevealed = true;
 
-    // Determine correctness if answer is defined
+    // Determine correctness
     const correctAnswers = q.answer || [];
     let isCorrect = false;
     if (correctAnswers.length > 0) {
@@ -449,6 +681,10 @@
 
     // Reveal UI
     el.answerMask.classList.add('revealed');
+    if (studyMode === 'flashcard') {
+      el.flashcardActionContainer.classList.add('hidden');
+    }
+
     if (currentView === 'text') renderTextMode(q);
     else renderImageMode(q);
     updateExplanationPanel(q);
@@ -456,49 +692,247 @@
   }
 
   function updateExplanationPanel(q) {
-    if (!isAnswerRevealed) {
+    if (!isAnswerRevealed || studyMode === 'mock') {
       el.explanationPanel.classList.add('hidden');
       return;
     }
 
     el.explanationPanel.classList.remove('hidden');
     const ans = (q.answer && q.answer.length) ? q.answer.join(', ') : 'Xem trong ảnh gốc';
-    el.expResultText.textContent = `Đáp án: ${ans}`;
+    el.expResultText.textContent = `Đáp án Đúng: ${ans}`;
 
+    let expHtml = '';
     if (q.explanation) {
-      el.expContentText.innerHTML = q.explanation.replace(/\n/g, '<br>');
+      expHtml = q.explanation.replace(/\n/g, '<br>');
     } else {
-      el.expContentText.innerHTML = `<em>Đối chiếu đáp án chi tiết tại hộp "Answer: ${ans}" ở chân ảnh gốc bên trên.</em>`;
+      expHtml = `<em>Đối chiếu đáp án chi tiết tại hộp "Answer: ${ans}" ở chân ảnh gốc bên trên.</em>`;
     }
+
+    if (q.isShuffled) {
+      expHtml += `<br><br><small style="color:var(--text-muted)">* Ghi chú: Chế độ Đảo đáp án đang bật. Thứ tự các phương án hiển thị trên màn hình đã được xáo trộn ngẫu nhiên.</small>`;
+    }
+
+    el.expContentText.innerHTML = expHtml;
+  }
+
+  // --- Switch Study Mode ---
+  function switchStudyMode(newMode, shouldRender = true) {
+    studyMode = newMode;
+
+    // Update Header Buttons
+    el.modePracticeBtn.classList.toggle('active', newMode === 'practice');
+    el.modeFlashcardBtn.classList.toggle('active', newMode === 'flashcard');
+    el.modeReviewBtn.classList.toggle('active', newMode === 'review');
+    el.modeMockBtn.classList.toggle('active', newMode === 'mock');
+
+    // UI visibility
+    el.partPaginationNav.classList.toggle('hidden', newMode !== 'practice' && newMode !== 'flashcard');
+    el.reviewModeBanner.classList.toggle('hidden', newMode !== 'review');
+    el.mockExamBar.classList.toggle('hidden', newMode !== 'mock');
+
+    if (newMode === 'review') {
+      const reviewPool = getActiveQuestionPool();
+      if (reviewPool.length === 0) {
+        showEmptyReviewState(true);
+        return;
+      } else {
+        showEmptyReviewState(false);
+        if (!reviewPool.includes(currentIndex)) {
+          currentIndex = reviewPool[0];
+        }
+      }
+    } else {
+      showEmptyReviewState(false);
+    }
+
+    if (newMode === 'mock') {
+      if (!mockState.isActive) {
+        startMockExam();
+        return;
+      }
+    } else {
+      if (mockState.isActive && !mockState.isFinished) {
+        // Paused timer while in another mode
+      }
+    }
+
+    if (shouldRender) {
+      // Ensure currentIndex is in active pool
+      const pool = getActiveQuestionPool();
+      if (!pool.includes(currentIndex) && pool.length > 0) {
+        currentIndex = pool[0];
+      }
+      renderQuestion(currentIndex);
+      renderMatrix();
+    }
+  }
+
+  function showEmptyReviewState(show) {
+    if (!el.emptyReviewContainer) return;
+    el.emptyReviewContainer.classList.toggle('hidden', !show);
+    const cardBody = document.querySelector('.question-card .q-body');
+    const cardFooter = document.querySelector('.question-card .q-footer');
+    if (cardBody) cardBody.style.display = show ? 'none' : 'block';
+    if (cardFooter) cardFooter.style.display = show ? 'none' : 'flex';
+  }
+
+  function updateModeBanners() {
+    if (studyMode === 'review') {
+      const pool = getActiveQuestionPool();
+      const pos = pool.indexOf(currentIndex) + 1;
+      el.reviewProgressText.textContent = `Đang ôn câu ${pos} / ${pool.length} câu cần ôn`;
+    } else if (studyMode === 'mock') {
+      const pool = mockState.pool;
+      const pos = pool.indexOf(currentIndex) + 1;
+      el.mockQuestionProgress.textContent = `Câu ${pos} / 30`;
+    }
+  }
+
+  // --- Mock Exam Engine ---
+  function startMockExam() {
+    // Generate 30 random questions without replacement
+    const all = Array.from({ length: questions.length }, (_, i) => i);
+    for (let i = all.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [all[i], all[j]] = [all[j], all[i]];
+    }
+
+    mockState.pool = all.slice(0, 30);
+    mockState.answers = {};
+    mockState.timeRemaining = 45 * 60; // 45 minutes
+    mockState.isActive = true;
+    mockState.isFinished = false;
+    mockState.startedAt = Date.now();
+
+    clearInterval(mockState.timerId);
+    mockState.timerId = setInterval(tickMockTimer, 1000);
+    renderMockTimer();
+
+    currentIndex = mockState.pool[0];
+    renderQuestion(currentIndex);
+    renderMatrix();
+  }
+
+  function tickMockTimer() {
+    if (mockState.timeRemaining > 0) {
+      mockState.timeRemaining--;
+      renderMockTimer();
+    } else {
+      clearInterval(mockState.timerId);
+      finishMockExam();
+    }
+  }
+
+  function renderMockTimer() {
+    const mins = Math.floor(mockState.timeRemaining / 60);
+    const secs = mockState.timeRemaining % 60;
+    const text = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    el.mockTimerDisplay.textContent = text;
+    el.mockTimerDisplay.classList.toggle('warning', mockState.timeRemaining <= 300);
+  }
+
+  function finishMockExam() {
+    clearInterval(mockState.timerId);
+    mockState.isFinished = true;
+
+    // Grade Exam
+    let correctCount = 0;
+    const breakdown = [];
+
+    mockState.pool.forEach((qIdx, orderIdx) => {
+      const rawQ = questions[qIdx];
+      const q = getEffectiveQuestion(rawQ);
+      const userSelected = (mockState.answers[q.id] || []).sort();
+      const expected = (q.answer || []).sort();
+      const isAnswered = userSelected.length > 0;
+      const isCorrect = isAnswered && (JSON.stringify(userSelected) === JSON.stringify(expected));
+
+      if (isCorrect) correctCount++;
+
+      breakdown.push({
+        order: orderIdx + 1,
+        qid: q.id,
+        qIndex: qIdx,
+        isAnswered,
+        isCorrect
+      });
+    });
+
+    // CCNA Scaled Score: 300 - 1000
+    const scaledScore = 300 + Math.round((correctCount / 30) * 700);
+    const isPass = scaledScore >= 825; // 825 / 1000 is standard CCNA pass mark
+
+    // Format time taken
+    const elapsedSecs = (45 * 60) - mockState.timeRemaining;
+    const elapsedMins = Math.floor(elapsedSecs / 60);
+    const elapsedRemainder = elapsedSecs % 60;
+    const timeTakenStr = `${String(elapsedMins).padStart(2, '0')}:${String(elapsedRemainder).padStart(2, '0')}`;
+
+    // Update Result Modal
+    el.mockScoreVal.textContent = scaledScore;
+    el.mockVerdict.textContent = isPass ? 'ĐẠT (PASS) 🎉' : 'CHƯA ĐẠT (FAIL) ⚠️';
+    el.mockVerdict.className = isPass ? 'score-verdict pass' : 'score-verdict fail';
+    el.mockCorrectCount.textContent = correctCount;
+    el.mockWrongCount.textContent = 30 - correctCount;
+    el.mockTimeTaken.textContent = timeTakenStr;
+
+    // Build breakdown grid
+    el.mockQuestionsBreakdown.innerHTML = '';
+    breakdown.forEach(item => {
+      const btn = document.createElement('div');
+      btn.className = `mock-breakdown-item ${item.isCorrect ? 'correct' : (item.isAnswered ? 'wrong' : 'unanswered')}`;
+      btn.textContent = item.order;
+      btn.title = `Câu ${item.order} (Gốc #${item.qid}): ${item.isCorrect ? 'Đúng' : (item.isAnswered ? 'Sai' : 'Chưa làm')}. Bấm để xem chi tiết!`;
+      btn.addEventListener('click', () => {
+        el.mockResultModal.classList.add('hidden');
+        switchStudyMode('practice', false);
+        renderQuestion(item.qIndex);
+        checkOrRevealAnswer();
+      });
+      el.mockQuestionsBreakdown.appendChild(btn);
+    });
+
+    el.mockResultModal.classList.remove('hidden');
   }
 
   // --- Matrix Grid ---
   function renderMatrix() {
     el.questionGrid.innerHTML = '';
-    const qCount = questions.length || 225;
+    const pool = getActiveQuestionPool();
 
-    for (let i = 1; i <= qCount; i++) {
+    pool.forEach(qIdx => {
+      const q = questions[qIdx];
+      if (!q) return;
       const cell = document.createElement('div');
       cell.className = 'grid-cell';
-      cell.textContent = i;
-      cell.dataset.qid = i;
+      cell.textContent = q.id;
+      cell.dataset.qid = q.id;
+      cell.dataset.index = qIdx;
 
-      updateCellStatus(cell, i);
+      updateCellStatus(cell, q.id);
 
       cell.addEventListener('click', () => {
-        renderQuestion(i - 1);
+        renderQuestion(qIdx);
         if (window.innerWidth <= 900) {
           el.sidebar.classList.remove('mobile-open');
         }
       });
 
       el.questionGrid.appendChild(cell);
-    }
+    });
+
     highlightCurrentGridCell();
   }
 
   function updateCellStatus(cell, qid) {
-    cell.classList.remove('mastered', 'review', 'wrong');
+    cell.classList.remove('mastered', 'review', 'wrong', 'mock-answered');
+    if (studyMode === 'mock') {
+      if (mockState.answers[qid] && mockState.answers[qid].length > 0) {
+        cell.classList.add('mock-answered');
+      }
+      return;
+    }
+
     if (userProgress.mastered.has(qid)) {
       cell.classList.add('mastered');
     } else if (userProgress.review.has(qid)) {
@@ -526,6 +960,9 @@
     el.statMastered.textContent = mastered;
     el.statReview.textContent = review;
     el.statPercent.textContent = `${pct}%`;
+    if (el.reviewCountBadge) {
+      el.reviewCountBadge.textContent = review;
+    }
   }
 
   // --- Search & Filter ---
@@ -554,6 +991,50 @@
     });
   }
 
+  // --- Navigation Helpers (Within Active Pool) ---
+  function navigateNext() {
+    const pool = getActiveQuestionPool();
+    if (!pool.length) return;
+    const poolIdx = pool.indexOf(currentIndex);
+    if (poolIdx < pool.length - 1) {
+      renderQuestion(pool[poolIdx + 1]);
+    } else {
+      // If at end of a part, optionally offer next part or loop
+      if (activePart !== 'all' && studyMode === 'practice') {
+        const nextPartNum = parseInt(activePart, 10) + 1;
+        if (nextPartNum <= 5) {
+          activePart = String(nextPartNum);
+          localStorage.setItem('ccna_active_part', activePart);
+          updatePartPillsUI();
+          renderMatrix();
+          const newPool = getActiveQuestionPool();
+          renderQuestion(newPool[0]);
+          return;
+        }
+      }
+      // Wrap around
+      renderQuestion(pool[0]);
+    }
+  }
+
+  function navigatePrev() {
+    const pool = getActiveQuestionPool();
+    if (!pool.length) return;
+    const poolIdx = pool.indexOf(currentIndex);
+    if (poolIdx > 0) {
+      renderQuestion(pool[poolIdx - 1]);
+    } else {
+      renderQuestion(pool[pool.length - 1]);
+    }
+  }
+
+  function navigateRandom() {
+    const pool = getActiveQuestionPool();
+    if (!pool.length) return;
+    const rand = Math.floor(Math.random() * pool.length);
+    renderQuestion(pool[rand]);
+  }
+
   // --- Lightbox ---
   function openLightbox(src, caption) {
     el.lightboxImg.src = src;
@@ -567,7 +1048,7 @@
 
   // --- Event Listeners ---
   function setupEventListeners() {
-    // Brand Logo Click: Return to question 1 and reload/refresh
+    // Brand Logo Click: Return to question 1 and reload
     const brandLogo = document.getElementById('brandLogo');
     if (brandLogo) {
       brandLogo.addEventListener('click', () => {
@@ -576,38 +1057,103 @@
     }
 
     // Mode Switching
-    el.modeQuizBtn.addEventListener('click', () => {
-      studyMode = 'quiz';
-      el.modeQuizBtn.classList.add('active');
-      el.modeFlashcardBtn.classList.remove('active');
+    el.modePracticeBtn.addEventListener('click', () => switchStudyMode('practice'));
+    el.modeFlashcardBtn.addEventListener('click', () => switchStudyMode('flashcard'));
+    el.modeReviewBtn.addEventListener('click', () => switchStudyMode('review'));
+    el.modeMockBtn.addEventListener('click', () => switchStudyMode('mock'));
+
+    // Part Pagination Pills
+    el.partPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        activePart = pill.dataset.part;
+        localStorage.setItem('ccna_active_part', activePart);
+        updatePartPillsUI();
+        renderMatrix();
+        const pool = getActiveQuestionPool();
+        if (!pool.includes(currentIndex) && pool.length > 0) {
+          renderQuestion(pool[0]);
+        } else {
+          renderQuestion(currentIndex);
+        }
+      });
+    });
+
+    // Shuffle Toggle
+    el.toggleShuffleBtn.addEventListener('click', () => {
+      isShuffleEnabled = !isShuffleEnabled;
+      localStorage.setItem('ccna_shuffle_options', isShuffleEnabled);
+      shuffledCache = {};
+      updateShuffleButtonUI();
       renderQuestion(currentIndex);
     });
 
-    el.modeFlashcardBtn.addEventListener('click', () => {
-      studyMode = 'flashcard';
-      el.modeFlashcardBtn.classList.add('active');
-      el.modeQuizBtn.classList.remove('active');
-      renderQuestion(currentIndex);
+    // Review Room Exit & Empty State Back
+    el.exitReviewBtn.addEventListener('click', () => switchStudyMode('practice'));
+    el.emptyReviewBackBtn.addEventListener('click', () => switchStudyMode('practice'));
+
+    // Mock Exam Actions
+    el.submitMockBtn.addEventListener('click', () => {
+      const unanswered = mockState.pool.filter(idx => {
+        const qid = questions[idx].id;
+        return !mockState.answers[qid] || mockState.answers[qid].length === 0;
+      }).length;
+
+      let msg = 'Bạn có chắc chắn muốn nộp bài để chấm điểm không?';
+      if (unanswered > 0) {
+        msg = `Bạn còn ${unanswered} câu chưa làm. Bạn có chắc chắn muốn nộp bài ngay bây giờ?`;
+      }
+      if (confirm(msg)) {
+        finishMockExam();
+      }
     });
 
-    // View Switching
+    el.quitMockBtn.addEventListener('click', () => {
+      if (confirm('Bạn có chắc chắn muốn dừng bài thi thử này không?')) {
+        clearInterval(mockState.timerId);
+        mockState.isActive = false;
+        switchStudyMode('practice');
+      }
+    });
+
+    // Mock Modal Buttons
+    el.closeMockResultBtn.addEventListener('click', () => el.mockResultModal.classList.add('hidden'));
+    el.mockResultBackdrop.addEventListener('click', () => el.mockResultModal.classList.add('hidden'));
+    el.retakeMockBtn.addEventListener('click', () => {
+      el.mockResultModal.classList.add('hidden');
+      startMockExam();
+    });
+    el.reviewMockWrongBtn.addEventListener('click', () => {
+      let addedCount = 0;
+      mockState.pool.forEach(qIdx => {
+        const rawQ = questions[qIdx];
+        const q = getEffectiveQuestion(rawQ);
+        const userSelected = (mockState.answers[q.id] || []).sort();
+        const expected = (q.answer || []).sort();
+        const isCorrect = JSON.stringify(userSelected) === JSON.stringify(expected);
+        if (!isCorrect) {
+          userProgress.review.add(q.id);
+          userProgress.mastered.delete(q.id);
+          addedCount++;
+        }
+      });
+      saveProgress();
+      el.mockResultModal.classList.add('hidden');
+      switchStudyMode('review');
+      alert(`Đã đưa ${addedCount} câu làm sai vào phòng Ôn Tập!`);
+    });
+
+    // View Switching (Text vs Image)
     el.viewTextBtn.addEventListener('click', () => {
       currentView = 'text';
-      el.viewTextBtn.classList.add('active');
-      el.viewImgBtn.classList.remove('active');
-      el.textModeContainer.classList.remove('hidden');
-      el.imageModeContainer.classList.add('hidden');
-      renderTextMode(questions[currentIndex]);
+      renderQuestion(currentIndex);
     });
-
     el.viewImgBtn.addEventListener('click', () => {
       currentView = 'image';
-      el.viewImgBtn.classList.add('active');
-      el.viewTextBtn.classList.remove('active');
-      el.imageModeContainer.classList.remove('hidden');
-      el.textModeContainer.classList.add('hidden');
-      renderImageMode(questions[currentIndex]);
+      renderQuestion(currentIndex);
     });
+
+    // Flashcard Reveal Button
+    el.revealFlashcardBtn.addEventListener('click', checkOrRevealAnswer);
 
     // Mask Controls
     el.revealMaskBtn.addEventListener('click', checkOrRevealAnswer);
@@ -618,19 +1164,10 @@
     // Check Button
     el.submitCheckBtn.addEventListener('click', checkOrRevealAnswer);
 
-    // Prev / Next / Random
-    el.prevBtn.addEventListener('click', () => {
-      if (currentIndex > 0) renderQuestion(currentIndex - 1);
-    });
-
-    el.nextBtn.addEventListener('click', () => {
-      if (currentIndex < questions.length - 1) renderQuestion(currentIndex + 1);
-    });
-
-    el.randomBtn.addEventListener('click', () => {
-      const rand = Math.floor(Math.random() * questions.length);
-      renderQuestion(rand);
-    });
+    // Navigation
+    el.prevBtn.addEventListener('click', navigatePrev);
+    el.nextBtn.addEventListener('click', navigateNext);
+    el.randomBtn.addEventListener('click', navigateRandom);
 
     // Tag buttons
     el.markMasteredBtn.addEventListener('click', () => {
@@ -642,8 +1179,21 @@
         userProgress.review.delete(qid);
       }
       saveProgress();
-      renderQuestion(currentIndex);
-      highlightCurrentGridCell();
+
+      if (studyMode === 'review') {
+        const pool = getActiveQuestionPool();
+        if (pool.length === 0) {
+          showEmptyReviewState(true);
+        } else {
+          // Advance to next available in review pool
+          const nextIdx = pool.find(idx => idx > currentIndex) || pool[0];
+          renderQuestion(nextIdx);
+        }
+        renderMatrix();
+      } else {
+        renderQuestion(currentIndex);
+        highlightCurrentGridCell();
+      }
     });
 
     el.markReviewBtn.addEventListener('click', () => {
@@ -681,12 +1231,8 @@
     });
 
     // Sidebar Mobile Toggle
-    el.sidebarToggleBtn.addEventListener('click', () => {
-      el.sidebar.classList.toggle('mobile-open');
-    });
-    el.closeSidebarBtn.addEventListener('click', () => {
-      el.sidebar.classList.remove('mobile-open');
-    });
+    el.sidebarToggleBtn.addEventListener('click', () => el.sidebar.classList.toggle('mobile-open'));
+    el.closeSidebarBtn.addEventListener('click', () => el.sidebar.classList.remove('mobile-open'));
 
     // Search & Filter
     el.searchInput.addEventListener('input', () => {
@@ -726,9 +1272,7 @@
       URL.revokeObjectURL(url);
     });
 
-    el.importProgressBtn.addEventListener('click', () => {
-      el.importFileInput.click();
-    });
+    el.importProgressBtn.addEventListener('click', () => el.importFileInput.click());
 
     el.importFileInput.addEventListener('change', (e) => {
       const file = e.target.files[0];
@@ -782,10 +1326,10 @@
 
       if (e.key === 'ArrowLeft') {
         e.preventDefault();
-        if (currentIndex > 0) renderQuestion(currentIndex - 1);
+        navigatePrev();
       } else if (e.key === 'ArrowRight') {
         e.preventDefault();
-        if (currentIndex < questions.length - 1) renderQuestion(currentIndex + 1);
+        navigateNext();
       } else if (e.key === ' ') {
         e.preventDefault();
         checkOrRevealAnswer();
@@ -794,14 +1338,16 @@
       } else if (e.key.toLowerCase() === 'b') {
         el.markReviewBtn.click();
       } else if (e.key.toLowerCase() === 'r') {
-        el.randomBtn.click();
+        navigateRandom();
       } else if (['1', '2', '3', '4', '5'].includes(e.key)) {
         const keys = ['A', 'B', 'C', 'D', 'E'];
         const targetKey = keys[parseInt(e.key, 10) - 1];
-        if (targetKey) handleOptionClick(targetKey, questions[currentIndex]);
+        const q = getEffectiveQuestion(questions[currentIndex]);
+        if (targetKey && q) handleOptionClick(targetKey, q);
       } else if (e.key === 'Escape') {
         closeLightbox();
         el.shortcutsModal.classList.add('hidden');
+        el.mockResultModal.classList.add('hidden');
       }
     });
   }
