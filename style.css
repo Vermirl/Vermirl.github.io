@@ -1710,3 +1710,51 @@ kbd {
 }
 
 
+
+
+/* Redo / Reset Answer Button */
+.btn-action.reset {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.18), rgba(217, 119, 6, 0.25));
+  border: 1px solid var(--status-review);
+  color: var(--status-review);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 10px 22px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.btn-action.reset:hover {
+  background: var(--status-review);
+  color: #000000;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-reset-review-answers {
+  background-color: var(--bg-surface-elevated);
+  border: 1px solid var(--status-review-border);
+  color: var(--status-review);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn-reset-review-answers:hover {
+  background-color: var(--status-review-bg);
+  border-color: var(--status-review);
+  color: #fbbf24;
+}

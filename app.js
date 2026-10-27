@@ -53,6 +53,7 @@
     // Review Room Banner & Empty State
     reviewModeBanner: document.getElementById('reviewModeBanner'),
     reviewProgressText: document.getElementById('reviewProgressText'),
+    resetAllReviewAnswersBtn: document.getElementById('resetAllReviewAnswersBtn'),
     exitReviewBtn: document.getElementById('exitReviewBtn'),
     emptyReviewContainer: document.getElementById('emptyReviewContainer'),
     emptyReviewBackBtn: document.getElementById('emptyReviewBackBtn'),
@@ -119,6 +120,7 @@
     prevBtn: document.getElementById('prevBtn'),
     nextBtn: document.getElementById('nextBtn'),
     submitCheckBtn: document.getElementById('submitCheckBtn'),
+    resetAnswerBtn: document.getElementById('resetAnswerBtn'),
     randomBtn: document.getElementById('randomBtn'),
 
     // Sidebar
@@ -398,11 +400,18 @@
     el.questionNotes.value = userProgress.notes[q.id] || '';
     el.notesStatus.textContent = 'Đã lưu';
 
-    // Submit / Check Button appearance
+    // Submit / Check / Redo Button appearance
     if (studyMode === 'mock' || studyMode === 'flashcard') {
       el.submitCheckBtn.style.display = 'none';
+      if (el.resetAnswerBtn) el.resetAnswerBtn.style.display = 'none';
     } else {
-      el.submitCheckBtn.style.display = 'inline-flex';
+      if (isAnswerRevealed) {
+        el.submitCheckBtn.style.display = 'none';
+        if (el.resetAnswerBtn) el.resetAnswerBtn.style.display = 'inline-flex';
+      } else {
+        el.submitCheckBtn.style.display = 'inline-flex';
+        if (el.resetAnswerBtn) el.resetAnswerBtn.style.display = 'none';
+      }
     }
 
     // Explanation panel
@@ -576,7 +585,7 @@
 
   // --- Option Click Handler ---
   function handleOptionClick(key, q) {
-    if (studyMode === 'practice' && isAnswerRevealed) return;
+    if ((studyMode === 'practice' || studyMode === 'review') && isAnswerRevealed) return;
 
     if (studyMode === 'mock') {
       if (mockState.isFinished) return;
@@ -644,6 +653,11 @@
     else renderImageMode(q);
     updateExplanationPanel(q);
     highlightCurrentGridCell();
+
+    if (studyMode === 'practice' || studyMode === 'review') {
+      el.submitCheckBtn.style.display = 'none';
+      if (el.resetAnswerBtn) el.resetAnswerBtn.style.display = 'inline-flex';
+    }
   }
 
   function updateExplanationPanel(q) {
@@ -844,6 +858,22 @@
     el.mockResultModal.classList.remove('hidden');
   }
 
+
+  // --- Redo / Reset Question Answer ---
+  function redoCurrentQuestion() {
+    const rawQ = questions[currentIndex];
+    if (!rawQ) return;
+
+    // Delete saved answer to allow re-attempting
+    delete userProgress.answers[rawQ.id];
+    selectedOptions.clear();
+    isAnswerRevealed = false;
+    saveProgress();
+
+    // Re-render current question in interactive state
+    renderQuestion(currentIndex);
+    renderMatrix();
+  }
   // --- Matrix Grid ---
   function renderMatrix() {
     el.questionGrid.innerHTML = '';
@@ -1080,8 +1110,32 @@
       el.answerMask.classList.toggle('revealed');
     });
 
-    // Check Button
+    // Check & Redo Buttons
     el.submitCheckBtn.addEventListener('click', checkOrRevealAnswer);
+    if (el.resetAnswerBtn) {
+      el.resetAnswerBtn.addEventListener('click', redoCurrentQuestion);
+    }
+
+    if (el.resetAllReviewAnswersBtn) {
+      el.resetAllReviewAnswersBtn.addEventListener('click', () => {
+        const reviewQids = Array.from(userProgress.review);
+        if (reviewQids.length === 0) {
+          alert('Hiện không có câu nào trong danh sách Cần Ôn!');
+          return;
+        }
+        if (confirm(`Bạn có muốn xóa câu trả lời đã lưu của toàn bộ ${reviewQids.length} câu cần ôn để làm lại từ đầu không?`)) {
+          reviewQids.forEach(qid => {
+            delete userProgress.answers[qid];
+          });
+          selectedOptions.clear();
+          isAnswerRevealed = false;
+          saveProgress();
+          renderQuestion(currentIndex);
+          renderMatrix();
+          alert(`✅ Đã xóa câu trả lời cũ của ${reviewQids.length} câu. Bạn có thể bắt đầu làm lại từng câu!`);
+        }
+      });
+    }
 
     // Navigation
     el.prevBtn.addEventListener('click', navigatePrev);
@@ -1250,7 +1304,16 @@
         navigateNext();
       } else if (e.key === ' ') {
         e.preventDefault();
-        checkOrRevealAnswer();
+        if (isAnswerRevealed && (studyMode === 'practice' || studyMode === 'review')) {
+          // Space toggles between check and redo if already answered
+        } else {
+          checkOrRevealAnswer();
+        }
+      } else if (e.key === 'Backspace' || e.key === 'Delete') {
+        if (isAnswerRevealed && (studyMode === 'practice' || studyMode === 'review')) {
+          e.preventDefault();
+          redoCurrentQuestion();
+        }
       } else if (e.key.toLowerCase() === 'm') {
         el.markMasteredBtn.click();
       } else if (e.key.toLowerCase() === 'b') {

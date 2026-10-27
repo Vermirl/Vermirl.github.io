@@ -96,7 +96,9 @@
           <span id="reviewProgressText" class="review-banner-text">Đang ôn: Câu 1 / 0 câu cần ôn</span>
         </div>
         <div class="review-banner-right">
-          <span class="review-banner-hint">💡 Bấm "✅ Đã Thuộc" để xóa câu này khỏi danh sách ôn và chuyển câu tiếp</span>
+          <button id="resetAllReviewAnswersBtn" class="btn-reset-review-answers" title="Xóa câu trả lời đã lưu của tất cả câu cần ôn để làm lại từ đầu">
+            🔄 Xóa câu trả lời cũ để làm lại
+          </button>
           <button id="exitReviewBtn" class="btn-exit-review" title="Quay về chế độ Luyện Thi">✕ Thoát phòng ôn</button>
         </div>
       </div>
@@ -272,6 +274,9 @@
             <button id="submitCheckBtn" class="btn-action primary">
               Kiểm tra Đáp án
             </button>
+            <button id="resetAnswerBtn" class="btn-action reset" style="display:none" title="Xóa câu trả lời cũ để chọn lại từ đầu (Phím Delete/Backspace)">
+              🔄 Làm lại câu này
+            </button>
             <button id="randomBtn" class="nav-btn subtle" title="Bốc ngẫu nhiên một câu (Phím R)">
               🎲 Ngẫu nhiên
             </button>
@@ -409,6 +414,10 @@
         <div class="shortcut-row">
           <kbd>Space</kbd>
           <span>Kiểm tra đáp án / Mở che đáp án</span>
+        </div>
+        <div class="shortcut-row">
+          <kbd>Backspace</kbd> / <kbd>Del</kbd>
+          <span>Làm lại câu hỏi (Xóa câu trả lời đã chọn)</span>
         </div>
         <div class="shortcut-row">
           <kbd>M</kbd>
