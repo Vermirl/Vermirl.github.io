@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cisco CCNA 200-301 — Drag & Drop Lab (59 Câu Kéo Thả Chuẩn)</title>
+  <meta name="description" content="Mô-đun luyện tập kéo thả CCNA 200-301 chuyên biệt với 59 câu hỏi chuẩn Cisco, tương tác kéo chuột & chạm thả mượt mà, sơ đồ mạng độ nét cao và giải thích chi tiết.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dnd.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧩</text></svg>">
+</head>
+<body>
+
+  <!-- Top App Navigation -->
+  <header class="app-header">
+    <div class="header-left">
+      <a href="index.html" id="brandLogo" class="brand" title="Quay về trang chủ">
+        <span class="brand-icon">🌐</span>
+        <div class="brand-text">
+          <h1>CCNA Mastery</h1>
+          <span class="badge-sub">200-301 Exam Hub</span>
+        </div>
+      </a>
+
+      <!-- Module Switcher -->
+      <div class="mode-tabs" role="tablist">
+        <a href="index.html" class="mode-btn btn-dnd-tab" title="Chuyển sang 225 câu trắc nghiệm">
+          <span>📝</span> Trắc Nghiệm (225 câu)
+        </a>
+        <button class="mode-btn active" title="Đang ở mô-đun kéo thả 59 câu">
+          <span>🧩</span> Kéo Thả (59 câu)
+        </button>
+      </div>
+    </div>
+
+    <!-- Center Progress Stats -->
+    <div class="header-center">
+      <div class="progress-pill">
+        <div class="stat-item mastered" title="Số câu đã thuộc lòng">
+          <span class="stat-dot"></span>
+          <span class="stat-label">Thuộc:</span>
+          <strong id="statMastered">0</strong>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item correct" title="Số câu làm đúng">
+          <span class="stat-dot" style="background:#38bdf8;"></span>
+          <span class="stat-label">Đúng:</span>
+          <strong id="statCorrect">0</strong>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item review" title="Số câu cần ôn lại">
+          <span class="stat-dot"></span>
+          <span class="stat-label">Cần ôn:</span>
+          <strong id="statReview">0</strong>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item total" title="Tiến độ hoàn thành">
+          <span class="stat-label">Tiến độ:</span>
+          <strong id="statPercent">0%</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header Right Controls -->
+    <div class="header-right">
+      <button id="themeToggleBtn" class="icon-btn" title="Chuyển chế độ Sáng / Tối" aria-label="Toggle Theme">
+        <span id="themeIcon">🌙</span>
+      </button>
+      <button id="shortcutsBtn" class="icon-btn" title="Phím tắt bàn phím" aria-label="Keyboard Shortcuts">
+        ⌨️
+      </button>
+      <button id="sidebarToggleBtn" class="icon-btn toggle-sidebar" title="Danh sách 59 câu hỏi">
+        📋
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Drag and Drop Workbench -->
+  <main class="dnd-container">
+    
+    <!-- Category Filter Bar -->
+    <nav class="category-filter-bar" id="categoryPills" aria-label="Lọc theo chuyên đề">
+      <button class="category-pill active" data-category="all">Tất Cả (59)</button>
+      <button class="category-pill" data-category="Network Fundamentals">Network Fundamentals</button>
+      <button class="category-pill" data-category="Network Access">Network Access</button>
+      <button class="category-pill" data-category="IP Connectivity">IP Connectivity</button>
+      <button class="category-pill" data-category="IP Services">IP Services</button>
+      <button class="category-pill" data-category="Security Fundamentals">Security Fundamentals</button>
+      <button class="category-pill" data-category="Automation & Programmability">Automation & Programmability</button>
+      <button class="category-pill" data-category="review">⭐ Cần Ôn</button>
+      <button class="category-pill" data-category="mastered">✅ Đã Thuộc</button>
+    </nav>
+
+    <!-- Question Prompt Card -->
+    <section class="dnd-question-card">
+      <div class="dnd-question-meta">
+        <div class="meta-badges">
+          <span id="qNumberBadge" class="badge-q-number">Câu 1 / 59</span>
+          <span id="qCategoryBadge" class="badge-q-category">Chuyên đề</span>
+        </div>
+        <div class="meta-actions">
+          <button id="exhibitBtn" class="btn-meta btn-exhibit hidden" title="Mở sơ đồ hoặc bảng định tuyến của câu hỏi">
+            <span>🔍</span> Xem Sơ Đồ / Exhibit
+          </button>
+          <button id="btnBookmark" class="btn-meta btn-bookmark" title="Đánh dấu câu hỏi cần xem lại">
+            <span>☆</span> Đánh Dấu Cần Ôn
+          </button>
+          <button id="btnMaster" class="btn-meta btn-master" title="Đánh dấu câu hỏi đã thuộc lòng">
+            <span>☑️</span> Đánh Dấu Đã Thuộc
+          </button>
+        </div>
+      </div>
+
+      <h2 id="qTitle" class="dnd-question-title">Tiêu đề câu hỏi</h2>
+      <div id="qPromptEn" class="dnd-prompt-en">English prompt text</div>
+      <div id="qPromptVi" class="dnd-prompt-vi">Dịch nghĩa tiếng Việt</div>
+    </section>
+
+    <!-- Touch / Click Selection Notice Banner -->
+    <div id="selectionNotice" class="selection-notice-banner hidden"></div>
+
+    <!-- Drag & Drop Interactive Workbench -->
+    <section class="dnd-workbench">
+      
+      <!-- Left Column: Source Items Pool -->
+      <div class="workbench-column">
+        <div class="column-header">
+          <span class="column-title"><span>📦</span> Các Mục Kéo Thả (Source Items)</span>
+          <span class="column-hint">Kéo chuột hoặc Chạm để chọn</span>
+        </div>
+        <div id="sourcePool" class="source-items-pool">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+      <!-- Right Column: Target Drop Zones -->
+      <div class="workbench-column">
+        <div class="column-header">
+          <span class="column-title"><span>🎯</span> Vùng Thả Mục Khớp (Drop Zones)</span>
+          <span class="column-hint">Thả chuột hoặc Chạm để gán vào ô</span>
+        </div>
+        <div id="dropZonesContainer" class="drop-zones-container">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Bottom Action Bar -->
+    <section class="dnd-action-bar">
+      <div class="action-bar-left">
+        <button id="btnPrev" class="btn-action btn-nav" title="Phím tắt: Mũi tên trái">
+          <span>⬅️</span> Câu Trước
+        </button>
+        <button id="btnNext" class="btn-action btn-nav" title="Phím tắt: Mũi tên phải">
+          Câu Tiếp <span>➡️</span>
+        </button>
+        <button id="btnReset" class="btn-action btn-reset" title="Phím tắt: R">
+          <span>🔄</span> Làm Lại
+        </button>
+      </div>
+
+      <div class="action-bar-right">
+        <button id="btnCheck" class="btn-action btn-check" title="Phím tắt: Enter">
+          <span>✅</span> Kiểm Tra Đáp Án
+        </button>
+        <button id="btnShowAnswer" class="btn-action btn-show" title="Phím tắt: A">
+          <span>👁️</span> Xem Đáp Án
+        </button>
+        <button id="btnToggleDumpImg" class="btn-action btn-toggle-dump hidden" title="Xem ảnh chụp gốc từ bộ đề thi">
+          <span>🖼️</span> Ảnh Đề Thi Gốc
+        </button>
+      </div>
+    </section>
+
+    <!-- Explanation Card -->
+    <section id="explanationCard" class="dnd-explanation-card hidden">
+      <div class="explanation-header">
+        <span class="explanation-title"><span>💡</span> Giải Thích Chi Tiết Chuẩn CCNA</span>
+      </div>
+      <div id="explanationText" class="explanation-content">
+        <!-- Dynamically rendered -->
+      </div>
+    </section>
+
+    <!-- Dump Screenshot Card -->
+    <section id="dumpImageCard" class="dnd-dump-card hidden">
+      <div class="dump-header">
+        <span class="dump-title"><span>📸</span> Ảnh Chụp Màn Hình Đề Thi & Đáp Án Gốc</span>
+      </div>
+      <div class="dump-image-viewer">
+        <img id="dumpImage" src="" alt="Ảnh chụp đề thi gốc CCNA Drag and drop" loading="lazy">
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Questions Navigator Sidebar Drawer -->
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-title">
+        <span>📋</span> Danh Sách 59 Câu Kéo Thả
+      </div>
+      <button id="sidebarCloseBtn" class="icon-btn" title="Đóng danh sách">✕</button>
+    </div>
+    <div class="sidebar-search-box">
+      <input type="text" id="sidebarSearch" placeholder="Tìm câu hỏi, từ khóa..." aria-label="Tìm kiếm câu hỏi">
+    </div>
+    <div id="sidebarGrid" class="dnd-sidebar-grid">
+      <!-- 59 Question buttons dynamically rendered -->
+    </div>
+  </aside>
+  <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+  <!-- Exhibit Lightbox Modal -->
+  <div id="exhibitModal" class="dnd-modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="modal-title">Sơ Đồ Mạng (Exhibit)</span>
+        <button id="exhibitModalClose" class="modal-close-btn" aria-label="Đóng">✕</button>
+      </div>
+      <div class="modal-body">
+        <img id="exhibitImage" src="" alt="Sơ đồ mạng CCNA Exhibit">
+      </div>
+    </div>
+  </div>
+
+  <!-- Keyboard Shortcuts Modal -->
+  <div id="shortcutsModal" class="dnd-modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-content" style="max-width: 500px;">
+      <div class="modal-header">
+        <span class="modal-title">⌨️ Phím Tắt Tiện Dụng</span>
+        <button id="shortcutsModalClose" class="modal-close-btn" aria-label="Đóng">✕</button>
+      </div>
+      <div class="modal-body" style="background:var(--bg-surface); padding:1.5rem; display:block;">
+        <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:0.75rem; color:var(--text-primary); font-size:0.95rem;">
+          <li><kbd style="background:var(--bg-surface-elevated); padding:0.2rem 0.5rem; border:1px solid var(--border-color); border-radius:4px;">←</kbd> / <kbd style="background:var(--bg-surface-elevated); padding:0.2rem 0.5rem; border:1px solid var(--border-color); border-radius:4px;">→</kbd> : Câu trước / Câu tiếp theo</li>
+          <li><kbd style="background:var(--bg-surface-elevated); padding:0.2rem 0.5rem; border:1px solid var(--border-color); border-radius:4px;">Enter</kbd> : Kiểm tra đáp án</li>
+          <li><kbd style="background:var(--bg-surface-elevated); padding:0.2rem 0.5rem; border:1px solid var(--border-color); border-radius:4px;">R</kbd> : Làm lại câu hiện tại</li>
+          <li><kbd style="background:var(--bg-surface-elevated); padding:0.2rem 0.5rem; border:1px solid var(--border-color); border-radius:4px;">A</kbd> : Xem đáp án chính xác</li>
+          <li><kbd style="background:var(--bg-surface-elevated); padding:0.2rem 0.5rem; border:1px solid var(--border-color); border-radius:4px;">B</kbd> : Đánh dấu cần ôn (Bookmark)</li>
+          <li><kbd style="background:var(--bg-surface-elevated); padding:0.2rem 0.5rem; border:1px solid var(--border-color); border-radius:4px;">M</kbd> : Đánh dấu đã thuộc lòng</li>
+          <li><kbd style="background:var(--bg-surface-elevated); padding:0.2rem 0.5rem; border:1px solid var(--border-color); border-radius:4px;">Esc</kbd> : Đóng hộp thoại / Sơ đồ</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Application Scripts -->
+  <script src="dnd_data.js"></script>
+  <script src="dnd.js"></script>
+</body>
+</html>
