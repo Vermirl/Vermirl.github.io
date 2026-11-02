@@ -333,6 +333,29 @@
   margin-right: 0.35rem;
 }
 
+.draggable-item.is-distractor {
+  opacity: 0.6;
+  border-style: dashed !important;
+  border-color: #f59e0b !important;
+  background: rgba(245, 158, 11, 0.06) !important;
+  cursor: not-allowed !important;
+}
+
+.distractor-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: 4px;
+  padding: 2px 6px;
+  margin-top: 0.35rem;
+  align-self: flex-start;
+}
+
 .item-content {
   display: flex;
   flex-direction: column;
@@ -341,17 +364,15 @@
 }
 
 .item-text-en {
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: var(--text-primary);
-  line-height: 1.4;
+  line-height: 1.45;
   font-family: var(--font-main);
 }
 
 .item-text-vi {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  line-height: 1.35;
+  display: none;
 }
 
 .btn-remove-item {
@@ -412,14 +433,14 @@
 }
 
 .zone-label-vi {
-  font-size: 0.92rem;
-  font-weight: 700;
-  color: var(--accent-cisco-hover);
+  display: none;
 }
 
 .zone-label-en {
-  font-size: 0.8rem;
-  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent-cisco-hover);
+  line-height: 1.4;
 }
 
 .zone-slots {

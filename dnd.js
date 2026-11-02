@@ -101,6 +101,22 @@
     shortcutsModalClose: document.getElementById('shortcutsModalClose')
   };
 
+  // Shuffled source items cache per session
+  const shuffledItemsCache = new Map();
+
+  function getShuffledSourceItems(q) {
+    if (!shuffledItemsCache.has(q.id)) {
+      const arr = [...q.source_items];
+      // Fisher-Yates shuffle
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      shuffledItemsCache.set(q.id, arr);
+    }
+    return shuffledItemsCache.get(q.id);
+  }
+
   // --- Filtering & Navigation ---
   function computeFilteredQuestions() {
     const searchTerm = (DOM.sidebarSearch ? DOM.sidebarSearch.value.trim().toLowerCase() : '');
@@ -165,13 +181,23 @@
       }
     });
 
-    // 3. Render Source Pool (Left Column)
+    // 3. Render Source Pool (Left Column) - Shuffled randomly to avoid answer hints
     DOM.sourcePool.innerHTML = '';
     const poolFragment = document.createDocumentFragment();
 
-    q.source_items.forEach(item => {
+    const isShowingAnswer = showExplanationDirectly;
+    const allTargetIds = new Set();
+    q.drop_zones.forEach(z => {
+      if (Array.isArray(z.target_ids)) {
+        z.target_ids.forEach(tid => allTargetIds.add(tid));
+      }
+    });
+
+    const displayItems = getShuffledSourceItems(q);
+    displayItems.forEach(item => {
       if (!placedItemIds.has(item.id)) {
-        const el = createDraggableItemElement(item, false);
+        const isDistractor = isShowingAnswer && !allTargetIds.has(item.id);
+        const el = createDraggableItemElement(item, false, null, isDistractor);
         poolFragment.appendChild(el);
       }
     });
@@ -185,7 +211,7 @@
       DOM.sourcePool.appendChild(poolFragment);
     }
 
-    // 4. Render Drop Zones (Right Column)
+    // 4. Render Drop Zones (Right Column) - Pure English headers matching Cisco dumps
     DOM.dropZonesContainer.innerHTML = '';
     const zonesFragment = document.createDocumentFragment();
 
@@ -194,11 +220,10 @@
       zoneEl.className = 'drop-zone';
       zoneEl.dataset.zoneId = zone.id;
 
-      // Header
+      // Header: 100% English only
       const headerEl = document.createElement('div');
       headerEl.className = 'zone-header';
       headerEl.innerHTML = `
-        <span class="zone-label-vi">${escapeHtml(zone.label_vi)}</span>
         <span class="zone-label-en">${escapeHtml(zone.label_en)}</span>
       `;
       zoneEl.appendChild(headerEl);
@@ -256,28 +281,31 @@
   }
 
   // --- Element Creators & Handlers ---
-  function createDraggableItemElement(item, isPlaced, zoneId = null) {
+  function createDraggableItemElement(item, isPlaced, zoneId = null, isDistractor = false) {
     const el = document.createElement('div');
-    el.className = `draggable-item ${isPlaced ? 'is-placed' : ''}`;
-    el.draggable = true;
+    el.className = `draggable-item ${isPlaced ? 'is-placed' : ''} ${isDistractor ? 'is-distractor' : ''}`;
+    el.draggable = !isDistractor;
     el.dataset.itemId = item.id;
     if (zoneId) el.dataset.zoneId = zoneId;
 
     el.innerHTML = `
       <div class="item-content">
         <span class="item-text-en">${escapeHtml(item.text_en)}</span>
-        <span class="item-text-vi">${escapeHtml(item.text_vi)}</span>
+        ${isDistractor ? `<div class="distractor-badge">⚠️ Distractor (Không dùng)</div>` : ''}
       </div>
       ${isPlaced ? `<button class="btn-remove-item" title="Bỏ ra khỏi ô" aria-label="Remove item">✕</button>` : ''}
     `;
 
     // Native Drag and Drop
-    el.addEventListener('dragstart', e => handleDragStart(e, item.id));
-    el.addEventListener('dragend', handleDragEnd);
+    if (!isDistractor) {
+      el.addEventListener('dragstart', e => handleDragStart(e, item.id));
+      el.addEventListener('dragend', handleDragEnd);
+    }
 
     // Click-to-Select / Click-to-Place
     el.addEventListener('click', e => {
       e.stopPropagation();
+      if (isDistractor) return;
       if (isPlaced) {
         // Return item to source pool
         removeItemFromZone(item.id, zoneId);
@@ -525,6 +553,7 @@
     const q = questions[currentIndex];
     delete userProgress.placements[q.id];
     delete userProgress.status[q.id];
+    shuffledItemsCache.delete(q.id); // Re-shuffle source cards
     showExplanationDirectly = false;
     saveProgress();
     renderQuestion(currentIndex);

@@ -15,40 +15,40 @@ window.CCNA_DND_DATA = [
     "source_items": [
       {
         "id": "q1-m21",
-        "text_en": "255.255.248.0 (/21)",
-        "text_vi": "255.255.248.0 (/21)"
+        "text_en": "255.255.248.0",
+        "text_vi": "255.255.248.0"
       },
       {
         "id": "q1-m25",
-        "text_en": "255.255.255.128 (/25)",
-        "text_vi": "255.255.255.128 (/25)"
+        "text_en": "255.255.255.128",
+        "text_vi": "255.255.255.128"
       },
       {
         "id": "q1-m27",
-        "text_en": "255.255.255.224 (/27)",
-        "text_vi": "255.255.255.224 (/27)"
+        "text_en": "255.255.255.224",
+        "text_vi": "255.255.255.224"
       },
       {
         "id": "q1-m28",
-        "text_en": "255.255.255.240 (/28)",
-        "text_vi": "255.255.255.240 (/28)"
+        "text_en": "255.255.255.240",
+        "text_vi": "255.255.255.240"
       },
       {
         "id": "q1-m29",
-        "text_en": "255.255.255.248 (/29)",
-        "text_vi": "255.255.255.248 (/29)"
+        "text_en": "255.255.255.248",
+        "text_vi": "255.255.255.248"
       },
       {
         "id": "q1-m30",
-        "text_en": "255.255.255.252 (/30)",
-        "text_vi": "255.255.255.252 (/30)"
+        "text_en": "255.255.255.252",
+        "text_vi": "255.255.255.252"
       }
     ],
     "drop_zones": [
       {
         "id": "q1-z1",
         "label_en": "10.10.13.0/25",
-        "label_vi": "Mạng 10.10.13.0/25",
+        "label_vi": "10.10.13.0/25",
         "target_ids": [
           "q1-m25"
         ]
@@ -56,7 +56,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q1-z2",
         "label_en": "10.10.13.144/28",
-        "label_vi": "Mạng 10.10.13.144/28",
+        "label_vi": "10.10.13.144/28",
         "target_ids": [
           "q1-m28"
         ]
@@ -64,7 +64,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q1-z3",
         "label_en": "10.10.13.160/29",
-        "label_vi": "Mạng 10.10.13.160/29",
+        "label_vi": "10.10.13.160/29",
         "target_ids": [
           "q1-m29"
         ]
@@ -72,83 +72,77 @@ window.CCNA_DND_DATA = [
       {
         "id": "q1-z4",
         "label_en": "209.165.200.224/27",
-        "label_vi": "Mạng 209.165.200.224/27",
+        "label_vi": "209.165.200.224/27",
         "target_ids": [
           "q1-m27"
         ]
       }
     ],
-    "explanation": "Cách chuyển đổi nhanh tiền tố CIDR sang Subnet Mask:\n- /25 = 255.255.255.128 (128 bit)\n- /27 = 255.255.255.224 (128+64+32)\n- /28 = 255.255.255.240 (128+64+32+16)\n- /29 = 255.255.255.248 (128+64+32+16+8)\n- /30 = 255.255.255.252 (bước nhảy 4)"
+    "explanation": "Quy đổi nhanh từ tiền tố CIDR sang Subnet Mask chuẩn:\n- /25 = 255.255.255.128 (mượn 1 bit: 128)\n- /27 = 255.255.255.224 (mượn 3 bit: 128+64+32)\n- /28 = 255.255.255.240 (mượn 4 bit: 128+64+32+16)\n- /29 = 255.255.255.248 (mượn 5 bit: 128+64+32+16+8)\n- /30 = 255.255.255.252 (mượn 6 bit, bước nhảy 4)"
   },
   {
     "id": 2,
-    "title": "Câu 02: So Sánh Công Cụ Quản Lý Cấu Hình (Ansible / Puppet / Chef)",
+    "title": "Câu 02: So Sánh Công Cụ Quản Lý Cấu Hình (Ansible Features)",
     "category": "Automation & Programmability",
-    "prompt_en": "Drag and drop the configuration management tools from the left onto the descriptions on the right.",
-    "prompt_vi": "Kéo thả tên các công cụ quản lý cấu hình tự động từ bên trái vào đúng mô tả đặc tính ở bên phải.",
+    "prompt_en": "Drag and drop the features that apply to Ansible from the left onto the right. Not all features are used.",
+    "prompt_vi": "Kéo thả các đặc tính thuộc về công cụ Ansible từ bên trái sang khung bên phải. Không phải tất cả đặc tính đều được dùng.",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q02_a.png",
     "answer_image": "images/dnd/dnd_q02_b.png",
     "source_items": [
       {
-        "id": "q2-ansible",
-        "text_en": "Ansible",
-        "text_vi": "Ansible"
+        "id": "q2-s1",
+        "text_en": "executes modules via SSH by default",
+        "text_vi": "executes modules via SSH by default"
       },
       {
-        "id": "q2-puppet",
-        "text_en": "Puppet",
-        "text_vi": "Puppet"
+        "id": "q2-s2",
+        "text_en": "uses the YAML language",
+        "text_vi": "uses the YAML language"
       },
       {
-        "id": "q2-chef",
-        "text_en": "Chef",
-        "text_vi": "Chef"
+        "id": "q2-s3",
+        "text_en": "pushes configurations to the client",
+        "text_vi": "pushes configurations to the client"
+      },
+      {
+        "id": "q2-s4",
+        "text_en": "operates without agents",
+        "text_vi": "operates without agents"
+      },
+      {
+        "id": "q2-s5",
+        "text_en": "uses agents to manage hosts",
+        "text_vi": "uses agents to manage hosts"
+      },
+      {
+        "id": "q2-s6",
+        "text_en": "requires clients to pull configurations from the server",
+        "text_vi": "requires clients to pull configurations from the server"
       }
     ],
     "drop_zones": [
       {
-        "id": "q2-z1",
-        "label_en": "Executes modules via SSH by default and uses YAML",
-        "label_vi": "Thực thi module qua SSH mặc định và dùng ngôn ngữ YAML",
+        "id": "q2-ansible",
+        "label_en": "Ansible Features",
+        "label_vi": "Ansible Features",
         "target_ids": [
-          "q2-ansible"
-        ]
-      },
-      {
-        "id": "q2-z2",
-        "label_en": "Uses push model without requiring agents on managed nodes",
-        "label_vi": "Dùng mô hình Push, không cần cài agent trên thiết bị đích",
-        "target_ids": [
-          "q2-ansible"
-        ]
-      },
-      {
-        "id": "q2-z3",
-        "label_en": "Uses TCP port 8140 and declarative manifests with agents",
-        "label_vi": "Cần cài agent trên máy con, dùng manifest khai báo và cổng TCP 8140",
-        "target_ids": [
-          "q2-puppet"
-        ]
-      },
-      {
-        "id": "q2-z4",
-        "label_en": "Uses Cookbooks and Recipes written in Ruby DSL with agents",
-        "label_vi": "Dùng mô hình Cookbooks và Recipes viết bằng ngôn ngữ Ruby DSL",
-        "target_ids": [
-          "q2-chef"
+          "q2-s1",
+          "q2-s2",
+          "q2-s3",
+          "q2-s4"
         ]
       }
     ],
-    "explanation": "Bí quyết nhớ nhanh cho CCNA:\n- **Ansible**: Agentless (không cần agent), chạy qua SSH, viết bằng YAML (Playbooks).\n- **Puppet**: Agent-based, mô hình Pull, dùng ngôn ngữ Manifests (Puppet DSL).\n- **Chef**: Agent-based, mô hình Pull, dùng 'Cookbooks/Recipes' viết bằng Ruby."
+    "explanation": "Đặc trưng kiến trúc của **Ansible**:\n1. **Agentless**: Hoạt động không cần cài agent trên thiết bị đích (operates without agents).\n2. **Giao thức SSH**: Mặc định kết nối và thực thi qua SSH (executes modules via SSH by default).\n3. **Mô hình Push**: Server chủ động đẩy cấu hình xuống client (pushes configurations to the client).\n4. **Ngôn ngữ YAML**: Viết Playbooks bằng YAML (uses the YAML language).\n*Lưu ý:* Hai mục còn lại ('uses agents...' và 'requires clients to pull...') là đặc tính mô hình Pull của Puppet và Chef, đóng vai trò mồi nhử."
   },
   {
     "id": 3,
-    "title": "Câu 03: Thành Phần Bảng Định Tuyến OSPF",
+    "title": "Câu 03: Thành Phần Bảng Định Tuyến (Routing Table Components)",
     "category": "IP Connectivity",
     "prompt_en": "Refer to the exhibit. Drag and drop the routing components from the left onto the corresponding categories on the right.",
-    "prompt_vi": "Tham chiếu sơ đồ. Kéo thả các giá trị thành phần bảng định tuyến từ bên trái vào đúng danh mục ở bên phải theo dòng định tuyến OSPF.",
+    "prompt_vi": "Tham chiếu sơ đồ. Kéo thả các giá trị thành phần bảng định tuyến từ bên trái vào đúng danh mục ở bên phải theo dòng định tuyến trong exhibit.",
     "has_exhibit": true,
     "exhibit_image": "images/dnd/dnd_q03_a.png",
     "question_image": "images/dnd/dnd_q03_b.png",
@@ -189,7 +183,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q3-z1",
         "label_en": "Subnet Prefix",
-        "label_vi": "Tiền tố mạng con (Subnet Prefix)",
+        "label_vi": "Subnet Prefix",
         "target_ids": [
           "q3-p29"
         ]
@@ -197,21 +191,21 @@ window.CCNA_DND_DATA = [
       {
         "id": "q3-z2",
         "label_en": "Administrative Distance",
-        "label_vi": "Khoảng cách quản trị (AD)",
+        "label_vi": "Administrative Distance",
         "target_ids": [
-          "q3-ad110"
+          "q3-ad90"
         ]
       },
       {
         "id": "q3-z3",
         "label_en": "Metric / Cost",
-        "label_vi": "Độ đo chi phí (Metric / Cost)",
+        "label_vi": "Metric / Cost",
         "target_ids": [
           "q3-c40"
         ]
       }
     ],
-    "explanation": "Trong sơ đồ lệnh `show ip route`, dòng định tuyến OSPF có dạng:\n`O 10.10.10.0/29 [110/40] via 10.10.10.1`\n- **Subnet Prefix**: `/29`\n- **Administrative Distance (AD)**: `110` (đặc trưng của giao thức OSPF, số đứng trước dấu gạch chéo)\n- **Metric / Cost**: `40` (số đứng sau dấu gạch chéo)."
+    "explanation": "Trong sơ đồ lệnh `show ip route` của đề thi:\n- Dòng định tuyến hiển thị prefix `/29`.\n- Giá trị Administrative Distance (AD) trong ngoặc vuông [AD/Metric] hiển thị `90`.\n- Giá trị Metric/Cost hiển thị `40`.\n*Ghi chú:* AD = 90 là giá trị mặc định của định tuyến nội miền EIGRP."
   },
   {
     "id": 4,
@@ -227,29 +221,29 @@ window.CCNA_DND_DATA = [
       {
         "id": "q4-c1",
         "text_en": "This type deploys a consistent configuration across multiple devices",
-        "text_vi": "Triển khai cấu hình đồng nhất trên nhiều thiết bị tự động"
+        "text_vi": "This type deploys a consistent configuration across multiple devices"
       },
       {
         "id": "q4-c2",
         "text_en": "Southbound APIs are used to apply configurations",
-        "text_vi": "Dùng Southbound API để đẩy cấu hình xuống thiết bị mạng"
+        "text_vi": "Southbound APIs are used to apply configurations"
       },
       {
         "id": "q4-t1",
         "text_en": "This type uses a distributed control plane",
-        "text_vi": "Sử dụng mặt phẳng điều khiển phân tán trên từng thiết bị"
+        "text_vi": "This type uses a distributed control plane"
       },
       {
         "id": "q4-t2",
         "text_en": "A distributed control plane is needed and devices configured manually",
-        "text_vi": "Cần mặt phẳng điều khiển phân tán và cấu hình thủ công từng thiết bị"
+        "text_vi": "A distributed control plane is needed and devices configured manually"
       }
     ],
     "drop_zones": [
       {
         "id": "q4-controller",
         "label_en": "Controller-Based Networking",
-        "label_vi": "Mạng Điều Khiển Tập Trung (SDN Controller)",
+        "label_vi": "Controller-Based Networking",
         "target_ids": [
           "q4-c1",
           "q4-c2"
@@ -258,7 +252,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q4-traditional",
         "label_en": "Traditional Networking",
-        "label_vi": "Mạng Truyền Thống (Traditional)",
+        "label_vi": "Traditional Networking",
         "target_ids": [
           "q4-t1",
           "q4-t2"
@@ -281,29 +275,29 @@ window.CCNA_DND_DATA = [
       {
         "id": "q5-cu1",
         "text_en": "supplies conduit for POE implementations",
-        "text_vi": "Có khả năng truyền tải nguồn điện cho PoE (Power over Ethernet)"
+        "text_vi": "supplies conduit for POE implementations"
       },
       {
         "id": "q5-cu2",
         "text_en": "is easy to tap into and obtain secure information",
-        "text_vi": "Dễ bị nghe lén / can thiệp vật lý để đánh cắp dữ liệu"
+        "text_vi": "is easy to tap into and obtain secure information"
       },
       {
         "id": "q5-sm1",
         "text_en": "has a core diameter of 9 microns",
-        "text_vi": "Đường kính lõi sợi quang là 9 micromet (9 µm)"
+        "text_vi": "has a core diameter of 9 microns"
       },
       {
         "id": "q5-sm2",
         "text_en": "used for DWDM optics",
-        "text_vi": "Được dùng cho công nghệ quang bước sóng dài và ghép kênh DWDM"
+        "text_vi": "used for DWDM optics"
       }
     ],
     "drop_zones": [
       {
         "id": "q5-copper",
         "label_en": "Copper Cabling",
-        "label_vi": "Cáp Đồng (Copper / Twisted-Pair)",
+        "label_vi": "Copper Cabling",
         "target_ids": [
           "q5-cu1",
           "q5-cu2"
@@ -312,7 +306,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q5-smf",
         "label_en": "Single-Mode Fiber (SMF)",
-        "label_vi": "Cáp Quang Đơn Mốt (Single-Mode Fiber)",
+        "label_vi": "Single-Mode Fiber (SMF)",
         "target_ids": [
           "q5-sm1",
           "q5-sm2"
@@ -335,39 +329,39 @@ window.CCNA_DND_DATA = [
       {
         "id": "q6-t1",
         "text_en": "optimizes transmission rates to receiver",
-        "text_vi": "Tối ưu hóa tốc độ truyền tải phù hợp với bên nhận (Flow Control)"
+        "text_vi": "optimizes transmission rates to receiver"
       },
       {
         "id": "q6-t2",
         "text_en": "controls connections between sender and receiver",
-        "text_vi": "Kiểm soát thiết lập kết nối chặt chẽ giữa bên gửi và bên nhận"
+        "text_vi": "controls connections between sender and receiver"
       },
       {
         "id": "q6-t3",
         "text_en": "guarantees packet delivery",
-        "text_vi": "Đảm bảo truyền gói tin tin cậy (có gói tin ACK xác nhận)"
+        "text_vi": "guarantees packet delivery"
       },
       {
         "id": "q6-u1",
         "text_en": "capable of sending multicast transmissions",
-        "text_vi": "Có khả năng truyền phát gói tin dạng Multicast / Broadcast"
+        "text_vi": "capable of sending multicast transmissions"
       },
       {
         "id": "q6-u2",
         "text_en": "transmits live and real-time data",
-        "text_vi": "Chuyên dùng truyền tải dữ liệu trực tiếp và thời gian thực (VoIP, Video)"
+        "text_vi": "transmits live and real-time data"
       },
       {
         "id": "q6-u3",
         "text_en": "reduces end-to-end delays using small packets",
-        "text_vi": "Giảm độ trễ đầu cuối bằng cách dùng header nhỏ và truyền nhanh"
+        "text_vi": "reduces end-to-end delays using small packets"
       }
     ],
     "drop_zones": [
       {
         "id": "q6-tcp",
         "label_en": "TCP",
-        "label_vi": "Giao thức TCP",
+        "label_vi": "TCP",
         "target_ids": [
           "q6-t1",
           "q6-t2",
@@ -377,7 +371,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q6-udp",
         "label_en": "UDP",
-        "label_vi": "Giao thức UDP",
+        "label_vi": "UDP",
         "target_ids": [
           "q6-u1",
           "q6-u2",
@@ -401,29 +395,29 @@ window.CCNA_DND_DATA = [
       {
         "id": "q7-m1",
         "text_en": "provides one-to-many communications",
-        "text_vi": "Cung cấp hình thức truyền thông một-đến-nhiều (one-to-many)"
+        "text_vi": "provides one-to-many communications"
       },
       {
         "id": "q7-m2",
         "text_en": "sends packets to a group address rather than a single address",
-        "text_vi": "Gửi gói tin đến một địa chỉ nhóm thay vì một máy cụ thể"
+        "text_vi": "sends packets to a group address rather than a single address"
       },
       {
         "id": "q7-l1",
         "text_en": "serves as the routing next-hop in an IGP",
-        "text_vi": "Đóng vai trò là địa chỉ next-hop trong các giao thức định tuyến IGP (như OSPFv3)"
+        "text_vi": "serves as the routing next-hop in an IGP"
       },
       {
         "id": "q7-l2",
         "text_en": "confined to a single link",
-        "text_vi": "Chỉ có phạm vi hiệu lực cục bộ trong một liên kết mạng duy nhất"
+        "text_vi": "confined to a single link"
       }
     ],
     "drop_zones": [
       {
         "id": "q7-multicast",
         "label_en": "Multicast Address (FF00::/8)",
-        "label_vi": "Địa chỉ Multicast IPv6 (FF00::/8)",
+        "label_vi": "Multicast Address (FF00::/8)",
         "target_ids": [
           "q7-m1",
           "q7-m2"
@@ -432,7 +426,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q7-linklocal",
         "label_en": "Link-Local Address (FE80::/10)",
-        "label_vi": "Địa chỉ Link-Local IPv6 (FE80::/10)",
+        "label_vi": "Link-Local Address (FE80::/10)",
         "target_ids": [
           "q7-l1",
           "q7-l2"
@@ -472,7 +466,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q8-fa03",
         "label_en": "FastEthernet0/3",
-        "label_vi": "Cổng FastEthernet0/3 (khớp mạng 10.10.10.16/28)",
+        "label_vi": "FastEthernet0/3",
         "target_ids": [
           "q8-ip1"
         ]
@@ -480,7 +474,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q8-fa02",
         "label_en": "FastEthernet0/2",
-        "label_vi": "Cổng FastEthernet0/2 (khớp mạng 10.10.13.128/25)",
+        "label_vi": "FastEthernet0/2",
         "target_ids": [
           "q8-ip2"
         ]
@@ -488,7 +482,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q8-fa04",
         "label_en": "FastEthernet0/4",
-        "label_vi": "Cổng FastEthernet0/4 (đi qua Default Route 0.0.0.0/0)",
+        "label_vi": "FastEthernet0/4",
         "target_ids": [
           "q8-ip3"
         ]
@@ -510,34 +504,34 @@ window.CCNA_DND_DATA = [
       {
         "id": "q9-ondemand",
         "text_en": "on-demand self-service",
-        "text_vi": "on-demand self-service (Tự phục vụ theo nhu cầu)"
+        "text_vi": "on-demand self-service"
       },
       {
         "id": "q9-measured",
         "text_en": "measured service",
-        "text_vi": "measured service (Đo lường & tính cước chi tiết)"
+        "text_vi": "measured service"
       },
       {
         "id": "q9-pooling",
         "text_en": "resource pooling",
-        "text_vi": "resource pooling (Gộp chung tài nguyên)"
+        "text_vi": "resource pooling"
       },
       {
         "id": "q9-elasticity",
         "text_en": "rapid elasticity",
-        "text_vi": "rapid elasticity (Độ co giãn đàn hồi nhanh)"
+        "text_vi": "rapid elasticity"
       },
       {
         "id": "q9-network",
         "text_en": "broad network access",
-        "text_vi": "broad network access (Truy cập mạng diện rộng)"
+        "text_vi": "broad network access"
       }
     ],
     "drop_zones": [
       {
         "id": "q9-z1",
         "label_en": "The consumer can choose when to start or stop using the service.",
-        "label_vi": "Khách hàng có thể tự khởi động hoặc ngắt dịch vụ bất kỳ lúc nào mà không cần nhân viên hỗ trợ.",
+        "label_vi": "The consumer can choose when to start or stop using the service.",
         "target_ids": [
           "q9-ondemand"
         ]
@@ -545,7 +539,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q9-z2",
         "label_en": "The provider can bill the consumer in accordance with the level of usage.",
-        "label_vi": "Nhà cung cấp tính cước minh bạch chính xác theo mức dung lượng/thời gian khách hàng thực tế sử dụng.",
+        "label_vi": "The provider can bill the consumer in accordance with the level of usage.",
         "target_ids": [
           "q9-measured"
         ]
@@ -553,7 +547,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q9-z3",
         "label_en": "The provider allocates CPU, memory, and disk from its shared compute resources to multiple customers.",
-        "label_vi": "Nhà cung cấp gom chung CPU, RAM, ổ đĩa và cấp phát linh hoạt cho nhiều khách hàng (Multi-tenant).",
+        "label_vi": "The provider allocates CPU, memory, and disk from its shared compute resources to multiple customers.",
         "target_ids": [
           "q9-pooling"
         ]
@@ -561,7 +555,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q9-z4",
         "label_en": "The resource pool can expand quickly to meet demand.",
-        "label_vi": "Hệ thống tự động tăng giảm tài nguyên ngay tức thì khi nhu cầu tải tăng vọt.",
+        "label_vi": "The resource pool can expand quickly to meet demand.",
         "target_ids": [
           "q9-elasticity"
         ]
@@ -569,7 +563,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q9-z5",
         "label_en": "The service is available from many types of devices and networks.",
-        "label_vi": "Dịch vụ có thể truy cập thuận tiện từ mọi thiết bị (laptop, điện thoại, tablet) qua mạng.",
+        "label_vi": "The service is available from many types of devices and networks.",
         "target_ids": [
           "q9-network"
         ]
@@ -579,7 +573,7 @@ window.CCNA_DND_DATA = [
   },
   {
     "id": 10,
-    "title": "Câu 10: Đặc Tính Cáp Đồng vs Cáp Quang",
+    "title": "Câu 10: Đặc Tính Cáp Đồng vs Cáp Quang Đa Mốt",
     "category": "Network Fundamentals",
     "prompt_en": "Drag and drop the characteristic from the left onto the cable type on the right.",
     "prompt_vi": "Kéo thả đặc tính môi trường truyền dẫn từ bên trái vào đúng loại cáp tương ứng ở bên phải.",
@@ -591,29 +585,29 @@ window.CCNA_DND_DATA = [
       {
         "id": "q10-cu1",
         "text_en": "transmits data in the form of electronic signals",
-        "text_vi": "Truyền tín hiệu dữ liệu dưới dạng xung điện"
+        "text_vi": "transmits data in the form of electronic signals"
       },
       {
         "id": "q10-cu2",
         "text_en": "supplies conduit for POE implementations",
-        "text_vi": "Cung cấp kênh truyền dẫn cho công nghệ cấp nguồn PoE"
+        "text_vi": "supplies conduit for POE implementations"
       },
       {
         "id": "q10-fo1",
-        "text_en": "used for high-throughput over long distances",
-        "text_vi": "Băng thông cực cao qua cự ly khoảng cách rất xa"
+        "text_en": "used for high-throughput over short distances",
+        "text_vi": "used for high-throughput over short distances"
       },
       {
         "id": "q10-fo2",
         "text_en": "transmits signals using pulses of light",
-        "text_vi": "Truyền tín hiệu dữ liệu bằng các xung ánh sáng"
+        "text_vi": "transmits signals using pulses of light"
       }
     ],
     "drop_zones": [
       {
         "id": "q10-copper",
         "label_en": "Copper Cabling",
-        "label_vi": "Cáp Đồng (Copper)",
+        "label_vi": "Copper Cabling",
         "target_ids": [
           "q10-cu1",
           "q10-cu2"
@@ -621,15 +615,15 @@ window.CCNA_DND_DATA = [
       },
       {
         "id": "q10-fiber",
-        "label_en": "Fiber Optic Cabling",
-        "label_vi": "Cáp Quang (Fiber Optic)",
+        "label_en": "Multi-Mode Fiber",
+        "label_vi": "Multi-Mode Fiber",
         "target_ids": [
           "q10-fo1",
           "q10-fo2"
         ]
       }
     ],
-    "explanation": "- **Cáp đồng**: Dẫn điện, truyền xung điện áp, có thể mang nguồn điện một chiều cho thiết bị PoE (802.3af/at/bt).\n- **Cáp quang**: Lõi thủy tinh/nhựa, truyền bằng xung ánh sáng (Laser/LED), hoàn toàn miễn nhiễm với sóng điện từ EMI, cự ly hàng chục km."
+    "explanation": "- **Copper Cabling (Cáp đồng)**: Dẫn điện, truyền xung điện áp (electronic signals), có thể mang nguồn điện một chiều cho thiết bị PoE (802.3af/at/bt).\n- **Multi-Mode Fiber (Cáp quang đa mốt)**: Lõi thủy tinh/nhựa, truyền bằng xung ánh sáng (pulses of light), dùng cho băng thông cao ở khoảng cách ngắn (short distances < 500m) do hiện tượng tán sắc đa mốt."
   },
   {
     "id": 11,
@@ -645,39 +639,39 @@ window.CCNA_DND_DATA = [
       {
         "id": "q11-t1",
         "text_en": "client confirms data delivery from the server",
-        "text_vi": "Phía nhận gửi gói tin xác nhận đã nhận dữ liệu (ACK)"
+        "text_vi": "client confirms data delivery from the server"
       },
       {
         "id": "q11-t2",
         "text_en": "checks for errors and guarantees reception",
-        "text_vi": "Kiểm tra lỗi và đảm bảo dữ liệu đến đích nguyên vẹn"
+        "text_vi": "checks for errors and guarantees reception"
       },
       {
         "id": "q11-t3",
         "text_en": "delays data transmission if congestion is detected",
-        "text_vi": "Chủ động giảm tốc độ truyền nếu phát hiện tắc nghẽn mạng"
+        "text_vi": "delays data transmission if congestion is detected"
       },
       {
         "id": "q11-u1",
         "text_en": "able to send data without requiring an established connection beforehand",
-        "text_vi": "Gửi dữ liệu trực tiếp mà không cần thiết lập kết nối trước"
+        "text_vi": "able to send data without requiring an established connection beforehand"
       },
       {
         "id": "q11-u2",
         "text_en": "supports broadcast and multicast traffic",
-        "text_vi": "Hỗ trợ truyền gói tin Broadcast và Multicast"
+        "text_vi": "supports broadcast and multicast traffic"
       },
       {
         "id": "q11-u3",
         "text_en": "packets sent independently and received in no fixed order",
-        "text_vi": "Các gói tin gửi độc lập và có thể đến nơi không theo thứ tự"
+        "text_vi": "packets sent independently and received in no fixed order"
       }
     ],
     "drop_zones": [
       {
         "id": "q11-tcp",
         "label_en": "TCP",
-        "label_vi": "Giao thức TCP",
+        "label_vi": "TCP",
         "target_ids": [
           "q11-t1",
           "q11-t2",
@@ -687,7 +681,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q11-udp",
         "label_en": "UDP",
-        "label_vi": "Giao thức UDP",
+        "label_vi": "UDP",
         "target_ids": [
           "q11-u1",
           "q11-u2",
@@ -695,14 +689,14 @@ window.CCNA_DND_DATA = [
         ]
       }
     ],
-    "explanation": "- **TCP**: Độ tin cậy cao, có kiểm soát nghẽn (Congestion Avoidance), đánh số thứ tự sequence number và bắt buộc xác nhận ACK.\n- **UDP**: Truyền theo kiểu 'best-effort', không bắt tay, các datagram độc lập, cho phép gửi Broadcast/Multicast (TCP chỉ hỗ trợ Unicast 1-1)."
+    "explanation": "Đặc trưng chuyên sâu:\n- **TCP**: Phía nhận gửi xác nhận ACK (client confirms data delivery), kiểm soát lỗi và cam kết toàn vẹn (guarantees reception), giảm tốc độ khi mạng nghẽn (delays transmission if congestion detected).\n- **UDP**: Gửi trực tiếp không cần bắt tay (no established connection beforehand), hỗ trợ Broadcast/Multicast, các gói tin độc lập không cần theo thứ tự cố định (no fixed order)."
   },
   {
     "id": 12,
     "title": "Câu 12: Cấu Hình Địa Chỉ IP Khả Dụng (DC-1 & HQ-1)",
     "category": "IP Connectivity",
-    "prompt_en": "Refer to the exhibit. The IP address configurations must be completed on the DC-1 and HQ-1 routers based on these requirements. Drag and drop the commands from the left onto the destination interfaces on the right.",
-    "prompt_vi": "Tham chiếu sơ đồ. Cấu hình địa chỉ IP trên router DC-1 và HQ-1 theo các yêu cầu chi tiết (địa chỉ IP khả dụng đầu tiên hoặc cuối cùng trong subnet). Kéo thả câu lệnh IP từ bên trái vào đúng cổng ở bên phải.",
+    "prompt_en": "Refer to the exhibit. The IP address configurations must be completed on the DC-1 and HQ-1 routers based on these requirements:\n- DC-1 Gi1/0 must be the last usable address on a /30\n- DC-1 Gi1/1 must be the first usable address on a /29\n- DC-1 Gi1/2 must be the last usable address on a /28\n- HQ-1 Gi1/3 must be the last usable address on a /29\nDrag and drop the commands from the left onto the destination interfaces on the right. Not all commands are used.",
+    "prompt_vi": "Tham chiếu sơ đồ. Hoàn thành cấu hình IP trên router DC-1 và HQ-1 theo các yêu cầu:\n- DC-1 Gi1/0: địa chỉ khả dụng cuối cùng của mạng /30\n- DC-1 Gi1/1: địa chỉ khả dụng đầu tiên của mạng /29\n- DC-1 Gi1/2: địa chỉ khả dụng cuối cùng của mạng /28\n- HQ-1 Gi1/3: địa chỉ khả dụng cuối cùng của mạng /29\nKéo thả các câu lệnh từ bên trái vào đúng cổng ở bên phải. Không phải tất cả câu lệnh đều được sử dụng.",
     "has_exhibit": true,
     "exhibit_image": "images/dnd/dnd_q12_a.png",
     "question_image": "images/dnd/dnd_q12_b.png",
@@ -711,59 +705,74 @@ window.CCNA_DND_DATA = [
       {
         "id": "q12-c1",
         "text_en": "ip address 192.168.4.9 255.255.255.248",
-        "text_vi": "ip address 192.168.4.9 255.255.255.248 (/29 đầu tiên khả dụng)"
+        "text_vi": "ip address 192.168.4.9 255.255.255.248"
       },
       {
         "id": "q12-c2",
         "text_en": "ip address 192.168.3.14 255.255.255.240",
-        "text_vi": "ip address 192.168.3.14 255.255.255.240 (/28 cuối cùng khả dụng)"
+        "text_vi": "ip address 192.168.3.14 255.255.255.240"
       },
       {
         "id": "q12-c3",
         "text_en": "ip address 209.165.202.130 255.255.255.252",
-        "text_vi": "ip address 209.165.202.130 255.255.255.252 (/30 cuối cùng khả dụng)"
+        "text_vi": "ip address 209.165.202.130 255.255.255.252"
       },
       {
         "id": "q12-c4",
         "text_en": "ip address 192.168.4.14 255.255.255.248",
-        "text_vi": "ip address 192.168.4.14 255.255.255.248 (/29 cuối cùng khả dụng)"
+        "text_vi": "ip address 192.168.4.14 255.255.255.248"
+      },
+      {
+        "id": "q12-d1",
+        "text_en": "ip address 192.168.4.15 255.255.255.240",
+        "text_vi": "ip address 192.168.4.15 255.255.255.240"
+      },
+      {
+        "id": "q12-d2",
+        "text_en": "ip address 209.165.202.129 255.255.255.252",
+        "text_vi": "ip address 209.165.202.129 255.255.255.252"
+      },
+      {
+        "id": "q12-d3",
+        "text_en": "ip address 192.168.3.14 255.255.255.248",
+        "text_vi": "ip address 192.168.3.14 255.255.255.248"
       }
     ],
     "drop_zones": [
       {
         "id": "q12-dc-gi10",
-        "label_en": "DC-1 Gi1/0 (last usable on /30)",
-        "label_vi": "DC-1 Gi1/0: IP khả dụng cuối cùng của mạng /30",
+        "label_en": "DC-1 Gi1/0",
+        "label_vi": "DC-1 Gi1/0",
         "target_ids": [
           "q12-c3"
         ]
       },
       {
         "id": "q12-dc-gi11",
-        "label_en": "DC-1 Gi1/1 (first usable on /29)",
-        "label_vi": "DC-1 Gi1/1: IP khả dụng đầu tiên của mạng 192.168.4.8/29",
+        "label_en": "DC-1 Gi1/1",
+        "label_vi": "DC-1 Gi1/1",
         "target_ids": [
           "q12-c1"
         ]
       },
       {
         "id": "q12-dc-gi12",
-        "label_en": "DC-1 Gi1/2 (last usable on /28)",
-        "label_vi": "DC-1 Gi1/2: IP khả dụng cuối cùng của mạng 192.168.3.0/28",
+        "label_en": "DC-1 Gi1/2",
+        "label_vi": "DC-1 Gi1/2",
         "target_ids": [
           "q12-c2"
         ]
       },
       {
         "id": "q12-hq-gi13",
-        "label_en": "HQ-1 Gi1/3 (last usable on /29)",
-        "label_vi": "HQ-1 Gi1/3: IP khả dụng cuối cùng của mạng 192.168.4.8/29",
+        "label_en": "HQ-1 Gi1/3",
+        "label_vi": "HQ-1 Gi1/3",
         "target_ids": [
           "q12-c4"
         ]
       }
     ],
-    "explanation": "Quy tắc tính IP khả dụng (Usable IP):\n- Subnet /30: bước nhảy 4. Mạng `209.165.202.128/30`, IP khả dụng gồm .129 và .130. IP cuối cùng là `.130 255.255.255.252`.\n- Subnet /29: bước nhảy 8. Mạng `192.168.4.8/29`, dải IP là .9 đến .14. IP đầu tiên là `.9`, IP cuối cùng là `.14`.\n- Subnet /28: bước nhảy 16. Mạng `192.168.3.0/28`, dải IP là .1 đến .14. IP cuối cùng là `.14 255.255.255.240`."
+    "explanation": "Chi tiết cách tính địa chỉ IP khả dụng (Usable IP):\n- **DC-1 Gi1/0 (last usable on /30)**: Mạng nối WAN `209.165.202.128/30`, bước nhảy 4 (IP mạng .128, IP broadcast .131). Dải IP khả dụng: .129 và .130. IP cuối cùng là `209.165.202.130 255.255.255.252`.\n- **DC-1 Gi1/1 (first usable on /29)**: Mạng `192.168.4.8/29`, bước nhảy 8 (.8 đến .15). Dải IP khả dụng: .9 đến .14. IP đầu tiên là `192.168.4.9 255.255.255.248`.\n- **DC-1 Gi1/2 (last usable on /28)**: Mạng `192.168.3.0/28`, bước nhảy 16 (.0 đến .15). Dải IP khả dụng: .1 đến .14. IP cuối cùng là `192.168.3.14 255.255.255.240`.\n- **HQ-1 Gi1/3 (last usable on /29)**: Cùng mạng nối router `192.168.4.8/29` với DC-1 Gi1/1. IP cuối cùng khả dụng là `192.168.4.14 255.255.255.248`."
   },
   {
     "id": 13,
@@ -779,29 +788,29 @@ window.CCNA_DND_DATA = [
       {
         "id": "q13-policing",
         "text_en": "policing",
-        "text_vi": "policing (Điều hòa lưu lượng)"
+        "text_vi": "policing"
       },
       {
         "id": "q13-marking",
         "text_en": "marking",
-        "text_vi": "marking (Đánh dấu gói tin)"
+        "text_vi": "marking"
       },
       {
         "id": "q13-queuing",
         "text_en": "queuing",
-        "text_vi": "queuing (Hàng đợi lưu đệm)"
+        "text_vi": "queuing"
       },
       {
         "id": "q13-class",
         "text_en": "classification",
-        "text_vi": "classification (Phân loại lưu lượng)"
+        "text_vi": "classification"
       }
     ],
     "drop_zones": [
       {
         "id": "q13-z1",
         "label_en": "Applies a specific action (e.g. drop) whenever the maximum rate is exceeded",
-        "label_vi": "Áp dụng biện pháp xử lý (hủy gói tin hoặc hạ mức ưu tiên) khi lưu lượng vượt quá ngưỡng quy định",
+        "label_vi": "Applies a specific action (e.g. drop) whenever the maximum rate is exceeded",
         "target_ids": [
           "q13-policing"
         ]
@@ -809,7 +818,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q13-z2",
         "label_en": "Sets a value in the header to associate a packet with a QoS group",
-        "label_vi": "Ghi một giá trị ưu tiên vào header (như CoS hoặc DSCP) để gắn gói tin vào một nhóm QoS",
+        "label_vi": "Sets a value in the header to associate a packet with a QoS group",
         "target_ids": [
           "q13-marking"
         ]
@@ -817,7 +826,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q13-z3",
         "label_en": "Reduces congestion by holding packets in buffers and distributing them when bandwidth allows",
-        "label_vi": "Giảm nghẽn mạng bằng cách lưu gói tin vào bộ đệm và chuyển tiếp dần ra ngoài khi băng thông cho phép",
+        "label_vi": "Reduces congestion by holding packets in buffers and distributing them when bandwidth allows",
         "target_ids": [
           "q13-queuing"
         ]
@@ -825,7 +834,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q13-z4",
         "label_en": "The overall process of using specific criteria to differentiate traffic into categories",
-        "label_vi": "Quy trình tổng thể dùng các tiêu chí (IP, Port, Protocol) để chia lưu lượng mạng thành các nhóm riêng biệt",
+        "label_vi": "The overall process of using specific criteria to differentiate traffic into categories",
         "target_ids": [
           "q13-class"
         ]
@@ -847,34 +856,34 @@ window.CCNA_DND_DATA = [
       {
         "id": "q14-static",
         "text_en": "Static access",
-        "text_vi": "Static access (Cổng Access tĩnh)"
+        "text_vi": "Static access"
       },
       {
         "id": "q14-dyn",
         "text_en": "Dynamic access",
-        "text_vi": "Dynamic access (Cổng Access động)"
+        "text_vi": "Dynamic access"
       },
       {
         "id": "q14-trunk",
         "text_en": "trunk",
-        "text_vi": "Trunk (Cổng trung kế Trunk)"
+        "text_vi": "trunk"
       },
       {
         "id": "q14-tunnel",
         "text_en": "tunnel",
-        "text_vi": "Tunnel (Cổng đường hầm QinQ)"
+        "text_vi": "tunnel"
       },
       {
         "id": "q14-pvlan",
         "text_en": "private VLAN",
-        "text_vi": "Private VLAN (VLAN riêng tư PVLAN)"
+        "text_vi": "private VLAN"
       }
     ],
     "drop_zones": [
       {
         "id": "q14-z1",
         "label_en": "Allows the port to belong to one VLAN when manually configured",
-        "label_vi": "Cho phép cổng thuộc về đúng một VLAN duy nhất khi được cấu hình thủ công",
+        "label_vi": "Allows the port to belong to one VLAN when manually configured",
         "target_ids": [
           "q14-static"
         ]
@@ -882,7 +891,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q14-z2",
         "label_en": "Allows the port to belong to one VLAN determined dynamically",
-        "label_vi": "Cho phép cổng tự động gán vào một VLAN thông qua máy chủ quản lý (như VMPS)",
+        "label_vi": "Allows the port to belong to one VLAN determined dynamically",
         "target_ids": [
           "q14-dyn"
         ]
@@ -890,7 +899,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q14-z3",
         "label_en": "Allows the port to carry traffic for one or more VLANs",
-        "label_vi": "Cho phép cổng mang lưu lượng của nhiều VLAN cùng lúc (gắn thẻ 802.1Q)",
+        "label_vi": "Allows the port to carry traffic for one or more VLANs",
         "target_ids": [
           "q14-trunk"
         ]
@@ -898,7 +907,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q14-z4",
         "label_en": "Allows the switch to support a single service provider QinQ tunnel",
-        "label_vi": "Cho phép switch nhà mạng đóng gói thẻ VLAN kép QinQ (802.1Q tunneling)",
+        "label_vi": "Allows the switch to support a single service provider QinQ tunnel",
         "target_ids": [
           "q14-tunnel"
         ]
@@ -906,7 +915,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q14-z5",
         "label_en": "Allows the port to communicate with others within the same community VLAN",
-        "label_vi": "Cho phép cổng giao tiếp với các cổng khác trong cùng Community VLAN",
+        "label_vi": "Allows the port to communicate with others within the same community VLAN",
         "target_ids": [
           "q14-pvlan"
         ]
@@ -928,29 +937,29 @@ window.CCNA_DND_DATA = [
       {
         "id": "q15-u1",
         "text_en": "publicly routable in the same way as standard host traffic",
-        "text_vi": "Định tuyến công khai theo cách thức thông thường của một host độc lập"
+        "text_vi": "publicly routable in the same way as standard host traffic"
       },
       {
         "id": "q15-u2",
         "text_en": "routable and reachable over the Internet",
-        "text_vi": "Có thể định tuyến và liên lạc được trực tiếp trên mạng Internet toàn cầu"
+        "text_vi": "routable and reachable over the Internet"
       },
       {
         "id": "q15-m1",
         "text_en": "provides one-to-many communications",
-        "text_vi": "Cung cấp hình thức truyền phát một-đến-nhiều (one-to-many)"
+        "text_vi": "provides one-to-many communications"
       },
       {
         "id": "q15-m2",
         "text_en": "has a unicast source sent to a group address",
-        "text_vi": "Gói tin có địa chỉ nguồn là Unicast nhưng địa chỉ đích là địa chỉ nhóm"
+        "text_vi": "has a unicast source sent to a group address"
       }
     ],
     "drop_zones": [
       {
         "id": "q15-unicast",
         "label_en": "Unicast IP Address",
-        "label_vi": "Địa Chỉ IP Unicast (Giao tiếp đơn bào 1-1)",
+        "label_vi": "Unicast IP Address",
         "target_ids": [
           "q15-u1",
           "q15-u2"
@@ -959,7 +968,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q15-multicast",
         "label_en": "Multicast IP Address",
-        "label_vi": "Địa Chỉ IP Multicast (Giao tiếp nhóm 1-nhiều)",
+        "label_vi": "Multicast IP Address",
         "target_ids": [
           "q15-m1",
           "q15-m2"
@@ -982,24 +991,24 @@ window.CCNA_DND_DATA = [
       {
         "id": "q16-tp",
         "text_en": "is comprised of shielded and unshielded twisted pairs",
-        "text_vi": "Gồm các cặp dây đồng xoắn đôi có bọc kim (STP) hoặc không bọc kim (UTP)"
+        "text_vi": "is comprised of shielded and unshielded twisted pairs"
       },
       {
         "id": "q16-coax",
         "text_en": "contains a conductor, dielectric, and sheathing",
-        "text_vi": "Chứa một lõi dẫn đồng ở giữa, lớp cách điện điện môi, lưới chống nhiễu và vỏ bọc"
+        "text_vi": "contains a conductor, dielectric, and sheathing"
       },
       {
         "id": "q16-fiber",
         "text_en": "comprised of insulated glass strands",
-        "text_vi": "Được cấu tạo từ các sợi thủy tinh/silica tinh khiết truyền tín hiệu quang"
+        "text_vi": "comprised of insulated glass strands"
       }
     ],
     "drop_zones": [
       {
         "id": "q16-z1",
         "label_en": "Twisted-Pair Cable",
-        "label_vi": "Cáp Xoắn Đôi (Twisted Pair)",
+        "label_vi": "Twisted-Pair Cable",
         "target_ids": [
           "q16-tp"
         ]
@@ -1007,7 +1016,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q16-z2",
         "label_en": "Coaxial Cable",
-        "label_vi": "Cáp Đồng Trục (Coaxial)",
+        "label_vi": "Coaxial Cable",
         "target_ids": [
           "q16-coax"
         ]
@@ -1015,7 +1024,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q16-z3",
         "label_en": "Fiber Optic Cable",
-        "label_vi": "Cáp Sợi Quang (Fiber Optic)",
+        "label_vi": "Fiber Optic Cable",
         "target_ids": [
           "q16-fiber"
         ]
@@ -1037,39 +1046,39 @@ window.CCNA_DND_DATA = [
       {
         "id": "q17-t1",
         "text_en": "sends data in a specific order",
-        "text_vi": "Gửi dữ liệu có đánh số thứ tự tuần tự (Sequence Numbers)"
+        "text_vi": "sends data in a specific order"
       },
       {
         "id": "q17-t2",
         "text_en": "requires an established connection",
-        "text_vi": "Bắt buộc phải thiết lập kết nối trước khi gửi (bắt tay 3 bước)"
+        "text_vi": "requires an established connection"
       },
       {
         "id": "q17-t3",
         "text_en": "supports web browsing",
-        "text_vi": "Được sử dụng cho duyệt web (HTTP/HTTPS)"
+        "text_vi": "supports web browsing"
       },
       {
         "id": "q17-u1",
         "text_en": "suited for streaming audio and video",
-        "text_vi": "Phù hợp tối ưu cho truyền phát âm thanh và video trực tiếp"
+        "text_vi": "suited for streaming audio and video"
       },
       {
         "id": "q17-u2",
         "text_en": "retransmission is unsupported",
-        "text_vi": "Không hỗ trợ cơ chế truyền lại khi gói tin bị mất"
+        "text_vi": "retransmission is unsupported"
       },
       {
         "id": "q17-u3",
         "text_en": "tolerates packet loss",
-        "text_vi": "Chấp nhận mất một lượng nhỏ gói tin mà không ảnh hưởng lớn đến dịch vụ"
+        "text_vi": "tolerates packet loss"
       }
     ],
     "drop_zones": [
       {
         "id": "q17-tcp",
         "label_en": "TCP",
-        "label_vi": "Giao thức TCP",
+        "label_vi": "TCP",
         "target_ids": [
           "q17-t1",
           "q17-t2",
@@ -1079,7 +1088,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q17-udp",
         "label_en": "UDP",
-        "label_vi": "Giao thức UDP",
+        "label_vi": "UDP",
         "target_ids": [
           "q17-u1",
           "q17-u2",
@@ -1103,7 +1112,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q18-dhcp",
         "text_en": "DHCP snooping",
-        "text_vi": "DHCP Snooping"
+        "text_vi": "DHCP snooping"
       },
       {
         "id": "q18-dai",
@@ -1113,7 +1122,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q18-storm",
         "text_en": "Storm control",
-        "text_vi": "Storm Control"
+        "text_vi": "Storm control"
       },
       {
         "id": "q18-ipsg",
@@ -1125,7 +1134,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q18-z1",
         "label_en": "Rogue DHCP server that spoofs IP configuration",
-        "label_vi": "Ngăn chặn máy chủ DHCP giả mạo (Rogue DHCP Server) phát IP/DNS sai",
+        "label_vi": "Rogue DHCP server that spoofs IP configuration",
         "target_ids": [
           "q18-dhcp"
         ]
@@ -1133,7 +1142,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q18-z2",
         "label_en": "ARP cache poisoning attacks",
-        "label_vi": "Ngăn chặn tấn công đầu độc bộ nhớ đệm ARP (ARP Spoofing / Poisoning)",
+        "label_vi": "ARP cache poisoning attacks",
         "target_ids": [
           "q18-dai"
         ]
@@ -1141,7 +1150,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q18-z3",
         "label_en": "Broadcast / Multicast flood attacks",
-        "label_vi": "Ngăn chặn bão lưu lượng Broadcast hoặc Multicast làm quá tải cổng switch",
+        "label_vi": "Broadcast / Multicast flood attacks",
         "target_ids": [
           "q18-storm"
         ]
@@ -1149,7 +1158,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q18-z4",
         "label_en": "Rogue clients spoofing IP addresses on the network",
-        "label_vi": "Ngăn chặn thiết bị giả mạo địa chỉ IP (IP Spoofing) để truy cập mạng",
+        "label_vi": "Rogue clients spoofing IP addresses on the network",
         "target_ids": [
           "q18-ipsg"
         ]
@@ -1171,39 +1180,39 @@ window.CCNA_DND_DATA = [
       {
         "id": "q19-t1",
         "text_en": "uses a three-way handshake",
-        "text_vi": "Sử dụng cơ chế bắt tay ba bước (SYN, SYN-ACK, ACK)"
+        "text_vi": "uses a three-way handshake"
       },
       {
         "id": "q19-t2",
         "text_en": "preferred for web browsing",
-        "text_vi": "Là lựa chọn ưu tiên cho các dịch vụ duyệt web và truyền file"
+        "text_vi": "preferred for web browsing"
       },
       {
         "id": "q19-t3",
         "text_en": "provides a reliable connection",
-        "text_vi": "Cung cấp kết nối tin cậy và đảm bảo toàn vẹn dữ liệu"
+        "text_vi": "provides a reliable connection"
       },
       {
         "id": "q19-u1",
         "text_en": "faster data transmission",
-        "text_vi": "Tốc độ truyền dữ liệu nhanh hơn do không có chi phí đàm phán"
+        "text_vi": "faster data transmission"
       },
       {
         "id": "q19-u2",
         "text_en": "used for streaming audio and VoIP",
-        "text_vi": "Được dùng chuyên biệt cho gọi thoại VoIP và phát video trực tuyến"
+        "text_vi": "used for streaming audio and VoIP"
       },
       {
         "id": "q19-u3",
         "text_en": "connectionless protocol",
-        "text_vi": "Là giao thức phi kết nối (Connectionless)"
+        "text_vi": "connectionless protocol"
       }
     ],
     "drop_zones": [
       {
         "id": "q19-tcp",
         "label_en": "TCP",
-        "label_vi": "Giao thức TCP",
+        "label_vi": "TCP",
         "target_ids": [
           "q19-t1",
           "q19-t2",
@@ -1213,7 +1222,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q19-udp",
         "label_en": "UDP",
-        "label_vi": "Giao thức UDP",
+        "label_vi": "UDP",
         "target_ids": [
           "q19-u1",
           "q19-u2",
@@ -1237,29 +1246,29 @@ window.CCNA_DND_DATA = [
       {
         "id": "q20-cu1",
         "text_en": "is easy to tap into and obtain secure information",
-        "text_vi": "Dễ dàng bị trích xuất / nghe lén tín hiệu vật lý để đánh cắp thông tin"
+        "text_vi": "is easy to tap into and obtain secure information"
       },
       {
         "id": "q20-cu2",
         "text_en": "is comprised of shielded and unshielded twisted pairs",
-        "text_vi": "Cấu tạo từ các cặp dây đồng xoắn đôi (STP hoặc UTP)"
+        "text_vi": "is comprised of shielded and unshielded twisted pairs"
       },
       {
         "id": "q20-mm1",
         "text_en": "attenuation increases over long distances",
-        "text_vi": "Độ suy hao và tán sắc tăng mạnh khi truyền qua cự ly khoảng cách xa"
+        "text_vi": "attenuation increases over long distances"
       },
       {
         "id": "q20-mm2",
         "text_en": "is prone to damage when mishandled",
-        "text_vi": "Dễ bị gãy vỡ sợi quang bên trong nếu bị uốn cong quá bán kính cho phép"
+        "text_vi": "is prone to damage when mishandled"
       }
     ],
     "drop_zones": [
       {
         "id": "q20-copper",
         "label_en": "Copper Cabling",
-        "label_vi": "Cáp Đồng (Copper)",
+        "label_vi": "Copper Cabling",
         "target_ids": [
           "q20-cu1",
           "q20-cu2"
@@ -1268,7 +1277,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q20-mmf",
         "label_en": "Multimode Fiber (MMF)",
-        "label_vi": "Cáp Quang Đa Mốt (Multimode Fiber)",
+        "label_vi": "Multimode Fiber (MMF)",
         "target_ids": [
           "q20-mm1",
           "q20-mm2"
@@ -1291,34 +1300,34 @@ window.CCNA_DND_DATA = [
       {
         "id": "q21-playbook",
         "text_en": "playbook",
-        "text_vi": "Playbook"
+        "text_vi": "playbook"
       },
       {
         "id": "q21-control",
         "text_en": "control node",
-        "text_vi": "Control Node"
+        "text_vi": "control node"
       },
       {
         "id": "q21-managed",
         "text_en": "managed node",
-        "text_vi": "Managed Node"
+        "text_vi": "managed node"
       },
       {
         "id": "q21-module",
         "text_en": "module",
-        "text_vi": "Module"
+        "text_vi": "module"
       },
       {
         "id": "q21-inventory",
         "text_en": "inventory",
-        "text_vi": "Inventory"
+        "text_vi": "inventory"
       }
     ],
     "drop_zones": [
       {
         "id": "q21-z1",
         "label_en": "Collection of actions to perform on target devices expressed in YAML format",
-        "label_vi": "Tập hợp các tác vụ cần thực thi trên thiết bị đích được viết dưới định dạng YAML",
+        "label_vi": "Collection of actions to perform on target devices expressed in YAML format",
         "target_ids": [
           "q21-playbook"
         ]
@@ -1326,7 +1335,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q21-z2",
         "label_en": "Device with Ansible installed that manages target devices",
-        "label_vi": "Máy tính/máy chủ cài đặt Ansible đóng vai trò trung tâm điều khiển và quản lý",
+        "label_vi": "Device with Ansible installed that manages target devices",
         "target_ids": [
           "q21-control"
         ]
@@ -1334,7 +1343,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q21-z3",
         "label_en": "Network device or server without Ansible installed upon which commands are executed",
-        "label_vi": "Thiết bị mạng hoặc máy chủ đích được quản trị (không cần cài Ansible)",
+        "label_vi": "Network device or server without Ansible installed upon which commands are executed",
         "target_ids": [
           "q21-managed"
         ]
@@ -1342,7 +1351,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q21-z4",
         "label_en": "Unit of Python code to be executed on target devices",
-        "label_vi": "Đơn vị mã nguồn Python thực thi từng tác vụ cụ thể trên thiết bị",
+        "label_vi": "Unit of Python code to be executed on target devices",
         "target_ids": [
           "q21-module"
         ]
@@ -1350,7 +1359,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q21-z5",
         "label_en": "Ansible file that defines target devices and groups upon which commands can be executed",
-        "label_vi": "Tệp danh mục khai báo danh sách IP, tên máy và nhóm thiết bị cần quản trị",
+        "label_vi": "Ansible file that defines target devices and groups upon which commands can be executed",
         "target_ids": [
           "q21-inventory"
         ]
@@ -1404,7 +1413,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q22-z1",
         "label_en": "Subnet Prefix",
-        "label_vi": "Tiền tố mạng con (Subnet Prefix)",
+        "label_vi": "Subnet Prefix",
         "target_ids": [
           "q22-p28"
         ]
@@ -1412,7 +1421,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q22-z2",
         "label_en": "Administrative Distance",
-        "label_vi": "Khoảng cách quản trị (AD)",
+        "label_vi": "Administrative Distance",
         "target_ids": [
           "q22-ad90"
         ]
@@ -1420,7 +1429,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q22-z3",
         "label_en": "Metric / Cost",
-        "label_vi": "Độ đo chi phí (Metric / Cost)",
+        "label_vi": "Metric / Cost",
         "target_ids": [
           "q22-m30"
         ]
@@ -1442,29 +1451,29 @@ window.CCNA_DND_DATA = [
       {
         "id": "q23-ula1",
         "text_en": "may be used by multiple organizations at the same time",
-        "text_vi": "Có thể được nhiều tổ chức/doanh nghiệp sử dụng trùng nhau đồng thời"
+        "text_vi": "may be used by multiple organizations at the same time"
       },
       {
         "id": "q23-ula2",
         "text_en": "allows sites to be combined without address conflicts",
-        "text_vi": "Cho phép sáp nhập các chi nhánh mạng nội bộ mà không lo xung đột IP"
+        "text_vi": "allows sites to be combined without address conflicts"
       },
       {
         "id": "q23-multi1",
         "text_en": "sends packets to a group address rather than a single address",
-        "text_vi": "Gửi gói tin đến một địa chỉ nhóm thay vì một máy nhận cụ thể"
+        "text_vi": "sends packets to a group address rather than a single address"
       },
       {
         "id": "q23-multi2",
         "text_en": "never used as a source address",
-        "text_vi": "Tuyệt đối không bao giờ được dùng làm địa chỉ IP nguồn của gói tin"
+        "text_vi": "never used as a source address"
       }
     ],
     "drop_zones": [
       {
         "id": "q23-ula",
-        "label_en": "Unique Local Address (FC00::/7)",
-        "label_vi": "Địa Chỉ IPv6 Unique Local (FC00::/7)",
+        "label_en": "Unique Local Address",
+        "label_vi": "Unique Local Address",
         "target_ids": [
           "q23-ula1",
           "q23-ula2"
@@ -1472,8 +1481,8 @@ window.CCNA_DND_DATA = [
       },
       {
         "id": "q23-multicast",
-        "label_en": "Multicast Address (FF00::/8)",
-        "label_vi": "Địa Chỉ IPv6 Multicast (FF00::/8)",
+        "label_en": "Multicast Address",
+        "label_vi": "Multicast Address",
         "target_ids": [
           "q23-multi1",
           "q23-multi2"
@@ -1496,29 +1505,29 @@ window.CCNA_DND_DATA = [
       {
         "id": "q24-tp1",
         "text_en": "comprised of shielded and unshielded twisted pairs",
-        "text_vi": "Cấu tạo từ các cặp dây đồng xoắn đôi có bọc kim hoặc không bọc kim"
+        "text_vi": "comprised of shielded and unshielded twisted pairs"
       },
       {
         "id": "q24-tp2",
         "text_en": "is affected by electrical and magnetic interference",
-        "text_vi": "Bị ảnh hưởng suy giảm chất lượng bởi nhiễu điện và từ trường (EMI/RFI)"
+        "text_vi": "is affected by electrical and magnetic interference"
       },
       {
         "id": "q24-sm1",
         "text_en": "comprised of insulated glass strands",
-        "text_vi": "Được chế tạo từ các sợi thủy tinh silica cách điện tinh khiết"
+        "text_vi": "comprised of insulated glass strands"
       },
       {
         "id": "q24-sm2",
         "text_en": "uses a single wavelength of light",
-        "text_vi": "Sử dụng một bước sóng ánh sáng laser duy nhất để truyền dữ liệu"
+        "text_vi": "uses a single wavelength of light"
       }
     ],
     "drop_zones": [
       {
         "id": "q24-twisted",
         "label_en": "Twisted-Pair Cabling",
-        "label_vi": "Cáp Xoắn Đôi (Twisted-Pair)",
+        "label_vi": "Twisted-Pair Cabling",
         "target_ids": [
           "q24-tp1",
           "q24-tp2"
@@ -1527,14 +1536,14 @@ window.CCNA_DND_DATA = [
       {
         "id": "q24-smf",
         "label_en": "Single-Mode Fiber (SMF)",
-        "label_vi": "Cáp Quang Đơn Mốt (Single-Mode Fiber)",
+        "label_vi": "Single-Mode Fiber (SMF)",
         "target_ids": [
           "q24-sm1",
           "q24-sm2"
         ]
       }
     ],
-    "explanation": "- **Cáp xoắn đôi**: Dây đồng dẫn điện nên nhạy cảm với nhiễu từ động cơ, đèn huỳnh quang (EMI).\n- **Cáp quang đơn mốt (SMF)**: Lõi rất nhỏ 9 µm, truyền 1 tia sáng duy nhất với 1 bước sóng xác định (1310nm hoặc 1550nm), không có tán sắc mode, không bị nhiễu điện từ."
+    "explanation": "- **Twisted-Pair Cabling**: Dây đồng dẫn điện nên nhạy cảm với nhiễu từ động cơ, đèn huỳnh quang (EMI).\n- **Single-Mode Fiber (SMF)**: Lõi rất nhỏ 9 µm, truyền 1 tia sáng duy nhất với 1 bước sóng xác định (1310nm hoặc 1550nm), không có tán sắc mode, không bị nhiễu điện từ."
   },
   {
     "id": 25,
@@ -1550,39 +1559,39 @@ window.CCNA_DND_DATA = [
       {
         "id": "q25-t1",
         "text_en": "uses sequence numbers",
-        "text_vi": "Sử dụng số thứ tự Sequence Number để ráp dữ liệu"
+        "text_vi": "uses sequence numbers"
       },
       {
         "id": "q25-t2",
         "text_en": "relies on acknowledgment packets",
-        "text_vi": "Phụ thuộc vào các gói tin báo nhận (ACK) để xác nhận truyền thành công"
+        "text_vi": "relies on acknowledgment packets"
       },
       {
         "id": "q25-t3",
         "text_en": "ensures data integrity",
-        "text_vi": "Đảm bảo tính toàn vẹn dữ liệu hoàn toàn không bị mất mát"
+        "text_vi": "ensures data integrity"
       },
       {
         "id": "q25-u1",
         "text_en": "supports real-time applications",
-        "text_vi": "Tối ưu hóa hỗ trợ các ứng dụng truyền thông thời gian thực"
+        "text_vi": "supports real-time applications"
       },
       {
         "id": "q25-u2",
         "text_en": "connectionless at transport layer",
-        "text_vi": "Hoạt động theo mô hình phi kết nối ở tầng Transport"
+        "text_vi": "connectionless at transport layer"
       },
       {
         "id": "q25-u3",
         "text_en": "minimal error checking",
-        "text_vi": "Chỉ kiểm tra lỗi tối thiểu (chỉ có trường Checksum)"
+        "text_vi": "minimal error checking"
       }
     ],
     "drop_zones": [
       {
         "id": "q25-tcp",
         "label_en": "TCP",
-        "label_vi": "Giao thức TCP",
+        "label_vi": "TCP",
         "target_ids": [
           "q25-t1",
           "q25-t2",
@@ -1592,7 +1601,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q25-udp",
         "label_en": "UDP",
-        "label_vi": "Giao thức UDP",
+        "label_vi": "UDP",
         "target_ids": [
           "q25-u1",
           "q25-u2",
@@ -1616,34 +1625,34 @@ window.CCNA_DND_DATA = [
       {
         "id": "q26-fw",
         "text_en": "provides security policies and content filtering",
-        "text_vi": "Cung cấp chính sách bảo mật, tường lửa trạng thái và lọc nội dung"
+        "text_vi": "provides security policies and content filtering"
       },
       {
         "id": "q26-sw",
         "text_en": "formats an Ethernet frame and forwards to a destination",
-        "text_vi": "Đóng gói khung Ethernet và chuyển tiếp dựa trên địa chỉ MAC"
+        "text_vi": "formats an Ethernet frame and forwards to a destination"
       },
       {
         "id": "q26-ap",
         "text_en": "supports both IEEE 802.11 and Ethernet standards",
-        "text_vi": "Hỗ trợ kết nối chuyển đổi giữa chuẩn Wi-Fi (802.11) và Ethernet (802.3)"
+        "text_vi": "supports both IEEE 802.11 and Ethernet standards"
       },
       {
         "id": "q26-wlc1",
         "text_en": "makes forwarding decisions when in LWAPP mode",
-        "text_vi": "Đưa ra quyết định chuyển tiếp gói tin khi AP chạy ở chế độ LWAPP/CAPWAP"
+        "text_vi": "makes forwarding decisions when in LWAPP mode"
       },
       {
         "id": "q26-wlc2",
         "text_en": "can be deployed on-premise and/or in the cloud",
-        "text_vi": "Có thể triển khai linh hoạt tại chỗ (On-premise) hoặc trên đám mây (Cloud)"
+        "text_vi": "can be deployed on-premise and/or in the cloud"
       }
     ],
     "drop_zones": [
       {
         "id": "q26-z-fw",
         "label_en": "Firewall",
-        "label_vi": "Tường lửa (Firewall)",
+        "label_vi": "Firewall",
         "target_ids": [
           "q26-fw"
         ]
@@ -1651,30 +1660,30 @@ window.CCNA_DND_DATA = [
       {
         "id": "q26-z-sw",
         "label_en": "Switch",
-        "label_vi": "Bộ chuyển mạch (Switch)",
+        "label_vi": "Switch",
         "target_ids": [
           "q26-sw"
         ]
       },
       {
         "id": "q26-z-ap",
-        "label_en": "Access Point (AP)",
-        "label_vi": "Điểm truy cập không dây (AP)",
+        "label_en": "Access Point",
+        "label_vi": "Access Point",
         "target_ids": [
           "q26-ap"
         ]
       },
       {
         "id": "q26-z-wlc",
-        "label_en": "Wireless LAN Controller (WLC)",
-        "label_vi": "Bộ điều khiển mạng không dây (WLC)",
+        "label_en": "Wireless LAN Controller",
+        "label_vi": "Wireless LAN Controller",
         "target_ids": [
           "q26-wlc1",
           "q26-wlc2"
         ]
       }
     ],
-    "explanation": "Chức năng cốt lõi của từng thiết bị mạng Cisco:\n- **Firewall**: Lọc gói trạng thái (Stateful inspection), NAT, VPN, IPS, Content Filtering.\n- **Switch**: Chuyển tiếp Ethernet Frame Layer 2 dựa vào bảng MAC (CAM table).\n- **Access Point**: Cầu nối sóng radio 802.11 sang mạng dây Ethernet 802.3.\n- **WLC**: Quản lý tập trung hàng trăm AP qua đường hầm CAPWAP."
+    "explanation": "Chức năng cốt lõi của từng thiết bị mạng Cisco:\n- **Firewall**: Lọc gói trạng thái (Stateful inspection), NAT, VPN, IPS, Content Filtering.\n- **Switch**: Chuyển tiếp Ethernet Frame Layer 2 dựa vào bảng MAC (CAM table).\n- **Access Point**: Cầu nối sóng radio 802.11 sang mạng dây Ethernet 802.3.\n- **Wireless LAN Controller**: Quản lý tập trung hàng trăm AP qua đường hầm CAPWAP/LWAPP."
   },
   {
     "id": 27,
@@ -1690,29 +1699,29 @@ window.CCNA_DND_DATA = [
       {
         "id": "q27-coax",
         "text_en": "contains a conductor, bedding, and sheathing",
-        "text_vi": "Chứa lõi kim loại, lớp điện môi đệm cách điện và lớp vỏ bảo vệ"
+        "text_vi": "contains a conductor, bedding, and sheathing"
       },
       {
         "id": "q27-tp",
         "text_en": "affected by electrical and magnetic interference",
-        "text_vi": "Dễ bị ảnh hưởng bởi nhiễu điện và từ trường trong môi trường"
+        "text_vi": "affected by electrical and magnetic interference"
       },
       {
         "id": "q27-sm1",
         "text_en": "contains a core, cladding, and coating",
-        "text_vi": "Gồm 3 lớp cơ bản: Lõi (Core), Lớp phản xạ (Cladding), và Lớp phủ (Coating)"
+        "text_vi": "contains a core, cladding, and coating"
       },
       {
         "id": "q27-sm2",
         "text_en": "comprised of insulated glass strands",
-        "text_vi": "Cấu tạo từ các sợi thủy tinh silica cách điện truyền ánh sáng"
+        "text_vi": "comprised of insulated glass strands"
       }
     ],
     "drop_zones": [
       {
         "id": "q27-z-coax",
         "label_en": "Coaxial Cable",
-        "label_vi": "Cáp Đồng Trục (Coaxial)",
+        "label_vi": "Coaxial Cable",
         "target_ids": [
           "q27-coax"
         ]
@@ -1720,29 +1729,29 @@ window.CCNA_DND_DATA = [
       {
         "id": "q27-z-tp",
         "label_en": "Twisted-Pair Cable",
-        "label_vi": "Cáp Xoắn Đôi (Twisted-Pair)",
+        "label_vi": "Twisted-Pair Cable",
         "target_ids": [
           "q27-tp"
         ]
       },
       {
         "id": "q27-z-smf",
-        "label_en": "Single-Mode Fiber (SMF)",
-        "label_vi": "Cáp Quang Đơn Mốt (Single-Mode Fiber)",
+        "label_en": "Single-Mode Fiber",
+        "label_vi": "Single-Mode Fiber",
         "target_ids": [
           "q27-sm1",
           "q27-sm2"
         ]
       }
     ],
-    "explanation": "Cấu tạo các loại cáp:\n- **Coaxial**: Dây truyền hình cáp / DOCSIS, gồm lõi đồng, lớp điện môi (bedding/dielectric) và vỏ chắn nhiễu (sheathing).\n- **Twisted-Pair**: Cáp đồng xoắn đôi, dễ bị nhiễu sóng điện từ EMI.\n- **Single-Mode Fiber**: Lõi quang gồm Core (9 µm), Cladding (125 µm) và lớp vỏ Coating bảo vệ khỏi ẩm và trầy xước."
+    "explanation": "Cấu tạo các loại cáp:\n- **Coaxial Cable**: Dây cáp đồng trục gồm lõi dẫn kim loại, lớp điện môi (bedding/dielectric) và vỏ chắn nhiễu (sheathing).\n- **Twisted-Pair Cable**: Cáp đồng xoắn đôi, dễ bị nhiễu sóng điện từ EMI.\n- **Single-Mode Fiber**: Lõi quang gồm Core (9 µm), Cladding (125 µm) và lớp vỏ Coating bảo vệ."
   },
   {
     "id": 28,
     "title": "Câu 28: Cơ Chế Tin Cậy Tầng Transport: TCP vs UDP",
     "category": "Network Fundamentals",
-    "prompt_en": "Drag and drop the protocol characteristics from the left onto the corresponding protocol types on the right.",
-    "prompt_vi": "Kéo thả các đặc tính của giao thức từ bên trái vào nhóm TCP hoặc UDP tương ứng ở bên phải.",
+    "prompt_en": "Drag and drop the protocol characteristics from the left onto the corresponding types on the right. Not all characteristics are used.",
+    "prompt_vi": "Kéo thả các đặc tính của giao thức từ bên trái vào nhóm TCP hoặc UDP tương ứng ở bên phải. Chú ý: Không phải mọi đặc tính đều được sử dụng.",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q28_a.png",
@@ -1751,29 +1760,29 @@ window.CCNA_DND_DATA = [
       {
         "id": "q28-t1",
         "text_en": "acknowledgment mechanism",
-        "text_vi": "Có cơ chế gửi gói tin xác nhận (ACK)"
+        "text_vi": "acknowledgment mechanism"
       },
       {
         "id": "q28-t2",
         "text_en": "guaranteed transmission",
-        "text_vi": "Đảm bảo dữ liệu truyền tải thành công 100%"
+        "text_vi": "guaranteed transmission"
       },
       {
         "id": "q28-u1",
-        "text_en": "no error checking / recovery",
-        "text_vi": "Không có cơ chế phục hồi hay truyền lại lỗi"
+        "text_en": "no error checking",
+        "text_vi": "no error checking"
       },
       {
         "id": "q28-u2",
         "text_en": "low overhead",
-        "text_vi": "Chi phí tiêu hao gói tin (Overhead) cực kỳ thấp"
+        "text_vi": "low overhead"
       }
     ],
     "drop_zones": [
       {
         "id": "q28-tcp",
         "label_en": "TCP",
-        "label_vi": "Giao thức TCP",
+        "label_vi": "TCP",
         "target_ids": [
           "q28-t1",
           "q28-t2"
@@ -1782,14 +1791,13 @@ window.CCNA_DND_DATA = [
       {
         "id": "q28-udp",
         "label_en": "UDP",
-        "label_vi": "Giao thức UDP",
+        "label_vi": "UDP",
         "target_ids": [
-          "q28-u1",
           "q28-u2"
         ]
       }
     ],
-    "explanation": "- **TCP**: 'Overhead cao nhưng chắc chắn' - Có cơ chế báo nhận ACK, nếu không nhận được ACK trong thời gian timeout thì sẽ truyền lại (Retransmit).\n- **UDP**: 'Nhẹ và nhanh' - Header chỉ 8 byte (Overhead thấp), không có cơ chế sửa lỗi hay phục hồi gói tin bị mất."
+    "explanation": "- **TCP**: Có cơ chế báo nhận (acknowledgment mechanism) và cam kết truyền tin thành công (guaranteed transmission).\n- **UDP**: Chi phí tiêu hao gói tin thấp (low overhead).\n*Lưu ý:* Mục 'no error checking' là mồi nhử không dùng trong đề thi Cisco gốc (vì UDP vẫn có trường Checksum để kiểm tra lỗi tối thiểu ở tầng 4)."
   },
   {
     "id": 29,
@@ -1805,34 +1813,34 @@ window.CCNA_DND_DATA = [
       {
         "id": "q29-policy",
         "text_en": "security policy",
-        "text_vi": "Chính sách an toàn (Security Policy)"
+        "text_vi": "security policy"
       },
       {
         "id": "q29-standard",
         "text_en": "security standard",
-        "text_vi": "Tiêu chuẩn an toàn (Security Standard)"
+        "text_vi": "security standard"
       },
       {
         "id": "q29-aware",
         "text_en": "awareness",
-        "text_vi": "Nhận thức an ninh (Awareness)"
+        "text_vi": "awareness"
       },
       {
         "id": "q29-edu",
         "text_en": "education",
-        "text_vi": "Đào tạo mở rộng (Education)"
+        "text_vi": "education"
       },
       {
         "id": "q29-train",
         "text_en": "training",
-        "text_vi": "Huấn luyện kỹ năng (Training)"
+        "text_vi": "training"
       }
     ],
     "drop_zones": [
       {
         "id": "q29-z1",
         "label_en": "Document that outlines an organization's security goals and practices, and roles and responsibilities",
-        "label_vi": "Tài liệu cấp cao vạch ra mục tiêu, quy định an ninh chung và vai trò trách nhiệm của toàn tổ chức",
+        "label_vi": "Document that outlines an organization's security goals and practices, and roles and responsibilities",
         "target_ids": [
           "q29-policy"
         ]
@@ -1840,7 +1848,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q29-z2",
         "label_en": "Tactical document that sets out specific tasks and methods to maintain security",
-        "label_vi": "Tài liệu kỹ thuật cụ thể quy định các yêu cầu bắt buộc và phương pháp bảo mật chuẩn",
+        "label_vi": "Tactical document that sets out specific tasks and methods to maintain security",
         "target_ids": [
           "q29-standard"
         ]
@@ -1848,7 +1856,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q29-z3",
         "label_en": "User-awareness learning level that focuses on security practices that all employees must understand",
-        "label_vi": "Cấp độ đào tạo cơ bản phổ cập các thói quen an ninh bắt buộc mọi nhân viên phải nắm",
+        "label_vi": "User-awareness learning level that focuses on security practices that all employees must understand",
         "target_ids": [
           "q29-aware"
         ]
@@ -1856,7 +1864,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q29-z4",
         "label_en": "User-awareness learning level that focuses on topics and practices beyond what is typically required for the user's job",
-        "label_vi": "Cấp độ nâng cao đào tạo chuyên sâu về tư duy và kỹ năng vượt ra ngoài phạm vi công việc thường nhật",
+        "label_vi": "User-awareness learning level that focuses on topics and practices beyond what is typically required for the user's job",
         "target_ids": [
           "q29-edu"
         ]
@@ -1864,7 +1872,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q29-z5",
         "label_en": "User-awareness learning level that focuses on teaching employees how to perform tasks specifically required for their jobs",
-        "label_vi": "Cấp độ huấn luyện trực tiếp hướng dẫn nhân viên cách thực thi các tác vụ an toàn phục vụ đúng công việc của họ",
+        "label_vi": "User-awareness learning level that focuses on teaching employees how to perform tasks specifically required for their jobs",
         "target_ids": [
           "q29-train"
         ]
@@ -1876,8 +1884,8 @@ window.CCNA_DND_DATA = [
     "id": 30,
     "title": "Câu 30: Đặc Trưng Bộ Điều Khiển Không Dây (WLC) vs AP Độc Lập",
     "category": "Network Access",
-    "prompt_en": "Drag and drop the characteristics from the left onto the device type on the right.",
-    "prompt_vi": "Kéo thả các đặc tính từ bên trái vào loại thiết bị Wireless LAN Controller (WLC) hoặc Autonomous AP tương ứng ở bên phải.",
+    "prompt_en": "Drag and drop the characteristics from the left onto the device type on the right. Not all characteristics are used.",
+    "prompt_vi": "Kéo thả các đặc tính từ bên trái vào loại thiết bị Wireless LAN Controller hoặc Autonomous AP tương ứng ở bên phải. Không phải tất cả đặc tính đều được sử dụng.",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q30_a.png",
@@ -1885,30 +1893,35 @@ window.CCNA_DND_DATA = [
     "source_items": [
       {
         "id": "q30-wlc1",
-        "text_en": "uses templates to implement QoS configurations",
-        "text_vi": "Sử dụng các mẫu (Templates) cấu hình để triển khai QoS đồng loạt"
+        "text_en": "uses templates to implement QOS configurations",
+        "text_vi": "uses templates to implement QOS configurations"
       },
       {
         "id": "q30-wlc2",
         "text_en": "applies user connection data within a device group",
-        "text_vi": "Đồng bộ và áp dụng dữ liệu kết nối của người dùng trong toàn bộ nhóm thiết bị"
+        "text_vi": "applies user connection data within a device group"
       },
       {
         "id": "q30-ap1",
         "text_en": "interconnects wireless LANs to a wired network",
-        "text_vi": "Kết nối trực tiếp độc lập mạng không dây vào mạng có dây"
+        "text_vi": "interconnects wireless LANs to a wired network"
       },
       {
         "id": "q30-ap2",
-        "text_en": "requires a special adapter for PoE / standalone deployment",
-        "text_vi": "Cần adapter nguồn riêng hoặc cổng PoE để hoạt động độc lập"
+        "text_en": "requires a special adapter for POE",
+        "text_vi": "requires a special adapter for POE"
+      },
+      {
+        "id": "q30-dist",
+        "text_en": "ability to boost a wi-fi signal",
+        "text_vi": "ability to boost a wi-fi signal"
       }
     ],
     "drop_zones": [
       {
         "id": "q30-wlc",
-        "label_en": "Wireless LAN Controller (WLC)",
-        "label_vi": "Bộ Điều Khiển Không Dây (WLC)",
+        "label_en": "Wireless LAN Controller",
+        "label_vi": "Wireless LAN Controller",
         "target_ids": [
           "q30-wlc1",
           "q30-wlc2"
@@ -1917,21 +1930,21 @@ window.CCNA_DND_DATA = [
       {
         "id": "q30-ap",
         "label_en": "Autonomous Access Point",
-        "label_vi": "Access Point Độc Lập (Autonomous AP)",
+        "label_vi": "Autonomous Access Point",
         "target_ids": [
           "q30-ap1",
           "q30-ap2"
         ]
       }
     ],
-    "explanation": "- **WLC**: Quản lý tập trung mọi AP, cho phép áp dụng QoS Profile theo template xuống hàng loạt AP, quản lý roaming người dùng liền mạch giữa các AP trong nhóm (Mobility Group).\n- **Autonomous AP**: Mỗi AP hoạt động độc lập, tự xử lý cả Control Plane và Data Plane, tự cấu hình riêng rẽ từng thiết bị."
+    "explanation": "- **Wireless LAN Controller**: Dùng các template cấu hình QoS đồng loạt, đồng bộ dữ liệu phiên kết nối người dùng trong nhóm thiết bị (Mobility Group).\n- **Autonomous Access Point**: Kết nối mạng Wi-Fi vào mạng có dây cục bộ, cần adapter nguồn riêng hoặc bộ cấp PoE nếu không có switch PoE.\n*Lưu ý:* Mục 'ability to boost a wi-fi signal' là mồi nhử không dùng."
   },
   {
     "id": 31,
     "title": "Câu 31: Cấu Hình Định Tuyến Tĩnh (Host A Đến Host B)",
     "category": "IP Connectivity",
-    "prompt_en": "Refer to the exhibit. An engineer must configure a static route between two networks so that host A communicates with host B. Drag and drop the commands from the left onto the routers where they must be configured on the right.",
-    "prompt_vi": "Tham chiếu sơ đồ. Kỹ sư cần cấu hình định tuyến tĩnh giữa 2 mạng để Host A có thể liên lạc với Host B. Kéo thả câu lệnh từ bên trái vào đúng Router tương ứng ở bên phải.",
+    "prompt_en": "Refer to the exhibit. An engineer must configure a static route between two networks so that host A communicates with host B. Drag and drop the commands from the left onto the routers where they must be configured on the right. Not all commands are used.",
+    "prompt_vi": "Tham chiếu sơ đồ. Kỹ sư cần cấu hình định tuyến tĩnh giữa 2 mạng để Host A có thể liên lạc với Host B. Kéo thả câu lệnh từ bên trái vào đúng Router tương ứng ở bên phải. Không phải tất cả câu lệnh đều được sử dụng.",
     "has_exhibit": true,
     "exhibit_image": "images/dnd/dnd_q31_a.png",
     "question_image": "images/dnd/dnd_q31_b.png",
@@ -1948,21 +1961,31 @@ window.CCNA_DND_DATA = [
         "text_vi": "ip route 10.10.13.0 255.255.255.0 10.10.10.1"
       },
       {
-        "id": "q31-dist1",
+        "id": "q31-d1",
         "text_en": "ip route 10.10.14.10 255.255.255.255 10.10.10.6",
         "text_vi": "ip route 10.10.14.10 255.255.255.255 10.10.10.6"
       },
       {
-        "id": "q31-dist2",
+        "id": "q31-d2",
         "text_en": "ip route 10.10.13.0 255.255.255.128 10.10.10.5",
         "text_vi": "ip route 10.10.13.0 255.255.255.128 10.10.10.5"
+      },
+      {
+        "id": "q31-d3",
+        "text_en": "ip route 10.10.13.0 255.255.255.255 10.10.10.1",
+        "text_vi": "ip route 10.10.13.0 255.255.255.255 10.10.10.1"
+      },
+      {
+        "id": "q31-d4",
+        "text_en": "ip route 10.10.14.0 255.255.255.0 10.10.10.4",
+        "text_vi": "ip route 10.10.14.0 255.255.255.0 10.10.10.4"
       }
     ],
     "drop_zones": [
       {
         "id": "q31-z-r1",
         "label_en": "Router R1",
-        "label_vi": "Cấu hình trên Router R1",
+        "label_vi": "Router R1",
         "target_ids": [
           "q31-r1-cmd"
         ]
@@ -1970,7 +1993,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q31-z-r2",
         "label_en": "Router R2",
-        "label_vi": "Cấu hình trên Router R2",
+        "label_vi": "Router R2",
         "target_ids": [
           "q31-r2-cmd"
         ]
@@ -1983,75 +2006,88 @@ window.CCNA_DND_DATA = [
     "title": "Câu 32: Khớp Tiền Tố Với Subnet Mask (Bảng Định Tuyến)",
     "category": "IP Connectivity",
     "prompt_en": "Refer to the exhibit. Drag and drop the learned prefixes from the left onto the subnet masks on the right.",
-    "prompt_vi": "Tham chiếu sơ đồ. Kéo thả các tiền tố mạng học được từ bên trái vào đúng Subnet Mask dạng thập phân tương ứng ở bên phải.",
+    "prompt_vi": "Tham chiếu sơ đồ. Kéo thả các tiền tố mạng học được từ bên trái vào đúng Subnet Mask dạng thập phân tương ứng ở bên phải theo bảng định tuyến.",
     "has_exhibit": true,
     "exhibit_image": "images/dnd/dnd_q32_a.png",
     "question_image": "images/dnd/dnd_q32_b.png",
     "answer_image": "images/dnd/dnd_q32_c.png",
     "source_items": [
       {
-        "id": "q32-p23",
-        "text_en": "172.16.4.0/23",
-        "text_vi": "172.16.4.0/23"
+        "id": "q32-p1",
+        "text_en": "172.16.4.0",
+        "text_vi": "172.16.4.0"
       },
       {
-        "id": "q32-p21",
-        "text_en": "172.16.3.64/21",
-        "text_vi": "172.16.3.64/21"
+        "id": "q32-p2",
+        "text_en": "172.16.2.128",
+        "text_vi": "172.16.2.128"
       },
       {
-        "id": "q32-p28",
-        "text_en": "172.16.3.128/28",
-        "text_vi": "172.16.3.128/28"
+        "id": "q32-p3",
+        "text_en": "172.16.3.64",
+        "text_vi": "172.16.3.64"
       },
       {
-        "id": "q32-p29",
-        "text_en": "172.16.3.192/29",
-        "text_vi": "172.16.3.192/29"
+        "id": "q32-p4",
+        "text_en": "172.16.3.128",
+        "text_vi": "172.16.3.128"
+      },
+      {
+        "id": "q32-p5",
+        "text_en": "172.16.3.192",
+        "text_vi": "172.16.3.192"
       }
     ],
     "drop_zones": [
       {
         "id": "q32-z-23",
         "label_en": "255.255.254.0",
-        "label_vi": "Subnet Mask 255.255.254.0 (/23)",
+        "label_vi": "255.255.254.0",
         "target_ids": [
-          "q32-p23"
+          "q32-p1"
         ]
       },
       {
-        "id": "q32-z-21",
-        "label_en": "255.255.248.0",
-        "label_vi": "Subnet Mask 255.255.248.0 (/21)",
+        "id": "q32-z-25",
+        "label_en": "255.255.255.128",
+        "label_vi": "255.255.255.128",
         "target_ids": [
-          "q32-p21"
+          "q32-p2"
+        ]
+      },
+      {
+        "id": "q32-z-27",
+        "label_en": "255.255.255.224",
+        "label_vi": "255.255.255.224",
+        "target_ids": [
+          "q32-p3"
         ]
       },
       {
         "id": "q32-z-28",
         "label_en": "255.255.255.240",
-        "label_vi": "Subnet Mask 255.255.255.240 (/28)",
+        "label_vi": "255.255.255.240",
         "target_ids": [
-          "q32-p28"
+          "q32-p4"
         ]
       },
       {
         "id": "q32-z-29",
         "label_en": "255.255.255.248",
-        "label_vi": "Subnet Mask 255.255.255.248 (/29)",
+        "label_vi": "255.255.255.248",
         "target_ids": [
-          "q32-p29"
+          "q32-p5"
         ]
       }
     ],
-    "explanation": "Quy đổi độ dài bit mạng (CIDR) sang Subnet Mask dạng Decimal:\n- /21 = 255.255.(256 - 8).0 = 255.255.248.0\n- /23 = 255.255.(256 - 2).0 = 255.255.254.0\n- /28 = 255.255.255.(256 - 16) = 255.255.255.240\n- /29 = 255.255.255.(256 - 8) = 255.255.255.248"
+    "explanation": "Đối chiếu bảng định tuyến trong exhibit để tìm subnet mask tương ứng:\n- `172.16.4.0/23` -> Subnet mask tương ứng là `255.255.254.0`\n- `172.16.2.128/25` -> Subnet mask tương ứng là `255.255.255.128`\n- `172.16.3.64/27` -> Subnet mask tương ứng là `255.255.255.224`\n- `172.16.3.128/28` -> Subnet mask tương ứng là `255.255.255.240`\n- `172.16.3.192/29` -> Subnet mask tương ứng là `255.255.255.248`"
   },
   {
     "id": 33,
     "title": "Câu 33: Đặc Trưng Của Giao Diện Northbound API Trong SDN",
     "category": "Automation & Programmability",
     "prompt_en": "Drag and drop the characteristics of northbound APIs from the left onto any position on the right. Not all characteristics are used.",
-    "prompt_vi": "Kéo thả các đặc tính đúng của Northbound API từ bên trái sang khung bên phải. Chú ý: Không phải mọi đặc tính đều được sử dụng.",
+    "prompt_vi": "Kéo thả các đặc tính đúng của Northbound API từ bên trái sang khung bên phải. Không phải tất cả đặc tính đều được sử dụng.",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q33_a.png",
@@ -2060,76 +2096,81 @@ window.CCNA_DND_DATA = [
       {
         "id": "q33-c1",
         "text_en": "communicates between the SDN controller and the application plane",
-        "text_vi": "Giao tiếp giữa bộ điều khiển SDN và tầng ứng dụng (Application Plane)"
+        "text_vi": "communicates between the SDN controller and the application plane"
       },
       {
         "id": "q33-c2",
         "text_en": "supports REST-based requirements",
-        "text_vi": "Hỗ trợ các yêu cầu giao tiếp chuẩn RESTful qua giao thức HTTP/HTTPS"
+        "text_vi": "supports REST-based requirements"
       },
       {
         "id": "q33-c3",
         "text_en": "supports automation",
-        "text_vi": "Hỗ trợ các tập lệnh tự động hóa mạng và tích hợp DevOps"
+        "text_vi": "supports automation"
       },
       {
         "id": "q33-c4",
         "text_en": "supports data sharing between systems",
-        "text_vi": "Hỗ trợ chia sẻ dữ liệu và trạng thái mạng giữa các hệ thống phần mềm"
+        "text_vi": "supports data sharing between systems"
       },
       {
         "id": "q33-d1",
         "text_en": "communicates between the SDN controller and the data plane",
-        "text_vi": "Giao tiếp giữa SDN controller và mặt phẳng dữ liệu (Đây là Southbound API)"
+        "text_vi": "communicates between the SDN controller and the data plane"
       },
       {
         "id": "q33-d2",
-        "text_en": "uses OpenFlow to interface between data and control planes",
-        "text_vi": "Sử dụng giao thức OpenFlow (Đây là Southbound API)"
+        "text_en": "uses OpenFlow to interface between the data and control planes",
+        "text_vi": "uses OpenFlow to interface between the data and control planes"
+      },
+      {
+        "id": "q33-d3",
+        "text_en": "supports network virtualization protocols",
+        "text_vi": "supports network virtualization protocols"
       }
     ],
     "drop_zones": [
       {
         "id": "q33-z1",
         "label_en": "Northbound API Characteristic 1",
-        "label_vi": "Đặc tính Northbound API 1",
-        "target_ids": [
-          "q33-c1"
-        ]
-      },
-      {
-        "id": "q33-z2",
-        "label_en": "Northbound API Characteristic 2",
-        "label_vi": "Đặc tính Northbound API 2",
-        "target_ids": [
-          "q33-c2"
-        ]
-      },
-      {
-        "id": "q33-z3",
-        "label_en": "Northbound API Characteristic 3",
-        "label_vi": "Đặc tính Northbound API 3",
+        "label_vi": "Northbound API Characteristic 1",
         "target_ids": [
           "q33-c3"
         ]
       },
       {
-        "id": "q33-z4",
-        "label_en": "Northbound API Characteristic 4",
-        "label_vi": "Đặc tính Northbound API 4",
+        "id": "q33-z2",
+        "label_en": "Northbound API Characteristic 2",
+        "label_vi": "Northbound API Characteristic 2",
+        "target_ids": [
+          "q33-c1"
+        ]
+      },
+      {
+        "id": "q33-z3",
+        "label_en": "Northbound API Characteristic 3",
+        "label_vi": "Northbound API Characteristic 3",
         "target_ids": [
           "q33-c4"
         ]
+      },
+      {
+        "id": "q33-z4",
+        "label_en": "Northbound API Characteristic 4",
+        "label_vi": "Northbound API Characteristic 4",
+        "target_ids": [
+          "q33-c2"
+        ]
       }
     ],
-    "explanation": "Trong kiến trúc phần mềm định nghĩa mạng (SDN):\n- **Northbound API**: Hướng Bắc, kết nối Controller với các ứng dụng người dùng/doanh nghiệp. Sử dụng REST APIs (HTTP GET/POST), trao đổi dữ liệu JSON/XML, phục vụ tự động hóa và tích hợp phần mềm.\n- **Southbound API**: Hướng Nam, kết nối Controller xuống các thiết bị mạng vật lý (Data Plane). Sử dụng OpenFlow, NETCONF, RESTCONF, SNMP."
+    "explanation": "4 đặc tính cốt lõi của Northbound API trong SDN:\n1. `supports automation`: Hỗ trợ các công cụ và script tự động hóa mạng.\n2. `communicates between the SDN controller and the application plane`: Kết nối Controller lên tầng ứng dụng.\n3. `supports data sharing between systems`: Cho phép chia sẻ trạng thái và số liệu mạng cho các hệ thống giám sát.\n4. `supports REST-based requirements`: Cung cấp giao thức RESTful (HTTP GET/POST/PUT/DELETE).\n*Lưu ý:* Các mục liên quan đến data plane, OpenFlow và giao thức ảo hóa mạng là Southbound API, đóng vai trò mồi nhử."
   },
   {
     "id": 34,
     "title": "Câu 34: Các Tầng Trong Kiến Trúc Mạng Phân Cấp Cisco",
     "category": "Network Fundamentals",
-    "prompt_en": "Drag and drop functions from the left onto corresponding network topology layer on right.",
-    "prompt_vi": "Kéo thả chức năng từ bên trái vào đúng tầng kiến trúc mạng tương ứng ở bên phải.",
+    "prompt_en": "Drag and drop functions from the left onto corresponding network topology layer on right. Not all common functions used.",
+    "prompt_vi": "Kéo thả chức năng từ bên trái vào đúng tầng kiến trúc mạng tương ứng ở bên phải. Không phải tất cả chức năng đều được dùng.",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q34_a.png",
@@ -2138,59 +2179,56 @@ window.CCNA_DND_DATA = [
       {
         "id": "q34-f-acc",
         "text_en": "connect end users",
-        "text_vi": "Kết nối trực tiếp các thiết bị đầu cuối của người dùng (PC, Laptop, Phone)"
+        "text_vi": "connect end users"
       },
       {
         "id": "q34-f-core",
         "text_en": "fast switching",
-        "text_vi": "Chuyển mạch tốc độ cực cao, đóng vai trò trục xương sống mạng (Backbone)"
+        "text_vi": "fast switching"
       },
       {
         "id": "q34-f-spine",
         "text_en": "redundant architectures within data centers",
-        "text_vi": "Cung cấp kiến trúc dự phòng tối ưu cho lưu lượng Đông-Tây trong Trung tâm Dữ liệu"
+        "text_vi": "redundant architectures within data centers"
       },
       {
-        "id": "q34-f-dist",
-        "text_en": "aggregate traffic flows from access layer",
-        "text_vi": "Gom tụ các luồng lưu lượng từ tầng Access và áp dụng định tuyến/bảo mật Policy"
+        "id": "q34-d1",
+        "text_en": "aggregate traffic flows from customers",
+        "text_vi": "aggregate traffic flows from customers"
+      },
+      {
+        "id": "q34-d2",
+        "text_en": "monitors network traffic",
+        "text_vi": "monitors network traffic"
       }
     ],
     "drop_zones": [
       {
         "id": "q34-z-acc",
-        "label_en": "Access Layer",
-        "label_vi": "Tầng Truy Cập (Access Layer)",
+        "label_en": "Access",
+        "label_vi": "Access",
         "target_ids": [
           "q34-f-acc"
         ]
       },
       {
         "id": "q34-z-core",
-        "label_en": "Core Layer",
-        "label_vi": "Tầng Lõi (Core Layer)",
+        "label_en": "Core",
+        "label_vi": "Core",
         "target_ids": [
           "q34-f-core"
         ]
       },
       {
         "id": "q34-z-spine",
-        "label_en": "Spine-Leaf Architecture",
-        "label_vi": "Kiến Trúc Spine-Leaf (Data Center)",
+        "label_en": "Spine-leaf",
+        "label_vi": "Spine-leaf",
         "target_ids": [
           "q34-f-spine"
         ]
-      },
-      {
-        "id": "q34-z-dist",
-        "label_en": "Distribution Layer",
-        "label_vi": "Tầng Phân Phối (Distribution Layer)",
-        "target_ids": [
-          "q34-f-dist"
-        ]
       }
     ],
-    "explanation": "- **Access Layer**: Điểm cắm mạng cho người dùng, cung cấp bảo mật cổng (Port Security), VLAN, PoE.\n- **Distribution Layer**: Ranh giới định tuyến, gom cổng (Aggregation), áp dụng ACL, QoS, chính sách bảo mật.\n- **Core Layer**: Chuyển mạch tốc độ tối đa không trễ (High-speed backbone), tuyệt đối không đặt ACL hay lọc gói tại đây.\n- **Spine-Leaf**: Kiến trúc 2 tầng chuẩn trong Data Center hiện đại giúp khoảng cách giữa 2 server bất kỳ luôn chỉ qua đúng 1 Spine switch."
+    "explanation": "Theo đúng cấu trúc ảnh thi gốc `dnd_q34_b.png`:\n- **Access Layer**: `connect end users`\n- **Core Layer**: `fast switching`\n- **Spine-leaf Architecture**: `redundant architectures within data centers`\n*Mồi nhử:* 'aggregate traffic flows from customers' và 'monitors network traffic' không được sử dụng."
   },
   {
     "id": 35,
@@ -2206,29 +2244,29 @@ window.CCNA_DND_DATA = [
       {
         "id": "q35-tp1",
         "text_en": "comprised of shielded and unshielded twisted pairs",
-        "text_vi": "Gồm các cặp dây đồng xoắn đôi (STP/UTP)"
+        "text_vi": "comprised of shielded and unshielded twisted pairs"
       },
       {
         "id": "q35-tp2",
         "text_en": "is affected by electrical and magnetic interference",
-        "text_vi": "Bị ảnh hưởng bởi nhiễu điện và từ trường"
+        "text_vi": "is affected by electrical and magnetic interference"
       },
       {
         "id": "q35-sm1",
         "text_en": "composed of insulated glass strands",
-        "text_vi": "Cấu tạo từ các sợi thủy tinh cách điện"
+        "text_vi": "composed of insulated glass strands"
       },
       {
         "id": "q35-sm2",
         "text_en": "uses a single wavelength of light",
-        "text_vi": "Sử dụng một bước sóng ánh sáng duy nhất"
+        "text_vi": "uses a single wavelength of light"
       }
     ],
     "drop_zones": [
       {
         "id": "q35-twisted",
         "label_en": "Twisted-Pair Cabling",
-        "label_vi": "Cáp Xoắn Đôi (Twisted-Pair)",
+        "label_vi": "Twisted-Pair Cabling",
         "target_ids": [
           "q35-tp1",
           "q35-tp2"
@@ -2237,7 +2275,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q35-smf",
         "label_en": "Single-Mode Fiber (SMF)",
-        "label_vi": "Cáp Quang Đơn Mốt (Single-Mode Fiber)",
+        "label_vi": "Single-Mode Fiber (SMF)",
         "target_ids": [
           "q35-sm1",
           "q35-sm2"
@@ -2260,29 +2298,29 @@ window.CCNA_DND_DATA = [
       {
         "id": "q36-vacl",
         "text_en": "Configure VACL",
-        "text_vi": "Cấu hình VACL (VLAN Access Control List)"
+        "text_vi": "Configure VACL"
       },
       {
         "id": "q36-dai",
         "text_en": "Configure dynamic ARP inspection",
-        "text_vi": "Cấu hình Dynamic ARP Inspection (DAI)"
+        "text_vi": "Configure dynamic ARP inspection"
       },
       {
         "id": "q36-root",
         "text_en": "Configure root guard",
-        "text_vi": "Cấu hình Root Guard"
+        "text_vi": "Configure root guard"
       },
       {
         "id": "q36-bpdu",
         "text_en": "Configure BPDU guard",
-        "text_vi": "Cấu hình BPDU Guard"
+        "text_vi": "Configure BPDU guard"
       }
     ],
     "drop_zones": [
       {
         "id": "q36-z1",
         "label_en": "802.1q double tagging",
-        "label_vi": "Tấn công nhảy VLAN bằng thẻ kép (802.1Q double-tagging)",
+        "label_vi": "802.1q double tagging",
         "target_ids": [
           "q36-vacl"
         ]
@@ -2290,7 +2328,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q36-z2",
         "label_en": "ARP spoofing",
-        "label_vi": "Tấn công giả mạo gói tin ARP (ARP Spoofing / Man-in-the-Middle)",
+        "label_vi": "ARP spoofing",
         "target_ids": [
           "q36-dai"
         ]
@@ -2298,7 +2336,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q36-z3",
         "label_en": "Unwanted superior BPDUs",
-        "label_vi": "Gói tin BPDU ưu tiên bất hợp pháp muốn cướp quyền Root Bridge",
+        "label_vi": "Unwanted superior BPDUs",
         "target_ids": [
           "q36-root"
         ]
@@ -2306,7 +2344,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q36-z4",
         "label_en": "Unwanted BPDUs on PortFast-enabled interfaces",
-        "label_vi": "Gói BPDU lạ xuất hiện trên cổng người dùng đã bật PortFast",
+        "label_vi": "Unwanted BPDUs on PortFast-enabled interfaces",
         "target_ids": [
           "q36-bpdu"
         ]
@@ -2328,34 +2366,34 @@ window.CCNA_DND_DATA = [
       {
         "id": "q37-trad1",
         "text_en": "New devices are configured using the physical console / CLI",
-        "text_vi": "Thiết bị mới phải được cấu hình thủ công qua cáp Console hoặc dòng lệnh CLI"
+        "text_vi": "New devices are configured using the physical console / CLI"
       },
       {
         "id": "q37-trad2",
         "text_en": "This type requires a distributed control plane",
-        "text_vi": "Yêu cầu mặt phẳng điều khiển phân tán trên từng thiết bị"
+        "text_vi": "This type requires a distributed control plane"
       },
       {
         "id": "q37-sdn1",
         "text_en": "This type allows better control over how networks work and are configured",
-        "text_vi": "Cho phép kiểm soát toàn diện cách mạng vận hành và cấu hình từ một nơi"
+        "text_vi": "This type allows better control over how networks work and are configured"
       },
       {
         "id": "q37-sdn2",
         "text_en": "This type enables networks to integrate with applications through APIs",
-        "text_vi": "Cho phép mạng tích hợp trực tiếp với ứng dụng phần mềm thông qua các API"
+        "text_vi": "This type enables networks to integrate with applications through APIs"
       },
       {
         "id": "q37-sdn3",
         "text_en": "This type provisions resources from a centralized location",
-        "text_vi": "Cấp phát và điều phối tài nguyên hạ tầng từ vị trí quản trị tập trung"
+        "text_vi": "This type provisions resources from a centralized location"
       }
     ],
     "drop_zones": [
       {
         "id": "q37-traditional",
         "label_en": "Traditional Networking",
-        "label_vi": "Mạng Truyền Thống (Traditional Networking)",
+        "label_vi": "Traditional Networking",
         "target_ids": [
           "q37-trad1",
           "q37-trad2"
@@ -2364,7 +2402,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q37-controller",
         "label_en": "Controller-Based Networking",
-        "label_vi": "Mạng Điều Khiển SDN (Controller-Based Networking)",
+        "label_vi": "Controller-Based Networking",
         "target_ids": [
           "q37-sdn1",
           "q37-sdn2",
@@ -2372,14 +2410,14 @@ window.CCNA_DND_DATA = [
         ]
       }
     ],
-    "explanation": "- **Mạng truyền thống**: Cấu hình phân tán, thủ công từng hộp (box-by-box) qua CLI/Console, tốn nhân lực, dễ sai sót cấu hình.\n- **Mạng Controller-Based (SDN)**: Quản lý tập trung, cung cấp API (RESTful) kết nối ứng dụng với hạ tầng, tự động hóa provisioning tài nguyên nhanh chóng."
+    "explanation": "- **Traditional Networking**: Cấu hình phân tán, thủ công từng hộp (box-by-box) qua CLI/Console, tốn nhân lực, dễ sai sót cấu hình.\n- **Controller-Based Networking**: Quản lý tập trung, cung cấp API (RESTful) kết nối ứng dụng với hạ tầng, tự động hóa provisioning tài nguyên nhanh chóng."
   },
   {
     "id": 38,
     "title": "Câu 38: Đối Chiếu Subnet Mask Dạng Thập Phân Với Tiền Tố",
     "category": "IP Connectivity",
     "prompt_en": "Refer to the exhibit. Drag and drop the prefix lengths from the left onto the corresponding prefixes on the right. Not all prefixes are used.",
-    "prompt_vi": "Tham chiếu sơ đồ. Kéo thả các Subnet Mask dạng thập phân từ bên trái vào đúng các tiền tố mạng ở bên phải theo bảng định tuyến.",
+    "prompt_vi": "Tham chiếu sơ đồ. Kéo thả các Subnet Mask dạng thập phân từ bên trái vào đúng các tiền tố mạng ở bên phải theo bảng định tuyến. Không phải tất cả tiền tố đều được sử dụng.",
     "has_exhibit": true,
     "exhibit_image": "images/dnd/dnd_q01_a.png",
     "question_image": "images/dnd/dnd_q38_b.png",
@@ -2387,60 +2425,60 @@ window.CCNA_DND_DATA = [
     "source_items": [
       {
         "id": "q38-m27",
-        "text_en": "255.255.255.224 (/27)",
-        "text_vi": "255.255.255.224 (/27)"
+        "text_en": "255.255.255.224",
+        "text_vi": "255.255.255.224"
       },
       {
         "id": "q38-m28",
-        "text_en": "255.255.255.240 (/28)",
-        "text_vi": "255.255.255.240 (/28)"
+        "text_en": "255.255.255.240",
+        "text_vi": "255.255.255.240"
       },
       {
         "id": "q38-m29",
-        "text_en": "255.255.255.248 (/29)",
-        "text_vi": "255.255.255.248 (/29)"
+        "text_en": "255.255.255.248",
+        "text_vi": "255.255.255.248"
       },
       {
         "id": "q38-m30",
-        "text_en": "255.255.255.252 (/30)",
-        "text_vi": "255.255.255.252 (/30)"
+        "text_en": "255.255.255.252",
+        "text_vi": "255.255.255.252"
       }
     ],
     "drop_zones": [
       {
         "id": "q38-z-p27",
-        "label_en": "Prefix /27 (e.g. 209.165.200.224/27)",
-        "label_vi": "Tiền tố /27 (ví dụ 209.165.200.224/27)",
+        "label_en": "209.165.202.128",
+        "label_vi": "209.165.202.128",
         "target_ids": [
           "q38-m27"
         ]
       },
       {
         "id": "q38-z-p28",
-        "label_en": "Prefix /28 (e.g. 10.10.13.144/28)",
-        "label_vi": "Tiền tố /28 (ví dụ 10.10.13.144/28)",
+        "label_en": "10.10.13.144",
+        "label_vi": "10.10.13.144",
         "target_ids": [
           "q38-m28"
         ]
       },
       {
         "id": "q38-z-p29",
-        "label_en": "Prefix /29 (e.g. 10.10.13.160/29)",
-        "label_vi": "Tiền tố /29 (ví dụ 10.10.13.160/29)",
+        "label_en": "10.10.13.160",
+        "label_vi": "10.10.13.160",
         "target_ids": [
           "q38-m29"
         ]
       },
       {
         "id": "q38-z-p30",
-        "label_en": "Prefix /30 (e.g. 10.10.11.0/30)",
-        "label_vi": "Tiền tố /30 (ví dụ 10.10.11.0/30)",
+        "label_en": "10.10.13.0",
+        "label_vi": "10.10.13.0",
         "target_ids": [
           "q38-m30"
         ]
       }
     ],
-    "explanation": "Quy đổi nhanh Subnet Mask cho kỳ thi CCNA:\n- /27 = 255.255.255.224 (3 bit 1 cuối: 128+64+32)\n- /28 = 255.255.255.240 (4 bit 1 cuối: 128+64+32+16)\n- /29 = 255.255.255.248 (5 bit 1 cuối: 240+8)\n- /30 = 255.255.255.252 (6 bit 1 cuối: 248+4)"
+    "explanation": "Quy đổi nhanh Subnet Mask cho kỳ thi CCNA:\n- `209.165.202.128` (/27) = 255.255.255.224\n- `10.10.13.144` (/28) = 255.255.255.240\n- `10.10.13.160` (/29) = 255.255.255.248\n- `10.10.13.0` (/30 hoặc /25 tùy router route) = 255.255.255.252"
   },
   {
     "id": 39,
@@ -2456,29 +2494,29 @@ window.CCNA_DND_DATA = [
       {
         "id": "q39-spine",
         "text_en": "spine-leaf",
-        "text_vi": "Spine-Leaf"
+        "text_vi": "spine-leaf"
       },
       {
         "id": "q39-dist",
         "text_en": "distribution",
-        "text_vi": "Distribution"
+        "text_vi": "distribution"
       },
       {
         "id": "q39-core",
         "text_en": "core",
-        "text_vi": "Core"
+        "text_vi": "core"
       },
       {
         "id": "q39-edge",
         "text_en": "perimeter edge",
-        "text_vi": "Perimeter Edge"
+        "text_vi": "perimeter edge"
       }
     ],
     "drop_zones": [
       {
         "id": "q39-z1",
         "label_en": "Redundant architectures within data centers (East-West traffic)",
-        "label_vi": "Kiến trúc dự phòng cao tối ưu cho Trung tâm Dữ liệu và luồng dữ liệu Đông-Tây",
+        "label_vi": "Redundant architectures within data centers (East-West traffic)",
         "target_ids": [
           "q39-spine"
         ]
@@ -2486,7 +2524,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q39-z2",
         "label_en": "Provide routing, filtering, and WAN access",
-        "label_vi": "Thực hiện định tuyến ranh giới, lọc gói an ninh và truy cập kết nối WAN",
+        "label_vi": "Provide routing, filtering, and WAN access",
         "target_ids": [
           "q39-dist"
         ]
@@ -2494,7 +2532,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q39-z3",
         "label_en": "Switch packets as fast as possible",
-        "label_vi": "Chuyển tiếp gói tin với tốc độ nhanh nhất có thể (không lọc gói)",
+        "label_vi": "Switch packets as fast as possible",
         "target_ids": [
           "q39-core"
         ]
@@ -2516,29 +2554,29 @@ window.CCNA_DND_DATA = [
       {
         "id": "q40-coax",
         "text_en": "contains a conductor, bedding, and sheathing",
-        "text_vi": "Chứa một lõi đồng dẫn điện, lớp đệm điện môi và lớp vỏ ngoài"
+        "text_vi": "contains a conductor, bedding, and sheathing"
       },
       {
         "id": "q40-tp",
         "text_en": "comprised of shielded or unshielded twisted pairs",
-        "text_vi": "Cấu tạo gồm các cặp dây đồng xoắn đôi (STP hoặc UTP)"
+        "text_vi": "comprised of shielded or unshielded twisted pairs"
       },
       {
         "id": "q40-smf",
         "text_en": "has minimal light reflection as the signal travels down the core",
-        "text_vi": "Ánh sáng đi thẳng gần như không có sự phản xạ nhiều góc khi truyền qua lõi"
+        "text_vi": "has minimal light reflection as the signal travels down the core"
       },
       {
         "id": "q40-mmf",
-        "text_en": "transmits signals using pulses of light (with multiple reflections)",
-        "text_vi": "Truyền tín hiệu quang với nhiều góc phản xạ đa mốt (Multimode)"
+        "text_en": "transmits signals using pulses of light",
+        "text_vi": "transmits signals using pulses of light"
       }
     ],
     "drop_zones": [
       {
         "id": "q40-z-coax",
         "label_en": "Coaxial Cable",
-        "label_vi": "Cáp Đồng Trục (Coaxial)",
+        "label_vi": "Coaxial Cable",
         "target_ids": [
           "q40-coax"
         ]
@@ -2546,7 +2584,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q40-z-tp",
         "label_en": "Twisted-Pair Cable",
-        "label_vi": "Cáp Xoắn Đôi (Twisted-Pair)",
+        "label_vi": "Twisted-Pair Cable",
         "target_ids": [
           "q40-tp"
         ]
@@ -2554,7 +2592,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q40-z-smf",
         "label_en": "Single-Mode Fiber (SMF)",
-        "label_vi": "Cáp Quang Đơn Mốt (Single-Mode Fiber)",
+        "label_vi": "Single-Mode Fiber (SMF)",
         "target_ids": [
           "q40-smf"
         ]
@@ -2562,20 +2600,20 @@ window.CCNA_DND_DATA = [
       {
         "id": "q40-z-mmf",
         "label_en": "Multimode Fiber (MMF)",
-        "label_vi": "Cáp Quang Đa Mốt (Multimode Fiber)",
+        "label_vi": "Multimode Fiber (MMF)",
         "target_ids": [
           "q40-mmf"
         ]
       }
     ],
-    "explanation": "- **Coaxial**: Cáp đồng trục có lõi dẫn, lớp điện môi (bedding) và vỏ chống nhiễu.\n- **Twisted-Pair**: Cáp đồng mạng thông dụng (Cat5e/Cat6).\n- **Single-Mode Fiber**: Lõi 9 µm quá nhỏ nên ánh sáng đi thẳng, tối thiểu phản xạ, không bị tán sắc mode.\n- **Multimode Fiber**: Lõi lớn (50-62.5 µm), tia sáng phản xạ dội liên tục vào thành cladding."
+    "explanation": "- **Coaxial Cable**: Cáp đồng trục có lõi dẫn, lớp điện môi (bedding) và vỏ chống nhiễu.\n- **Twisted-Pair Cable**: Cáp đồng mạng thông dụng (Cat5e/Cat6).\n- **Single-Mode Fiber**: Lõi 9 µm quá nhỏ nên ánh sáng đi thẳng, tối thiểu phản xạ, không bị tán sắc mode.\n- **Multimode Fiber**: Lõi lớn (50-62.5 µm), tia sáng phản xạ dội liên tục vào thành cladding."
   },
   {
     "id": 41,
-    "title": "Câu 41: Các Phương Thức Xác Thực Bảo Mật (Sinh Trắc Học / MFA / Chứng Chỉ Số)",
+    "title": "Câu 41: Các Phương Thức Xác Thực Bảo Mật (Biometrics / Certificates / MFA)",
     "category": "Security Fundamentals",
-    "prompt_en": "Drag and drop the descriptions of security features from the left onto the corresponding features on the right.",
-    "prompt_vi": "Kéo thả các mô tả phương thức bảo mật từ bên trái vào đúng tính năng xác thực ở bên phải.",
+    "prompt_en": "Drag and drop the descriptions of security features from the left onto the corresponding security features on the right.",
+    "prompt_vi": "Kéo thả các mô tả đặc điểm bảo mật từ bên trái vào các phương thức xác thực bảo mật tương ứng ở bên phải.",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q41_a.png",
@@ -2583,40 +2621,33 @@ window.CCNA_DND_DATA = [
     "source_items": [
       {
         "id": "q41-bio1",
-        "text_en": "may use a fingerprint reader to authenticate users",
-        "text_vi": "Có thể sử dụng đầu đọc vân tay hoặc quét mống mắt để xác thực người dùng"
+        "text_en": "may use a fingerprint reader to authenticate users"
       },
       {
         "id": "q41-bio2",
-        "text_en": "relies on a 'something you are' paradigm",
-        "text_vi": "Dựa trên nguyên lý 'thứ bạn là' (đặc điểm sinh học tự nhiên của con người)"
+        "text_en": "relies on a 'something you are' paradigm"
       },
       {
         "id": "q41-cert1",
-        "text_en": "supports enterprise, third party, and public options",
-        "text_vi": "Hỗ trợ chứng chỉ nội bộ doanh nghiệp (Private CA) hoặc từ tổ chức công cộng (Public CA)"
+        "text_en": "supports enterprise, third party, and public options"
       },
       {
         "id": "q41-cert2",
-        "text_en": "issuer may revoke the digital certificate",
-        "text_vi": "Đơn vị phát hành (CA) có thể thu hồi chứng chỉ bất kỳ lúc nào qua danh sách CRL/OCSP"
+        "text_en": "issuer may revoke the digital certificate"
       },
       {
         "id": "q41-mfa1",
-        "text_en": "may use time-based or one-time passwords to authenticate users",
-        "text_vi": "Có thể dùng mã xác thực dùng một lần OTP hoặc dựa trên thời gian TOTP"
+        "text_en": "may use time-based or one-time passwords to authenticate users"
       },
       {
         "id": "q41-mfa2",
-        "text_en": "requires two or more authentication methods to verify a user's identity",
-        "text_vi": "Bắt buộc kết hợp từ hai yếu tố xác thực độc lập trở lên để xác nhận danh tính"
+        "text_en": "requires two or more authentication methods to verify a user's identity"
       }
     ],
     "drop_zones": [
       {
         "id": "q41-z-bio",
         "label_en": "Biometrics",
-        "label_vi": "Xác Thực Sinh Trắc Học (Biometrics)",
         "target_ids": [
           "q41-bio1",
           "q41-bio2"
@@ -2625,7 +2656,6 @@ window.CCNA_DND_DATA = [
       {
         "id": "q41-z-cert",
         "label_en": "Digital Certificates",
-        "label_vi": "Chứng Chỉ Số (Digital Certificates / PKI)",
         "target_ids": [
           "q41-cert1",
           "q41-cert2"
@@ -2634,21 +2664,20 @@ window.CCNA_DND_DATA = [
       {
         "id": "q41-z-mfa",
         "label_en": "Multifactor Authentication (MFA)",
-        "label_vi": "Xác Thực Đa Yếu Tố (MFA)",
         "target_ids": [
           "q41-mfa1",
           "q41-mfa2"
         ]
       }
     ],
-    "explanation": "3 trụ cột xác thực người dùng trong an ninh mạng:\n1. **Biometrics (Sinh trắc học)**: Yếu tố 'Something you are' (vân tay, khuôn mặt, mống mắt, giọng nói).\n2. **Digital Certificates**: Hạ tầng khóa công khai PKI, được cấp bởi Certificate Authority (CA), có thể bị thu hồi qua CRL (Certificate Revocation List).\n3. **Multifactor Authentication (MFA)**: Kết hợp ít nhất 2 trong 3 yếu tố: Cái bạn biết (Mật khẩu), Cái bạn có (Token OTP / Smartcard), Cái bạn là (Vân tay)."
+    "explanation": "\n<strong>Giải thích chi tiết 3 cơ chế xác thực bảo mật:</strong>\n<ul>\n  <li><strong>Biometrics (Sinh trắc học):</strong>\n    <ul>\n      <li><code>may use a fingerprint reader to authenticate users</code>: Sử dụng dấu vân tay, quét võng mạc, nhận diện khuôn mặt.</li>\n      <li><code>relies on a 'something you are' paradigm</code>: Dựa trên yếu tố tự nhiên gắn liền với cơ thể con người (\"thứ bạn là\").</li>\n    </ul>\n  </li>\n  <li><strong>Digital Certificates (Chứng chỉ số / PKI):</strong>\n    <ul>\n      <li><code>supports enterprise, third party, and public options</code>: Có thể do tổ chức nội bộ (Enterprise CA), bên thứ ba hoặc CA công cộng quốc tế cấp phát.</li>\n      <li><code>issuer may revoke the digital certificate</code>: Cơ quan phát hành chứng thực (CA) có quyền thu hồi chứng chỉ trước hạn qua danh sách CRL hoặc giao thức OCSP khi khóa bí mật bị lộ.</li>\n    </ul>\n  </li>\n  <li><strong>Multifactor Authentication (MFA - Xác thực đa yếu tố):</strong>\n    <ul>\n      <li><code>requires two or more authentication methods to verify a user's identity</code>: Bắt buộc kết hợp từ hai yếu tố độc lập trở lên (như mật khẩu + OTP điện thoại).</li>\n      <li><code>may use time-based or one-time passwords to authenticate users</code>: Thường dùng mã OTP hoặc TOTP (Time-based One-Time Password như Google Authenticator, Cisco Duo).</li>\n    </ul>\n  </li>\n</ul>\n"
   },
   {
     "id": 42,
     "title": "Câu 42: Biện Pháp Chống Tấn Công Layer 2 (Native VLAN / 802.1X / DHCP / DTP)",
     "category": "Security Fundamentals",
     "prompt_en": "Drag and drop the mitigation techniques from the left onto the attack types they mitigate on the right.",
-    "prompt_vi": "Kéo thả biện pháp khắc phục từ bên trái vào đúng hình thức tấn công Layer 2 tương ứng ở bên phải.",
+    "prompt_vi": "Kéo thả các giải pháp ngăn chặn tấn công từ bên trái vào các loại tấn công tương ứng ở bên phải.",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q42_a.png",
@@ -2656,30 +2685,25 @@ window.CCNA_DND_DATA = [
     "source_items": [
       {
         "id": "q42-nvlan",
-        "text_en": "configure the native VLAN with a nondefault VLAN ID",
-        "text_vi": "Cấu hình Native VLAN thành một VLAN ID khác mặc định (khác VLAN 1)"
+        "text_en": "configure the native VLAN with a nondefault VLAN ID"
       },
       {
         "id": "q42-dot1x",
-        "text_en": "configure 802.1x authentication",
-        "text_vi": "Cấu hình xác thực người dùng qua cổng 802.1X (RADIUS)"
+        "text_en": "configure 802.1x authentication"
       },
       {
         "id": "q42-dhcp",
-        "text_en": "configure DHCP snooping",
-        "text_vi": "Cấu hình tính năng DHCP Snooping"
+        "text_en": "configure DHCP snooping"
       },
       {
         "id": "q42-dtp",
-        "text_en": "disable DTP (Dynamic Trunking Protocol)",
-        "text_vi": "Vô hiệu hóa giao thức đàm phán đường trung kế tự động DTP"
+        "text_en": "disable DTP (Dynamic Trunking Protocol)"
       }
     ],
     "drop_zones": [
       {
         "id": "q42-z1",
         "label_en": "802.1q double-tagging VLAN-hopping attack",
-        "label_vi": "Tấn công nhảy VLAN bằng thẻ kép (802.1Q double-tagging)",
         "target_ids": [
           "q42-nvlan"
         ]
@@ -2687,7 +2711,6 @@ window.CCNA_DND_DATA = [
       {
         "id": "q42-z2",
         "label_en": "MAC flooding attack",
-        "label_vi": "Tấn công làm tràn bảng MAC (MAC Flooding Attack)",
         "target_ids": [
           "q42-dot1x"
         ]
@@ -2695,7 +2718,6 @@ window.CCNA_DND_DATA = [
       {
         "id": "q42-z3",
         "label_en": "Man-in-the-middle spoofing attack",
-        "label_vi": "Tấn công giả mạo trung gian MITM (qua DHCP lậu)",
         "target_ids": [
           "q42-dhcp"
         ]
@@ -2703,20 +2725,19 @@ window.CCNA_DND_DATA = [
       {
         "id": "q42-z4",
         "label_en": "Switch-spoofing VLAN-hopping attack",
-        "label_vi": "Tấn công giả mạo switch để đàm phán kênh Trunk (Switch-spoofing)",
         "target_ids": [
           "q42-dtp"
         ]
       }
     ],
-    "explanation": "Cách đối phó các cuộc tấn công Layer 2 kinh điển:\n- **802.1Q Double Tagging**: Đổi Native VLAN trên trunk sang VLAN ID không dùng (ví dụ VLAN 999) và bật `vlan dot1q tag native`.\n- **Switch Spoofing**: Tắt đàm phán DTP tự động bằng lệnh `switchport nonegotiate` hoặc đặt cố định `switchport mode access`.\n- **Man-in-the-Middle**: Bật DHCP Snooping để ngăn chặn máy chủ DHCP giả mạo phát gateway/DNS ảo.\n- **MAC Flooding**: Trong bài thi Cisco chuẩn này, kết hợp 802.1X để chỉ cho phép thiết bị hợp lệ gửi traffic."
+    "explanation": "\n<strong>Các biện pháp phòng thủ tấn công Layer 2:</strong>\n<ul>\n  <li><strong>802.1q double-tagging VLAN-hopping attack</strong> &rarr; <code>configure the native VLAN with a nondefault VLAN ID</code>: Đổi Native VLAN sang VLAN ID riêng biệt không sử dụng (khác VLAN 1) và bật tag Native VLAN trên đường Trunk.</li>\n  <li><strong>MAC flooding attack</strong> &rarr; <code>configure 802.1x authentication</code>: Buộc xác thực danh tính người dùng trước khi cấp quyền kết nối cổng switch (hoặc dùng Port Security giới hạn số lượng MAC).</li>\n  <li><strong>Man-in-the-middle spoofing attack</strong> &rarr; <code>configure DHCP snooping</code>: Ngăn chặn máy chủ DHCP giả mạo phát IP/Gateway sai để nghe lén gói tin.</li>\n  <li><strong>Switch-spoofing VLAN-hopping attack</strong> &rarr; <code>disable DTP (Dynamic Trunking Protocol)</code>: Tắt đàm phán tự động trunking trên access port bằng lệnh <code>switchport nonegotiate</code>.</li>\n</ul>\n"
   },
   {
     "id": 43,
-    "title": "Câu 43: Các Thuật Ngữ Cốt Lõi Của Mô Hình AAA",
+    "title": "Câu 43: Các Thuật Ngữ Cốt Lõi Của Mô Hình AAA & COA",
     "category": "Security Fundamentals",
     "prompt_en": "Drag and drop the AAA terms from the left onto the descriptions on the right.",
-    "prompt_vi": "Kéo thả các thuật ngữ AAA từ bên trái vào đúng mô tả vai trò ở bên phải.",
+    "prompt_vi": "Kéo thả các thuật ngữ AAA từ bên trái vào các mô tả chính xác ở bên phải.",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q43_a.png",
@@ -2724,127 +2745,115 @@ window.CCNA_DND_DATA = [
     "source_items": [
       {
         "id": "q43-accounting",
-        "text_en": "accounting",
-        "text_vi": "Accounting (Ghi nhật ký)"
+        "text_en": "accounting"
+      },
+      {
+        "id": "q43-coa",
+        "text_en": "COA"
       },
       {
         "id": "q43-authorization",
-        "text_en": "authorization",
-        "text_vi": "Authorization (Phân quyền)"
+        "text_en": "authorization"
       },
       {
         "id": "q43-authentication",
-        "text_en": "authentication",
-        "text_vi": "Authentication (Xác thực)"
+        "text_en": "authentication"
       }
     ],
     "drop_zones": [
       {
-        "id": "q43-z1",
-        "label_en": "Tracks activity and resource consumption",
-        "label_vi": "Theo dõi và ghi nhận chi tiết các hoạt động, thời gian và tài nguyên mạng đã sử dụng",
+        "id": "q43-z-acc",
+        "label_en": "tracks activity",
         "target_ids": [
           "q43-accounting"
         ]
       },
       {
-        "id": "q43-z2",
-        "label_en": "Verifies access rights and regulates session attributes",
-        "label_vi": "Kiểm tra quyền hạn được phép làm gì và điều tiết các tham số phiên làm việc",
+        "id": "q43-z-coa",
+        "label_en": "regulates session attributes",
+        "target_ids": [
+          "q43-coa"
+        ]
+      },
+      {
+        "id": "q43-z-authz",
+        "label_en": "verifies access rights",
         "target_ids": [
           "q43-authorization"
         ]
       },
       {
-        "id": "q43-z3",
-        "label_en": "Verifies identity",
-        "label_vi": "Kiểm tra và xác minh danh tính người dùng (họ là ai)",
+        "id": "q43-z-authn",
+        "label_en": "verifies identity",
         "target_ids": [
           "q43-authentication"
         ]
       }
     ],
-    "explanation": "Mô hình bảo mật 3 chữ A (AAA):\n1. **Authentication (Xác thực)**: 'Bạn là ai?' -> Kiểm tra Username/Password hoặc chứng chỉ.\n2. **Authorization (Phân quyền)**: 'Bạn được phép làm những gì?' -> Kiểm tra quyền hạn, các lệnh CLI được phép gõ.\n3. **Accounting (Ghi nhật ký)**: 'Bạn đã làm những gì?' -> Ghi lại nhật ký lệnh đã chạy, dung lượng đã tải, thời gian online."
+    "explanation": "\n<strong>Mô hình AAA và cơ chế COA (Change of Authorization):</strong>\n<ul>\n  <li><code>tracks activity</code> &rarr; <strong>accounting</strong>: Ghi lại toàn bộ lịch sử hoạt động, thời lượng phiên và lượng dữ liệu người dùng đã tiêu thụ.</li>\n  <li><code>regulates session attributes</code> &rarr; <strong>COA (Change of Authorization)</strong>: RFC 5176 cho phép máy chủ AAA (như Cisco ISE) tự động điều chỉnh hoặc thay đổi các thuộc tính, quyền hạn (VLAN, dACL) của một phiên kết nối đang hoạt động theo thời gian thực mà không cần ngắt kết nối người dùng.</li>\n  <li><code>verifies access rights</code> &rarr; <strong>authorization</strong>: Kiểm tra và xác định xem người dùng được phép thực thi các lệnh nào hoặc truy cập những tài nguyên mạng nào.</li>\n  <li><code>verifies identity</code> &rarr; <strong>authentication</strong>: Xác minh danh tính người dùng qua thông tin đăng nhập (Username/Password, Certificate).</li>\n</ul>\n"
   },
   {
     "id": 44,
-    "title": "Câu 44: Chi Tiết Hoạt Động Của Các Dịch Vụ AAA",
+    "title": "Câu 44: Chi Tiết Hoạt Động Của Dịch Vụ AAA: Accounting & Authorization",
     "category": "Security Fundamentals",
     "prompt_en": "Drag and drop the statements about AAA services from the left onto the AAA services on the right. Not all options are used.",
-    "prompt_vi": "Kéo thả các phát biểu về dịch vụ AAA từ bên trái vào đúng dịch vụ Authentication, Authorization hoặc Accounting ở bên phải.",
+    "prompt_vi": "Kéo thả các nhận định về dịch vụ AAA vào đúng dịch vụ tương ứng ở bên phải. (Lưu ý: Có 2 đáp án gây nhiễu không được sử dụng).",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q44_a.png",
     "answer_image": "images/dnd/dnd_q44_b.png",
     "source_items": [
       {
-        "id": "q44-auth1",
-        "text_en": "It permits and denies login attempts.",
-        "text_vi": "Cho phép hoặc từ chối các nỗ lực đăng nhập vào hệ thống"
-      },
-      {
-        "id": "q44-auth2",
-        "text_en": "It supports local, PPP, RADIUS, and TACACS+ options.",
-        "text_vi": "Hỗ trợ cơ sở dữ liệu local, giao thức PPP, RADIUS và TACACS+"
-      },
-      {
         "id": "q44-autho1",
-        "text_en": "It restricts the CLI commands that a user is able to perform.",
-        "text_vi": "Giới hạn các câu lệnh CLI cụ thể mà người dùng được phép thực thi"
+        "text_en": "It assigns per-user attributes."
       },
       {
         "id": "q44-autho2",
-        "text_en": "It assigns per-user attributes.",
-        "text_vi": "Gán các thuộc tính và quyền hạn riêng biệt cho từng người dùng (Privilege level)"
+        "text_en": "It restricts the CLI commands that a user is able to perform."
+      },
+      {
+        "id": "q44-auth1",
+        "text_en": "It permits and denies login attempts."
       },
       {
         "id": "q44-acc1",
-        "text_en": "It tracks the services the user is using.",
-        "text_vi": "Theo dõi các dịch vụ và tài nguyên mạng mà người dùng đang truy cập"
+        "text_en": "It records the amount of network resources consumed by the user."
+      },
+      {
+        "id": "q44-auth2",
+        "text_en": "It supports local, PPP, RADIUS, and TACACS+ options."
       },
       {
         "id": "q44-acc2",
-        "text_en": "It records the amount of network resources consumed by the user.",
-        "text_vi": "Ghi nhận dung lượng băng thông và tài nguyên mạng người dùng đã tiêu thụ"
+        "text_en": "It tracks the services the user is using."
       }
     ],
     "drop_zones": [
       {
-        "id": "q44-z-auth",
-        "label_en": "Authentication",
-        "label_vi": "Authentication (Xác thực)",
+        "id": "q44-z-acc",
+        "label_en": "Accounting",
         "target_ids": [
-          "q44-auth1",
-          "q44-auth2"
+          "q44-acc1",
+          "q44-acc2"
         ]
       },
       {
         "id": "q44-z-autho",
         "label_en": "Authorization",
-        "label_vi": "Authorization (Phân quyền)",
         "target_ids": [
           "q44-autho1",
           "q44-autho2"
         ]
-      },
-      {
-        "id": "q44-z-acc",
-        "label_en": "Accounting",
-        "label_vi": "Accounting (Kiểm toán/Ghi chép)",
-        "target_ids": [
-          "q44-acc1",
-          "q44-acc2"
-        ]
       }
     ],
-    "explanation": "- **Authentication**: Cổng gác kiểm soát đăng nhập login permit/deny qua Local DB, RADIUS, TACACS+.\n- **Authorization**: Phân quyền lệnh CLI (Command Authorization) và gán thuộc tính người dùng (AV-Pairs).\n- **Accounting**: Ghi chép thống kê tài nguyên, gửi bản tin Start/Stop accounting về server."
+    "explanation": "\n<strong>Đối chiếu chuẩn xác giữa Accounting và Authorization (Đề thi dump chỉ có 2 ô đích):</strong>\n<ul>\n  <li><strong>Accounting:</strong>\n    <ul>\n      <li><code>It records the amount of network resources consumed by the user.</code>: Ghi nhận dung lượng băng thông hoặc tài nguyên tiêu thụ.</li>\n      <li><code>It tracks the services the user is using.</code>: Theo dõi loại dịch vụ mạng mà người dùng đang thao tác.</li>\n    </ul>\n  </li>\n  <li><strong>Authorization:</strong>\n    <ul>\n      <li><code>It assigns per-user attributes.</code>: Gán các thuộc tính phân quyền riêng biệt cho từng người dùng (như dACL, VLAN ID).</li>\n      <li><code>It restricts the CLI commands that a user is able to perform.</code>: Giới hạn tập lệnh CLI mà tài khoản được phép nhập trên thiết bị.</li>\n    </ul>\n  </li>\n  <li><em>Thẻ gây nhiễu (Distractor - Thuộc về Authentication nên không dùng):</em>\n    <ul>\n      <li><code>It permits and denies login attempts.</code> (Cho phép hoặc từ chối đăng nhập).</li>\n      <li><code>It supports local, PPP, RADIUS, and TACACS+ options.</code> (Hỗ trợ xác thực qua các phương thức cơ sở).</li>\n    </ul>\n  </li>\n</ul>\n"
   },
   {
     "id": 45,
-    "title": "Câu 45: Trình Tự Cấu Hình Bảo Mật Cổng (Port Security)",
+    "title": "Câu 45: Thứ Tự Cấu Hình Tính Năng Port Security Trên Switch",
     "category": "Security Fundamentals",
-    "prompt_en": "An engineer is tasked to configure a switch with port security to ensure devices that forward unicasts, multicasts, and broadcasts are unable to flood the port. The port must be configured to permit only two random MAC addresses at a time. Drag and drop the configuration commands from the left onto the sequence on the right. Not all commands are used.",
-    "prompt_vi": "Kỹ sư cần cấu hình Port Security trên cổng switch để chỉ cho phép tối đa 2 địa chỉ MAC bất kỳ cùng lúc và khóa cổng nếu vi phạm. Kéo thả các câu lệnh cấu hình theo đúng trình tự từ bước 1 đến bước 4.",
+    "prompt_en": "An engineer is tasked to configure a switch with port security to ensure devices that forward unicasts, multicasts, and broadcasts are unable to flood the port. The port must be configured to permit only two random MAC addresses at a time. Drag and drop the required configuration commands from the left onto the sequence on the right. Not all commands are used.",
+    "prompt_vi": "Kỹ sư được yêu cầu cấu hình Port Security trên cổng switch để chỉ cho phép tối đa 2 địa chỉ MAC bất kỳ. Kéo thả các lệnh cấu hình theo đúng trình tự thực thi.",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q45_a.png",
@@ -2852,40 +2861,37 @@ window.CCNA_DND_DATA = [
     "source_items": [
       {
         "id": "q45-cmd1",
-        "text_en": "switchport mode access",
-        "text_vi": "switchport mode access (Chuyển cổng sang chế độ Access)"
+        "text_en": "switchport mode access"
       },
       {
         "id": "q45-cmd2",
-        "text_en": "switchport port-security",
-        "text_vi": "switchport port-security (Kích hoạt tính năng bảo mật cổng)"
+        "text_en": "switchport port-security"
       },
       {
         "id": "q45-cmd3",
-        "text_en": "switchport port-security maximum 2",
-        "text_vi": "switchport port-security maximum 2 (Giới hạn tối đa 2 địa chỉ MAC)"
+        "text_en": "switchport port-security maximum 2"
       },
       {
         "id": "q45-cmd4",
-        "text_en": "switchport port-security violation shutdown",
-        "text_vi": "switchport port-security violation shutdown (Tắt cổng khi vi phạm)"
+        "text_en": "switchport port-security violation shutdown"
       },
       {
-        "id": "q45-cmd-dist1",
-        "text_en": "switchport port-security mac-address sticky",
-        "text_vi": "switchport port-security mac-address sticky (Không yêu cầu MAC sticky tĩnh)"
+        "id": "q45-d1",
+        "text_en": "switchport port-security mac-address 0060.30D.77AB"
       },
       {
-        "id": "q45-cmd-dist2",
-        "text_en": "switchport port-security mac-address 0060.3QD.77AB",
-        "text_vi": "switchport port-security mac-address ... (Gán MAC tĩnh - Không dùng)"
+        "id": "q45-d2",
+        "text_en": "switchport port-security mac-address 00D0.D3ED.623A"
+      },
+      {
+        "id": "q45-d3",
+        "text_en": "switchport port-security mac-address sticky"
       }
     ],
     "drop_zones": [
       {
         "id": "q45-s1",
         "label_en": "Step 1",
-        "label_vi": "Bước 1: Chuyển cổng sang Access",
         "target_ids": [
           "q45-cmd1"
         ]
@@ -2893,7 +2899,6 @@ window.CCNA_DND_DATA = [
       {
         "id": "q45-s2",
         "label_en": "Step 2",
-        "label_vi": "Bước 2: Bật Port Security",
         "target_ids": [
           "q45-cmd2"
         ]
@@ -2901,7 +2906,6 @@ window.CCNA_DND_DATA = [
       {
         "id": "q45-s3",
         "label_en": "Step 3",
-        "label_vi": "Bước 3: Đặt ngưỡng tối đa 2 MAC",
         "target_ids": [
           "q45-cmd3"
         ]
@@ -2909,379 +2913,332 @@ window.CCNA_DND_DATA = [
       {
         "id": "q45-s4",
         "label_en": "Step 4",
-        "label_vi": "Bước 4: Đặt chế độ phạt vi phạm Shutdown",
         "target_ids": [
           "q45-cmd4"
         ]
       }
     ],
-    "explanation": "Quy tắc cấu hình Port Security trên Switch Cisco:\n1. Bắt buộc chuyển cổng sang mode Access: `switchport mode access` (Port Security không chạy trên cổng Dynamic).\n2. Bật tính năng: `switchport port-security`.\n3. Đặt số lượng MAC tối đa: `switchport port-security maximum 2`.\n4. Đặt chế độ xử phạt vi phạm: `switchport port-security violation shutdown` (đưa cổng vào trạng thái err-disabled khi có MAC thứ 3 xuất hiện)."
+    "explanation": "\n<strong>Trình tự cấu hình Port Security chuẩn Cisco IOS:</strong>\n<ol>\n  <li><strong>Step 1:</strong> <code>switchport mode access</code>: Cổng phải ở chế độ Access tĩnh trước khi có thể kích hoạt Port Security.</li>\n  <li><strong>Step 2:</strong> <code>switchport port-security</code>: Bật tính năng Port Security trên cổng.</li>\n  <li><strong>Step 3:</strong> <code>switchport port-security maximum 2</code>: Giới hạn số lượng MAC tối đa là 2 theo đúng đề bài (\"two random MAC addresses at a time\").</li>\n  <li><strong>Step 4:</strong> <code>switchport port-security violation shutdown</code>: Đặt chế độ xử lý vi phạm đưa cổng vào trạng thái err-disabled.</li>\n</ol>\n<em>Các thẻ gây nhiễu:</em> Đề bài yêu cầu cho phép 2 địa chỉ MAC ngẫu nhiên bất kỳ (random), do đó không cấu hình MAC tĩnh hay sticky MAC.\n"
   },
   {
     "id": 46,
-    "title": "Câu 46: Phân Loại Chức Năng Dịch Vụ AAA",
+    "title": "Câu 46: Đối Chiếu Nhận Định AAA: Authentication vs Authorization",
     "category": "Security Fundamentals",
     "prompt_en": "Drag and drop the statements about AAA services from the left to the corresponding AAA services on the right. Not all options are used.",
-    "prompt_vi": "Kéo thả các phát biểu về dịch vụ AAA từ bên trái vào đúng dịch vụ Authentication, Authorization hoặc Accounting tương ứng ở bên phải.",
+    "prompt_vi": "Kéo thả các nhận định về dịch vụ AAA vào đúng dịch vụ tương ứng ở bên phải. (Lưu ý: Có 2 đáp án gây nhiễu không được sử dụng).",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q46_a.png",
     "answer_image": "images/dnd/dnd_q46_b.png",
     "source_items": [
       {
-        "id": "q46-auth1",
-        "text_en": "It performs user validation via TACACS+.",
-        "text_vi": "Thực hiện xác thực danh tính người dùng thông qua TACACS+"
-      },
-      {
-        "id": "q46-auth2",
-        "text_en": "It verifies 'who you are'.",
-        "text_vi": "Kiểm tra và trả lời câu hỏi 'bạn là ai'"
-      },
-      {
         "id": "q46-autho1",
-        "text_en": "It grants access to network assets, such as FTP servers.",
-        "text_vi": "Cấp quyền truy cập vào các tài nguyên mạng (như máy chủ FTP)"
+        "text_en": "It grants access to network assets, such as FTP servers."
       },
       {
         "id": "q46-autho2",
-        "text_en": "It restricts the CLI commands that a user is able to perform.",
-        "text_vi": "Giới hạn các câu lệnh CLI cụ thể mà người dùng được phép thực thi"
+        "text_en": "It restricts the CLI commands that a user is able to perform."
+      },
+      {
+        "id": "q46-auth1",
+        "text_en": "It performs user validation via TACACS+."
       },
       {
         "id": "q46-acc1",
-        "text_en": "It records the duration of each connection.",
-        "text_vi": "Ghi nhận chính xác khoảng thời gian của từng phiên kết nối"
+        "text_en": "It records the duration of each connection."
       },
       {
         "id": "q46-acc2",
-        "text_en": "It supports User Access Reporting.",
-        "text_vi": "Hỗ trợ xuất báo cáo kiểm toán truy cập của người dùng"
+        "text_en": "It supports User Access Reporting."
+      },
+      {
+        "id": "q46-auth2",
+        "text_en": "It verifies 'who you are'."
       }
     ],
     "drop_zones": [
       {
-        "id": "q46-z-auth",
+        "id": "q46-z-authn",
         "label_en": "Authentication",
-        "label_vi": "Authentication (Xác thực)",
         "target_ids": [
           "q46-auth1",
           "q46-auth2"
         ]
       },
       {
-        "id": "q46-z-autho",
+        "id": "q46-z-authz",
         "label_en": "Authorization",
-        "label_vi": "Authorization (Phân quyền)",
         "target_ids": [
           "q46-autho1",
           "q46-autho2"
         ]
-      },
-      {
-        "id": "q46-z-acc",
-        "label_en": "Accounting",
-        "label_vi": "Accounting (Kiểm toán / Ghi nhật ký)",
-        "target_ids": [
-          "q46-acc1",
-          "q46-acc2"
-        ]
       }
     ],
-    "explanation": "Chi tiết các dịch vụ AAA:\n- **Authentication**: Xác minh danh tính người dùng qua TACACS+/RADIUS, trả lời câu hỏi 'Who you are'.\n- **Authorization**: Quyết định quyền truy cập tài nguyên (FTP, Web) và giới hạn quyền chạy lệnh CLI.\n- **Accounting**: Ghi lại thời lượng kết nối (duration) và xuất báo cáo User Access Reporting phục vụ kiểm toán."
+    "explanation": "\n<strong>Phân biệt chức năng giữa Authentication và Authorization (Đề thi dump chỉ có 2 ô đích):</strong>\n<ul>\n  <li><strong>Authentication (Xác thực danh tính):</strong>\n    <ul>\n      <li><code>It performs user validation via TACACS+.</code>: Xác minh thông tin tài khoản qua máy chủ TACACS+.</li>\n      <li><code>It verifies 'who you are'.</code>: Kiểm tra \"bạn là ai\" thông qua tài khoản và mật khẩu.</li>\n    </ul>\n  </li>\n  <li><strong>Authorization (Cấp quyền truy cập):</strong>\n    <ul>\n      <li><code>It grants access to network assets, such as FTP servers.</code>: Cấp quyền truy cập vào các tài nguyên/máy chủ mạng cụ thể.</li>\n      <li><code>It restricts the CLI commands that a user is able to perform.</code>: Giới hạn các câu lệnh CLI mà người dùng được phép thực thi.</li>\n    </ul>\n  </li>\n  <li><em>Thẻ gây nhiễu (Distractor - Thuộc về Accounting):</em>\n    <ul>\n      <li><code>It records the duration of each connection.</code> (Ghi lại thời lượng của mỗi kết nối).</li>\n      <li><code>It supports User Access Reporting.</code> (Hỗ trợ báo cáo truy cập người dùng).</li>\n    </ul>\n  </li>\n</ul>\n"
   },
   {
     "id": 47,
-    "title": "Câu 47: Gán Loại Lưu Lượng Vào Cơ Chế QoS",
-    "category": "IP Services",
+    "title": "Câu 47: Phân Bổ Lưu Lượng Mạng Vào Cơ Chế QoS Delivery Phù Hợp",
+    "category": "Network Fundamentals",
     "prompt_en": "Drag and drop the traffic types from the left onto the QoS delivery mechanisms on the right.",
-    "prompt_vi": "Kéo thả các loại lưu lượng mạng từ bên trái vào đúng cơ chế chuyển phát QoS phù hợp ở bên phải.",
+    "prompt_vi": "Kéo thả các loại lưu lượng mạng từ bên trái vào đúng cơ chế vận chuyển QoS tương ứng ở bên phải.",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q47_a.png",
     "answer_image": "images/dnd/dnd_q47_b.png",
     "source_items": [
       {
+        "id": "q47-db",
+        "text_en": "database synchronization traffic"
+      },
+      {
         "id": "q47-web",
-        "text_en": "standard Web browsing traffic",
-        "text_vi": "Lưu lượng duyệt web tiêu chuẩn (HTTP/HTTPS)"
+        "text_en": "standard web browsing traffic"
+      },
+      {
+        "id": "q47-vid",
+        "text_en": "video traffic"
       },
       {
         "id": "q47-voip",
-        "text_en": "VoIP traffic",
-        "text_vi": "Lưu lượng thoại trực tuyến VoIP"
-      },
-      {
-        "id": "q47-video",
-        "text_en": "video traffic",
-        "text_vi": "Lưu lượng phát video trực tiếp (Video streaming)"
-      },
-      {
-        "id": "q47-db",
-        "text_en": "database synchronization traffic",
-        "text_vi": "Lưu lượng đồng bộ hóa cơ sở dữ liệu (Database sync)"
+        "text_en": "VoIP traffic"
       }
     ],
     "drop_zones": [
       {
-        "id": "q47-z-best",
+        "id": "q47-z-be",
         "label_en": "Best Effort",
-        "label_vi": "Cơ chế Best Effort (Không ưu tiên)",
         "target_ids": [
           "q47-web"
         ]
       },
       {
+        "id": "q47-z-pol",
+        "label_en": "Policing",
+        "target_ids": [
+          "q47-vid"
+        ]
+      },
+      {
         "id": "q47-z-pq",
-        "label_en": "Priority Queue (PQ)",
-        "label_vi": "Hàng Đợi Tuyệt Đối Ưu Tiên (Priority Queue)",
+        "label_en": "Priority Queue",
         "target_ids": [
           "q47-voip"
         ]
       },
       {
-        "id": "q47-z-policing",
-        "label_en": "Policing / Shaping",
-        "label_vi": "Cơ chế Điều Hòa / Giới Hạn Băng Thông (Policing / Shaping)",
+        "id": "q47-z-shp",
+        "label_en": "Shaping",
         "target_ids": [
-          "q47-video",
           "q47-db"
         ]
       }
     ],
-    "explanation": "Nguyên lý xếp loại lưu lượng QoS:\n- **VoIP**: Cực kỳ nhạy cảm với độ trễ (Delay) và jitter -> Bắt buộc đưa vào **Priority Queue (PQ)** để được truyền đi trước tiên.\n- **Web browsing**: Không nhạy cảm với trễ, có cơ chế TCP truyền lại -> Dùng cơ chế mặc định **Best Effort**.\n- **Video / Database Sync**: Băng thông lớn cần được định lượng bằng **Policing** (hạ tốc độ nếu vượt ngưỡng) hoặc **Shaping** (làm mượt lưu lượng qua bộ đệm)."
+    "explanation": "\n<strong>Phân bổ lưu lượng mạng vào các cơ chế QoS theo chuẩn Cisco:</strong>\n<ul>\n  <li><strong>Best Effort</strong> &rarr; <code>standard web browsing traffic</code>: Lưu lượng duyệt web thông thường (HTTP/HTTPS) không yêu cầu cam kết chất lượng dịch vụ đặc thù, truyền theo mặc định \"nỗ lực tối đa\".</li>\n  <li><strong>Policing</strong> &rarr; <code>video traffic</code>: Áp dụng giám sát tốc độ nghiêm ngặt, loại bỏ (drop) hoặc đánh dấu lại (remark) các gói video vượt ngưỡng băng thông để tránh chiếm dụng toàn bộ đường truyền.</li>\n  <li><strong>Priority Queue (LLQ)</strong> &rarr; <code>VoIP traffic</code>: Lưu lượng thoại (VoIP) cực kỳ nhạy cảm với độ trễ (delay) và biến thiên trễ (jitter), do đó bắt buộc phải đưa vào hàng đợi ưu tiên nghiêm ngặt để truyền đi trước tiên.</li>\n  <li><strong>Shaping</strong> &rarr; <code>database synchronization traffic</code>: Đồng bộ cơ sở dữ liệu có tính chất đột biến (bursty) nhưng có thể chịu được độ trễ nhỏ; kỹ thuật Shaping sử dụng bộ đệm (buffer) để dàn đều tốc độ gói tin mà không làm rớt gói.</li>\n</ul>\n"
   },
   {
     "id": 48,
-    "title": "Câu 48: Cấu Hình Mật Khẩu Mã Hóa Cho Lệnh Enable",
+    "title": "Câu 48: Cấu Hình Mật Khẩu Mã Hóa Cho Lệnh Enable Trên Router",
     "category": "Security Fundamentals",
-    "prompt_en": "An engineer is configuring an encrypted password for the enable command on a router where local user database has already been configured. Drag and drop the configuration commands from the left into the correct sequence on the right. Not all commands are used.",
-    "prompt_vi": "Kỹ sư đang cấu hình mật khẩu mã hóa cho chế độ Privileged EXEC (lệnh enable) trên router. Kéo thả các câu lệnh cấu hình theo đúng trình tự thực thi từ bước 1 đến bước 4.",
+    "prompt_en": "An engineer is configuring an encrypted password for the enable command on a router where the local user database has already been configured. Drag and drop the configuration commands from the left into the correct sequence on the right. Not all commands are used.",
+    "prompt_vi": "Kỹ sư đang cấu hình mật khẩu mã hóa cho lệnh enable trên router nơi cơ sở dữ liệu người dùng cục bộ đã sẵn sàng. Kéo thả các lệnh từ bên trái vào đúng thứ tự thực hiện ở bên phải.",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q48_a.png",
     "answer_image": "images/dnd/dnd_q48_b.png",
     "source_items": [
       {
-        "id": "q48-c1",
-        "text_en": "configure terminal",
-        "text_vi": "configure terminal (Vào chế độ Global Configuration)"
+        "id": "q48-en",
+        "text_en": "enable"
       },
       {
-        "id": "q48-c2",
-        "text_en": "enable secret shfl@4fs",
-        "text_vi": "enable secret shfl@4fs (Đặt mật khẩu enable mã hóa hash)"
+        "id": "q48-conf",
+        "text_en": "configure terminal"
       },
       {
-        "id": "q48-c3",
-        "text_en": "service password-encryption",
-        "text_vi": "service password-encryption (Mã hóa toàn bộ mật khẩu dạng plain-text)"
+        "id": "q48-sec",
+        "text_en": "enable secret shfl@4fs"
       },
       {
-        "id": "q48-c4",
-        "text_en": "exit",
-        "text_vi": "exit (Thoát ra chế độ cấu hình)"
+        "id": "q48-ex",
+        "text_en": "exit"
       },
       {
-        "id": "q48-dist1",
-        "text_en": "enable password shfl@4fs",
-        "text_vi": "enable password ... (Lệnh cũ không an toàn - Không dùng)"
+        "id": "q48-d1",
+        "text_en": "line vty 0 4"
       },
       {
-        "id": "q48-dist2",
-        "text_en": "line vty 0 4",
-        "text_vi": "line vty 0 4 (Cấu hình Telnet/SSH - Không dùng)"
+        "id": "q48-d2",
+        "text_en": "service password-encryption"
       }
     ],
     "drop_zones": [
       {
         "id": "q48-s1",
-        "label_en": "First Command",
-        "label_vi": "Bước 1: Vào cấu hình toàn cục",
+        "label_en": "First",
         "target_ids": [
-          "q48-c1"
+          "q48-en"
         ]
       },
       {
         "id": "q48-s2",
-        "label_en": "Second Command",
-        "label_vi": "Bước 2: Đặt mật khẩu enable bí mật",
+        "label_en": "Second",
         "target_ids": [
-          "q48-c2"
+          "q48-conf"
         ]
       },
       {
         "id": "q48-s3",
-        "label_en": "Third Command",
-        "label_vi": "Bước 3: Bật mã hóa mật khẩu hệ thống",
+        "label_en": "Third",
         "target_ids": [
-          "q48-c3"
+          "q48-sec"
         ]
       },
       {
         "id": "q48-s4",
-        "label_en": "Fourth Command",
-        "label_vi": "Bước 4: Thoát khỏi chế độ cấu hình",
+        "label_en": "Fourth",
         "target_ids": [
-          "q48-c4"
+          "q48-ex"
         ]
       }
     ],
-    "explanation": "Quy trình chuẩn trên Cisco IOS:\n1. `configure terminal`: Chuyển từ Privileged EXEC sang Global Configuration mode.\n2. `enable secret <pass>`: Đặt mật khẩu được mã hóa băm một chiều (MD5/SHA-256) cho lệnh enable (ưu tiên hơn `enable password`).\n3. `service password-encryption`: Bật tính năng mã hóa kiểu Vigenere (Type 7) cho tất cả các mật khẩu dạng plain text trong running-config.\n4. `exit`: Trở lại chế độ dòng lệnh thông thường."
+    "explanation": "\n<strong>Trình tự thực thi lệnh Cisco IOS chính xác:</strong>\n<ol>\n  <li><strong>First:</strong> <code>enable</code>: Chuyển từ User EXEC Mode sang Privileged EXEC Mode.</li>\n  <li><strong>Second:</strong> <code>configure terminal</code>: Vào Global Configuration Mode để cấu hình hệ thống.</li>\n  <li><strong>Third:</strong> <code>enable secret shfl@4fs</code>: Cấu hình mật khẩu bí mật mã hóa mạnh cho quyền Privileged EXEC.</li>\n  <li><strong>Fourth:</strong> <code>exit</code>: Thoát khỏi Global Configuration Mode trở về EXEC.</li>\n</ol>\n<em>Các thẻ gây nhiễu:</em> <code>line vty 0 4</code> (dùng cho Telnet/SSH) và <code>service password-encryption</code> (mã hóa type 7 yếu cho clear-text passwords, trong khi <code>enable secret</code> đã tự động băm mã hóa mạnh bằng MD5/SHA-256).\n"
   },
   {
     "id": 49,
-    "title": "Câu 49: Trình Tự Các Bước Truy Vấn DNS Tiêu Chuẩn",
+    "title": "Câu 49: Trình Tự Các Bước Truy Vấn DNS Tiêu Chuẩn (DNS Lookup)",
     "category": "IP Services",
-    "prompt_en": "Drag and drop the steps in a standard DNS lookup operation from the left into the correct order on the right.",
-    "prompt_vi": "Kéo thả các bước trong một tiến trình phân giải tên miền DNS chuẩn từ bên trái vào đúng thứ tự thời gian từ bước 1 đến bước 5 ở bên phải.",
+    "prompt_en": "Drag and drop the steps in a standard DNS lookup operation from the left into order on the right.",
+    "prompt_vi": "Kéo thả các bước trong quá trình phân giải tên miền DNS tiêu chuẩn từ bên trái vào đúng thứ tự ở bên phải.",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q49_a.png",
     "answer_image": "images/dnd/dnd_q49_b.png",
     "source_items": [
       {
-        "id": "q49-s1",
-        "text_en": "An endpoint submits a request for the IP address of a domain name.",
-        "text_vi": "1. Thiết bị đầu cuối gửi yêu cầu truy vấn địa chỉ IP của một tên miền"
+        "id": "q49-step1",
+        "text_en": "An endpoint submits a request for the IP address of a domain name."
       },
       {
-        "id": "q49-s2",
-        "text_en": "The local DNS submits a request to the root DNS server.",
-        "text_vi": "2. Máy chủ DNS cục bộ gửi yêu cầu truy vấn lên máy chủ Root DNS server"
+        "id": "q49-step2",
+        "text_en": "The DNS server submits a request to a root DNS server."
       },
       {
-        "id": "q49-s3",
-        "text_en": "The local DNS submits a request to the domain/TLD DNS server.",
-        "text_vi": "3. Máy chủ DNS cục bộ gửi yêu cầu tới máy chủ quản lý đuôi tên miền (TLD DNS server)"
+        "id": "q49-step3",
+        "text_en": "The DNS server submits a request to the domain DNS server."
       },
       {
-        "id": "q49-s4",
-        "text_en": "The local DNS receives a reply from the authoritative domain DNS server.",
-        "text_vi": "4. Máy chủ DNS cục bộ nhận câu trả lời IP chính thức từ Authoritative DNS server"
+        "id": "q49-step4",
+        "text_en": "The DNS server receives a reply from the domain DNS server."
       },
       {
-        "id": "q49-s5",
-        "text_en": "The DNS server responds to the endpoint with the IP address.",
-        "text_vi": "5. Máy chủ DNS cục bộ phản hồi kết quả địa chỉ IP về cho thiết bị đầu cuối"
+        "id": "q49-step5",
+        "text_en": "The DNS server responds to the endpoint."
       }
     ],
     "drop_zones": [
       {
         "id": "q49-z1",
         "label_en": "Step 1",
-        "label_vi": "Bước 1",
         "target_ids": [
-          "q49-s1"
+          "q49-step1"
         ]
       },
       {
         "id": "q49-z2",
         "label_en": "Step 2",
-        "label_vi": "Bước 2",
         "target_ids": [
-          "q49-s2"
+          "q49-step2"
         ]
       },
       {
         "id": "q49-z3",
         "label_en": "Step 3",
-        "label_vi": "Bước 3",
         "target_ids": [
-          "q49-s3"
+          "q49-step3"
         ]
       },
       {
         "id": "q49-z4",
         "label_en": "Step 4",
-        "label_vi": "Bước 4",
         "target_ids": [
-          "q49-s4"
+          "q49-step4"
         ]
       },
       {
         "id": "q49-z5",
         "label_en": "Step 5",
-        "label_vi": "Bước 5",
         "target_ids": [
-          "q49-s5"
+          "q49-step5"
         ]
       }
     ],
-    "explanation": "Quy trình phân giải DNS đệ quy (Recursive DNS Lookup):\n1. Máy trạm (PC) hỏi DNS Server cục bộ (Local Resolver).\n2. Local Resolver hỏi Root Name Server (`.` root).\n3. Local Resolver hỏi TLD Server (`.com`, `.net`, `.vn`).\n4. Local Resolver hỏi Authoritative Name Server của tên miền và nhận IP.\n5. Local Resolver lưu cache và trả IP về cho PC."
+    "explanation": "\n<strong>Trình tự truy vấn DNS phân giải đệ quy (Iterative / Recursive Lookup):</strong>\n<ol>\n  <li><strong>Step 1:</strong> <code>An endpoint submits a request for the IP address of a domain name.</code>: Thiết bị đầu cuối gửi yêu cầu truy vấn IP của tên miền đến DNS Resolver cục bộ.</li>\n  <li><strong>Step 2:</strong> <code>The DNS server submits a request to a root DNS server.</code>: DNS server chuyển tiếp yêu cầu lên máy chủ gốc (Root DNS Server) để tìm máy chủ TLD (.com, .net,...).</li>\n  <li><strong>Step 3:</strong> <code>The DNS server submits a request to the domain DNS server.</code>: DNS server gửi yêu cầu tới máy chủ DNS có thẩm quyền quản lý tên miền (Authoritative Name Server).</li>\n  <li><strong>Step 4:</strong> <code>The DNS server receives a reply from the domain DNS server.</code>: DNS server nhận phản hồi chứa bản ghi IP chính xác từ Authoritative Name Server.</li>\n  <li><strong>Step 5:</strong> <code>The DNS server responds to the endpoint.</code>: DNS server trả kết quả địa chỉ IP về cho thiết bị đầu cuối bắt đầu phiên kết nối.</li>\n</ol>\n"
   },
   {
     "id": 50,
-    "title": "Câu 50: So Sánh Giao Thức Bảo Mật RADIUS vs TACACS+",
+    "title": "Câu 50: So Sánh Giao Thức Bảo Mật AAA: RADIUS vs TACACS+",
     "category": "Security Fundamentals",
     "prompt_en": "Drag and drop the functions of AAA supporting protocols from the left onto the protocols on the right.",
-    "prompt_vi": "Kéo thả các đặc tính kỹ thuật từ bên trái vào giao thức RADIUS hoặc TACACS+ tương ứng ở bên phải.",
+    "prompt_vi": "Kéo thả các đặc trưng của các giao thức hỗ trợ AAA từ bên trái vào giao thức tương ứng ở bên phải.",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q50_a.png",
     "answer_image": "images/dnd/dnd_q50_b.png",
     "source_items": [
       {
-        "id": "q50-rad1",
-        "text_en": "encrypts only the password when it sends an access-request",
-        "text_vi": "Chỉ mã hóa mật khẩu khi gửi gói tin truy cập (Access-Request packet)"
+        "id": "q50-r-pwd",
+        "text_en": "encrypts only the password when it sends an access request"
       },
       {
-        "id": "q50-rad2",
-        "text_en": "combines authentication and authorization",
-        "text_vi": "Kết hợp chung 2 chức năng Authentication và Authorization làm một"
+        "id": "q50-r-comb",
+        "text_en": "combines authentication and authorization"
       },
       {
-        "id": "q50-rad3",
-        "text_en": "uses UDP",
-        "text_vi": "Sử dụng giao thức truyền tải UDP (cổng 1812/1813 hoặc 1645/1646)"
+        "id": "q50-r-udp",
+        "text_en": "uses UDP"
       },
       {
-        "id": "q50-tac1",
-        "text_en": "encrypts the entire body of the access-request packet",
-        "text_vi": "Mã hóa toàn bộ nội dung (Body) của gói tin mạng (chỉ chừa lại header)"
+        "id": "q50-t-body",
+        "text_en": "encrypts the entire body of the access-request packet"
       },
       {
-        "id": "q50-tac2",
-        "text_en": "separates all three AAA operations",
-        "text_vi": "Tách biệt hoàn toàn độc lập 3 chức năng Authentication, Authorization, Accounting"
+        "id": "q50-t-sep",
+        "text_en": "separates all three AAA operations"
       },
       {
-        "id": "q50-tac3",
-        "text_en": "uses TCP",
-        "text_vi": "Sử dụng giao thức truyền tải tin cậy TCP (cổng 49)"
+        "id": "q50-t-tcp",
+        "text_en": "uses TCP"
       }
     ],
     "drop_zones": [
       {
         "id": "q50-radius",
         "label_en": "RADIUS",
-        "label_vi": "Giao thức RADIUS (Chuẩn mở IETF)",
         "target_ids": [
-          "q50-rad1",
-          "q50-rad2",
-          "q50-rad3"
+          "q50-r-pwd",
+          "q50-r-comb",
+          "q50-r-udp"
         ]
       },
       {
         "id": "q50-tacacs",
         "label_en": "TACACS+",
-        "label_vi": "Giao thức TACACS+ (Chuẩn Cisco)",
         "target_ids": [
-          "q50-tac1",
-          "q50-tac2",
-          "q50-tac3"
+          "q50-t-body",
+          "q50-t-sep",
+          "q50-t-tcp"
         ]
       }
     ],
-    "explanation": "Bảng so sánh kinh điển RADIUS vs TACACS+ trong CCNA:\n- **RADIUS**: Chuẩn mở (Open Standard), dùng UDP (1812/1813), gom chung Authentication & Authorization, chỉ mã hóa trường Password.\n- **TACACS+**: Độc quyền Cisco (Cisco Proprietary), dùng TCP (port 49), tách rời 3 dịch vụ AAA (rất mạnh khi phân quyền từng lệnh CLI), mã hóa toàn bộ thân gói tin (Payload)."
+    "explanation": "\n<strong>So sánh toàn diện RADIUS vs TACACS+:</strong>\n<ul>\n  <li><strong>RADIUS (IETF Standard):</strong>\n    <ul>\n      <li><code>encrypts only the password when it sends an access request</code>: Chỉ mã hóa trường mật khẩu, phần thân gói tin còn lại để lộ dạng cleartext.</li>\n      <li><code>combines authentication and authorization</code>: Gộp chung quá trình xác thực và cấp quyền vào làm một.</li>\n      <li><code>uses UDP</code>: Chạy trên giao thức truyền tải UDP (cổng 1812/1813 hoặc 1645/1646).</li>\n    </ul>\n  </li>\n  <li><strong>TACACS+ (Cisco Proprietary):</strong>\n    <ul>\n      <li><code>encrypts the entire body of the access-request packet</code>: Mã hóa toàn bộ phần thân (payload) của gói tin, chỉ để header lộ diện để định tuyến.</li>\n      <li><code>separates all three AAA operations</code>: Tách biệt hoàn toàn 3 thành phần Authentication, Authorization và Accounting giúp quản trị phân quyền linh hoạt theo từng lệnh CLI.</li>\n      <li><code>uses TCP</code>: Chạy trên kết nối hướng tin cậy TCP cổng 49.</li>\n    </ul>\n  </li>\n</ul>\n"
   },
   {
     "id": 51,
-    "title": "Câu 51: Phòng Chống Tấn Công Layer 2 Nâng Cao (Biến thể 1)",
+    "title": "Câu 51: Phòng Chống Tấn Công Layer 2 Nâng Cao (Double-Tagging / Switch-Spoofing / MITM)",
     "category": "Security Fundamentals",
-    "prompt_en": "Drag and drop the attack-mitigation techniques from the left onto the types of attack that they mitigate on the right.",
-    "prompt_vi": "Kéo thả các giải pháp phòng chống từ bên trái vào đúng kiểu tấn công Layer 2 tương ứng ở bên phải.",
+    "prompt_en": "Drag and drop the attack mitigation techniques from the left onto the types of attack that they mitigate on the right. Not all options are used.",
+    "prompt_vi": "Kéo thả các giải pháp phòng thủ từ bên trái vào 3 loại tấn công tương ứng ở bên phải. (Lưu ý: Có 1 đáp án gây nhiễu không được sử dụng).",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q51_a.png",
@@ -3289,30 +3246,25 @@ window.CCNA_DND_DATA = [
     "source_items": [
       {
         "id": "q51-m-vlan",
-        "text_en": "configure the native VLAN with a nondefault VLAN ID",
-        "text_vi": "Cấu hình Native VLAN với một VLAN ID khác mặc định (khác VLAN 1)"
+        "text_en": "configure the native VLAN with a nondefault VLAN ID"
       },
       {
         "id": "q51-m-dtp",
-        "text_en": "disable Dynamic Trunking Protocol (DTP)",
-        "text_vi": "Vô hiệu hóa giao thức đàm phán kênh Trunk DTP"
+        "text_en": "disable DTP"
       },
       {
         "id": "q51-m-dhcp",
-        "text_en": "configure DHCP snooping",
-        "text_vi": "Cấu hình tính năng DHCP Snooping"
+        "text_en": "configure DHCP snooping"
       },
       {
-        "id": "q51-m-dot1x",
-        "text_en": "configure 802.1X authentication",
-        "text_vi": "Cấu hình xác thực người dùng 802.1X"
+        "id": "q51-m-dist",
+        "text_en": "configure 802.1X authentication"
       }
     ],
     "drop_zones": [
       {
         "id": "q51-z1",
         "label_en": "802.1q double-tagging VLAN-hopping attack",
-        "label_vi": "Tấn công nhảy VLAN bằng gắn thẻ kép 802.1Q",
         "target_ids": [
           "q51-m-vlan"
         ]
@@ -3320,7 +3272,6 @@ window.CCNA_DND_DATA = [
       {
         "id": "q51-z2",
         "label_en": "switch-spoofing VLAN-hopping attack",
-        "label_vi": "Tấn công nhảy VLAN bằng giả mạo switch đàm phán Trunk",
         "target_ids": [
           "q51-m-dtp"
         ]
@@ -3328,28 +3279,19 @@ window.CCNA_DND_DATA = [
       {
         "id": "q51-z3",
         "label_en": "man-in-the-middle spoofing attack",
-        "label_vi": "Tấn công kẻ đứng giữa (MITM) qua DHCP Server lậu",
         "target_ids": [
           "q51-m-dhcp"
         ]
-      },
-      {
-        "id": "q51-z4",
-        "label_en": "MAC flooding attack",
-        "label_vi": "Tấn công làm tràn ngập bảng địa chỉ MAC switch",
-        "target_ids": [
-          "q51-m-dot1x"
-        ]
       }
     ],
-    "explanation": "Biện pháp phòng thủ Layer 2:\n- Double Tagging -> Thay đổi Native VLAN khác 1.\n- Switch Spoofing -> Tắt DTP bằng `switchport nonegotiate`.\n- MITM qua DHCP -> Bật DHCP Snooping.\n- MAC Flooding -> Bật 802.1X / Port Security."
+    "explanation": "\n<strong>Đối chiếu chính xác 3 loại tấn công Layer 2 (Đề thi dump chỉ có 3 ô đích):</strong>\n<ul>\n  <li><code>802.1q double-tagging VLAN-hopping attack</code> &rarr; <strong>configure the native VLAN with a nondefault VLAN ID</strong>: Thiết lập Native VLAN sang ID riêng biệt và bật tag để switch loại bỏ gói tin gắn 2 thẻ VLAN tag.</li>\n  <li><code>switch-spoofing VLAN-hopping attack</code> &rarr; <strong>disable DTP</strong>: Tắt Dynamic Trunking Protocol bằng <code>switchport nonegotiate</code> để máy tính của kẻ tấn công không thể giả làm switch kết nối Trunk.</li>\n  <li><code>man-in-the-middle spoofing attack</code> &rarr; <strong>configure DHCP snooping</strong>: Bật tính năng DHCP Snooping để chỉ cho phép gói DHCP Offer từ cổng kết nối máy chủ DHCP tin cậy (Trusted Port).</li>\n  <li><em>Thẻ gây nhiễu (Distractor - Không dùng):</em> <code>configure 802.1X authentication</code> (dùng để xác thực cổng người dùng / chống MAC flooding, không dùng cho 3 ô này).</li>\n</ul>\n"
   },
   {
     "id": 52,
-    "title": "Câu 52: Phòng Chống Tấn Công Layer 2 Nâng Cao (Biến thể 2)",
+    "title": "Câu 52: Phòng Chống Tấn Công Layer 2 Nâng Cao (Biến Thể Đầy Đủ Tên Giao Thức)",
     "category": "Security Fundamentals",
     "prompt_en": "Drag and drop the attack-mitigation techniques from the left onto the types of attack that they mitigate on the right.",
-    "prompt_vi": "Kéo thả các biện pháp phòng chống từ bên trái vào đúng kiểu tấn công Layer 2 ở bên phải.",
+    "prompt_vi": "Kéo thả các giải pháp phòng thủ từ bên trái vào các loại tấn công tương ứng ở bên phải.",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q52_a.png",
@@ -3357,25 +3299,21 @@ window.CCNA_DND_DATA = [
     "source_items": [
       {
         "id": "q52-m-vlan",
-        "text_en": "configure the native VLAN with a nondefault VLAN ID",
-        "text_vi": "Cấu hình Native VLAN khác mặc định (khác VLAN 1)"
+        "text_en": "configure the native VLAN with a nondefault VLAN ID"
       },
       {
         "id": "q52-m-dtp",
-        "text_en": "disable Dynamic Trunking Protocol (DTP)",
-        "text_vi": "Tắt giao thức đàm phán kênh Trunk DTP"
+        "text_en": "disable Dynamic Trunking Protocol (DTP)"
       },
       {
         "id": "q52-m-dhcp",
-        "text_en": "configure DHCP snooping",
-        "text_vi": "Cấu hình tính năng DHCP Snooping"
+        "text_en": "configure DHCP snooping"
       }
     ],
     "drop_zones": [
       {
         "id": "q52-z1",
         "label_en": "802.1q double-tagging VLAN-hopping attack",
-        "label_vi": "Tấn công nhảy VLAN thẻ kép 802.1Q",
         "target_ids": [
           "q52-m-vlan"
         ]
@@ -3383,7 +3321,6 @@ window.CCNA_DND_DATA = [
       {
         "id": "q52-z2",
         "label_en": "switch-spoofing VLAN-hopping attack",
-        "label_vi": "Tấn công giả mạo switch đàm phán Trunk",
         "target_ids": [
           "q52-m-dtp"
         ]
@@ -3391,93 +3328,75 @@ window.CCNA_DND_DATA = [
       {
         "id": "q52-z3",
         "label_en": "man-in-the-middle spoofing attack",
-        "label_vi": "Tấn công người đứng giữa MITM qua DHCP giả mạo",
         "target_ids": [
           "q52-m-dhcp"
         ]
       }
     ],
-    "explanation": "Biến thể câu hỏi trắc nghiệm kéo thả phổ biến: Đối chiếu trực tiếp 3 kiểu tấn công nhảy VLAN và giả mạo IP/DHCP với 3 biện pháp cấu hình chuẩn của Cisco."
+    "explanation": "\n<strong>Phòng chống tấn công Layer 2 (Biến thể câu 52):</strong>\n<ul>\n  <li><code>802.1q double-tagging VLAN-hopping attack</code> &rarr; <strong>configure the native VLAN with a nondefault VLAN ID</strong></li>\n  <li><code>switch-spoofing VLAN-hopping attack</code> &rarr; <strong>disable Dynamic Trunking Protocol (DTP)</strong></li>\n  <li><code>man-in-the-middle spoofing attack</code> &rarr; <strong>configure DHCP snooping</strong></li>\n</ul>\n"
   },
   {
     "id": 53,
-    "title": "Câu 53: Phân Định Tính Năng Các Dịch Vụ AAA",
+    "title": "Câu 53: Phân Định Tính Năng Bảo Mật AAA: Authentication vs Accounting",
     "category": "Security Fundamentals",
     "prompt_en": "Drag and drop the AAA features from the left onto the corresponding AAA security services on the right. Not all options are used.",
-    "prompt_vi": "Kéo thả các tính năng AAA từ bên trái vào đúng dịch vụ Authentication, Authorization hoặc Accounting ở bên phải.",
+    "prompt_vi": "Kéo thả các tính năng AAA từ bên trái vào đúng dịch vụ bảo mật ở bên phải. (Lưu ý: Có 2 đáp án gây nhiễu không được sử dụng).",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q53_a.png",
     "answer_image": "images/dnd/dnd_q53_b.png",
     "source_items": [
       {
-        "id": "q53-f-auth1",
-        "text_en": "Identifies the user",
-        "text_vi": "Nhận diện danh tính người dùng"
+        "id": "q53-authn1",
+        "text_en": "verifies the user before granting access to the device"
       },
       {
-        "id": "q53-f-auth2",
-        "text_en": "Verifies the password associated with a user",
-        "text_vi": "Xác minh mật khẩu và thông tin đăng nhập của người dùng"
+        "id": "q53-authn2",
+        "text_en": "leverages a RADIUS server to grant user access to a reverse Telnet session"
       },
       {
-        "id": "q53-f-autho1",
-        "text_en": "Controls the actions that a user can perform",
-        "text_vi": "Kiểm soát các hành động mà người dùng được phép thực thi"
+        "id": "q53-acc1",
+        "text_en": "records the amount of time for which a user accesses the network"
       },
       {
-        "id": "q53-f-autho2",
-        "text_en": "Restricts the CLI commands executable by a user",
-        "text_vi": "Giới hạn danh sách các lệnh CLI người dùng được gõ trên switch/router"
+        "id": "q53-acc2",
+        "text_en": "uses TACACS+ to log configuration commands entered by a network administrator"
       },
       {
-        "id": "q53-f-acc1",
-        "text_en": "Records user activities and commands executed",
-        "text_vi": "Ghi nhận lịch sử hoạt động và các lệnh CLI đã được thực thi"
+        "id": "q53-d1",
+        "text_en": "enables the device to allow user- or group-based access"
       },
       {
-        "id": "q53-f-acc2",
-        "text_en": "Records the amount of network resources consumed",
-        "text_vi": "Ghi nhận khối lượng tài nguyên mạng và thời gian đã sử dụng"
+        "id": "q53-d2",
+        "text_en": "restricts the CLI commands that a user is able to perform"
       }
     ],
     "drop_zones": [
       {
-        "id": "q53-z-auth",
+        "id": "q53-z-authn",
         "label_en": "Authentication",
-        "label_vi": "Authentication (Xác thực danh tính)",
         "target_ids": [
-          "q53-f-auth1",
-          "q53-f-auth2"
-        ]
-      },
-      {
-        "id": "q53-z-autho",
-        "label_en": "Authorization",
-        "label_vi": "Authorization (Ủy quyền phân nhiệm)",
-        "target_ids": [
-          "q53-f-autho1",
-          "q53-f-autho2"
+          "q53-authn1",
+          "q53-authn2"
         ]
       },
       {
         "id": "q53-z-acc",
         "label_en": "Accounting",
-        "label_vi": "Accounting (Kiểm toán ghi chép)",
         "target_ids": [
-          "q53-f-acc1",
-          "q53-f-acc2"
+          "q53-acc1",
+          "q53-acc2"
         ]
       }
     ],
-    "explanation": "Nguyên lý phân nhiệm trong AAA:\n- **Authentication**: Xác minh 'Ai đang cố truy cập?' bằng mật khẩu/chứng chỉ.\n- **Authorization**: Xác minh 'Được phép làm gì?' bằng cách giới hạn lệnh CLI.\n- **Accounting**: Xác minh 'Đã làm gì và bao lâu?' bằng cách ghi log tài nguyên."
+    "explanation": "\n<strong>Phân định tính năng Authentication vs Accounting (Đề thi dump chỉ có 2 ô đích):</strong>\n<ul>\n  <li><strong>Authentication (Xác thực):</strong>\n    <ul>\n      <li><code>verifies the user before granting access to the device</code>: Xác minh thông tin tài khoản người dùng trước khi cấp quyền truy cập vào thiết bị.</li>\n      <li><code>leverages a RADIUS server to grant user access to a reverse Telnet session</code>: Tận dụng máy chủ RADIUS để kiểm tra danh tính khi mở phiên reverse Telnet.</li>\n    </ul>\n  </li>\n  <li><strong>Accounting (Ghi nhật ký):</strong>\n    <ul>\n      <li><code>records the amount of time for which a user accesses the network</code>: Ghi nhận thời gian và thời lượng truy cập mạng của người dùng.</li>\n      <li><code>uses TACACS+ to log configuration commands entered by a network administrator</code>: Sử dụng TACACS+ để ghi nhật ký chi tiết các lệnh cấu hình mà quản trị viên đã gõ.</li>\n    </ul>\n  </li>\n  <li><em>Thẻ gây nhiễu (Distractor - Thuộc về Authorization nên không dùng):</em>\n    <ul>\n      <li><code>enables the device to allow user- or group-based access</code> (Cấp quyền truy cập theo nhóm hoặc cá nhân).</li>\n      <li><code>restricts the CLI commands that a user is able to perform</code> (Giới hạn tập lệnh CLI được phép thực hiện).</li>\n    </ul>\n  </li>\n</ul>\n"
   },
   {
     "id": 54,
     "title": "Câu 54: Đặc Trưng Của Công Cụ Tự Động Hóa Ansible",
-    "category": "Automation & Programmability",
-    "prompt_en": "Drag and drop the Ansible features from the left onto the right. Not all features are used.",
-    "prompt_vi": "Kéo thả các đặc tính đúng của Ansible sang khung bên phải. Lưu ý: Không phải mọi đặc tính đều được sử dụng.",
+    "category": "Network Automation",
+    "prompt_en": "Drag and drop the Ansible features from the left to right. Not all features are used.",
+    "prompt_vi": "Kéo thả các đặc trưng của công cụ tự động hóa Ansible từ bên trái sang bên phải. (Lưu ý: Có 1 tính năng gây nhiễu).",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q54_a.png",
@@ -3485,59 +3404,40 @@ window.CCNA_DND_DATA = [
     "source_items": [
       {
         "id": "q54-f1",
-        "text_en": "executes modules via SSH by default",
-        "text_vi": "Thực thi các module qua kết nối an toàn SSH mặc định"
+        "text_en": "executes modules via SSH by default"
       },
       {
         "id": "q54-f2",
-        "text_en": "uses the YAML language",
-        "text_vi": "Sử dụng cú pháp định dạng ngôn ngữ YAML (Playbooks)"
+        "text_en": "uses the YAML language"
       },
       {
         "id": "q54-f3",
-        "text_en": "operates without agents (agentless)",
-        "text_vi": "Hoạt động hoàn toàn không cần cài agent trên thiết bị đích (Agentless)"
+        "text_en": "operates without agents"
       },
       {
-        "id": "q54-dist",
-        "text_en": "uses agents to manage hosts",
-        "text_vi": "Bắt buộc cài agent trên máy con (Sai - Đây là của Puppet/Chef)"
+        "id": "q54-d1",
+        "text_en": "uses agents to manage hosts"
       }
     ],
     "drop_zones": [
       {
-        "id": "q54-z1",
-        "label_en": "Ansible Feature 1",
-        "label_vi": "Đặc tính đúng của Ansible 1",
+        "id": "q54-zone",
+        "label_en": "Ansible Features",
         "target_ids": [
-          "q54-f1"
-        ]
-      },
-      {
-        "id": "q54-z2",
-        "label_en": "Ansible Feature 2",
-        "label_vi": "Đặc tính đúng của Ansible 2",
-        "target_ids": [
-          "q54-f2"
-        ]
-      },
-      {
-        "id": "q54-z3",
-        "label_en": "Ansible Feature 3",
-        "label_vi": "Đặc tính đúng của Ansible 3",
-        "target_ids": [
+          "q54-f1",
+          "q54-f2",
           "q54-f3"
         ]
       }
     ],
-    "explanation": "Ansible nổi bật nhờ 3 đặc tính then chốt:\n1. **Agentless**: Không cần cài phần mềm agent lên switch/router.\n2. **SSH transport**: Kết nối qua SSH có sẵn trên Cisco IOS-XE.\n3. **YAML format**: Cú pháp kịch bản (Playbook) trực quan, dễ đọc."
+    "explanation": "\n<strong>Các đặc trưng cốt lõi của Ansible:</strong>\n<ul>\n  <li><code>executes modules via SSH by default</code>: Ansible sử dụng giao thức SSH tiêu chuẩn để kết nối và thực thi các mô-đun trên thiết bị đích (hoặc NETCONF/RESTCONF).</li>\n  <li><code>uses the YAML language</code>: Các playbook kịch bản tự động hóa của Ansible được viết bằng định dạng YAML trực quan, dễ đọc.</li>\n  <li><code>operates without agents</code>: Kiến trúc không cần cài đặt phần mềm đại lý (Agentless) trên các máy chủ/switch được quản lý.</li>\n  <li><em>Thẻ gây nhiễu:</em> <code>uses agents to manage hosts</code> (Đây là đặc trưng của Puppet và Chef, không phải của Ansible).</li>\n</ul>\n"
   },
   {
     "id": 55,
     "title": "Câu 55: Đối Chiếu Thuật Ngữ AAA Với Hành Động",
     "category": "Security Fundamentals",
     "prompt_en": "Drag and drop the AAA terms from the left onto the descriptions on the right.",
-    "prompt_vi": "Kéo thả các thuật ngữ AAA từ bên trái vào đúng hành động thực hiện ở bên phải.",
+    "prompt_vi": "Kéo thả các thuật ngữ AAA từ bên trái vào đúng mô tả hành động ở bên phải.",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q55_a.png",
@@ -3545,54 +3445,48 @@ window.CCNA_DND_DATA = [
     "source_items": [
       {
         "id": "q55-accounting",
-        "text_en": "accounting",
-        "text_vi": "Accounting"
+        "text_en": "accounting"
       },
       {
         "id": "q55-authorization",
-        "text_en": "authorization",
-        "text_vi": "Authorization"
+        "text_en": "authorization"
       },
       {
         "id": "q55-authentication",
-        "text_en": "authentication",
-        "text_vi": "Authentication"
+        "text_en": "authentication"
       }
     ],
     "drop_zones": [
       {
-        "id": "q55-z1",
+        "id": "q55-z-acc",
         "label_en": "tracks activity",
-        "label_vi": "Theo dõi và ghi nhận hoạt động (tracks activity)",
         "target_ids": [
           "q55-accounting"
         ]
       },
       {
-        "id": "q55-z2",
+        "id": "q55-z-authz",
         "label_en": "verifies access rights",
-        "label_vi": "Xác minh các quyền hạn truy cập (verifies access rights)",
         "target_ids": [
           "q55-authorization"
         ]
       },
       {
-        "id": "q55-z3",
+        "id": "q55-z-authn",
         "label_en": "verifies identity",
-        "label_vi": "Xác minh danh tính người dùng (verifies identity)",
         "target_ids": [
           "q55-authentication"
         ]
       }
     ],
-    "explanation": "Khắc sâu 3 từ khóa định nghĩa chuẩn Cisco:\n- **Authentication** -> `verifies identity`\n- **Authorization** -> `verifies access rights`\n- **Accounting** -> `tracks activity`"
+    "explanation": "\n<strong>Mô hình AAA cổ điển:</strong>\n<ul>\n  <li><code>tracks activity</code> &rarr; <strong>accounting</strong>: Theo dõi và ghi nhật ký hoạt động.</li>\n  <li><code>verifies access rights</code> &rarr; <strong>authorization</strong>: Kiểm tra và cấp quyền truy cập tài nguyên.</li>\n  <li><code>verifies identity</code> &rarr; <strong>authentication</strong>: Xác minh danh tính người dùng đăng nhập.</li>\n</ul>\n"
   },
   {
     "id": 56,
     "title": "Câu 56: Điểm Truy Cập Không Dây (AP) vs Bộ Điều Khiển (WLC)",
     "category": "Network Access",
     "prompt_en": "Drag and drop the characteristics from the left onto corresponding device types on the right. Not all characteristics are used.",
-    "prompt_vi": "Kéo thả các đặc tính từ bên trái vào đúng loại thiết bị Access Point hoặc Wireless LAN Controller ở bên phải.",
+    "prompt_vi": "Kéo thả các đặc điểm từ bên trái vào đúng loại thiết bị mạng không dây ở bên phải. (Lưu ý: Có 1 đáp án gây nhiễu).",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q56_a.png",
@@ -3600,59 +3494,51 @@ window.CCNA_DND_DATA = [
     "source_items": [
       {
         "id": "q56-ap-radio",
-        "text_en": "transmits and receives radio signals",
-        "text_vi": "Phát sóng và tiếp nhận các tín hiệu vô tuyến (Radio RF)"
-      },
-      {
-        "id": "q56-ap-poe",
-        "text_en": "requires a special adapter for POE / power injector",
-        "text_vi": "Cần bộ chuyển đổi cấp nguồn PoE (hoặc injector) để hoạt động"
+        "text_en": "transmits and receives radio signals"
       },
       {
         "id": "q56-ap-wgb",
-        "text_en": "configurable as a workgroup bridge",
-        "text_vi": "Có thể cấu hình hoạt động ở chế độ Workgroup Bridge (WGB)"
+        "text_en": "configurable as a workgroup bridge"
       },
       {
         "id": "q56-wlc-qos",
-        "text_en": "uses templates to implement QOS configuration",
-        "text_vi": "Sử dụng các mẫu template tập trung để áp dụng cấu hình QoS"
+        "text_en": "uses templates to implement QOS configuration"
       },
       {
         "id": "q56-wlc-conn",
-        "text_en": "supplies user connection data within a device group",
-        "text_vi": "Cung cấp và đồng bộ dữ liệu phiên kết nối người dùng trong nhóm thiết bị"
+        "text_en": "supplies user connection data within a device group"
+      },
+      {
+        "id": "q56-poe",
+        "text_en": "requires a special adapter for POE"
       }
     ],
     "drop_zones": [
       {
         "id": "q56-z-ap",
-        "label_en": "Access Point (AP)",
-        "label_vi": "Access Point (AP)",
+        "label_en": "Access Point",
         "target_ids": [
           "q56-ap-radio",
-          "q56-ap-poe",
           "q56-ap-wgb"
         ]
       },
       {
         "id": "q56-z-wlc",
-        "label_en": "Wireless LAN Controller (WLC)",
-        "label_vi": "Wireless LAN Controller (WLC)",
+        "label_en": "Wireless LAN Controller",
         "target_ids": [
           "q56-wlc-qos",
           "q56-wlc-conn"
         ]
       }
     ],
-    "explanation": "- **Access Point**: Là thiết bị vật lý phát sóng Wi-Fi (Radio RF), nhận nguồn qua dây mạng PoE (802.3af/at), có thể làm cầu nối mạng (Workgroup Bridge - WGB) cho thiết bị có dây.\n- **WLC**: Quản trị tập trung, triển khai cấu hình QoS đồng bộ qua template, điều phối roaming giữa các AP."
+    "explanation": "\n<strong>Phân biệt Access Point vs Wireless LAN Controller (Khớp 100% ảnh dump gốc):</strong>\n<ul>\n  <li><strong>Access Point:</strong>\n    <ul>\n      <li><code>transmits and receives radio signals</code>: Phát sóng và thu nhận trực tiếp tín hiệu sóng radio (RF).</li>\n      <li><code>configurable as a workgroup bridge</code>: Có thể hoạt động ở chế độ Workgroup Bridge (WGB) kết nối các thiết bị có dây vào mạng Wi-Fi.</li>\n    </ul>\n  </li>\n  <li><strong>Wireless LAN Controller (WLC):</strong>\n    <ul>\n      <li><code>uses templates to implement QOS configuration</code>: Sử dụng các template cấu hình tập trung để triển khai QoS đồng bộ cho hàng loạt AP.</li>\n      <li><code>supplies user connection data within a device group</code>: Cung cấp và chia sẻ dữ liệu chuyển vùng/kết nối của người dùng giữa các AP trong cùng một mobility group.</li>\n    </ul>\n  </li>\n  <li><em>Thẻ gây nhiễu (Distractor):</em> <code>requires a special adapter for POE</code> (Các AP doanh nghiệp hiện đại hỗ trợ chuẩn cấp nguồn 802.3af/at trực tiếp từ cổng switch PoE mà không cần adapter đặc biệt).</li>\n</ul>\n"
   },
   {
     "id": 57,
     "title": "Câu 57: So Sánh Cáp Xoắn Đôi vs Cáp Sợi Quang Đơn Mốt",
     "category": "Network Fundamentals",
     "prompt_en": "Drag and drop the characteristic from the left onto cable type on the right.",
-    "prompt_vi": "Kéo thả các đặc tính cáp từ bên trái vào đúng loại cáp xoắn đôi hoặc cáp quang đơn mốt ở bên phải.",
+    "prompt_vi": "Kéo thả các đặc tính từ bên trái vào loại cáp truyền dẫn tương ứng ở bên phải.",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q57_a.png",
@@ -3660,30 +3546,25 @@ window.CCNA_DND_DATA = [
     "source_items": [
       {
         "id": "q57-tp1",
-        "text_en": "comprised of shielded and unshielded twisted pairs",
-        "text_vi": "Cấu tạo gồm các cặp dây đồng xoắn đôi (STP/UTP)"
+        "text_en": "comprised of shielded and unshielded twisted pairs"
       },
       {
         "id": "q57-tp2",
-        "text_en": "is affected by electrical and magnetic interference",
-        "text_vi": "Bị ảnh hưởng suy hao bởi nhiễu sóng điện từ (EMI)"
+        "text_en": "is affected by electrical and magnetic interference"
       },
       {
         "id": "q57-sm1",
-        "text_en": "comprised of insulated glass strands",
-        "text_vi": "Được cấu tạo từ các sợi thủy tinh silica cách điện"
+        "text_en": "comprised of insulated glass strands"
       },
       {
         "id": "q57-sm2",
-        "text_en": "uses a single wavelength of light",
-        "text_vi": "Sử dụng một bước sóng ánh sáng laser duy nhất"
+        "text_en": "uses a single wavelength of light"
       }
     ],
     "drop_zones": [
       {
         "id": "q57-twisted",
         "label_en": "Twisted-Pair Cabling",
-        "label_vi": "Cáp Xoắn Đôi (Twisted-Pair)",
         "target_ids": [
           "q57-tp1",
           "q57-tp2"
@@ -3691,22 +3572,21 @@ window.CCNA_DND_DATA = [
       },
       {
         "id": "q57-smf",
-        "label_en": "Single-Mode Fiber (SMF)",
-        "label_vi": "Cáp Quang Đơn Mốt (Single-Mode Fiber)",
+        "label_en": "Single-Mode Fiber",
         "target_ids": [
           "q57-sm1",
           "q57-sm2"
         ]
       }
     ],
-    "explanation": "Củng cố kiến thức thi CCNA: Cáp xoắn đôi mang tín hiệu điện nên chịu ảnh hưởng bởi điện từ trường EMI. Cáp quang đơn mốt (SMF) làm bằng thủy tinh và truyền ánh sáng laser đơn bước sóng."
+    "explanation": "\n<strong>Đặc tính cáp mạng truyền dẫn:</strong>\n<ul>\n  <li><strong>Twisted-Pair Cabling (Cáp xoắn đôi đồng):</strong>\n    <ul>\n      <li><code>comprised of shielded and unshielded twisted pairs</code>: Gồm các cặp dây đồng xoắn chống nhiễu (STP) hoặc không chống nhiễu (UTP).</li>\n      <li><code>is affected by electrical and magnetic interference</code>: Dễ bị suy hao và ảnh hưởng bởi nhiễu điện từ trường (EMI/RFI).</li>\n    </ul>\n  </li>\n  <li><strong>Single-Mode Fiber (Cáp sợi quang đơn mốt SMF):</strong>\n    <ul>\n      <li><code>comprised of insulated glass strands</code>: Cấu tạo từ các sợi thủy tinh silica tinh khiết cách điện.</li>\n      <li><code>uses a single wavelength of light</code>: Sử dụng tia laser với một bước sóng ánh sáng duy nhất truyền xuyên suốt lõi quang hẹp (9 micromet) cho khoảng cách rất xa.</li>\n    </ul>\n  </li>\n</ul>\n"
   },
   {
     "id": 58,
     "title": "Câu 58: Ưu Điểm Của Giao Thức Tầng Transport: TCP vs UDP",
     "category": "Network Fundamentals",
-    "prompt_en": "Drag and drop protocol advantages from the left onto the protocol types on the right. Not all advantages are used.",
-    "prompt_vi": "Kéo thả các ưu thế của giao thức từ bên trái vào loại giao thức TCP hoặc UDP tương ứng ở bên phải. Chú ý: Không phải mọi ưu thế đều được sử dụng.",
+    "prompt_en": "Drag and drop the protocol advantages from the left onto the protocol types on the right. Not all options are used.",
+    "prompt_vi": "Kéo thả ưu điểm giao thức từ bên trái vào đúng loại giao thức truyền tải ở bên phải. (Lưu ý: Có 1 đáp án gây nhiễu).",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q58_a.png",
@@ -3714,40 +3594,33 @@ window.CCNA_DND_DATA = [
     "source_items": [
       {
         "id": "q58-t1",
-        "text_en": "optimizes transmission rates to receiver",
-        "text_vi": "Tự động tối ưu hóa tốc độ truyền phù hợp với máy nhận (Flow Control)"
+        "text_en": "optimizes transmission rates to receiver"
       },
       {
         "id": "q58-t2",
-        "text_en": "controls connections between sender and receiver",
-        "text_vi": "Kiểm soát chặt chẽ trạng thái kết nối giữa bên gửi và bên nhận"
+        "text_en": "controls connections between sender and receiver"
       },
       {
         "id": "q58-t3",
-        "text_en": "guarantees packet delivery",
-        "text_vi": "Đảm bảo gói tin được chuyển đến đích nguyên vẹn và đầy đủ"
+        "text_en": "guarantees packet delivery"
       },
       {
         "id": "q58-u1",
-        "text_en": "capable of sending multicast transmissions",
-        "text_vi": "Có khả năng truyền phát gói tin dạng Multicast"
+        "text_en": "capable of sending multicast transmissions"
       },
       {
         "id": "q58-u2",
-        "text_en": "transmits live and real-time data",
-        "text_vi": "Truyền dữ liệu thoại/video trực tiếp theo thời gian thực"
+        "text_en": "transmits live and real-time data"
       },
       {
-        "id": "q58-dist",
-        "text_en": "uses stateful packet inspection",
-        "text_vi": "Sử dụng kiểm tra gói tin trạng thái (Đây là chức năng của Tường lửa - Không dùng)"
+        "id": "q58-d1",
+        "text_en": "uses stateful packet inspection"
       }
     ],
     "drop_zones": [
       {
         "id": "q58-tcp",
         "label_en": "TCP",
-        "label_vi": "Giao thức TCP",
         "target_ids": [
           "q58-t1",
           "q58-t2",
@@ -3757,68 +3630,64 @@ window.CCNA_DND_DATA = [
       {
         "id": "q58-udp",
         "label_en": "UDP",
-        "label_vi": "Giao thức UDP",
         "target_ids": [
           "q58-u1",
           "q58-u2"
         ]
       }
     ],
-    "explanation": "- **TCP**: Tối ưu tốc độ máy nhận (Sliding Window / Flow Control), quản lý phiên kết nối, bảo đảm giao nhận tin cậy (ACK).\n- **UDP**: Hỗ trợ gửi Multicast (truyền cho nhiều máy cùng lúc) và dữ liệu thời gian thực (Real-time data).\n- *Stateful packet inspection* là đặc tính của Tường lửa (Firewall), không thuộc về tầng Transport."
+    "explanation": "\n<strong>Ưu điểm của TCP vs UDP:</strong>\n<ul>\n  <li><strong>TCP (Transmission Control Protocol):</strong>\n    <ul>\n      <li><code>optimizes transmission rates to receiver</code>: Điều khiển lưu lượng (Flow Control) qua cơ chế Windows Size tránh quá tải bên nhận.</li>\n      <li><code>controls connections between sender and receiver</code>: Thiết lập và quản lý phiên kết nối chặt chẽ (bắt tay 3 bước 3-Way Handshake).</li>\n      <li><code>guarantees packet delivery</code>: Cam kết truyền dữ liệu tin cậy thông qua số hiệu ACK và cơ chế truyền lại khi mất gói.</li>\n    </ul>\n  </li>\n  <li><strong>UDP (User Datagram Protocol):</strong>\n    <ul>\n      <li><code>capable of sending multicast transmissions</code>: Hỗ trợ truyền phát Multicast/Broadcast (TCP là giao thức Unicast 1-1).</li>\n      <li><code>transmits live and real-time data</code>: Không có độ trễ bắt tay hay truyền lại, tối ưu truyền dữ liệu thời gian thực (VoIP, video trực tiếp).</li>\n    </ul>\n  </li>\n  <li><em>Thẻ gây nhiễu:</em> <code>uses stateful packet inspection</code> (Đây là tính năng bảo mật của tường lửa Stateful Firewall, không phải đặc tính tầng Transport).</li>\n</ul>\n"
   },
   {
     "id": 59,
-    "title": "Câu 59: Đối Chiếu Mô Tả Tính Năng An Ninh Xác Thực",
+    "title": "Câu 59: Đối Chiếu Tính Năng Xác Thực: Biometrics vs Certificates",
     "category": "Security Fundamentals",
-    "prompt_en": "Drag and drop the descriptions of security features from the left onto the corresponding features on the right.",
-    "prompt_vi": "Kéo thả các mô tả từ bên trái vào đúng tính năng an ninh xác thực ở bên phải.",
+    "prompt_en": "Drag and drop the descriptions of security features from the left onto the corresponding features on the right. Not all options are used.",
+    "prompt_vi": "Kéo thả các mô tả đặc điểm bảo mật từ bên trái vào tính năng bảo mật tương ứng ở bên phải. (Lưu ý: Có 1 đáp án gây nhiễu không được sử dụng).",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q59_a.png",
     "answer_image": "images/dnd/dnd_q59_b.png",
     "source_items": [
       {
-        "id": "q59-bio",
-        "text_en": "may use a fingerprint reader to authenticate users",
-        "text_vi": "Sử dụng đầu đọc vân tay hoặc quét sinh học để nhận diện người dùng"
+        "id": "q59-bio1",
+        "text_en": "may use a fingerprint reader to authenticate users"
+      },
+      {
+        "id": "q59-bio2",
+        "text_en": "relies on a 'something you are' paradigm"
+      },
+      {
+        "id": "q59-cert1",
+        "text_en": "supports enterprise, third party, and public options"
+      },
+      {
+        "id": "q59-cert2",
+        "text_en": "issuer may revoke the digital credentials"
       },
       {
         "id": "q59-mfa",
-        "text_en": "requires two or more authentication methods to verify a user's identity",
-        "text_vi": "Bắt buộc kết hợp từ hai phương thức xác thực trở lên để kiểm tra danh tính"
-      },
-      {
-        "id": "q59-cert",
-        "text_en": "supports enterprise, third party, and public options",
-        "text_vi": "Hỗ trợ chứng chỉ số từ doanh nghiệp nội bộ hoặc từ nhà cung cấp công cộng"
+        "text_en": "requires two or more authentication methods to verify a user's identity"
       }
     ],
     "drop_zones": [
       {
         "id": "q59-z-bio",
         "label_en": "Biometrics",
-        "label_vi": "Sinh trắc học (Biometrics)",
         "target_ids": [
-          "q59-bio"
-        ]
-      },
-      {
-        "id": "q59-z-mfa",
-        "label_en": "Multifactor Authentication (MFA)",
-        "label_vi": "Xác thực đa yếu tố (MFA)",
-        "target_ids": [
-          "q59-mfa"
+          "q59-bio1",
+          "q59-bio2"
         ]
       },
       {
         "id": "q59-z-cert",
         "label_en": "Certificates",
-        "label_vi": "Chứng chỉ số (Certificates / PKI)",
         "target_ids": [
-          "q59-cert"
+          "q59-cert1",
+          "q59-cert2"
         ]
       }
     ],
-    "explanation": "- **Biometrics**: Vân tay, nhận diện mống mắt/khuôn mặt (Something you are).\n- **Multifactor Authentication (MFA)**: Bắt buộc tối thiểu 2 yếu tố độc lập để đăng nhập.\n- **Certificates**: Chứng chỉ số X.509 ký bởi CA (Private CA hoặc Public CA)."
+    "explanation": "\n<strong>Đối chiếu tính năng xác thực (Đề thi dump chỉ có 2 ô đích):</strong>\n<ul>\n  <li><strong>Biometrics:</strong>\n    <ul>\n      <li><code>may use a fingerprint reader to authenticate users</code>: Xác thực người dùng qua máy quét vân tay.</li>\n      <li><code>relies on a 'something you are' paradigm</code>: Dựa trên đặc điểm cơ thể (\"thứ bạn là\").</li>\n    </ul>\n  </li>\n  <li><strong>Certificates:</strong>\n    <ul>\n      <li><code>supports enterprise, third party, and public options</code>: Hỗ trợ chứng chỉ nội bộ doanh nghiệp, bên thứ ba và chứng chỉ công cộng.</li>\n      <li><code>issuer may revoke the digital credentials</code>: Đơn vị cấp phát có quyền thu hồi chứng chỉ (CRL/OCSP).</li>\n    </ul>\n  </li>\n  <li><em>Thẻ gây nhiễu (Distractor - Thuộc về MFA nên không dùng):</em>\n    <ul>\n      <li><code>requires two or more authentication methods to verify a user's identity</code>.</li>\n    </ul>\n  </li>\n</ul>\n"
   }
 ];
