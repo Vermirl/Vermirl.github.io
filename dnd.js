@@ -66,6 +66,9 @@
     qPromptEn: document.getElementById('qPromptEn'),
     qPromptVi: document.getElementById('qPromptVi'),
     exhibitBtn: document.getElementById('exhibitBtn'),
+    inlineExhibit: document.getElementById('inlineExhibit'),
+    inlineExhibitImg: document.getElementById('inlineExhibitImg'),
+    btnZoomExhibit: document.getElementById('btnZoomExhibit'),
     btnBookmark: document.getElementById('btnBookmark'),
     btnMaster: document.getElementById('btnMaster'),
 
@@ -78,6 +81,7 @@
     btnPrev: document.getElementById('btnPrev'),
     btnNext: document.getElementById('btnNext'),
     btnReset: document.getElementById('btnReset'),
+    btnResetAll: document.getElementById('btnResetAll'),
     btnCheck: document.getElementById('btnCheck'),
     btnShowAnswer: document.getElementById('btnShowAnswer'),
     btnToggleDumpImg: document.getElementById('btnToggleDumpImg'),
@@ -159,12 +163,24 @@
     DOM.qPromptEn.textContent = q.prompt_en;
     DOM.qPromptVi.textContent = q.prompt_vi;
 
-    // Exhibit Button
+    // Exhibit Button & Inline Exhibit Display
     if (q.has_exhibit && q.exhibit_image) {
       DOM.exhibitBtn.classList.remove('hidden');
       DOM.exhibitBtn.onclick = () => openExhibitModal(q.exhibit_image, `Sơ đồ / Bảng định tuyến câu ${q.id}`);
+
+      if (DOM.inlineExhibit && DOM.inlineExhibitImg) {
+        DOM.inlineExhibit.classList.remove('hidden');
+        DOM.inlineExhibitImg.src = q.exhibit_image;
+        DOM.inlineExhibitImg.onclick = () => openExhibitModal(q.exhibit_image, `Sơ đồ / Bảng định tuyến câu ${q.id}`);
+        if (DOM.btnZoomExhibit) {
+          DOM.btnZoomExhibit.onclick = () => openExhibitModal(q.exhibit_image, `Sơ đồ / Bảng định tuyến câu ${q.id}`);
+        }
+      }
     } else {
       DOM.exhibitBtn.classList.add('hidden');
+      if (DOM.inlineExhibit) {
+        DOM.inlineExhibit.classList.add('hidden');
+      }
     }
 
     // Bookmark / Master buttons
@@ -220,11 +236,19 @@
       zoneEl.className = 'drop-zone';
       zoneEl.dataset.zoneId = zone.id;
 
-      // Header: 100% English only
+      const placedInThisZone = currentPlacements[zone.id] || [];
+      const requiredCount = zone.target_ids.length;
+      const currentCount = placedInThisZone.length;
+      const isFilled = (currentCount === requiredCount);
+
+      // Header: 100% English label + note required count
       const headerEl = document.createElement('div');
       headerEl.className = 'zone-header';
       headerEl.innerHTML = `
         <span class="zone-label-en">${escapeHtml(zone.label_en)}</span>
+        <span class="zone-count-badge ${isFilled ? 'count-filled' : ''}" title="Cần đặt ${requiredCount} mục vào ô này">
+          Cần ${requiredCount} mục (${currentCount}/${requiredCount})
+        </span>
       `;
       zoneEl.appendChild(headerEl);
 
@@ -240,11 +264,10 @@
       slotsEl.addEventListener('click', () => handleZoneClick(zone.id));
 
       // Populate placed items inside this zone
-      const placedInThisZone = currentPlacements[zone.id] || [];
       if (placedInThisZone.length === 0) {
         const placeholder = document.createElement('div');
         placeholder.className = 'slot-placeholder';
-        placeholder.textContent = 'Kéo thả hoặc chạm mục chọn vào đây...';
+        placeholder.textContent = `Kéo thả hoặc chạm để đặt ${requiredCount} mục vào đây...`;
         slotsEl.appendChild(placeholder);
       } else {
         placedInThisZone.forEach(itemId => {
@@ -561,6 +584,23 @@
     DOM.dumpImageCard.classList.add('hidden');
   }
 
+  // --- Reset All Progress ---
+  function resetAllProgress() {
+    const confirmed = confirm(
+      '⚠️ BẠN CÓ CHẮC CHẮN MUỐN LÀM LẠI TẤT CẢ?\n\nToàn bộ tiến độ kéo thả và kết quả làm bài của cả 59 câu hỏi sẽ được xóa trắng để bạn bắt đầu luyện tập lại từ đầu.'
+    );
+    if (!confirmed) return;
+
+    userProgress.placements = {};
+    userProgress.status = {};
+    shuffledItemsCache.clear();
+    showExplanationDirectly = false;
+    saveProgress();
+    renderQuestion(currentIndex);
+    hideExplanation();
+    DOM.dumpImageCard.classList.add('hidden');
+  }
+
   // --- Explanation Card ---
   function showExplanation(q) {
     DOM.explanationCard.classList.remove('hidden');
@@ -785,6 +825,7 @@
       if (currentIndex < questions.length - 1) renderQuestion(currentIndex + 1);
     });
     if (DOM.btnReset) DOM.btnReset.addEventListener('click', resetQuestion);
+    if (DOM.btnResetAll) DOM.btnResetAll.addEventListener('click', resetAllProgress);
     if (DOM.btnCheck) DOM.btnCheck.addEventListener('click', checkAnswer);
     if (DOM.btnShowAnswer) DOM.btnShowAnswer.addEventListener('click', showAnswer);
     if (DOM.btnBookmark) DOM.btnBookmark.addEventListener('click', toggleBookmark);

@@ -439,56 +439,54 @@ window.CCNA_DND_DATA = [
     "id": 8,
     "title": "Câu 08: Chọn Đường Bảng Định Tuyến OSPF (Longest Prefix Match)",
     "category": "IP Connectivity",
-    "prompt_en": "Refer to the exhibit. OSPF is running between Site A and Site B. Drag and drop the destination IP addresses from the left onto the destination next-hop interfaces on the right.",
-    "prompt_vi": "Tham chiếu sơ đồ. Mạng đang chạy OSPF giữa Site A và Site B. Kéo thả các địa chỉ IP đích từ bên trái vào đúng cổng ra (interface) ở bên phải theo quy tắc tiền tố dài nhất.",
+    "prompt_en": "Refer to the exhibit. OSPF is running between site A and site B. Drag and drop the destination IPs from the left onto the network segments used to reach the destination on the right.",
+    "prompt_vi": "Tham chiếu sơ đồ. Mạng đang chạy OSPF giữa Site A và Site B. Kéo thả các địa chỉ IP đích từ bên trái vào đúng phân đoạn mạng / đích đến ở bên phải.",
     "has_exhibit": true,
-    "exhibit_image": "images/dnd/dnd_q08_a.png",
+    "exhibit_image": "images/dnd/dnd_q08_exhibit.png",
     "question_image": "images/dnd/dnd_q08_a.png",
     "answer_image": "images/dnd/dnd_q08_b.png",
     "source_items": [
       {
         "id": "q8-ip1",
-        "text_en": "10.10.10.16",
-        "text_vi": "10.10.10.16"
+        "text_en": "10.10.10.16"
       },
       {
         "id": "q8-ip2",
-        "text_en": "10.10.13.129",
-        "text_vi": "10.10.13.129"
+        "text_en": "10.10.13.1"
       },
       {
         "id": "q8-ip3",
-        "text_en": "194.0.100.128",
-        "text_vi": "194.0.100.128"
+        "text_en": "10.10.13.129"
+      },
+      {
+        "id": "q8-ip4",
+        "text_en": "10.10.13.150"
+      },
+      {
+        "id": "q8-ip5",
+        "text_en": "10.10.100.128"
       }
     ],
     "drop_zones": [
       {
-        "id": "q8-fa03",
-        "label_en": "FastEthernet0/3",
-        "label_vi": "FastEthernet0/3",
+        "id": "q8-z-internet",
+        "label_en": "Internet",
         "target_ids": [
-          "q8-ip1"
+          "q8-ip1",
+          "q8-ip3",
+          "q8-ip5"
         ]
       },
       {
-        "id": "q8-fa02",
-        "label_en": "FastEthernet0/2",
-        "label_vi": "FastEthernet0/2",
+        "id": "q8-z-router1",
+        "label_en": "Router1",
         "target_ids": [
-          "q8-ip2"
-        ]
-      },
-      {
-        "id": "q8-fa04",
-        "label_en": "FastEthernet0/4",
-        "label_vi": "FastEthernet0/4",
-        "target_ids": [
-          "q8-ip3"
+          "q8-ip2",
+          "q8-ip4"
         ]
       }
     ],
-    "explanation": "Quy tắc định tuyến cơ bản của Cisco: **Longest Prefix Match**:\n1. Địa chỉ `10.10.10.16` khớp với route `10.10.10.16/28` -> Đi ra cổng `FastEthernet0/3`.\n2. Địa chỉ `10.10.13.129` khớp với route `10.10.13.128/25` -> Đi ra cổng `FastEthernet0/2`.\n3. Địa chỉ `194.0.100.128` không khớp mạng nào cụ thể nên đi theo tuyến mặc định `0.0.0.0/0` -> Đi ra cổng `FastEthernet0/4`."
+    "explanation": "<strong>Giải thích nguyên lý định tuyến Longest Prefix Match & Default Route:</strong><ul><li><strong>Đích đến Router1 (Site A qua các cổng FastEthernet0/1, Fa0/2, Fa0/3):</strong><ul><li><code>10.10.13.1</code>: Khớp với tuyến OSPF <code>10.10.13.0/25</code> (dải IP khả dụng: <code>10.10.13.1 - 10.10.13.126</code>), đi qua Router1.</li><li><code>10.10.13.150</code>: Khớp với tuyến OSPF <code>10.10.13.144/28</code> (dải IP khả dụng: <code>10.10.13.145 - 10.10.13.158</code>), đi qua Router1.</li></ul></li><li><strong>Đích đến Internet (qua Default Route trên Router2):</strong><ul><li><code>10.10.10.16</code>: Không khớp bất kỳ subnet trực tiếp hay tuyến OSPF cụ thể nào trên Router2 &rarr; Chuyển tiếp theo tuyến mặc định <code>0.0.0.0/0</code> qua cổng Fa0/4 ra <strong>Internet</strong>.</li><li><code>10.10.13.129</code>: Nằm ngoài dải <code>/25</code> (kết thúc ở .126) và ngoài dải <code>/28</code> (từ .144 trở lên) &rarr; Không khớp route nào &rarr; Theo Default Route ra <strong>Internet</strong>.</li><li><code>10.10.100.128</code>: Không có route trong bảng định tuyến &rarr; Theo Default Route ra <strong>Internet</strong>.</li></ul></li></ul>"
   },
   {
     "id": 9,
