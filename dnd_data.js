@@ -1579,8 +1579,8 @@ window.CCNA_DND_DATA = [
     "id": 25,
     "title": "Câu 25: Toàn Vẹn Dữ Liệu vs Tốc Độ: TCP & UDP",
     "category": "Network Fundamentals",
-    "prompt_en": "Drag and drop the TCP and UDP characteristics from the left onto the supporting protocols on the right.",
-    "prompt_vi": "Kéo thả các đặc tính của tầng Transport từ bên trái vào giao thức TCP hoặc UDP tương ứng ở bên phải.",
+    "prompt_en": "Drag and drop the TCP and UDP characteristics from the left onto the supporting protocols on the right. Not all options are used.",
+    "prompt_vi": "Kéo thả các đặc tính của TCP và UDP từ bên trái vào đúng giao thức hỗ trợ tương ứng ở bên phải. Không phải tất cả các tùy chọn đều được sử dụng.",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q25_a.png",
@@ -1592,19 +1592,19 @@ window.CCNA_DND_DATA = [
         "text_vi": "uses sequence numbers"
       },
       {
+        "id": "q25-u1",
+        "text_en": "supports real-time applications",
+        "text_vi": "supports real-time applications"
+      },
+      {
         "id": "q25-t2",
         "text_en": "relies on acknowledgment packets",
         "text_vi": "relies on acknowledgment packets"
       },
       {
-        "id": "q25-t3",
-        "text_en": "ensures data integrity",
-        "text_vi": "ensures data integrity"
-      },
-      {
-        "id": "q25-u1",
-        "text_en": "supports real-time applications",
-        "text_vi": "supports real-time applications"
+        "id": "q25-d1",
+        "text_en": "operates on OSI Layer 5",
+        "text_vi": "operates on OSI Layer 5"
       },
       {
         "id": "q25-u2",
@@ -1615,6 +1615,11 @@ window.CCNA_DND_DATA = [
         "id": "q25-u3",
         "text_en": "minimal error checking",
         "text_vi": "minimal error checking"
+      },
+      {
+        "id": "q25-t3",
+        "text_en": "ensures data integrity",
+        "text_vi": "ensures data integrity"
       }
     ],
     "drop_zones": [
@@ -1639,7 +1644,7 @@ window.CCNA_DND_DATA = [
         ]
       }
     ],
-    "explanation": "- **TCP**: Toàn vẹn tuyệt đối nhờ Sequence number (sắp xếp đúng thứ tự khi đến nơi), Acknowledgment number (báo nhận), Retransmission (truyền lại gói mất).\n- **UDP**: Header siêu gọn (8 byte), không kiểm soát luồng, Checksum chỉ kiểm tra hỏng hóc cơ bản, nếu lỗi thì hủy luôn không truyền lại."
+    "explanation": "Đặc trưng phân biệt giữa hai giao thức tầng Giao vận (Transport Layer - Layer 4):\n- **TCP (Transmission Control Protocol)**:\n  + `uses sequence numbers`: Sử dụng số thứ tự sequence number để sắp xếp lại các gói tin theo đúng thứ tự.\n  + `relies on acknowledgment packets`: Dựa vào gói tin xác nhận (ACK) để đảm bảo truyền tin tin cậy.\n  + `ensures data integrity`: Đảm bảo tính toàn vẹn dữ liệu thông qua cơ chế kiểm tra lỗi và truyền lại gói tin bị mất.\n- **UDP (User Datagram Protocol)**:\n  + `supports real-time applications`: Tối ưu cho các ứng dụng thời gian thực (VoIP, streaming video) nhờ độ trễ thấp.\n  + `connectionless at transport layer`: Giao thức phi kết nối tại tầng Transport (không cần bắt tay 3 bước SYN-SYN/ACK-ACK).\n  + `minimal error checking`: Chỉ kiểm tra lỗi tối thiểu qua trường Checksum đơn giản, không truyền lại gói tin lỗi.\n*Mồi nhử:* `operates on OSI Layer 5` là sai vì cả TCP và UDP đều hoạt động ở Tầng 4 (Transport Layer), không phải Tầng 5 (Session Layer)."
   },
   {
     "id": 26,
@@ -1899,12 +1904,17 @@ window.CCNA_DND_DATA = [
     "title": "Câu 30: Đặc Trưng Bộ Điều Khiển Không Dây (WLC) vs AP Độc Lập",
     "category": "Network Access",
     "prompt_en": "Drag and drop the characteristics from the left onto the device type on the right. Not all characteristics are used.",
-    "prompt_vi": "Kéo thả các đặc tính từ bên trái vào loại thiết bị Wireless LAN Controller hoặc Autonomous AP tương ứng ở bên phải. Không phải tất cả đặc tính đều được sử dụng.",
+    "prompt_vi": "Kéo thả các đặc tính từ bên trái vào loại thiết bị tương ứng ở bên phải. Không phải tất cả các đặc tính đều được sử dụng.",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q30_a.png",
     "answer_image": "images/dnd/dnd_q30_b.png",
     "source_items": [
+      {
+        "id": "q30-wlc1",
+        "text_en": "uses templates to implement QOS configuration",
+        "text_vi": "uses templates to implement QOS configuration"
+      },
       {
         "id": "q30-ap1",
         "text_en": "ability to boost a wi-fi signal",
@@ -1916,19 +1926,14 @@ window.CCNA_DND_DATA = [
         "text_vi": "requires a special adapter for PoE"
       },
       {
-        "id": "q30-wlc1",
-        "text_en": "uses templates to implement QOS configuration",
-        "text_vi": "uses templates to implement QOS configuration"
+        "id": "q30-d1",
+        "text_en": "supplies user connection data within a device group",
+        "text_vi": "supplies user connection data within a device group"
       },
       {
         "id": "q30-wlc2",
         "text_en": "interconnects wireless LANs to a wired network",
         "text_vi": "interconnects wireless LANs to a wired network"
-      },
-      {
-        "id": "q30-dist",
-        "text_en": "supplies user connection data within a device group",
-        "text_vi": "supplies user connection data within a device group"
       }
     ],
     "drop_zones": [
@@ -1951,14 +1956,14 @@ window.CCNA_DND_DATA = [
         ]
       }
     ],
-    "explanation": "- **Wireless LAN Controller**: Dùng các template cấu hình QoS đồng loạt, đồng bộ dữ liệu phiên kết nối người dùng trong nhóm thiết bị (Mobility Group).\n- **Autonomous Access Point**: Kết nối mạng Wi-Fi vào mạng có dây cục bộ, cần adapter nguồn riêng hoặc bộ cấp PoE nếu không có switch PoE.\n*Lưu ý:* Mục 'ability to boost a wi-fi signal' là mồi nhử không dùng."
+    "explanation": "Theo đáp án chuẩn kỳ thi CCNA:\n- **Access Point (AP)**:\n  + `ability to boost a wi-fi signal`: Khả năng khuếch đại / mở rộng vùng phủ sóng tín hiệu Wi-Fi.\n  + `requires a special adapter for PoE`: Cần adapter PoE chuyên dụng (Power Injector) nếu hạ tầng switch không cấp nguồn PoE trực tiếp.\n- **Wireless LAN Controller (WLC)**:\n  + `uses templates to implement QOS configuration`: Sử dụng các profile/template để triển khai chính sách QoS đồng loạt cho hàng loạt AP.\n  + `interconnects wireless LANs to a wired network`: Đóng vai trò cầu nối chuyển tiếp lưu lượng giữa mạng không dây (CAPWAP tunnel) và mạng có dây doanh nghiệp.\n*Mồi nhử:* `supplies user connection data within a device group` không được sử dụng."
   },
   {
     "id": 31,
     "title": "Câu 31: Cấu Hình Định Tuyến Tĩnh (Host A Đến Host B)",
     "category": "IP Connectivity",
     "prompt_en": "Refer to the exhibit. An engineer must configure a static route between two networks so that host A communicates with host B. Drag and drop the commands from the left onto the routers where they must be configured on the right. Not all commands are used.",
-    "prompt_vi": "Tham chiếu sơ đồ. Kỹ sư cần cấu hình định tuyến tĩnh giữa 2 mạng để Host A có thể liên lạc với Host B. Kéo thả câu lệnh từ bên trái vào đúng Router tương ứng ở bên phải. Không phải tất cả câu lệnh đều được sử dụng.",
+    "prompt_vi": "Tham chiếu sơ đồ. Kỹ sư cần cấu hình định tuyến tĩnh giữa hai mạng để Host A có thể liên lạc với Host B. Kéo thả câu lệnh từ bên trái vào đúng Router tương ứng ở bên phải. Không phải tất cả các câu lệnh đều được sử dụng.",
     "has_exhibit": true,
     "exhibit_image": "images/dnd/dnd_q31_a.png",
     "question_image": "images/dnd/dnd_q31_b.png",
@@ -1997,32 +2002,32 @@ window.CCNA_DND_DATA = [
     ],
     "drop_zones": [
       {
-        "id": "q31-r1",
-        "label_en": "Router R1",
-        "label_vi": "Router R1",
+        "id": "q31-z1",
+        "label_en": "R1",
+        "label_vi": "R1",
         "target_ids": [
           "q31-r1"
         ]
       },
       {
-        "id": "q31-r2",
-        "label_en": "Router R2",
-        "label_vi": "Router R2",
+        "id": "q31-z2",
+        "label_en": "R2",
+        "label_vi": "R2",
         "target_ids": [
           "q31-r2a",
           "q31-r2b"
         ]
       },
       {
-        "id": "q31-r3",
-        "label_en": "Router R3",
-        "label_vi": "Router R3",
+        "id": "q31-z3",
+        "label_en": "R3",
+        "label_vi": "R3",
         "target_ids": [
           "q31-r3"
         ]
       }
     ],
-    "explanation": "Cú pháp định tuyến tĩnh trong Cisco IOS: `ip route <mạng đích> <subnet mask> <next-hop IP>`:\n- Trên **R1**: Để đến mạng của Host B (10.10.14.0/24), gói tin phải gửi đến next-hop IP của R2 (10.10.10.2) -> `ip route 10.10.14.0 255.255.255.0 10.10.10.2`.\n- Trên **R2**: Để gói tin phản hồi quay về mạng của Host A (10.10.13.0/24), gói tin phải gửi về next-hop IP của R1 (10.10.10.1) -> `ip route 10.10.13.0 255.255.255.0 10.10.10.1`."
+    "explanation": "Phân tích sơ đồ mạng và cấu hình định tuyến tĩnh `ip route <mạng đích> <subnet mask> <next-hop>`:\n- **Mạng Host A**: `10.10.14.0/24` (Subnet mask `255.255.255.0`), kết nối vào R1.\n- **Mạng Host B**: `10.10.13.0/25` (Subnet mask `255.255.255.128`), kết nối vào R3.\n- **Liên kết R1 - R2**: `10.10.10.0/30` (R1 IP: .2, R2 IP: .1).\n- **Liên kết R2 - R3**: `10.10.10.4/30` (R2 IP: .6, R3 IP: .5).\n\nCấu hình cần thiết trên từng Router:\n1. **R1**: Để gửi gói tin sang Host B, gửi qua next-hop R2 (`10.10.10.1`):\n   `ip route 10.10.13.0 255.255.255.128 10.10.10.1`\n2. **R2**: Nằm ở giữa, cần chuyển tiếp cả 2 chiều:\n   - Chiều sang Host B qua next-hop R3 (`10.10.10.5`): `ip route 10.10.13.0 255.255.255.128 10.10.10.5`\n   - Chiều về Host A qua next-hop R1 (`10.10.10.2`): `ip route 10.10.14.0 255.255.255.0 10.10.10.2`\n3. **R3**: Để gửi phản hồi về Host A, gửi qua next-hop R2 (`10.10.10.6`):\n   `ip route 10.10.14.0 255.255.255.0 10.10.10.6`\n*Mồi nhử:* Các câu lệnh route đích host `/32` (`255.255.255.255`) không dùng vì đề bài yêu cầu định tuyến cho toàn mạng (network route)."
   },
   {
     "id": 32,
@@ -2192,17 +2197,17 @@ window.CCNA_DND_DATA = [
     "id": 34,
     "title": "Câu 34: Các Tầng Trong Kiến Trúc Mạng Phân Cấp Cisco",
     "category": "Network Fundamentals",
-    "prompt_en": "Drag and drop functions from the left onto corresponding network topology layer on right. Not all common functions used.",
-    "prompt_vi": "Kéo thả chức năng từ bên trái vào đúng tầng kiến trúc mạng tương ứng ở bên phải. Không phải tất cả chức năng đều được dùng.",
+    "prompt_en": "Drag and drop the common functions from the left onto the corresponding network topology architecture layer on the right. Not all common functions are used.",
+    "prompt_vi": "Kéo thả các chức năng phổ biến từ bên trái vào đúng tầng kiến trúc mạng tương ứng ở bên phải. Không phải tất cả các chức năng đều được sử dụng.",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q34_a.png",
     "answer_image": "images/dnd/dnd_q34_b.png",
     "source_items": [
       {
-        "id": "q34-acc",
-        "text_en": "connect end users",
-        "text_vi": "connect end users"
+        "id": "q34-sl",
+        "text_en": "redundant architectures within data centers",
+        "text_vi": "redundant architectures within data centers"
       },
       {
         "id": "q34-core",
@@ -2210,9 +2215,9 @@ window.CCNA_DND_DATA = [
         "text_vi": "fast switching"
       },
       {
-        "id": "q34-sl",
-        "text_en": "redundant architectures within data centers",
-        "text_vi": "redundant architectures within data centers"
+        "id": "q34-acc",
+        "text_en": "connect end users",
+        "text_vi": "connect end users"
       },
       {
         "id": "q34-dist",
@@ -2259,7 +2264,7 @@ window.CCNA_DND_DATA = [
         ]
       }
     ],
-    "explanation": "Theo đúng cấu trúc ảnh thi gốc `dnd_q34_b.png`:\n- **Access Layer**: `connect end users`\n- **Core Layer**: `fast switching`\n- **Spine-leaf Architecture**: `redundant architectures within data centers`\n*Mồi nhử:* 'aggregate traffic flows from customers' và 'monitors network traffic' không được sử dụng."
+    "explanation": "Chức năng của các tầng kiến trúc mạng theo chuẩn Cisco:\n- **Access Layer**: `connect end users` (kết nối người dùng cuối và thiết bị đầu cuối vào mạng).\n- **Core Layer**: `fast switching` (chuyển mạch siêu tốc, xương sống tốc độ cao không packet filtering).\n- **Spine-leaf Layer**: `redundant architectures within data centers` (kiến trúc dự phòng đa đường không nghẽn cho trung tâm dữ liệu).\n- **Distribution Layer**: `aggregate traffic flows from customers` (tập trung và tổng hợp các luồng lưu lượng từ tầng Access / khách hàng, thực thi chính sách bảo mật và định tuyến).\n*Mồi nhử:* `monitors network traffic` không được sử dụng."
   },
   {
     "id": 35,
@@ -2448,7 +2453,7 @@ window.CCNA_DND_DATA = [
     "title": "Câu 38: Đối Chiếu Subnet Mask Dạng Thập Phân Với Tiền Tố",
     "category": "IP Connectivity",
     "prompt_en": "Refer to the exhibit. Drag and drop the prefix lengths from the left onto the corresponding prefixes on the right. Not all prefixes are used.",
-    "prompt_vi": "Tham chiếu sơ đồ. Kéo thả các Subnet Mask dạng thập phân từ bên trái vào đúng các tiền tố mạng ở bên phải theo bảng định tuyến. Không phải tất cả tiền tố đều được sử dụng.",
+    "prompt_vi": "Tham chiếu sơ đồ. Kéo thả các subnet mask tương ứng từ bên trái vào đúng các địa chỉ mạng ở bên phải. Không phải tất cả các giá trị đều được sử dụng.",
     "has_exhibit": true,
     "exhibit_image": "images/dnd/dnd_q01_a.png",
     "question_image": "images/dnd/dnd_q38_b.png",
@@ -2460,6 +2465,11 @@ window.CCNA_DND_DATA = [
         "text_vi": "255.255.255.128"
       },
       {
+        "id": "q38-m224",
+        "text_en": "255.255.255.224",
+        "text_vi": "255.255.255.224"
+      },
+      {
         "id": "q38-m240",
         "text_en": "255.255.255.240",
         "text_vi": "255.255.255.240"
@@ -2468,11 +2478,6 @@ window.CCNA_DND_DATA = [
         "id": "q38-m248",
         "text_en": "255.255.255.248",
         "text_vi": "255.255.255.248"
-      },
-      {
-        "id": "q38-m224",
-        "text_en": "255.255.255.224",
-        "text_vi": "255.255.255.224"
       },
       {
         "id": "q38-d1",
@@ -2514,38 +2519,38 @@ window.CCNA_DND_DATA = [
         ]
       }
     ],
-    "explanation": "Quy đổi nhanh Subnet Mask cho kỳ thi CCNA:\n- `209.165.202.128` (/27) = 255.255.255.224\n- `10.10.13.144` (/28) = 255.255.255.240\n- `10.10.13.160` (/29) = 255.255.255.248\n- `10.10.13.0` (/30 hoặc /25 tùy router route) = 255.255.255.252"
+    "explanation": "Dựa vào bảng định tuyến trong sơ đồ (`show ip route`):\n- `10.10.13.0/25` -> Tiền tố `/25` tương ứng với Subnet Mask `255.255.255.128`\n- `10.10.13.144/28` -> Tiền tố `/28` tương ứng với Subnet Mask `255.255.255.240`\n- `10.10.13.160/29` -> Tiền tố `/29` tương ứng với Subnet Mask `255.255.255.248`\n- `209.165.202.128` (thuộc khối `209.165.202.0/27`) -> Tiền tố `/27` tương ứng với Subnet Mask `255.255.255.224`\n*Mồi nhử:* `255.255.255.252` (/30) không được sử dụng."
   },
   {
     "id": 39,
     "title": "Câu 39: Chức Năng Các Tầng Kiến Trúc Mạng Data Center & Campus",
     "category": "Network Fundamentals",
     "prompt_en": "Drag and drop the network topology architecture types from the left onto the corresponding function on the right. Not all architecture types are used.",
-    "prompt_vi": "Kéo thả các kiểu kiến trúc mạng từ bên trái vào đúng chức năng của chúng ở bên phải.",
+    "prompt_vi": "Kéo thả các kiểu kiến trúc mạng từ bên trái vào đúng chức năng tương ứng ở bên phải. Không phải tất cả các kiểu kiến trúc đều được sử dụng.",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q39_a.png",
     "answer_image": "images/dnd/dnd_q39_b.png",
     "source_items": [
       {
-        "id": "q39-acc",
-        "text_en": "end user connectivity",
-        "text_vi": "end user connectivity"
+        "id": "q39-sl",
+        "text_en": "spine leaf",
+        "text_vi": "spine leaf"
       },
       {
-        "id": "q39-sl",
-        "text_en": "top-of-rack",
-        "text_vi": "top-of-rack"
+        "id": "q39-acc",
+        "text_en": "access",
+        "text_vi": "access"
       },
       {
         "id": "q39-dist",
-        "text_en": "provide routing, filtering, and WAN access",
-        "text_vi": "provide routing, filtering, and WAN access"
+        "text_en": "distribution",
+        "text_vi": "distribution"
       },
       {
         "id": "q39-core",
-        "text_en": "switch packets as fast as possible",
-        "text_vi": "switch packets as fast as possible"
+        "text_en": "core",
+        "text_vi": "core"
       },
       {
         "id": "q39-d1",
@@ -2556,38 +2561,38 @@ window.CCNA_DND_DATA = [
     "drop_zones": [
       {
         "id": "q39-z-acc",
-        "label_en": "access",
-        "label_vi": "access",
+        "label_en": "end user connectivity",
+        "label_vi": "end user connectivity",
         "target_ids": [
           "q39-acc"
         ]
       },
       {
         "id": "q39-z-sl",
-        "label_en": "spine leaf",
-        "label_vi": "spine leaf",
+        "label_en": "top-of-rack",
+        "label_vi": "top-of-rack",
         "target_ids": [
           "q39-sl"
         ]
       },
       {
         "id": "q39-z-dist",
-        "label_en": "distribution",
-        "label_vi": "distribution",
+        "label_en": "provide routing, filtering, and WAN access",
+        "label_vi": "provide routing, filtering, and WAN access",
         "target_ids": [
           "q39-dist"
         ]
       },
       {
         "id": "q39-z-core",
-        "label_en": "core",
-        "label_vi": "core",
+        "label_en": "switch packets as fast as possible",
+        "label_vi": "switch packets as fast as possible",
         "target_ids": [
           "q39-core"
         ]
       }
     ],
-    "explanation": "- **Spine-Leaf**: Thiết kế tối ưu cho Data Center hiện đại, loại bỏ hoàn toàn giao thức STP bị chặn cổng, đảm bảo băng thông không nghẽn cho lưu lượng Server-to-Server (East-West).\n- **Distribution**: Cầu nối định tuyến giữa Access và Core, nơi áp dụng các chính sách ACL/QoS.\n- **Core**: Xương sống chuyển mạch tốc độ cao."
+    "explanation": "Đối chiếu kiểu kiến trúc mạng với chức năng tương ứng:\n- `end user connectivity`: **access** (tầng truy cập kết nối máy tính người dùng).\n- `top-of-rack`: **spine leaf** (mỗi rack đặt Leaf switch kết nối lên tầng Spine, kiến trúc chuẩn Data Center).\n- `provide routing, filtering, and WAN access`: **distribution** (tầng phân phối thực hiện định tuyến, lọc gói và kết nối WAN).\n- `switch packets as fast as possible`: **core** (tầng lõi chuyển mạch gói tin với tốc độ tối đa không độ trễ).\n*Mồi nhử:* `perimeter edge` không được sử dụng."
   },
   {
     "id": 40,
@@ -2606,14 +2611,14 @@ window.CCNA_DND_DATA = [
         "text_vi": "contains a conductor, bedding, and sheathing"
       },
       {
-        "id": "q40-cu2",
-        "text_en": "comprised of shielded or unshielded twisted pairs",
-        "text_vi": "comprised of shielded or unshielded twisted pairs"
-      },
-      {
         "id": "q40-sm1",
         "text_en": "has minimal light reflection as the signal travels down the core",
         "text_vi": "has minimal light reflection as the signal travels down the core"
+      },
+      {
+        "id": "q40-cu2",
+        "text_en": "comprised of shielded or unshielded twisted pairs",
+        "text_vi": "comprised of shielded or unshielded twisted pairs"
       },
       {
         "id": "q40-sm2",
@@ -2641,7 +2646,7 @@ window.CCNA_DND_DATA = [
         ]
       }
     ],
-    "explanation": "- **Coaxial Cable**: Cáp đồng trục có lõi dẫn, lớp điện môi (bedding) và vỏ chống nhiễu.\n- **Twisted-Pair Cable**: Cáp đồng mạng thông dụng (Cat5e/Cat6).\n- **Single-Mode Fiber**: Lõi 9 µm quá nhỏ nên ánh sáng đi thẳng, tối thiểu phản xạ, không bị tán sắc mode.\n- **Multimode Fiber**: Lõi lớn (50-62.5 µm), tia sáng phản xạ dội liên tục vào thành cladding."
+    "explanation": "Phân loại đặc tính các loại cáp truyền dẫn mạng:\n- **copper (Cáp đồng)**:\n  + `contains a conductor, bedding, and sheathing`: Cấu trúc điển hình của cáp đồng trục (coaxial) gồm lõi dẫn điện, lớp đệm cách điện và vỏ bọc bảo vệ.\n  + `comprised of shielded or unshielded twisted pairs`: Cáp xoắn đôi gồm loại có chống nhiễu (STP) hoặc không chống nhiễu (UTP).\n- **single-mode fiber (Cáp quang đơn mốt)**:\n  + `has minimal light reflection as the signal travels down the core`: Lõi quang rất nhỏ (~9 µm) nên ánh sáng truyền thẳng, độ phản xạ tối thiểu, loại bỏ tán sắc mode.\n  + `transmits signals using pulses of light`: Truyền tải tín hiệu bằng các xung ánh sáng (laser)."
   },
   {
     "id": 41,
