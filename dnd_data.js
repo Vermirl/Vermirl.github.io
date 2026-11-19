@@ -3287,34 +3287,34 @@ window.CCNA_DND_DATA = [
     "id": 51,
     "title": "Câu 51: Phòng Chống Tấn Công Layer 2 Nâng Cao (Double-Tagging / Switch-Spoofing / MITM)",
     "category": "Security Fundamentals",
-    "prompt_en": "Drag and drop the attack mitigation techniques from the left onto the types of attack that they mitigate on the right. Not all options are used.",
-    "prompt_vi": "Kéo thả các giải pháp phòng thủ từ bên trái vào 3 loại tấn công tương ứng ở bên phải. (Lưu ý: Có 1 đáp án gây nhiễu không được sử dụng).",
+    "prompt_en": "Drag and drop the attack-mitigation techniques from the left onto the types of attack that they mitigate on the right.",
+    "prompt_vi": "Kéo thả các biện pháp phòng chống tấn công từ bên trái vào đúng các loại tấn công tương ứng ở bên phải.",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q51_a.png",
     "answer_image": "images/dnd/dnd_q51_b.png",
     "source_items": [
       {
-        "id": "q51-m-vlan",
-        "text_en": "configure the native VLAN with a nondefault VLAN ID"
-      },
-      {
         "id": "q51-m-dtp",
-        "text_en": "disable DTP"
+        "text_en": "disable the Dynamic Trunking Protocol",
+        "text_vi": "disable the Dynamic Trunking Protocol"
       },
       {
         "id": "q51-m-dhcp",
-        "text_en": "configure DHCP snooping"
+        "text_en": "configure the DHCP snooping feature",
+        "text_vi": "configure the DHCP snooping feature"
       },
       {
-        "id": "q51-m-dist",
-        "text_en": "configure 802.1X authentication"
+        "id": "q51-m-vlan",
+        "text_en": "configure the native VLAN with a nondefault VLAN ID",
+        "text_vi": "configure the native VLAN with a nondefault VLAN ID"
       }
     ],
     "drop_zones": [
       {
         "id": "q51-z1",
         "label_en": "802.1q double-tagging VLAN-hopping attack",
+        "label_vi": "802.1q double-tagging VLAN-hopping attack",
         "target_ids": [
           "q51-m-vlan"
         ]
@@ -3322,6 +3322,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q51-z2",
         "label_en": "switch-spoofing VLAN-hopping attack",
+        "label_vi": "switch-spoofing VLAN-hopping attack",
         "target_ids": [
           "q51-m-dtp"
         ]
@@ -3329,12 +3330,13 @@ window.CCNA_DND_DATA = [
       {
         "id": "q51-z3",
         "label_en": "man-in-the-middle spoofing attack",
+        "label_vi": "man-in-the-middle spoofing attack",
         "target_ids": [
           "q51-m-dhcp"
         ]
       }
     ],
-    "explanation": "\n<strong>Đối chiếu chính xác 3 loại tấn công Layer 2 (Đề thi dump chỉ có 3 ô đích):</strong>\n<ul>\n  <li><code>802.1q double-tagging VLAN-hopping attack</code> &rarr; <strong>configure the native VLAN with a nondefault VLAN ID</strong>: Thiết lập Native VLAN sang ID riêng biệt và bật tag để switch loại bỏ gói tin gắn 2 thẻ VLAN tag.</li>\n  <li><code>switch-spoofing VLAN-hopping attack</code> &rarr; <strong>disable DTP</strong>: Tắt Dynamic Trunking Protocol bằng <code>switchport nonegotiate</code> để máy tính của kẻ tấn công không thể giả làm switch kết nối Trunk.</li>\n  <li><code>man-in-the-middle spoofing attack</code> &rarr; <strong>configure DHCP snooping</strong>: Bật tính năng DHCP Snooping để chỉ cho phép gói DHCP Offer từ cổng kết nối máy chủ DHCP tin cậy (Trusted Port).</li>\n  <li><em>Thẻ gây nhiễu (Distractor - Không dùng):</em> <code>configure 802.1X authentication</code> (dùng để xác thực cổng người dùng / chống MAC flooding, không dùng cho 3 ô này).</li>\n</ul>\n"
+    "explanation": "Đối chiếu chính xác 3 kỹ thuật giảm thiểu tấn công Layer 2 (khớp 1:1 theo đề thi, không có mồi nhử):\n- **802.1q double-tagging VLAN-hopping attack** -> `configure the native VLAN with a nondefault VLAN ID`: Đổi Native VLAN sang một VLAN riêng biệt (không dùng VLAN 1 mặc định) và gắn tag Native VLAN để switch drop các gói tin gắn 2 thẻ tag.\n- **switch-spoofing VLAN-hopping attack** -> `disable the Dynamic Trunking Protocol`: Tắt giao thức DTP trên cổng access (bằng `switchport nonegotiate` hoặc đặt cố định `switchport mode access`) để ngăn chặn thiết bị giả làm switch thiết lập Trunk.\n- **man-in-the-middle spoofing attack** -> `configure the DHCP snooping feature`: Cấu hình tính năng DHCP Snooping để chỉ tin cậy DHCP Offer từ cổng kết nối DHCP Server chính chủ, chống giả mạo DHCP/Default Gateway."
   },
   {
     "id": 52,
@@ -3387,59 +3389,62 @@ window.CCNA_DND_DATA = [
   },
   {
     "id": 53,
-    "title": "Câu 53: Phân Định Tính Năng Bảo Mật AAA: Authentication vs Accounting",
+    "title": "Câu 53: Phân Định Tính Năng Bảo Mật AAA: Authentication vs Authorization",
     "category": "Security Fundamentals",
     "prompt_en": "Drag and drop the AAA features from the left onto the corresponding AAA security services on the right. Not all options are used.",
-    "prompt_vi": "Kéo thả các tính năng AAA từ bên trái vào đúng dịch vụ bảo mật ở bên phải. (Lưu ý: Có 2 đáp án gây nhiễu không được sử dụng).",
+    "prompt_vi": "Kéo thả các tính năng AAA từ bên trái vào đúng dịch vụ bảo mật AAA tương ứng ở bên phải. Không phải tất cả các tùy chọn đều được sử dụng.",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q53_a.png",
     "answer_image": "images/dnd/dnd_q53_b.png",
     "source_items": [
       {
+        "id": "q53-authz1",
+        "text_en": "It determines what resources or commands a user or group can access.",
+        "text_vi": "It determines what resources or commands a user or group can access."
+      },
+      {
         "id": "q53-authn1",
-        "text_en": "verifies the user before granting access to the device"
+        "text_en": "It uses a RADIUS server to allow user access.",
+        "text_vi": "It uses a RADIUS server to allow user access."
       },
       {
-        "id": "q53-authn2",
-        "text_en": "leverages a RADIUS server to grant user access to a reverse Telnet session"
-      },
-      {
-        "id": "q53-acc1",
-        "text_en": "records the amount of time for which a user accesses the network"
-      },
-      {
-        "id": "q53-acc2",
-        "text_en": "uses TACACS+ to log configuration commands entered by a network administrator"
+        "id": "q53-authz2",
+        "text_en": "It limits which CLI commands a user can use.",
+        "text_vi": "It limits which CLI commands a user can use."
       },
       {
         "id": "q53-d1",
-        "text_en": "enables the device to allow user- or group-based access"
+        "text_en": "It logs the commands entered by an administrator.",
+        "text_vi": "It logs the commands entered by an administrator."
       },
       {
-        "id": "q53-d2",
-        "text_en": "restricts the CLI commands that a user is able to perform"
+        "id": "q53-authn2",
+        "text_en": "It verifies the user before granting access to the device.",
+        "text_vi": "It verifies the user before granting access to the device."
       }
     ],
     "drop_zones": [
       {
         "id": "q53-z-authn",
         "label_en": "Authentication",
+        "label_vi": "Authentication",
         "target_ids": [
           "q53-authn1",
           "q53-authn2"
         ]
       },
       {
-        "id": "q53-z-acc",
-        "label_en": "Accounting",
+        "id": "q53-z-authz",
+        "label_en": "Authorization",
+        "label_vi": "Authorization",
         "target_ids": [
-          "q53-acc1",
-          "q53-acc2"
+          "q53-authz1",
+          "q53-authz2"
         ]
       }
     ],
-    "explanation": "\n<strong>Phân định tính năng Authentication vs Accounting (Đề thi dump chỉ có 2 ô đích):</strong>\n<ul>\n  <li><strong>Authentication (Xác thực):</strong>\n    <ul>\n      <li><code>verifies the user before granting access to the device</code>: Xác minh thông tin tài khoản người dùng trước khi cấp quyền truy cập vào thiết bị.</li>\n      <li><code>leverages a RADIUS server to grant user access to a reverse Telnet session</code>: Tận dụng máy chủ RADIUS để kiểm tra danh tính khi mở phiên reverse Telnet.</li>\n    </ul>\n  </li>\n  <li><strong>Accounting (Ghi nhật ký):</strong>\n    <ul>\n      <li><code>records the amount of time for which a user accesses the network</code>: Ghi nhận thời gian và thời lượng truy cập mạng của người dùng.</li>\n      <li><code>uses TACACS+ to log configuration commands entered by a network administrator</code>: Sử dụng TACACS+ để ghi nhật ký chi tiết các lệnh cấu hình mà quản trị viên đã gõ.</li>\n    </ul>\n  </li>\n  <li><em>Thẻ gây nhiễu (Distractor - Thuộc về Authorization nên không dùng):</em>\n    <ul>\n      <li><code>enables the device to allow user- or group-based access</code> (Cấp quyền truy cập theo nhóm hoặc cá nhân).</li>\n      <li><code>restricts the CLI commands that a user is able to perform</code> (Giới hạn tập lệnh CLI được phép thực hiện).</li>\n    </ul>\n  </li>\n</ul>\n"
+    "explanation": "Phân biệt các thành phần trong mô hình AAA (Authentication, Authorization, Accounting):\n- **Authentication (Xác thực - Bạn là ai?):**\n  + `It uses a RADIUS server to allow user access.`: Sử dụng máy chủ RADIUS để xác minh danh tính người dùng khi truy cập vào hệ thống.\n  + `It verifies the user before granting access to the device.`: Xác minh thông tin tài khoản (username/password) trước khi cho phép đăng nhập vào thiết bị.\n- **Authorization (Ủy quyền / Phân quyền - Bạn được phép làm gì?):**\n  + `It determines what resources or commands a user or group can access.`: Xác định tài nguyên hoặc tập lệnh mà người dùng/nhóm được phép truy cập.\n  + `It limits which CLI commands a user can use.`: Giới hạn các câu lệnh CLI cụ thể mà người dùng có quyền thực thi.\n*Mồi nhử (Distractor - Không sử dụng):*\n  + `It logs the commands entered by an administrator.`: Đây là chức năng của **Accounting** (Ghi nhật ký/Kiểm toán), do đề bài chỉ có 2 ô là Authentication và Authorization nên tính năng này bị loại bỏ."
   },
   {
     "id": 54,
