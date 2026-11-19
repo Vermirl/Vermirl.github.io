@@ -1109,8 +1109,8 @@ window.CCNA_DND_DATA = [
     "id": 18,
     "title": "Câu 18: Các Tính Năng Bảo Mật Layer 2 Cisco (DHCP / DAI / IPSG / Storm Control)",
     "category": "Security Fundamentals",
-    "prompt_en": "Drag and drop the Cisco security features from the left onto the attack types they mitigate on the right.",
-    "prompt_vi": "Kéo thả tên các tính năng bảo mật Layer 2 của Cisco từ bên trái vào đúng loại tấn công mà chúng ngăn chặn ở bên phải.",
+    "prompt_en": "Drag and drop the Cisco IOS attack mitigation features from the left onto the types of network attack that they mitigate on the right.",
+    "prompt_vi": "Kéo thả các tính năng bảo mật Cisco IOS từ bên trái vào đúng các loại hình tấn công mạng tương ứng ở bên phải.",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q18_a.png",
@@ -1127,14 +1127,14 @@ window.CCNA_DND_DATA = [
         "text_vi": "Dynamic ARP Inspection"
       },
       {
-        "id": "q18-storm",
-        "text_en": "Storm control",
-        "text_vi": "Storm control"
-      },
-      {
         "id": "q18-ipsg",
         "text_en": "IP Source Guard",
         "text_vi": "IP Source Guard"
+      },
+      {
+        "id": "q18-storm",
+        "text_en": "Storm control",
+        "text_vi": "Storm control"
       }
     ],
     "drop_zones": [
@@ -1171,7 +1171,7 @@ window.CCNA_DND_DATA = [
         ]
       }
     ],
-    "explanation": "Bộ tứ giải pháp bảo mật Layer 2 kinh điển của Cisco:\n1. **DHCP Snooping**: Phân loại cổng Trusted/Untrusted, chặn DHCP Server lậu.\n2. **Dynamic ARP Inspection (DAI)**: Kiểm tra tính hợp lệ của gói ARP dựa trên bảng DHCP Snooping Binding để chống ARP Poisoning.\n3. **IP Source Guard (IPSG)**: Chặn gói tin có IP nguồn giả mạo bằng cách kiểm tra bảng DHCP Snooping Binding.\n4. **Storm Control**: Giới hạn lưu lượng Broadcast/Multicast/Unicast vượt ngưỡng."
+    "explanation": "Bộ 4 giải pháp bảo mật Layer 2 cốt lõi của Cisco IOS:\n1. **rogue server that spoofs IP configuration** -> **DHCP snooping**: Ngăn chặn máy chủ DHCP giả mạo phát cấu hình IP sai cho client bằng cách phân loại cổng Trusted/Untrusted.\n2. **cache poisoning** -> **Dynamic ARP Inspection (DAI)**: Kiểm tra tính hợp lệ của gói tin ARP dựa trên bảng DHCP Snooping Binding để chống nhiễm độc bảng ARP cache.\n3. **flood attacks** -> **Storm control**: Giới hạn lưu lượng Broadcast, Multicast hoặc Unicast flood trên cổng switch để chống tràn băng thông.\n4. **rogue clients on the network** -> **IP Source Guard (IPSG)**: Ngăn chặn máy trạm giả mạo địa chỉ IP nguồn bằng cách lọc gói tin qua bảng DHCP Snooping Binding."
   },
   {
     "id": 19,
