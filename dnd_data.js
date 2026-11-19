@@ -1302,22 +1302,22 @@ window.CCNA_DND_DATA = [
     "id": 21,
     "title": "Câu 21: Các Thành Phần Kiến Trúc Của Ansible",
     "category": "Automation & Programmability",
-    "prompt_en": "Drag and drop the Ansible architecture terms from the left onto the correct definitions on the right.",
-    "prompt_vi": "Kéo thả các thuật ngữ kiến trúc Ansible từ bên trái vào đúng định nghĩa ở bên phải.",
+    "prompt_en": "Drag and drop the Ansible terms from the left onto the correct definitions on the right.",
+    "prompt_vi": "Kéo thả các thuật ngữ Ansible từ bên trái vào đúng các định nghĩa tương ứng ở bên phải.",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q21_a.png",
     "answer_image": "images/dnd/dnd_q21_b.png",
     "source_items": [
       {
-        "id": "q21-playbook",
-        "text_en": "playbook",
-        "text_vi": "playbook"
-      },
-      {
         "id": "q21-control",
         "text_en": "control node",
         "text_vi": "control node"
+      },
+      {
+        "id": "q21-inventory",
+        "text_en": "inventory",
+        "text_vi": "inventory"
       },
       {
         "id": "q21-managed",
@@ -1330,54 +1330,67 @@ window.CCNA_DND_DATA = [
         "text_vi": "module"
       },
       {
-        "id": "q21-inventory",
-        "text_en": "inventory",
-        "text_vi": "inventory"
+        "id": "q21-playbook",
+        "text_en": "playbook",
+        "text_vi": "playbook"
+      },
+      {
+        "id": "q21-task",
+        "text_en": "task",
+        "text_vi": "task"
       }
     ],
     "drop_zones": [
       {
         "id": "q21-z1",
-        "label_en": "Collection of actions to perform on target devices expressed in YAML format",
-        "label_vi": "Collection of actions to perform on target devices expressed in YAML format",
+        "label_en": "collection of actions to perform on target devices, expressed in YAML format",
+        "label_vi": "collection of actions to perform on target devices, expressed in YAML format",
         "target_ids": [
           "q21-playbook"
         ]
       },
       {
         "id": "q21-z2",
-        "label_en": "Device with Ansible installed that manages target devices",
-        "label_vi": "Device with Ansible installed that manages target devices",
+        "label_en": "device with Ansible installed that manages target devices",
+        "label_vi": "device with Ansible installed that manages target devices",
         "target_ids": [
           "q21-control"
         ]
       },
       {
         "id": "q21-z3",
-        "label_en": "Network device or server without Ansible installed upon which commands are executed",
-        "label_vi": "Network device or server without Ansible installed upon which commands are executed",
+        "label_en": "network device, without Ansible installed, upon which commands can be executed",
+        "label_vi": "network device, without Ansible installed, upon which commands can be executed",
         "target_ids": [
           "q21-managed"
         ]
       },
       {
         "id": "q21-z4",
-        "label_en": "Unit of Python code to be executed on target devices",
-        "label_vi": "Unit of Python code to be executed on target devices",
+        "label_en": "specific action to be performed on one or more target devices",
+        "label_vi": "specific action to be performed on one or more target devices",
+        "target_ids": [
+          "q21-task"
+        ]
+      },
+      {
+        "id": "q21-z5",
+        "label_en": "unit of Python code to be executed",
+        "label_vi": "unit of Python code to be executed",
         "target_ids": [
           "q21-module"
         ]
       },
       {
-        "id": "q21-z5",
-        "label_en": "Ansible file that defines target devices and groups upon which commands can be executed",
-        "label_vi": "Ansible file that defines target devices and groups upon which commands can be executed",
+        "id": "q21-z6",
+        "label_en": "Ansible file that defines the target devices upon which commands and tasks can be executed",
+        "label_vi": "Ansible file that defines the target devices upon which commands and tasks can be executed",
         "target_ids": [
           "q21-inventory"
         ]
       }
     ],
-    "explanation": "5 thuật ngữ nền tảng của Ansible:\n1. **Control Node**: Nơi chạy lệnh Ansible (Linux/macOS, có Python).\n2. **Managed Node**: Thiết bị mạng được cấu hình (Switch/Router Cisco).\n3. **Inventory**: File chứa danh sách host (hosts.ini hoặc hosts.yml).\n4. **Playbook**: Kịch bản tự động hóa dạng YAML.\n5. **Module**: Đoạn code Python thực thi hành động cụ thể (như `cisco.ios.ios_config`)."
+    "explanation": "6 thuật ngữ kiến trúc cốt lõi của công cụ tự động hóa Ansible:\n1. **playbook**: Tập hợp các hành động (tasks) thực hiện trên các thiết bị đích, được viết dưới định dạng YAML (*collection of actions to perform on target devices, expressed in YAML format*).\n2. **control node**: Thiết bị cài đặt phần mềm Ansible để quản lý và điều khiển các thiết bị đích (*device with Ansible installed that manages target devices*).\n3. **managed node**: Thiết bị mạng hoặc máy chủ không cần cài Ansible, nơi các lệnh được thực thi qua SSH (*network device, without Ansible installed, upon which commands can be executed*).\n4. **task**: Một hành động cụ thể cần thực hiện trên một hoặc nhiều thiết bị đích (*specific action to be performed on one or more target devices*).\n5. **module**: Đơn vị mã Python thực thi thực tế để hoàn thành một nhiệm vụ cụ thể (*unit of Python code to be executed*).\n6. **inventory**: Tệp tin Ansible định nghĩa danh sách các thiết bị đích cần quản lý (*Ansible file that defines the target devices upon which commands and tasks can be executed*)."
   },
   {
     "id": 22,
