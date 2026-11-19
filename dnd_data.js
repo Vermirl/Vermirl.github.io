@@ -1394,10 +1394,10 @@ window.CCNA_DND_DATA = [
   },
   {
     "id": 22,
-    "title": "Câu 22: Thành Phần Dòng Định Tuyến EIGRP",
+    "title": "Câu 22: Xác Định Tham Số Tuyến Đường Khớp Đích Đến",
     "category": "IP Connectivity",
-    "prompt_en": "Refer to the exhibit. Drag and drop the routing table components from the left onto the corresponding categories on the right.",
-    "prompt_vi": "Tham chiếu sơ đồ. Kéo thả các giá trị thành phần bảng định tuyến từ bên trái vào đúng danh mục ở bên phải theo dòng định tuyến EIGRP.",
+    "prompt_en": "Refer to the exhibit. A packet is destined for 192.168.20.100. Drag and drop the parameters of the destination route from the left onto the routing table components they represent on the right. Not all parameters are used.",
+    "prompt_vi": "Tham chiếu sơ đồ. Một gói tin có địa chỉ đích là 192.168.20.100. Kéo thả các tham số của tuyến đường đích từ bên trái vào các thành phần bảng định tuyến tương ứng ở bên phải. Không phải tất cả các tham số đều được sử dụng.",
     "has_exhibit": true,
     "exhibit_image": "images/dnd/dnd_q22_a.png",
     "question_image": "images/dnd/dnd_q22_b.png",
@@ -1407,6 +1407,16 @@ window.CCNA_DND_DATA = [
         "id": "q22-p28",
         "text_en": "/28",
         "text_vi": "/28"
+      },
+      {
+        "id": "q22-p29",
+        "text_en": "/29",
+        "text_vi": "/29"
+      },
+      {
+        "id": "q22-m40",
+        "text_en": "40",
+        "text_vi": "40"
       },
       {
         "id": "q22-ad90",
@@ -1419,48 +1429,43 @@ window.CCNA_DND_DATA = [
         "text_vi": "30"
       },
       {
-        "id": "q22-p30",
-        "text_en": "/30",
-        "text_vi": "/30"
+        "id": "q22-p27",
+        "text_en": "/27",
+        "text_vi": "/27"
       },
       {
         "id": "q22-ad110",
         "text_en": "110",
         "text_vi": "110"
-      },
-      {
-        "id": "q22-m127",
-        "text_en": "127",
-        "text_vi": "127"
       }
     ],
     "drop_zones": [
       {
         "id": "q22-z1",
-        "label_en": "Subnet Prefix",
-        "label_vi": "Subnet Prefix",
+        "label_en": "Prefix",
+        "label_vi": "Prefix",
         "target_ids": [
           "q22-p28"
         ]
       },
       {
         "id": "q22-z2",
-        "label_en": "Administrative Distance",
-        "label_vi": "Administrative Distance",
+        "label_en": "AD",
+        "label_vi": "AD",
         "target_ids": [
-          "q22-ad90"
+          "q22-ad110"
         ]
       },
       {
         "id": "q22-z3",
-        "label_en": "Metric / Cost",
-        "label_vi": "Metric / Cost",
+        "label_en": "Metric/Cost",
+        "label_vi": "Metric/Cost",
         "target_ids": [
           "q22-m30"
         ]
       }
     ],
-    "explanation": "Trong sơ đồ bảng định tuyến, dòng route EIGRP hiển thị:\n`D 10.10.11.0/28 [90/30] via 10.10.10.2`\n- **Subnet Prefix**: `/28`\n- **Administrative Distance (AD)**: `90` (mặc định của giao thức EIGRP nội bộ)\n- **Metric / Cost**: `30` (độ đo chi phí của tuyến đường)."
+    "explanation": "Quy trình xác định tuyến đường cho gói tin có đích đến `192.168.20.100`:\n1. **Kiểm tra dải địa chỉ mạng (Subnet Range):**\n   - Tuyến `/27`: `192.168.20.64/27` (dải .64 - .95) -> Không khớp.\n   - Tuyến `/29`: `192.168.20.104/29` (dải .104 - .111) -> Không khớp.\n   - Tuyến `/28`: `192.168.20.96/28` (dải .96 - .111) -> **Khớp chính xác** vì chứa địa chỉ đích `.100`.\n2. **Xác định các tham số của dòng định tuyến tương ứng:**\n   Dòng route OSPF hiển thị: `O 192.168.20.96/28 [110/30] via 10.0.0.3`\n   - **Prefix**: `/28`\n   - **AD (Administrative Distance)**: `110` (giá trị AD của OSPF)\n   - **Metric/Cost**: `30`"
   },
   {
     "id": 23,
