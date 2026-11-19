@@ -6,8 +6,8 @@ window.CCNA_DND_DATA = [
     "id": 1,
     "title": "Câu 01: Đối Chiếu Tiền Tố Bảng Định Tuyến OSPF",
     "category": "IP Connectivity",
-    "prompt_en": "Refer to the exhibit. Drag and drop the prefix lengths from the left onto the corresponding prefixes on the right.",
-    "prompt_vi": "Tham chiếu sơ đồ. Kéo thả các độ dài tiền tố (Subnet Mask) từ bên trái vào các tiền tố mạng tương ứng ở bên phải theo bảng định tuyến.",
+    "prompt_en": "Refer to the exhibit. Drag and drop the subnet masks from the left onto the corresponding subnets on the right.",
+    "prompt_vi": "Tham chiếu sơ đồ. Kéo thả các Subnet Mask từ bên trái vào đúng các mạng (subnet) tương ứng ở bên phải theo bảng định tuyến.",
     "has_exhibit": true,
     "exhibit_image": "images/dnd/dnd_q01_a.png",
     "question_image": "images/dnd/dnd_q01_b.png",
@@ -47,38 +47,38 @@ window.CCNA_DND_DATA = [
     "drop_zones": [
       {
         "id": "q1-z1",
-        "label_en": "10.10.13.0/25",
-        "label_vi": "10.10.13.0/25",
+        "label_en": "10.10.13.0",
+        "label_vi": "10.10.13.0",
         "target_ids": [
           "q1-m25"
         ]
       },
       {
         "id": "q1-z2",
-        "label_en": "10.10.13.144/28",
-        "label_vi": "10.10.13.144/28",
+        "label_en": "10.10.13.128",
+        "label_vi": "10.10.13.128",
         "target_ids": [
           "q1-m28"
         ]
       },
       {
         "id": "q1-z3",
-        "label_en": "10.10.13.160/29",
-        "label_vi": "10.10.13.160/29",
+        "label_en": "10.10.13.160",
+        "label_vi": "10.10.13.160",
         "target_ids": [
           "q1-m29"
         ]
       },
       {
         "id": "q1-z4",
-        "label_en": "209.165.200.224/27",
-        "label_vi": "209.165.200.224/27",
+        "label_en": "10.10.13.252",
+        "label_vi": "10.10.13.252",
         "target_ids": [
-          "q1-m27"
+          "q1-m30"
         ]
       }
     ],
-    "explanation": "Quy đổi nhanh từ tiền tố CIDR sang Subnet Mask chuẩn:\n- /25 = 255.255.255.128 (mượn 1 bit: 128)\n- /27 = 255.255.255.224 (mượn 3 bit: 128+64+32)\n- /28 = 255.255.255.240 (mượn 4 bit: 128+64+32+16)\n- /29 = 255.255.255.248 (mượn 5 bit: 128+64+32+16+8)\n- /30 = 255.255.255.252 (mượn 6 bit, bước nhảy 4)"
+    "explanation": "Quy tắc tra cứu từ Bảng định tuyến (show ip route) sang Subnet Mask tương ứng:\n- Mạng **10.10.13.0**: Trong bảng định tuyến là `10.10.13.0/25` -> Prefix length /25 tương ứng Subnet Mask **255.255.255.128**.\n- Mạng **10.10.13.128**: Trong bảng định tuyến là `10.10.13.128/28` -> Prefix length /28 tương ứng Subnet Mask **255.255.255.240**.\n- Mạng **10.10.13.160**: Trong bảng định tuyến là `10.10.13.160/29` -> Prefix length /29 tương ứng Subnet Mask **255.255.255.248**.\n- Mạng **10.10.13.252**: Trong bảng định tuyến là `10.10.13.252/30` -> Prefix length /30 tương ứng Subnet Mask **255.255.255.252**.\n*Lưu ý:* Hai giá trị `255.255.248.0` (/21) và `255.255.255.224` (/27) là các đáp án mồi nhử (distractors), không được sử dụng."
   },
   {
     "id": 2,
@@ -211,8 +211,8 @@ window.CCNA_DND_DATA = [
     "id": 4,
     "title": "Câu 04: Mạng Điều Khiển Tập Trung (SDN) vs Mạng Truyền Thống",
     "category": "Automation & Programmability",
-    "prompt_en": "Drag and drop the network architecture characteristics from the left onto the architecture types on the right.",
-    "prompt_vi": "Kéo thả các đặc điểm kiến trúc mạng từ bên trái vào đúng loại kiến trúc tương ứng ở bên phải.",
+    "prompt_en": "Drag and drop the network characteristics from the left onto the corresponding networking types on the right. Not all characteristics are used.",
+    "prompt_vi": "Kéo thả các đặc trưng từ bên trái vào đúng loại kiến trúc mạng (Controller-Based hoặc Traditional) ở bên phải. Không phải tất cả đặc trưng đều được dùng.",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q04_a.png",
@@ -220,23 +220,28 @@ window.CCNA_DND_DATA = [
     "source_items": [
       {
         "id": "q4-c1",
-        "text_en": "This type deploys a consistent configuration across multiple devices",
-        "text_vi": "This type deploys a consistent configuration across multiple devices"
-      },
-      {
-        "id": "q4-c2",
-        "text_en": "Southbound APIs are used to apply configurations",
-        "text_vi": "Southbound APIs are used to apply configurations"
-      },
-      {
-        "id": "q4-t1",
-        "text_en": "This type uses a distributed control plane",
-        "text_vi": "This type uses a distributed control plane"
+        "text_en": "This type deploys a consistent configuration across multiple devices.",
+        "text_vi": "This type deploys a consistent configuration across multiple devices."
       },
       {
         "id": "q4-t2",
-        "text_en": "A distributed control plane is needed and devices configured manually",
-        "text_vi": "A distributed control plane is needed and devices configured manually"
+        "text_en": "A distributed control plane is needed.",
+        "text_vi": "A distributed control plane is needed."
+      },
+      {
+        "id": "q4-t1",
+        "text_en": "This type requires a distributed management plane.",
+        "text_vi": "This type requires a distributed management plane."
+      },
+      {
+        "id": "q4-c2",
+        "text_en": "Southbound APIs are used to apply configurations.",
+        "text_vi": "Southbound APIs are used to apply configurations."
+      },
+      {
+        "id": "q4-dist",
+        "text_en": "Northbound APIs interact with end devices.",
+        "text_vi": "Northbound APIs interact with end devices."
       }
     ],
     "drop_zones": [
@@ -259,7 +264,7 @@ window.CCNA_DND_DATA = [
         ]
       }
     ],
-    "explanation": "- **Controller-Based (SDN)**: Tập trung mặt phẳng điều khiển (Control Plane) về Controller. Tự động triển khai cấu hình đồng bộ xuống hạ tầng thông qua Southbound API (NETCONF, RESTCONF, OpenFlow).\n- **Traditional Networking**: Mỗi thiết bị mạng (Router/Switch) tự tính toán Control Plane riêng biệt (phân tán), cấu hình thủ công từng máy qua CLI console."
+    "explanation": "So sánh kiến trúc mạng Controller-Based (SDN) và Traditional (Truyền thống):\n- **Controller-Based Networking**:\n  + Cấu hình nhất quán đồng bộ trên nhiều thiết bị: *This type deploys a consistent configuration across multiple devices.*\n  + Dùng các giao diện lập trình hướng Nam (Southbound APIs - như OpenFlow, NETCONF, RESTCONF) để đẩy cấu hình xuống thiết bị mạng: *Southbound APIs are used to apply configurations.*\n- **Traditional Networking**:\n  + Yêu cầu mặt phẳng quản lý phân tán (cấu hình từng thiết bị riêng lẻ qua CLI/Console): *This type requires a distributed management plane.*\n  + Mỗi thiết bị tự chạy thuật toán định tuyến độc lập (mặt phẳng điều khiển phân tán): *A distributed control plane is needed.*\n- **Mồi nhử không dùng (Distractor)**: *Northbound APIs interact with end devices.* (Sai vì Northbound API giao tiếp giữa SDN Controller và các ứng dụng quản lý/kinh doanh, không tương tác trực tiếp với end devices)."
   },
   {
     "id": 5,
@@ -319,8 +324,8 @@ window.CCNA_DND_DATA = [
     "id": 6,
     "title": "Câu 06: Đặc Tính Tầng Vận Chuyển: TCP vs UDP (Phần 1)",
     "category": "Network Fundamentals",
-    "prompt_en": "Drag and drop the transport layer characteristics from the left onto the corresponding protocols on the right.",
-    "prompt_vi": "Kéo thả các đặc điểm của tầng vận chuyển từ bên trái vào giao thức TCP hoặc UDP tương ứng ở bên phải.",
+    "prompt_en": "Drag and drop the protocol characteristics from the left onto the corresponding protocols on the right. Not all characteristics are used.",
+    "prompt_vi": "Kéo thả các đặc tính giao thức từ bên trái vào đúng giao thức tương ứng (TCP hoặc UDP) ở bên phải. Không phải tất cả đặc tính đều được dùng.",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q06_a.png",
@@ -332,19 +337,24 @@ window.CCNA_DND_DATA = [
         "text_vi": "optimizes transmission rates to receiver"
       },
       {
+        "id": "q6-dist",
+        "text_en": "uses stateful packet inspection",
+        "text_vi": "uses stateful packet inspection"
+      },
+      {
         "id": "q6-t2",
         "text_en": "controls connections between sender and receiver",
         "text_vi": "controls connections between sender and receiver"
       },
       {
-        "id": "q6-t3",
-        "text_en": "guarantees packet delivery",
-        "text_vi": "guarantees packet delivery"
-      },
-      {
         "id": "q6-u1",
         "text_en": "capable of sending multicast transmissions",
         "text_vi": "capable of sending multicast transmissions"
+      },
+      {
+        "id": "q6-t3",
+        "text_en": "guarantees packet delivery",
+        "text_vi": "guarantees packet delivery"
       },
       {
         "id": "q6-u2",
@@ -353,8 +363,8 @@ window.CCNA_DND_DATA = [
       },
       {
         "id": "q6-u3",
-        "text_en": "reduces end-to-end delays using small packets",
-        "text_vi": "reduces end-to-end delays using small packets"
+        "text_en": "reduces end-to-end delays using smaller packets",
+        "text_vi": "reduces end-to-end delays using smaller packets"
       }
     ],
     "drop_zones": [
@@ -379,7 +389,7 @@ window.CCNA_DND_DATA = [
         ]
       }
     ],
-    "explanation": "- **TCP**: Hướng kết nối (Connection-oriented), bắt tay 3 bước, có xác nhận ACK, kiểm soát lưu lượng (Flow Control / Windowing) tránh làm nghẽn máy nhận.\n- **UDP**: Phi kết nối (Connectionless), không ACK, header chỉ 8 byte (so với 20 byte của TCP), độ trễ cực thấp, hỗ trợ Multicast/Broadcast."
+    "explanation": "Phân loại đặc tính giao thức tầng Transport (L4):\n- **TCP (Transmission Control Protocol)**:\n  + Tối ưu tốc độ truyền đến máy nhận qua cơ chế Flow Control / Windowing: *optimizes transmission rates to receiver*.\n  + Kiểm soát và duy trì kết nối giữa bên gửi và bên nhận: *controls connections between sender and receiver*.\n  + Đảm bảo việc truyền nhận dữ liệu tin cậy qua số thứ tự và ACK: *guarantees packet delivery*.\n- **UDP (User Datagram Protocol)**:\n  + Có khả năng gửi gói tin Multicast và Broadcast: *capable of sending multicast transmissions*.\n  + Phù hợp cho truyền dữ liệu thời gian thực (VoIP, Video): *transmits live and real-time data*.\n  + Giảm độ trễ đầu cuối bằng cách dùng các gói nhỏ không tốn cước tiêu đề: *reduces end-to-end delays using smaller packets*.\n- **Mồi nhử không dùng (Distractor)**: *uses stateful packet inspection* (Đây là tính năng kiểm tra trạng thái gói tin của tường lửa - Firewall tại Layer 4/Layer 7, không phải đặc tính giao thức của TCP/UDP)."
   },
   {
     "id": 7,
@@ -416,8 +426,8 @@ window.CCNA_DND_DATA = [
     "drop_zones": [
       {
         "id": "q7-multicast",
-        "label_en": "Multicast Address (FF00::/8)",
-        "label_vi": "Multicast Address (FF00::/8)",
+        "label_en": "Multicast Address",
+        "label_vi": "Multicast Address",
         "target_ids": [
           "q7-m1",
           "q7-m2"
@@ -425,8 +435,8 @@ window.CCNA_DND_DATA = [
       },
       {
         "id": "q7-linklocal",
-        "label_en": "Link-Local Address (FE80::/10)",
-        "label_vi": "Link-Local Address (FE80::/10)",
+        "label_en": "Link-Local Address",
+        "label_vi": "Link-Local Address",
         "target_ids": [
           "q7-l1",
           "q7-l2"
@@ -694,7 +704,7 @@ window.CCNA_DND_DATA = [
     "title": "Câu 12: Cấu Hình Địa Chỉ IP Khả Dụng (DC-1 & HQ-1)",
     "category": "IP Connectivity",
     "prompt_en": "Refer to the exhibit. The IP address configurations must be completed on the DC-1 and HQ-1 routers based on these requirements:\n- DC-1 Gi1/0 must be the last usable address on a /30\n- DC-1 Gi1/1 must be the first usable address on a /29\n- DC-1 Gi1/2 must be the last usable address on a /28\n- HQ-1 Gi1/3 must be the last usable address on a /29\nDrag and drop the commands from the left onto the destination interfaces on the right. Not all commands are used.",
-    "prompt_vi": "Tham chiếu sơ đồ. Hoàn thành cấu hình IP trên router DC-1 và HQ-1 theo các yêu cầu:\n- DC-1 Gi1/0: địa chỉ khả dụng cuối cùng của mạng /30\n- DC-1 Gi1/1: địa chỉ khả dụng đầu tiên của mạng /29\n- DC-1 Gi1/2: địa chỉ khả dụng cuối cùng của mạng /28\n- HQ-1 Gi1/3: địa chỉ khả dụng cuối cùng của mạng /29\nKéo thả các câu lệnh từ bên trái vào đúng cổng ở bên phải. Không phải tất cả câu lệnh đều được sử dụng.",
+    "prompt_vi": "Tham chiếu sơ đồ. Cấu hình địa chỉ IP phải được hoàn thành trên router DC-1 và HQ-1 dựa trên các yêu cầu sau:\n- DC-1 Gi1/0 phải là địa chỉ khả dụng cuối cùng trên mạng /30\n- DC-1 Gi1/1 phải là địa chỉ khả dụng đầu tiên trên mạng /29\n- DC-1 Gi1/2 phải là địa chỉ khả dụng cuối cùng trên mạng /28\n- HQ-1 Gi1/3 phải là địa chỉ khả dụng cuối cùng trên mạng /29\nKéo thả các lệnh từ bên trái vào đúng các cổng tương ứng ở bên phải. Không phải tất cả các lệnh đều được dùng.",
     "has_exhibit": true,
     "exhibit_image": "images/dnd/dnd_q12_a.png",
     "question_image": "images/dnd/dnd_q12_b.png",
@@ -711,27 +721,27 @@ window.CCNA_DND_DATA = [
         "text_vi": "ip address 192.168.3.14 255.255.255.240"
       },
       {
+        "id": "q12-d1",
+        "text_en": "ip address 209.165.202.129 255.255.255.252",
+        "text_vi": "ip address 209.165.202.129 255.255.255.252"
+      },
+      {
+        "id": "q12-d2",
+        "text_en": "ip address 192.168.4.13 255.255.255.240",
+        "text_vi": "ip address 192.168.4.13 255.255.255.240"
+      },
+      {
         "id": "q12-c3",
         "text_en": "ip address 209.165.202.130 255.255.255.252",
         "text_vi": "ip address 209.165.202.130 255.255.255.252"
       },
       {
-        "id": "q12-c4",
-        "text_en": "ip address 192.168.4.14 255.255.255.248",
-        "text_vi": "ip address 192.168.4.14 255.255.255.248"
-      },
-      {
-        "id": "q12-d1",
-        "text_en": "ip address 192.168.4.15 255.255.255.240",
-        "text_vi": "ip address 192.168.4.15 255.255.255.240"
-      },
-      {
-        "id": "q12-d2",
-        "text_en": "ip address 209.165.202.129 255.255.255.252",
-        "text_vi": "ip address 209.165.202.129 255.255.255.252"
-      },
-      {
         "id": "q12-d3",
+        "text_en": "ip address 209.165.202.131 255.255.255.252",
+        "text_vi": "ip address 209.165.202.131 255.255.255.252"
+      },
+      {
+        "id": "q12-c4",
         "text_en": "ip address 192.168.3.14 255.255.255.248",
         "text_vi": "ip address 192.168.3.14 255.255.255.248"
       }
@@ -770,7 +780,7 @@ window.CCNA_DND_DATA = [
         ]
       }
     ],
-    "explanation": "Chi tiết cách tính địa chỉ IP khả dụng (Usable IP):\n- **DC-1 Gi1/0 (last usable on /30)**: Mạng nối WAN `209.165.202.128/30`, bước nhảy 4 (IP mạng .128, IP broadcast .131). Dải IP khả dụng: .129 và .130. IP cuối cùng là `209.165.202.130 255.255.255.252`.\n- **DC-1 Gi1/1 (first usable on /29)**: Mạng `192.168.4.8/29`, bước nhảy 8 (.8 đến .15). Dải IP khả dụng: .9 đến .14. IP đầu tiên là `192.168.4.9 255.255.255.248`.\n- **DC-1 Gi1/2 (last usable on /28)**: Mạng `192.168.3.0/28`, bước nhảy 16 (.0 đến .15). Dải IP khả dụng: .1 đến .14. IP cuối cùng là `192.168.3.14 255.255.255.240`.\n- **HQ-1 Gi1/3 (last usable on /29)**: Cùng mạng nối router `192.168.4.8/29` với DC-1 Gi1/1. IP cuối cùng khả dụng là `192.168.4.14 255.255.255.248`."
+    "explanation": "Tính toán Subnetting chi tiết theo từng yêu cầu của bài thi:\n\n1. **DC-1 Gi1/0 (last usable on /30)**:\n   - Mạng `/30` tương ứng Subnet Mask `255.255.255.252`.\n   - Dải `209.165.202.128/30`: Network = `.128`, First usable = `.129`, **Last usable = .130**, Broadcast = `.131`.\n   -> Chọn: **`ip address 209.165.202.130 255.255.255.252`**.\n\n2. **DC-1 Gi1/1 (first usable on /29)**:\n   - Mạng `/29` tương ứng Subnet Mask `255.255.255.248` (bước nhảy 8).\n   - Dải `192.168.4.8/29`: Network = `.8`, **First usable = .9**, Last usable = `.14`, Broadcast = `.15`.\n   -> Chọn: **`ip address 192.168.4.9 255.255.255.248`**.\n\n3. **DC-1 Gi1/2 (last usable on /28)**:\n   - Mạng `/28` tương ứng Subnet Mask `255.255.255.240` (bước nhảy 16).\n   - Dải `192.168.3.0/28`: Network = `.0`, First usable = `.1`, **Last usable = .14**, Broadcast = `.15`.\n   -> Chọn: **`ip address 192.168.3.14 255.255.255.240`**.\n\n4. **HQ-1 Gi1/3 (last usable on /29)**:\n   - Mạng `/29` tương ứng Subnet Mask `255.255.255.248` (bước nhảy 8).\n   - Dải `192.168.3.8/29`: Network = `.8`, First usable = `.9`, **Last usable = .14**, Broadcast = `.15`.\n   -> Chọn: **`ip address 192.168.3.14 255.255.255.248`**.\n\n*Điểm gài bẫy (Trick) của Cisco*: Cả `DC-1 Gi1/2` và `HQ-1 Gi1/3` đều có cùng địa chỉ IP kết thúc là `.14` (`192.168.3.14`), nhưng khác nhau hoàn toàn ở Subnet Mask (`255.255.255.240` cho /28 và `255.255.255.248` cho /29)."
   },
   {
     "id": 13,
@@ -977,58 +987,57 @@ window.CCNA_DND_DATA = [
   },
   {
     "id": 16,
-    "title": "Câu 16: Cấu Trúc Các Loại Cáp Mạng",
+    "title": "Câu 16: Phân Loại Đặc Tính Cáp Đồng vs Cáp Quang Đa Mốt (Multimode Fiber)",
     "category": "Network Fundamentals",
-    "prompt_en": "Drag and drop the cable descriptions from the left onto the corresponding cable types on the right.",
-    "prompt_vi": "Kéo thả các mô tả cấu tạo vật lý từ bên trái vào đúng tên loại cáp ở bên phải.",
+    "prompt_en": "Drag and drop the cabling characteristics from the left onto the correct cable types on the right.",
+    "prompt_vi": "Kéo thả các đặc tính cáp từ bên trái vào đúng loại cáp (đồng hoặc cáp quang đa mốt) ở bên phải.",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q16_a.png",
     "answer_image": "images/dnd/dnd_q16_b.png",
     "source_items": [
       {
-        "id": "q16-tp",
+        "id": "q16-cu1",
         "text_en": "is comprised of shielded and unshielded twisted pairs",
         "text_vi": "is comprised of shielded and unshielded twisted pairs"
       },
       {
-        "id": "q16-coax",
-        "text_en": "contains a conductor, dielectric, and sheathing",
-        "text_vi": "contains a conductor, dielectric, and sheathing"
+        "id": "q16-mm1",
+        "text_en": "contains a core, cladding, and coating",
+        "text_vi": "contains a core, cladding, and coating"
       },
       {
-        "id": "q16-fiber",
+        "id": "q16-cu2",
+        "text_en": "contains a conductor, bedding, and sheathing",
+        "text_vi": "contains a conductor, bedding, and sheathing"
+      },
+      {
+        "id": "q16-mm2",
         "text_en": "comprised of insulated glass strands",
         "text_vi": "comprised of insulated glass strands"
       }
     ],
     "drop_zones": [
       {
-        "id": "q16-z1",
-        "label_en": "Twisted-Pair Cable",
-        "label_vi": "Twisted-Pair Cable",
+        "id": "q16-copper",
+        "label_en": "copper",
+        "label_vi": "copper",
         "target_ids": [
-          "q16-tp"
+          "q16-cu1",
+          "q16-cu2"
         ]
       },
       {
-        "id": "q16-z2",
-        "label_en": "Coaxial Cable",
-        "label_vi": "Coaxial Cable",
+        "id": "q16-mmf",
+        "label_en": "multi-mode fiber",
+        "label_vi": "multi-mode fiber",
         "target_ids": [
-          "q16-coax"
-        ]
-      },
-      {
-        "id": "q16-z3",
-        "label_en": "Fiber Optic Cable",
-        "label_vi": "Fiber Optic Cable",
-        "target_ids": [
-          "q16-fiber"
+          "q16-mm1",
+          "q16-mm2"
         ]
       }
     ],
-    "explanation": "- **Twisted-Pair (Cáp xoắn đôi Cat5e/Cat6)**: Các cặp dây đồng xoắn lại để triệt tiêu nhiễu xuyên âm (crosstalk).\n- **Coaxial (Cáp đồng trục)**: Lõi đồng trung tâm được bao bọc bởi lớp điện môi và lưới kim loại dẫn nối đất.\n- **Fiber Optic (Cáp quang)**: Cấu tạo gồm lõi thủy tinh (Core), lớp phản xạ ánh sáng (Cladding) và lớp vỏ bảo vệ (Buffer/Jacket)."
+    "explanation": "Phân biệt cấu tạo vật lý giữa Cáp Đồng (copper) và Cáp Quang Đa Mốt (multi-mode fiber):\n- **copper (Cáp đồng)**:\n  + Được cấu tạo từ các cặp dây xoắn có bọc kim hoặc không bọc kim (shielded and unshielded twisted pairs - STP/UTP).\n  + Gồm lõi dẫn điện (conductor), lớp đệm (bedding), và lớp vỏ bảo vệ (sheathing).\n- **multi-mode fiber (Cáp quang đa mốt)**:\n  + Gồm lõi truyền sáng (core), lớp phản xạ (cladding), và lớp vỏ bảo vệ bên ngoài (coating).\n  + Cấu tạo từ các sợi thủy tinh cách điện (insulated glass strands)."
   },
   {
     "id": 17,
@@ -1058,8 +1067,8 @@ window.CCNA_DND_DATA = [
       },
       {
         "id": "q17-u1",
-        "text_en": "suited for streaming audio and video",
-        "text_vi": "suited for streaming audio and video"
+        "text_en": "suited for live streaming",
+        "text_vi": "suited for live streaming"
       },
       {
         "id": "q17-u2",
@@ -1114,8 +1123,8 @@ window.CCNA_DND_DATA = [
       },
       {
         "id": "q18-dai",
-        "text_en": "Dynamic ARP Inspection (DAI)",
-        "text_vi": "Dynamic ARP Inspection (DAI)"
+        "text_en": "Dynamic ARP Inspection",
+        "text_vi": "Dynamic ARP Inspection"
       },
       {
         "id": "q18-storm",
@@ -1124,39 +1133,39 @@ window.CCNA_DND_DATA = [
       },
       {
         "id": "q18-ipsg",
-        "text_en": "IP Source Guard (IPSG)",
-        "text_vi": "IP Source Guard (IPSG)"
+        "text_en": "IP Source Guard",
+        "text_vi": "IP Source Guard"
       }
     ],
     "drop_zones": [
       {
         "id": "q18-z1",
-        "label_en": "Rogue DHCP server that spoofs IP configuration",
-        "label_vi": "Rogue DHCP server that spoofs IP configuration",
+        "label_en": "rogue server that spoofs IP configuration",
+        "label_vi": "rogue server that spoofs IP configuration",
         "target_ids": [
           "q18-dhcp"
         ]
       },
       {
         "id": "q18-z2",
-        "label_en": "ARP cache poisoning attacks",
-        "label_vi": "ARP cache poisoning attacks",
+        "label_en": "cache poisoning",
+        "label_vi": "cache poisoning",
         "target_ids": [
           "q18-dai"
         ]
       },
       {
         "id": "q18-z3",
-        "label_en": "Broadcast / Multicast flood attacks",
-        "label_vi": "Broadcast / Multicast flood attacks",
+        "label_en": "flood attacks",
+        "label_vi": "flood attacks",
         "target_ids": [
           "q18-storm"
         ]
       },
       {
         "id": "q18-z4",
-        "label_en": "Rogue clients spoofing IP addresses on the network",
-        "label_vi": "Rogue clients spoofing IP addresses on the network",
+        "label_en": "rogue clients on the network",
+        "label_vi": "rogue clients on the network",
         "target_ids": [
           "q18-ipsg"
         ]
@@ -1258,15 +1267,15 @@ window.CCNA_DND_DATA = [
       },
       {
         "id": "q20-mm2",
-        "text_en": "is prone to damage when mishandled",
-        "text_vi": "is prone to damage when mishandled"
+        "text_en": "vulnerable to damage when handled",
+        "text_vi": "vulnerable to damage when handled"
       }
     ],
     "drop_zones": [
       {
         "id": "q20-copper",
-        "label_en": "Copper Cabling",
-        "label_vi": "Copper Cabling",
+        "label_en": "copper",
+        "label_vi": "copper",
         "target_ids": [
           "q20-cu1",
           "q20-cu2"
@@ -1274,8 +1283,8 @@ window.CCNA_DND_DATA = [
       },
       {
         "id": "q20-mmf",
-        "label_en": "Multimode Fiber (MMF)",
-        "label_vi": "Multimode Fiber (MMF)",
+        "label_en": "multi-mode fiber",
+        "label_vi": "multi-mode fiber",
         "target_ids": [
           "q20-mm1",
           "q20-mm2"
@@ -1523,9 +1532,9 @@ window.CCNA_DND_DATA = [
     ],
     "drop_zones": [
       {
-        "id": "q24-twisted",
-        "label_en": "Twisted-Pair Cabling",
-        "label_vi": "Twisted-Pair Cabling",
+        "id": "q24-copper",
+        "label_en": "copper",
+        "label_vi": "copper",
         "target_ids": [
           "q24-tp1",
           "q24-tp2"
@@ -1533,8 +1542,8 @@ window.CCNA_DND_DATA = [
       },
       {
         "id": "q24-smf",
-        "label_en": "Single-Mode Fiber (SMF)",
-        "label_vi": "Single-Mode Fiber (SMF)",
+        "label_en": "single-mode fiber",
+        "label_vi": "single-mode fiber",
         "target_ids": [
           "q24-sm1",
           "q24-sm2"
@@ -1621,58 +1630,43 @@ window.CCNA_DND_DATA = [
     "answer_image": "images/dnd/dnd_q26_b.png",
     "source_items": [
       {
-        "id": "q26-fw",
-        "text_en": "provides security policies and content filtering",
-        "text_vi": "provides security policies and content filtering"
-      },
-      {
-        "id": "q26-sw",
+        "id": "q26-ap1",
         "text_en": "formats an Ethernet frame and forwards to a destination",
         "text_vi": "formats an Ethernet frame and forwards to a destination"
       },
       {
-        "id": "q26-ap",
+        "id": "q26-ap2",
         "text_en": "supports both IEEE 802.11 and Ethernet standards",
         "text_vi": "supports both IEEE 802.11 and Ethernet standards"
       },
       {
         "id": "q26-wlc1",
-        "text_en": "makes forwarding decisions when in LWAPP mode",
-        "text_vi": "makes forwarding decisions when in LWAPP mode"
+        "text_en": "makes forwarding decisions when in LWAP mode",
+        "text_vi": "makes forwarding decisions when in LWAP mode"
       },
       {
         "id": "q26-wlc2",
-        "text_en": "can be deployed on-premise and/or in the cloud",
-        "text_vi": "can be deployed on-premise and/or in the cloud"
+        "text_en": "used on-premise and/or cloud-based",
+        "text_vi": "used on-premise and/or cloud-based"
+      },
+      {
+        "id": "q26-dist",
+        "text_en": "provides security policies and content filtering",
+        "text_vi": "provides security policies and content filtering"
       }
     ],
     "drop_zones": [
       {
-        "id": "q26-z-fw",
-        "label_en": "Firewall",
-        "label_vi": "Firewall",
-        "target_ids": [
-          "q26-fw"
-        ]
-      },
-      {
-        "id": "q26-z-sw",
-        "label_en": "Switch",
-        "label_vi": "Switch",
-        "target_ids": [
-          "q26-sw"
-        ]
-      },
-      {
-        "id": "q26-z-ap",
+        "id": "q26-ap",
         "label_en": "Access Point",
         "label_vi": "Access Point",
         "target_ids": [
-          "q26-ap"
+          "q26-ap1",
+          "q26-ap2"
         ]
       },
       {
-        "id": "q26-z-wlc",
+        "id": "q26-wlc",
         "label_en": "Wireless LAN Controller",
         "label_vi": "Wireless LAN Controller",
         "target_ids": [
@@ -1695,12 +1689,12 @@ window.CCNA_DND_DATA = [
     "answer_image": "images/dnd/dnd_q27_b.png",
     "source_items": [
       {
-        "id": "q27-coax",
+        "id": "q27-c1",
         "text_en": "contains a conductor, bedding, and sheathing",
         "text_vi": "contains a conductor, bedding, and sheathing"
       },
       {
-        "id": "q27-tp",
+        "id": "q27-c2",
         "text_en": "affected by electrical and magnetic interference",
         "text_vi": "affected by electrical and magnetic interference"
       },
@@ -1717,25 +1711,18 @@ window.CCNA_DND_DATA = [
     ],
     "drop_zones": [
       {
-        "id": "q27-z-coax",
-        "label_en": "Coaxial Cable",
-        "label_vi": "Coaxial Cable",
+        "id": "q27-copper",
+        "label_en": "copper",
+        "label_vi": "copper",
         "target_ids": [
-          "q27-coax"
+          "q27-c1",
+          "q27-c2"
         ]
       },
       {
-        "id": "q27-z-tp",
-        "label_en": "Twisted-Pair Cable",
-        "label_vi": "Twisted-Pair Cable",
-        "target_ids": [
-          "q27-tp"
-        ]
-      },
-      {
-        "id": "q27-z-smf",
-        "label_en": "Single-Mode Fiber",
-        "label_vi": "Single-Mode Fiber",
+        "id": "q27-smf",
+        "label_en": "single-mode fiber",
+        "label_vi": "single-mode fiber",
         "target_ids": [
           "q27-sm1",
           "q27-sm2"
@@ -1756,24 +1743,29 @@ window.CCNA_DND_DATA = [
     "answer_image": "images/dnd/dnd_q28_b.png",
     "source_items": [
       {
-        "id": "q28-t1",
-        "text_en": "acknowledgment mechanism",
-        "text_vi": "acknowledgment mechanism"
+        "id": "q28-ack",
+        "text_en": "acknowledgement mechanism",
+        "text_vi": "acknowledgement mechanism"
       },
       {
-        "id": "q28-t2",
+        "id": "q28-guar",
         "text_en": "guaranteed transmission",
         "text_vi": "guaranteed transmission"
       },
       {
-        "id": "q28-u1",
-        "text_en": "no error checking",
-        "text_vi": "no error checking"
-      },
-      {
-        "id": "q28-u2",
+        "id": "q28-low",
         "text_en": "low overhead",
         "text_vi": "low overhead"
+      },
+      {
+        "id": "q28-conn",
+        "text_en": "connectionless",
+        "text_vi": "connectionless"
+      },
+      {
+        "id": "q28-noerr",
+        "text_en": "no error checking",
+        "text_vi": "no error checking"
       }
     ],
     "drop_zones": [
@@ -1782,8 +1774,8 @@ window.CCNA_DND_DATA = [
         "label_en": "TCP",
         "label_vi": "TCP",
         "target_ids": [
-          "q28-t1",
-          "q28-t2"
+          "q28-ack",
+          "q28-guar"
         ]
       },
       {
@@ -1791,7 +1783,8 @@ window.CCNA_DND_DATA = [
         "label_en": "UDP",
         "label_vi": "UDP",
         "target_ids": [
-          "q28-u2"
+          "q28-low",
+          "q28-conn"
         ]
       }
     ],
@@ -1837,40 +1830,40 @@ window.CCNA_DND_DATA = [
     "drop_zones": [
       {
         "id": "q29-z1",
-        "label_en": "Document that outlines an organization's security goals and practices, and roles and responsibilities",
-        "label_vi": "Document that outlines an organization's security goals and practices, and roles and responsibilities",
+        "label_en": "security policy",
+        "label_vi": "security policy",
         "target_ids": [
           "q29-policy"
         ]
       },
       {
         "id": "q29-z2",
-        "label_en": "Tactical document that sets out specific tasks and methods to maintain security",
-        "label_vi": "Tactical document that sets out specific tasks and methods to maintain security",
+        "label_en": "security standard",
+        "label_vi": "security standard",
         "target_ids": [
           "q29-standard"
         ]
       },
       {
         "id": "q29-z3",
-        "label_en": "User-awareness learning level that focuses on security practices that all employees must understand",
-        "label_vi": "User-awareness learning level that focuses on security practices that all employees must understand",
+        "label_en": "user-awareness learning level that focuses on learning about topics and practices beyond what is typically required by the user's job",
+        "label_vi": "user-awareness learning level that focuses on learning about topics and practices beyond what is typically required by the user's job",
         "target_ids": [
           "q29-aware"
         ]
       },
       {
         "id": "q29-z4",
-        "label_en": "User-awareness learning level that focuses on topics and practices beyond what is typically required for the user's job",
-        "label_vi": "User-awareness learning level that focuses on topics and practices beyond what is typically required for the user's job",
+        "label_en": "user-awareness learning level that focuses on security practices that all employees must understand and enforce",
+        "label_vi": "user-awareness learning level that focuses on security practices that all employees must understand and enforce",
         "target_ids": [
           "q29-edu"
         ]
       },
       {
         "id": "q29-z5",
-        "label_en": "User-awareness learning level that focuses on teaching employees how to perform tasks specifically required for their jobs",
-        "label_vi": "User-awareness learning level that focuses on teaching employees how to perform tasks specifically required for their jobs",
+        "label_en": "user-awareness learning level that focuses on teaching employees how to perform tasks specifically required by their jobs",
+        "label_vi": "user-awareness learning level that focuses on teaching employees how to perform tasks specifically required by their jobs",
         "target_ids": [
           "q29-train"
         ]
@@ -1890,32 +1883,41 @@ window.CCNA_DND_DATA = [
     "answer_image": "images/dnd/dnd_q30_b.png",
     "source_items": [
       {
+        "id": "q30-ap1",
+        "text_en": "ability to boost a wi-fi signal",
+        "text_vi": "ability to boost a wi-fi signal"
+      },
+      {
+        "id": "q30-ap2",
+        "text_en": "requires a special adapter for PoE",
+        "text_vi": "requires a special adapter for PoE"
+      },
+      {
         "id": "q30-wlc1",
-        "text_en": "uses templates to implement QOS configurations",
-        "text_vi": "uses templates to implement QOS configurations"
+        "text_en": "uses templates to implement QOS configuration",
+        "text_vi": "uses templates to implement QOS configuration"
       },
       {
         "id": "q30-wlc2",
-        "text_en": "applies user connection data within a device group",
-        "text_vi": "applies user connection data within a device group"
-      },
-      {
-        "id": "q30-ap1",
         "text_en": "interconnects wireless LANs to a wired network",
         "text_vi": "interconnects wireless LANs to a wired network"
       },
       {
-        "id": "q30-ap2",
-        "text_en": "requires a special adapter for POE",
-        "text_vi": "requires a special adapter for POE"
-      },
-      {
         "id": "q30-dist",
-        "text_en": "ability to boost a wi-fi signal",
-        "text_vi": "ability to boost a wi-fi signal"
+        "text_en": "supplies user connection data within a device group",
+        "text_vi": "supplies user connection data within a device group"
       }
     ],
     "drop_zones": [
+      {
+        "id": "q30-ap",
+        "label_en": "Access Point",
+        "label_vi": "Access Point",
+        "target_ids": [
+          "q30-ap1",
+          "q30-ap2"
+        ]
+      },
       {
         "id": "q30-wlc",
         "label_en": "Wireless LAN Controller",
@@ -1923,15 +1925,6 @@ window.CCNA_DND_DATA = [
         "target_ids": [
           "q30-wlc1",
           "q30-wlc2"
-        ]
-      },
-      {
-        "id": "q30-ap",
-        "label_en": "Autonomous Access Point",
-        "label_vi": "Autonomous Access Point",
-        "target_ids": [
-          "q30-ap1",
-          "q30-ap2"
         ]
       }
     ],
@@ -1949,51 +1942,60 @@ window.CCNA_DND_DATA = [
     "answer_image": "images/dnd/dnd_q31_c.png",
     "source_items": [
       {
-        "id": "q31-r1-cmd",
-        "text_en": "ip route 10.10.14.0 255.255.255.0 10.10.10.2",
-        "text_vi": "ip route 10.10.14.0 255.255.255.0 10.10.10.2"
+        "id": "q31-r1",
+        "text_en": "ip route 10.10.13.0 255.255.255.128 10.10.10.1",
+        "text_vi": "ip route 10.10.13.0 255.255.255.128 10.10.10.1"
       },
       {
-        "id": "q31-r2-cmd",
-        "text_en": "ip route 10.10.13.0 255.255.255.0 10.10.10.1",
-        "text_vi": "ip route 10.10.13.0 255.255.255.0 10.10.10.1"
-      },
-      {
-        "id": "q31-d1",
-        "text_en": "ip route 10.10.14.10 255.255.255.255 10.10.10.6",
-        "text_vi": "ip route 10.10.14.10 255.255.255.255 10.10.10.6"
-      },
-      {
-        "id": "q31-d2",
+        "id": "q31-r2a",
         "text_en": "ip route 10.10.13.0 255.255.255.128 10.10.10.5",
         "text_vi": "ip route 10.10.13.0 255.255.255.128 10.10.10.5"
       },
       {
-        "id": "q31-d3",
-        "text_en": "ip route 10.10.13.0 255.255.255.255 10.10.10.1",
-        "text_vi": "ip route 10.10.13.0 255.255.255.255 10.10.10.1"
+        "id": "q31-d1",
+        "text_en": "ip route 10.10.13.10 255.255.255.255 10.10.10.1",
+        "text_vi": "ip route 10.10.13.10 255.255.255.255 10.10.10.1"
       },
       {
-        "id": "q31-d4",
-        "text_en": "ip route 10.10.14.0 255.255.255.0 10.10.10.4",
-        "text_vi": "ip route 10.10.14.0 255.255.255.0 10.10.10.4"
+        "id": "q31-r2b",
+        "text_en": "ip route 10.10.14.0 255.255.255.0 10.10.10.2",
+        "text_vi": "ip route 10.10.14.0 255.255.255.0 10.10.10.2"
+      },
+      {
+        "id": "q31-r3",
+        "text_en": "ip route 10.10.14.0 255.255.255.0 10.10.10.6",
+        "text_vi": "ip route 10.10.14.0 255.255.255.0 10.10.10.6"
+      },
+      {
+        "id": "q31-d2",
+        "text_en": "ip route 10.10.14.10 255.255.255.255 10.10.10.6",
+        "text_vi": "ip route 10.10.14.10 255.255.255.255 10.10.10.6"
       }
     ],
     "drop_zones": [
       {
-        "id": "q31-z-r1",
+        "id": "q31-r1",
         "label_en": "Router R1",
         "label_vi": "Router R1",
         "target_ids": [
-          "q31-r1-cmd"
+          "q31-r1"
         ]
       },
       {
-        "id": "q31-z-r2",
+        "id": "q31-r2",
         "label_en": "Router R2",
         "label_vi": "Router R2",
         "target_ids": [
-          "q31-r2-cmd"
+          "q31-r2a",
+          "q31-r2b"
+        ]
+      },
+      {
+        "id": "q31-r3",
+        "label_en": "Router R3",
+        "label_vi": "Router R3",
+        "target_ids": [
+          "q31-r3"
         ]
       }
     ],
@@ -2175,27 +2177,27 @@ window.CCNA_DND_DATA = [
     "answer_image": "images/dnd/dnd_q34_b.png",
     "source_items": [
       {
-        "id": "q34-f-acc",
+        "id": "q34-acc",
         "text_en": "connect end users",
         "text_vi": "connect end users"
       },
       {
-        "id": "q34-f-core",
+        "id": "q34-core",
         "text_en": "fast switching",
         "text_vi": "fast switching"
       },
       {
-        "id": "q34-f-spine",
+        "id": "q34-sl",
         "text_en": "redundant architectures within data centers",
         "text_vi": "redundant architectures within data centers"
       },
       {
-        "id": "q34-d1",
+        "id": "q34-dist",
         "text_en": "aggregate traffic flows from customers",
         "text_vi": "aggregate traffic flows from customers"
       },
       {
-        "id": "q34-d2",
+        "id": "q34-d1",
         "text_en": "monitors network traffic",
         "text_vi": "monitors network traffic"
       }
@@ -2206,7 +2208,7 @@ window.CCNA_DND_DATA = [
         "label_en": "Access",
         "label_vi": "Access",
         "target_ids": [
-          "q34-f-acc"
+          "q34-acc"
         ]
       },
       {
@@ -2214,15 +2216,23 @@ window.CCNA_DND_DATA = [
         "label_en": "Core",
         "label_vi": "Core",
         "target_ids": [
-          "q34-f-core"
+          "q34-core"
         ]
       },
       {
-        "id": "q34-z-spine",
+        "id": "q34-z-sl",
         "label_en": "Spine-leaf",
         "label_vi": "Spine-leaf",
         "target_ids": [
-          "q34-f-spine"
+          "q34-sl"
+        ]
+      },
+      {
+        "id": "q34-z-dist",
+        "label_en": "Distribution",
+        "label_vi": "Distribution",
+        "target_ids": [
+          "q34-dist"
         ]
       }
     ],
@@ -2262,9 +2272,9 @@ window.CCNA_DND_DATA = [
     ],
     "drop_zones": [
       {
-        "id": "q35-twisted",
-        "label_en": "Twisted-Pair Cabling",
-        "label_vi": "Twisted-Pair Cabling",
+        "id": "q35-copper",
+        "label_en": "copper",
+        "label_vi": "copper",
         "target_ids": [
           "q35-tp1",
           "q35-tp2"
@@ -2272,8 +2282,8 @@ window.CCNA_DND_DATA = [
       },
       {
         "id": "q35-smf",
-        "label_en": "Single-Mode Fiber (SMF)",
-        "label_vi": "Single-Mode Fiber (SMF)",
+        "label_en": "single-mode fiber",
+        "label_vi": "single-mode fiber",
         "target_ids": [
           "q35-sm1",
           "q35-sm2"
@@ -2422,57 +2432,62 @@ window.CCNA_DND_DATA = [
     "answer_image": "images/dnd/dnd_q38_c.png",
     "source_items": [
       {
-        "id": "q38-m27",
-        "text_en": "255.255.255.224",
-        "text_vi": "255.255.255.224"
+        "id": "q38-m128",
+        "text_en": "255.255.255.128",
+        "text_vi": "255.255.255.128"
       },
       {
-        "id": "q38-m28",
+        "id": "q38-m240",
         "text_en": "255.255.255.240",
         "text_vi": "255.255.255.240"
       },
       {
-        "id": "q38-m29",
+        "id": "q38-m248",
         "text_en": "255.255.255.248",
         "text_vi": "255.255.255.248"
       },
       {
-        "id": "q38-m30",
+        "id": "q38-m224",
+        "text_en": "255.255.255.224",
+        "text_vi": "255.255.255.224"
+      },
+      {
+        "id": "q38-d1",
         "text_en": "255.255.255.252",
         "text_vi": "255.255.255.252"
       }
     ],
     "drop_zones": [
       {
-        "id": "q38-z-p27",
-        "label_en": "209.165.202.128",
-        "label_vi": "209.165.202.128",
-        "target_ids": [
-          "q38-m27"
-        ]
-      },
-      {
-        "id": "q38-z-p28",
-        "label_en": "10.10.13.144",
-        "label_vi": "10.10.13.144",
-        "target_ids": [
-          "q38-m28"
-        ]
-      },
-      {
-        "id": "q38-z-p29",
-        "label_en": "10.10.13.160",
-        "label_vi": "10.10.13.160",
-        "target_ids": [
-          "q38-m29"
-        ]
-      },
-      {
-        "id": "q38-z-p30",
+        "id": "q38-z1",
         "label_en": "10.10.13.0",
         "label_vi": "10.10.13.0",
         "target_ids": [
-          "q38-m30"
+          "q38-m128"
+        ]
+      },
+      {
+        "id": "q38-z2",
+        "label_en": "10.10.13.144",
+        "label_vi": "10.10.13.144",
+        "target_ids": [
+          "q38-m240"
+        ]
+      },
+      {
+        "id": "q38-z3",
+        "label_en": "10.10.13.160",
+        "label_vi": "10.10.13.160",
+        "target_ids": [
+          "q38-m248"
+        ]
+      },
+      {
+        "id": "q38-z4",
+        "label_en": "209.165.202.128",
+        "label_vi": "209.165.202.128",
+        "target_ids": [
+          "q38-m224"
         ]
       }
     ],
@@ -2490,47 +2505,60 @@ window.CCNA_DND_DATA = [
     "answer_image": "images/dnd/dnd_q39_b.png",
     "source_items": [
       {
-        "id": "q39-spine",
-        "text_en": "spine-leaf",
-        "text_vi": "spine-leaf"
+        "id": "q39-acc",
+        "text_en": "end user connectivity",
+        "text_vi": "end user connectivity"
+      },
+      {
+        "id": "q39-sl",
+        "text_en": "top-of-rack",
+        "text_vi": "top-of-rack"
       },
       {
         "id": "q39-dist",
-        "text_en": "distribution",
-        "text_vi": "distribution"
+        "text_en": "provide routing, filtering, and WAN access",
+        "text_vi": "provide routing, filtering, and WAN access"
       },
       {
         "id": "q39-core",
-        "text_en": "core",
-        "text_vi": "core"
+        "text_en": "switch packets as fast as possible",
+        "text_vi": "switch packets as fast as possible"
       },
       {
-        "id": "q39-edge",
+        "id": "q39-d1",
         "text_en": "perimeter edge",
         "text_vi": "perimeter edge"
       }
     ],
     "drop_zones": [
       {
-        "id": "q39-z1",
-        "label_en": "Redundant architectures within data centers (East-West traffic)",
-        "label_vi": "Redundant architectures within data centers (East-West traffic)",
+        "id": "q39-z-acc",
+        "label_en": "access",
+        "label_vi": "access",
         "target_ids": [
-          "q39-spine"
+          "q39-acc"
         ]
       },
       {
-        "id": "q39-z2",
-        "label_en": "Provide routing, filtering, and WAN access",
-        "label_vi": "Provide routing, filtering, and WAN access",
+        "id": "q39-z-sl",
+        "label_en": "spine leaf",
+        "label_vi": "spine leaf",
+        "target_ids": [
+          "q39-sl"
+        ]
+      },
+      {
+        "id": "q39-z-dist",
+        "label_en": "distribution",
+        "label_vi": "distribution",
         "target_ids": [
           "q39-dist"
         ]
       },
       {
-        "id": "q39-z3",
-        "label_en": "Switch packets as fast as possible",
-        "label_vi": "Switch packets as fast as possible",
+        "id": "q39-z-core",
+        "label_en": "core",
+        "label_vi": "core",
         "target_ids": [
           "q39-core"
         ]
@@ -2550,57 +2578,43 @@ window.CCNA_DND_DATA = [
     "answer_image": "images/dnd/dnd_q40_b.png",
     "source_items": [
       {
-        "id": "q40-coax",
+        "id": "q40-cu1",
         "text_en": "contains a conductor, bedding, and sheathing",
         "text_vi": "contains a conductor, bedding, and sheathing"
       },
       {
-        "id": "q40-tp",
+        "id": "q40-cu2",
         "text_en": "comprised of shielded or unshielded twisted pairs",
         "text_vi": "comprised of shielded or unshielded twisted pairs"
       },
       {
-        "id": "q40-smf",
+        "id": "q40-sm1",
         "text_en": "has minimal light reflection as the signal travels down the core",
         "text_vi": "has minimal light reflection as the signal travels down the core"
       },
       {
-        "id": "q40-mmf",
+        "id": "q40-sm2",
         "text_en": "transmits signals using pulses of light",
         "text_vi": "transmits signals using pulses of light"
       }
     ],
     "drop_zones": [
       {
-        "id": "q40-z-coax",
-        "label_en": "Coaxial Cable",
-        "label_vi": "Coaxial Cable",
+        "id": "q40-copper",
+        "label_en": "copper",
+        "label_vi": "copper",
         "target_ids": [
-          "q40-coax"
+          "q40-cu1",
+          "q40-cu2"
         ]
       },
       {
-        "id": "q40-z-tp",
-        "label_en": "Twisted-Pair Cable",
-        "label_vi": "Twisted-Pair Cable",
+        "id": "q40-smf",
+        "label_en": "single-mode fiber",
+        "label_vi": "single-mode fiber",
         "target_ids": [
-          "q40-tp"
-        ]
-      },
-      {
-        "id": "q40-z-smf",
-        "label_en": "Single-Mode Fiber (SMF)",
-        "label_vi": "Single-Mode Fiber (SMF)",
-        "target_ids": [
-          "q40-smf"
-        ]
-      },
-      {
-        "id": "q40-z-mmf",
-        "label_en": "Multimode Fiber (MMF)",
-        "label_vi": "Multimode Fiber (MMF)",
-        "target_ids": [
-          "q40-mmf"
+          "q40-sm1",
+          "q40-sm2"
         ]
       }
     ],
@@ -2631,7 +2645,8 @@ window.CCNA_DND_DATA = [
       },
       {
         "id": "q41-cert2",
-        "text_en": "issuer may revoke the digital certificate"
+        "text_en": "issuer may revoke the digital credentials",
+        "text_vi": "issuer may revoke the digital credentials"
       },
       {
         "id": "q41-mfa1",
@@ -2646,6 +2661,7 @@ window.CCNA_DND_DATA = [
       {
         "id": "q41-z-bio",
         "label_en": "Biometrics",
+        "label_vi": "Biometrics",
         "target_ids": [
           "q41-bio1",
           "q41-bio2"
@@ -2653,7 +2669,8 @@ window.CCNA_DND_DATA = [
       },
       {
         "id": "q41-z-cert",
-        "label_en": "Digital Certificates",
+        "label_en": "Certificates",
+        "label_vi": "Certificates",
         "target_ids": [
           "q41-cert1",
           "q41-cert2"
@@ -2661,7 +2678,8 @@ window.CCNA_DND_DATA = [
       },
       {
         "id": "q41-z-mfa",
-        "label_en": "Multifactor Authentication (MFA)",
+        "label_en": "Multifactor Authentication",
+        "label_vi": "Multifactor Authentication",
         "target_ids": [
           "q41-mfa1",
           "q41-mfa2"
@@ -2695,7 +2713,8 @@ window.CCNA_DND_DATA = [
       },
       {
         "id": "q42-dtp",
-        "text_en": "disable DTP (Dynamic Trunking Protocol)"
+        "text_en": "disable DTP",
+        "text_vi": "disable DTP"
       }
     ],
     "drop_zones": [
@@ -2747,7 +2766,8 @@ window.CCNA_DND_DATA = [
       },
       {
         "id": "q43-coa",
-        "text_en": "COA"
+        "text_en": "CoA",
+        "text_vi": "CoA"
       },
       {
         "id": "q43-authorization",
@@ -3073,28 +3093,32 @@ window.CCNA_DND_DATA = [
     "drop_zones": [
       {
         "id": "q48-s1",
-        "label_en": "First",
+        "label_en": "first",
+        "label_vi": "first",
         "target_ids": [
           "q48-en"
         ]
       },
       {
         "id": "q48-s2",
-        "label_en": "Second",
+        "label_en": "second",
+        "label_vi": "second",
         "target_ids": [
           "q48-conf"
         ]
       },
       {
         "id": "q48-s3",
-        "label_en": "Third",
+        "label_en": "third",
+        "label_vi": "third",
         "target_ids": [
           "q48-sec"
         ]
       },
       {
         "id": "q48-s4",
-        "label_en": "Fourth",
+        "label_en": "fourth",
+        "label_vi": "fourth",
         "target_ids": [
           "q48-ex"
         ]
@@ -3562,7 +3586,8 @@ window.CCNA_DND_DATA = [
     "drop_zones": [
       {
         "id": "q57-twisted",
-        "label_en": "Twisted-Pair Cabling",
+        "label_en": "copper",
+        "label_vi": "copper",
         "target_ids": [
           "q57-tp1",
           "q57-tp2"
@@ -3570,7 +3595,8 @@ window.CCNA_DND_DATA = [
       },
       {
         "id": "q57-smf",
-        "label_en": "Single-Mode Fiber",
+        "label_en": "single-mode fiber",
+        "label_vi": "single-mode fiber",
         "target_ids": [
           "q57-sm1",
           "q57-sm2"
