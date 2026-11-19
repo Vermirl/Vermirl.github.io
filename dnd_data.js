@@ -1177,17 +1177,37 @@ window.CCNA_DND_DATA = [
     "id": 19,
     "title": "Câu 19: So Sánh Toàn Diện Giao Thức TCP vs UDP",
     "category": "Network Fundamentals",
-    "prompt_en": "Drag and drop the protocol characteristics from the left onto the corresponding protocol on the right.",
-    "prompt_vi": "Kéo thả các đặc tính kỹ thuật từ bên trái vào giao thức TCP hoặc UDP tương ứng ở bên phải.",
+    "prompt_en": "Drag and drop the characteristics from the left onto the corresponding protocol types on the right. Not all characteristics are used.",
+    "prompt_vi": "Kéo thả các đặc tính từ bên trái vào đúng loại giao thức tương ứng ở bên phải. Không phải tất cả đặc tính đều được dùng.",
     "has_exhibit": false,
     "exhibit_image": null,
     "question_image": "images/dnd/dnd_q19_a.png",
     "answer_image": "images/dnd/dnd_q19_b.png",
     "source_items": [
       {
+        "id": "q19-dist",
+        "text_en": "belongs to OSI Layer 3",
+        "text_vi": "belongs to OSI Layer 3"
+      },
+      {
         "id": "q19-t1",
         "text_en": "uses a three-way handshake",
         "text_vi": "uses a three-way handshake"
+      },
+      {
+        "id": "q19-u1",
+        "text_en": "faster data transmission",
+        "text_vi": "faster data transmission"
+      },
+      {
+        "id": "q19-u2",
+        "text_en": "used for streaming and VoIP",
+        "text_vi": "used for streaming and VoIP"
+      },
+      {
+        "id": "q19-u3",
+        "text_en": "connectionless protocol",
+        "text_vi": "connectionless protocol"
       },
       {
         "id": "q19-t2",
@@ -1198,21 +1218,6 @@ window.CCNA_DND_DATA = [
         "id": "q19-t3",
         "text_en": "provides a reliable connection",
         "text_vi": "provides a reliable connection"
-      },
-      {
-        "id": "q19-u1",
-        "text_en": "faster data transmission",
-        "text_vi": "faster data transmission"
-      },
-      {
-        "id": "q19-u2",
-        "text_en": "used for streaming audio and VoIP",
-        "text_vi": "used for streaming audio and VoIP"
-      },
-      {
-        "id": "q19-u3",
-        "text_en": "connectionless protocol",
-        "text_vi": "connectionless protocol"
       }
     ],
     "drop_zones": [
@@ -1237,7 +1242,7 @@ window.CCNA_DND_DATA = [
         ]
       }
     ],
-    "explanation": "So sánh cốt lõi:\n- **TCP**: Tin cậy (Reliable), hướng kết nối (Connection-oriented, 3-way handshake), kiểm tra lỗi và truyền lại, phù hợp cho Web, Email.\n- **UDP**: Nhanh (Fast), phi kết nối (Connectionless), không đảm bảo (Best-effort), độ trễ cực thấp, phù hợp cho VoIP, DNS, Streaming."
+    "explanation": "So sánh chi tiết TCP vs UDP:\n- **TCP (Transmission Control Protocol)**:\n  + Thiết lập kết nối 3 bước tin cậy: *uses a three-way handshake*.\n  + Phù hợp cho duyệt web (HTTP/HTTPS): *preferred for web browsing*.\n  + Cung cấp kết nối tin cậy có kiểm soát lỗi: *provides a reliable connection*.\n- **UDP (User Datagram Protocol)**:\n  + Tốc độ truyền tải nhanh do không có độ trễ bắt tay: *faster data transmission*.\n  + Ứng dụng truyền thông thời gian thực: *used for streaming and VoIP*.\n  + Giao thức phi kết nối: *connectionless protocol*.\n- **Mồi nhử không dùng (Distractor)**: *belongs to OSI Layer 3* (Cả TCP và UDP đều thuộc tầng Transport - Layer 4 trong mô hình OSI, không phải Layer 3 Network)."
   },
   {
     "id": 20,
